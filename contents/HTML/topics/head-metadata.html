@@ -1,0 +1,338 @@
+<!-- contents/HTML/topics/head-metadata.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Head & Metadata — Session 3</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 (for MCQ feedback) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 3</div>
+        <h1 id="lesson-title">HTML &lt;head&gt; and Metadata</h1>
+        <div class="meta">Head Element • Metadata • SEO • Social Sharing</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="text-formatting.html">Next: Text Formatting →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main">
+
+      <section id="head-element" class="section">
+        <h2>What is the &lt;head&gt; Element?</h2>
+        <p>The <code>&lt;head&gt;</code> element contains <strong>metadata</strong> — information about the webpage that is not displayed directly to users but is essential for browsers, search engines, and external services.</p>
+        
+        <h4>Key Functions:</h4>
+        <ul>
+          <li>Defines the page title (shown in browser tab and search results)</li>
+          <li>Contains meta tags for SEO, responsiveness, and social sharing</li>
+          <li>Links external resources like CSS, fonts, and favicons</li>
+          <li>Loads JavaScript files and defines page-level scripts</li>
+          <li>Sets character encoding and language</li>
+        </ul>
+
+        <p><strong>Important:</strong> Everything in <code>&lt;head&gt;</code> is invisible to users but critical for how your page works and appears in search engines and social media.</p>
+      </section>
+
+      <section id="common-tags" class="section">
+        <h3>Common Tags Inside &lt;head&gt;</h3>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Purpose</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&lt;title&gt;</td>
+              <td>Page title (browser tab & search results)</td>
+              <td><code>&lt;title&gt;My Website&lt;/title&gt;</code></td>
+            </tr>
+            <tr>
+              <td>&lt;meta charset&gt;</td>
+              <td>Character encoding (UTF-8 for international text)</td>
+              <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+            </tr>
+            <tr>
+              <td>&lt;meta viewport&gt;</td>
+              <td>Mobile responsiveness settings</td>
+              <td><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></td>
+            </tr>
+            <tr>
+              <td>&lt;meta description&gt;</td>
+              <td>Page description for search engines</td>
+              <td><code>&lt;meta name="description" content="Learn HTML"&gt;</code></td>
+            </tr>
+            <tr>
+              <td>&lt;link&gt;</td>
+              <td>Links external resources (CSS, fonts, icons)</td>
+              <td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td>
+            </tr>
+            <tr>
+              <td>&lt;style&gt;</td>
+              <td>Internal CSS styling</td>
+              <td><code>&lt;style&gt;body { margin: 0; }&lt;/style&gt;</code></td>
+            </tr>
+            <tr>
+              <td>&lt;script&gt;</td>
+              <td>JavaScript code or external JS files</td>
+              <td><code>&lt;script src="app.js"&gt;&lt;/script&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="title-tag" class="section">
+        <h3>The &lt;title&gt; Tag</h3>
+        <p>The title is one of the most important elements for SEO and user experience.</p>
+
+        <pre class="code-block"><code>&lt;title&gt;HTML Tutorial - Learn Web Development&lt;/title&gt;</code></pre>
+
+        <h4>Best Practices:</h4>
+        <ul>
+          <li><strong>Keep it 50-60 characters</strong> - Longer titles get cut off in search results</li>
+          <li><strong>Put important keywords first</strong> - "HTML Tutorial" not "Learn About HTML Tutorial"</li>
+          <li><strong>Be descriptive</strong> - Tell users exactly what the page is about</li>
+          <li><strong>Make it unique</strong> - Every page should have a different title</li>
+          <li><strong>Include brand name</strong> - "Product Name | Company Name"</li>
+        </ul>
+      </section>
+
+      <section id="meta-tags" class="section">
+        <h3>Essential Meta Tags</h3>
+
+        <h4>1. Character Encoding (Required)</h4>
+        <pre class="code-block"><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+        <p>Always use UTF-8 to support international characters (é, ñ, 中, etc.)</p>
+
+        <h4>2. Viewport Meta Tag (Required for Mobile)</h4>
+        <pre class="code-block"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+        <p>Makes your site responsive on mobile devices. Without this, mobile browsers show desktop version zoomed out.</p>
+
+        <h4>3. Description Meta Tag (Important for SEO)</h4>
+        <pre class="code-block"><code>&lt;meta name="description" content="Learn HTML with our comprehensive guide. Perfect for beginners with examples and exercises."&gt;</code></pre>
+        <p>Shown in search results below your page title. Keep it 150-160 characters.</p>
+
+        <h4>4. Keywords Meta Tag (Legacy)</h4>
+        <pre class="code-block"><code>&lt;meta name="keywords" content="HTML, tutorial, web development, beginners"&gt;</code></pre>
+        <p><strong>Note:</strong> Most search engines ignore this now, but it doesn't hurt to include it.</p>
+
+        <h4>5. Author Meta Tag</h4>
+        <pre class="code-block"><code>&lt;meta name="author" content="Aman Raj"&gt;</code></pre>
+        <p>Specifies who created the page.</p>
+      </section>
+
+      <section id="social-meta" class="section">
+        <h3>Social Media Meta Tags</h3>
+        <p>Control how your page looks when shared on social platforms:</p>
+
+        <h4>Open Graph (Facebook, LinkedIn)</h4>
+        <pre class="code-block"><code>&lt;meta property="og:title" content="HTML Tutorial"&gt;
+&lt;meta property="og:description" content="Learn HTML from scratch"&gt;
+&lt;meta property="og:image" content="https://example.com/preview.jpg"&gt;
+&lt;meta property="og:url" content="https://example.com/html-tutorial"&gt;
+&lt;meta property="og:type" content="website"&gt;</code></pre>
+
+        <h4>Twitter Cards</h4>
+        <pre class="code-block"><code>&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:title" content="HTML Tutorial"&gt;
+&lt;meta name="twitter:description" content="Learn HTML from scratch"&gt;
+&lt;meta name="twitter:image" content="https://example.com/preview.jpg"&gt;</code></pre>
+      </section>
+
+      <section id="favicon" class="section">
+        <h3>Favicon</h3>
+        <p>The small icon shown in the browser tab:</p>
+
+        <pre class="code-block"><code>&lt;link rel="icon" type="image/png" href="favicon.png"&gt;
+&lt;link rel="apple-touch-icon" href="apple-icon.png"&gt;</code></pre>
+
+        <p><strong>Tip:</strong> Use a 32x32px PNG or ICO file for best compatibility.</p>
+      </section>
+
+      <section id="example-code" class="section">
+        <h3>Complete Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;!-- Essential Meta Tags --&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;!-- SEO Meta Tags --&gt;
+  &lt;title&gt;HTML Tutorial - Learn Web Development | WebDev Academy&lt;/title&gt;
+  &lt;meta name="description" content="Learn HTML with our comprehensive guide. Perfect for beginners with examples and exercises."&gt;
+  &lt;meta name="keywords" content="HTML, tutorial, web development, beginners"&gt;
+  &lt;meta name="author" content="Aman Raj"&gt;
+  
+  &lt;!-- Social Media Meta Tags --&gt;
+  &lt;meta property="og:title" content="HTML Tutorial - Learn Web Development"&gt;
+  &lt;meta property="og:description" content="Learn HTML from scratch with practical examples"&gt;
+  &lt;meta property="og:image" content="https://example.com/preview.jpg"&gt;
+  &lt;meta property="og:url" content="https://example.com/html-tutorial"&gt;
+  
+  &lt;!-- Favicon --&gt;
+  &lt;link rel="icon" type="image/png" href="favicon.png"&gt;
+  
+  &lt;!-- External CSS --&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+  
+  &lt;!-- Internal CSS --&gt;
+  &lt;style&gt;
+    body { 
+      font-family: Arial, sans-serif; 
+      background-color: #f5f5f5; 
+      margin: 0;
+      padding: 20px;
+    }
+  &lt;/style&gt;
+  
+  &lt;!-- JavaScript --&gt;
+  &lt;script&gt;
+    console.log("Page loaded successfully!");
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;HTML Head Demo&lt;/h1&gt;
+  &lt;p&gt;Check the browser tab title, and inspect the page metadata.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h4>What Each Part Does:</h4>
+        <ul>
+          <li><code>&lt;meta charset&gt;</code> → Enables international characters</li>
+          <li><code>&lt;meta viewport&gt;</code> → Makes page mobile-responsive</li>
+          <li><code>&lt;title&gt;</code> → Sets browser tab title and search result title</li>
+          <li><code>&lt;meta description&gt;</code> → Improves SEO and search result snippet</li>
+          <li><code>&lt;meta property="og:*"&gt;</code> → Controls social media preview</li>
+          <li><code>&lt;link rel="icon"&gt;</code> → Adds favicon to browser tab</li>
+          <li><code>&lt;link rel="stylesheet"&gt;</code> → Loads external CSS</li>
+          <li><code>&lt;style&gt;</code> → Defines internal CSS</li>
+          <li><code>&lt;script&gt;</code> → Adds JavaScript functionality</li>
+        </ul>
+      </section>
+
+      <section id="performance" class="section">
+        <h3>Performance Meta Tags</h3>
+        
+        <h4>Preloading Resources</h4>
+        <pre class="code-block"><code>&lt;link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin&gt;
+&lt;link rel="preload" href="hero-image.jpg" as="image"&gt;</code></pre>
+        <p>Tells the browser to load important resources early.</p>
+
+        <h4>DNS Prefetch</h4>
+        <pre class="code-block"><code>&lt;link rel="dns-prefetch" href="https://fonts.googleapis.com"&gt;</code></pre>
+        <p>Speeds up loading of external resources.</p>
+      </section>
+
+      <!-- MCQs -->
+      <section class="section mcq">
+        <h3>Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which tag defines the title shown in the browser tab?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;header&gt;</button>
+            <button class="choice">b) &lt;title&gt;</button>
+            <button class="choice">c) &lt;head&gt;</button>
+            <button class="choice">d) &lt;meta&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q2. Which meta tag is essential for mobile responsiveness?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;meta charset="UTF-8"&gt;</button>
+            <button class="choice">b) &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</button>
+            <button class="choice">c) &lt;meta name="author"&gt;</button>
+            <button class="choice">d) &lt;meta name="description"&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q3. What is the ideal length for a meta description?</div>
+          <div class="choices">
+            <button class="choice">a) 50-60 characters</button>
+            <button class="choice">b) 100-120 characters</button>
+            <button class="choice">c) 150-160 characters</button>
+            <button class="choice">d) 200+ characters</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q4. Which meta tag controls how pages appear when shared on Facebook?</div>
+          <div class="choices">
+            <button class="choice">a) Open Graph (og:)</button>
+            <button class="choice">b) Twitter Card</button>
+            <button class="choice">c) meta description</button>
+            <button class="choice">d) meta keywords</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice -->
+      <section class="section" id="practice">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Create a complete HTML head section with:</strong>
+            <ul>
+              <li>Title: <code>My Portfolio | Web Developer</code></li>
+              <li>Meta description about your skills (150 characters)</li>
+              <li>Meta author with your name</li>
+              <li>Viewport meta tag for mobile</li>
+              <li>Open Graph tags for social sharing</li>
+            </ul>
+          </li>
+          <li><strong>Add a favicon:</strong> Create or download a 32x32px icon and link it in the head</li>
+          <li><strong>Performance optimization:</strong> Add preload tags for a CSS file and a web font</li>
+          <li><strong>Test SEO:</strong> Use a browser extension or online tool to check your meta tags</li>
+        </ol>
+      </section>
+
+      <!-- Summary -->
+      <section class="section summary" id="summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li>The <code>&lt;head&gt;</code> element contains invisible but crucial page metadata</li>
+          <li><strong>Essential tags:</strong> title, charset, viewport, description</li>
+          <li><strong>SEO impact:</strong> Title and description appear in search results</li>
+          <li><strong>Social sharing:</strong> Open Graph and Twitter Cards control preview appearance</li>
+          <li><strong>Performance:</strong> Preload and DNS prefetch improve page speed</li>
+          <li><strong>Best practice:</strong> Every page needs unique, descriptive metadata</li>
+        </ul>
+        <p>Proper head configuration improves SEO, user experience, and social media presence. Never skip the metadata!</p>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="text-formatting.html">Text Formatting</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- shared JS -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

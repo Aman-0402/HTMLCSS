@@ -1,0 +1,467 @@
+<!-- contents/HTML/topics/links-images.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Links & Images — Session 5</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 for MCQ feedback -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 5</div>
+        <h1 id="lesson-title">Links & Images</h1>
+        <div class="meta">Hyperlinks • Images • Alt Text • Responsive Images</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="adding-css.html">Next: Adding CSS →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main">
+
+      <!-- LINKS -->
+      <section id="links" class="section">
+        <h2>What are Links in HTML?</h2>
+        <p>Links (hyperlinks) are the foundation of the web - they connect pages and allow navigation. Created with the <code>&lt;a&gt;</code> (anchor) tag, the <code>href</code> attribute defines the destination.</p>
+
+        <h3>Basic Syntax</h3>
+        <pre class="code-block"><code>&lt;a href="destination-url"&gt;Link Text&lt;/a&gt;</code></pre>
+
+        <h3>Types of Links</h3>
+        
+        <h4>1. External Links (to other websites)</h4>
+        <pre class="code-block"><code>&lt;a href="https://www.google.com"&gt;Visit Google&lt;/a&gt;
+&lt;a href="https://www.wikipedia.org" target="_blank"&gt;Wikipedia (new tab)&lt;/a&gt;</code></pre>
+
+        <h4>2. Internal Links (within your site)</h4>
+        <pre class="code-block"><code>&lt;a href="about.html"&gt;About Us&lt;/a&gt;
+&lt;a href="/products/shoes.html"&gt;Shoes Category&lt;/a&gt;
+&lt;a href="../index.html"&gt;Home&lt;/a&gt;</code></pre>
+
+        <h4>3. Anchor Links (same page navigation)</h4>
+        <pre class="code-block"><code>&lt;a href="#contact"&gt;Jump to Contact Section&lt;/a&gt;
+&lt;a href="#top"&gt;Back to Top&lt;/a&gt;
+
+&lt;!-- Target element needs an id --&gt;
+&lt;section id="contact"&gt;Contact Info...&lt;/section&gt;</code></pre>
+
+        <h4>4. Email Links</h4>
+        <pre class="code-block"><code>&lt;a href="mailto:hello@example.com"&gt;Send Email&lt;/a&gt;
+&lt;a href="mailto:support@example.com?subject=Help Request"&gt;Email Support&lt;/a&gt;</code></pre>
+
+        <h4>5. Phone Links</h4>
+        <pre class="code-block"><code>&lt;a href="tel:+911234567890"&gt;Call: +91 123 456 7890&lt;/a&gt;</code></pre>
+
+        <h4>6. Download Links</h4>
+        <pre class="code-block"><code>&lt;a href="document.pdf" download&gt;Download PDF&lt;/a&gt;
+&lt;a href="report.pdf" download="Annual-Report-2024.pdf"&gt;Download Report&lt;/a&gt;</code></pre>
+
+        <h3>Important Link Attributes</h3>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Purpose</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>href</td>
+              <td>Destination URL (required)</td>
+              <td><code>href="https://example.com"</code></td>
+            </tr>
+            <tr>
+              <td>target</td>
+              <td>Where to open link</td>
+              <td><code>target="_blank"</code> (new tab)</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>Tooltip on hover</td>
+              <td><code>title="Visit our homepage"</code></td>
+            </tr>
+            <tr>
+              <td>rel</td>
+              <td>Relationship/security</td>
+              <td><code>rel="noopener noreferrer"</code></td>
+            </tr>
+            <tr>
+              <td>download</td>
+              <td>Triggers file download</td>
+              <td><code>download="filename.pdf"</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Best Practices for Links</h3>
+        <ul>
+          <li><strong>Descriptive text</strong> - Use meaningful link text, not "click here"</li>
+          <li><strong>Security</strong> - Add <code>rel="noopener noreferrer"</code> when using <code>target="_blank"</code></li>
+          <li><strong>Accessibility</strong> - Make link purpose clear from text alone</li>
+          <li><strong>Visual feedback</strong> - Style links distinctly (underline, color)</li>
+          <li><strong>Test links</strong> - Ensure all links work correctly</li>
+        </ul>
+
+        <h4>❌ Bad Link Text:</h4>
+        <pre class="code-block"><code>&lt;a href="services.html"&gt;Click here&lt;/a&gt; to see our services.</code></pre>
+
+        <h4>✅ Good Link Text:</h4>
+        <pre class="code-block"><code>View our &lt;a href="services.html"&gt;web development services&lt;/a&gt;.</code></pre>
+
+        <h3>Complete Link Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Links Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Navigation Examples&lt;/h1&gt;
+  
+  &lt;!-- External link with security --&gt;
+  &lt;a href="https://github.com" target="_blank" rel="noopener noreferrer"&gt;
+    Visit GitHub (opens in new tab)
+  &lt;/a&gt;
+  
+  &lt;!-- Internal link --&gt;
+  &lt;a href="about.html"&gt;About Our Company&lt;/a&gt;
+  
+  &lt;!-- Email link with subject --&gt;
+  &lt;a href="mailto:info@company.com?subject=Inquiry"&gt;Contact Us&lt;/a&gt;
+  
+  &lt;!-- Phone link --&gt;
+  &lt;a href="tel:+15551234567"&gt;Call: (555) 123-4567&lt;/a&gt;
+  
+  &lt;!-- Download link --&gt;
+  &lt;a href="brochure.pdf" download&gt;Download Our Brochure&lt;/a&gt;
+  
+  &lt;!-- Anchor link --&gt;
+  &lt;a href="#footer"&gt;Jump to Footer&lt;/a&gt;
+  
+  &lt;footer id="footer"&gt;
+    &lt;p&gt;Footer content here&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <!-- Links Quiz -->
+      <section class="section mcq" aria-labelledby="links-quiz">
+        <h3 id="links-quiz">Links Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which attribute defines the destination URL in a link?</div>
+          <div class="choices">
+            <button class="choice">a) src</button>
+            <button class="choice">b) href</button>
+            <button class="choice">c) link</button>
+            <button class="choice">d) url</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q2. How do you open a link in a new tab?</div>
+          <div class="choices">
+            <button class="choice">a) open="new"</button>
+            <button class="choice">b) newtab="true"</button>
+            <button class="choice">c) target="_blank"</button>
+            <button class="choice">d) window="new"</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q3. What attribute should you add with target="_blank" for security?</div>
+          <div class="choices">
+            <button class="choice">a) rel="noopener noreferrer"</button>
+            <button class="choice">b) secure="true"</button>
+            <button class="choice">c) safe="yes"</button>
+            <button class="choice">d) protection="on"</button>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- IMAGES -->
+      <section id="images" class="section">
+        <h2>Images in HTML</h2>
+        <p>Images make websites visually appealing and informative. The <code>&lt;img&gt;</code> tag is a self-closing element that embeds images.</p>
+
+        <h3>Basic Syntax</h3>
+        <pre class="code-block"><code>&lt;img src="path/to/image.jpg" alt="Description of image"&gt;</code></pre>
+
+        <h3>Essential Image Attributes</h3>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Purpose</th>
+              <th>Required?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>src</td>
+              <td>Image file path or URL</td>
+              <td>✅ Yes</td>
+            </tr>
+            <tr>
+              <td>alt</td>
+              <td>Alternative text (accessibility & SEO)</td>
+              <td>✅ Yes</td>
+            </tr>
+            <tr>
+              <td>width</td>
+              <td>Image width in pixels</td>
+              <td>❌ Optional</td>
+            </tr>
+            <tr>
+              <td>height</td>
+              <td>Image height in pixels</td>
+              <td>❌ Optional</td>
+            </tr>
+            <tr>
+              <td>loading</td>
+              <td>Lazy loading (loading="lazy")</td>
+              <td>❌ Optional</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>Tooltip on hover</td>
+              <td>❌ Optional</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Why Alt Text Matters</h3>
+        <ul>
+          <li><strong>Accessibility</strong> - Screen readers announce alt text to visually impaired users</li>
+          <li><strong>SEO</strong> - Search engines use alt text to understand images</li>
+          <li><strong>Fallback</strong> - Shows when image fails to load</li>
+          <li><strong>Context</strong> - Provides meaning when images are disabled</li>
+        </ul>
+
+        <h4>Writing Good Alt Text:</h4>
+        <pre class="code-block"><code>&lt;!-- ❌ Bad: Too vague --&gt;
+&lt;img src="dog.jpg" alt="image"&gt;
+
+&lt;!-- ❌ Bad: Redundant --&gt;
+&lt;img src="sunset.jpg" alt="Image of a sunset"&gt;
+
+&lt;!-- ✅ Good: Descriptive --&gt;
+&lt;img src="golden-retriever.jpg" alt="Golden retriever playing with ball in park"&gt;
+
+&lt;!-- ✅ Good: Context-aware --&gt;
+&lt;img src="ceo-photo.jpg" alt="Jane Smith, CEO of TechCorp"&gt;</code></pre>
+
+        <h3>Image Examples</h3>
+        <pre class="code-block"><code>&lt;!-- Basic image --&gt;
+&lt;img src="logo.png" alt="Company Logo"&gt;
+
+&lt;!-- Image with dimensions --&gt;
+&lt;img src="product.jpg" alt="Red sneakers" width="300" height="200"&gt;
+
+&lt;!-- Lazy loading for performance --&gt;
+&lt;img src="large-photo.jpg" alt="Team photo" loading="lazy"&gt;
+
+&lt;!-- Responsive image (CSS) --&gt;
+&lt;img src="banner.jpg" alt="Welcome banner" style="width:100%;max-width:800px;height:auto;"&gt;
+
+&lt;!-- Image as link --&gt;
+&lt;a href="https://example.com"&gt;
+  &lt;img src="clickable-banner.jpg" alt="Visit our store - Special offer"&gt;
+&lt;/a&gt;</code></pre>
+
+        <h3>Responsive Images with &lt;picture&gt;</h3>
+        <p>The <code>&lt;picture&gt;</code> element allows different images for different screen sizes or formats:</p>
+
+        <pre class="code-block"><code>&lt;picture&gt;
+  &lt;!-- WebP format for modern browsers --&gt;
+  &lt;source srcset="image.webp" type="image/webp"&gt;
+  
+  &lt;!-- Mobile image (smaller file) --&gt;
+  &lt;source srcset="image-small.jpg" media="(max-width: 600px)"&gt;
+  
+  &lt;!-- Desktop image (larger file) --&gt;
+  &lt;source srcset="image-large.jpg" media="(min-width: 601px)"&gt;
+  
+  &lt;!-- Fallback image --&gt;
+  &lt;img src="image.jpg" alt="Product showcase"&gt;
+&lt;/picture&gt;</code></pre>
+
+        <h3>Image Formats</h3>
+        <ul>
+          <li><strong>JPEG (.jpg)</strong> - Photos, complex images with many colors</li>
+          <li><strong>PNG (.png)</strong> - Transparent backgrounds, logos, icons</li>
+          <li><strong>WebP (.webp)</strong> - Modern format, smaller file size, good quality</li>
+          <li><strong>SVG (.svg)</strong> - Vector graphics, logos, icons (scalable)</li>
+          <li><strong>GIF (.gif)</strong> - Simple animations, low color images</li>
+        </ul>
+
+        <h3>Complete Image Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Images Example&lt;/title&gt;
+  &lt;style&gt;
+    img { max-width: 100%; height: auto; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Our Product Gallery&lt;/h1&gt;
+  
+  &lt;!-- Product image with details --&gt;
+  &lt;img src="laptop.jpg" 
+       alt="Silver laptop with 15-inch display" 
+       width="500" 
+       height="400"
+       loading="lazy"
+       title="MacBook Pro 2024"&gt;
+  
+  &lt;!-- Clickable image --&gt;
+  &lt;a href="product-details.html"&gt;
+    &lt;img src="phone.jpg" alt="View smartphone details"&gt;
+  &lt;/a&gt;
+  
+  &lt;!-- Responsive image --&gt;
+  &lt;picture&gt;
+    &lt;source srcset="hero-mobile.jpg" media="(max-width: 768px)"&gt;
+    &lt;source srcset="hero-desktop.jpg" media="(min-width: 769px)"&gt;
+    &lt;img src="hero-default.jpg" alt="Welcome to our store"&gt;
+  &lt;/picture&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <!-- Images Quiz -->
+      <section class="section mcq" aria-labelledby="images-quiz">
+        <h3 id="images-quiz">Images Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q4. Which attribute specifies the image file path?</div>
+          <div class="choices">
+            <button class="choice">a) alt</button>
+            <button class="choice">b) src</button>
+            <button class="choice">c) href</button>
+            <button class="choice">d) link</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q5. Which attribute provides text when an image fails to load?</div>
+          <div class="choices">
+            <button class="choice">a) src</button>
+            <button class="choice">b) alt</button>
+            <button class="choice">c) title</button>
+            <button class="choice">d) desc</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q6. Which element allows different images for different screen sizes?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;img&gt;</button>
+            <button class="choice">b) &lt;responsive&gt;</button>
+            <button class="choice">c) &lt;picture&gt;</button>
+            <button class="choice">d) &lt;source&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q7. Which format is best for logos with transparent backgrounds?</div>
+          <div class="choices">
+            <button class="choice">a) JPEG</button>
+            <button class="choice">b) PNG</button>
+            <button class="choice">c) GIF</button>
+            <button class="choice">d) BMP</button>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- PRACTICE TASKS -->
+      <section id="practice" class="section">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Navigation Menu:</strong>
+            <ul>
+              <li>Create links to Home, About, Services, Contact pages</li>
+              <li>Add an external link to GitHub (new tab with security)</li>
+              <li>Add email and phone links</li>
+            </ul>
+          </li>
+          <li><strong>Image Gallery:</strong>
+            <ul>
+              <li>Add 3 images with proper alt text</li>
+              <li>Make images responsive (max-width: 100%)</li>
+              <li>Add lazy loading to images</li>
+              <li>Make one image clickable (links to larger version)</li>
+            </ul>
+          </li>
+          <li><strong>Product Card:</strong>
+            <ul>
+              <li>Product image with dimensions 300x300</li>
+              <li>Product name as heading</li>
+              <li>Price with old price crossed out</li>
+              <li>"Buy Now" link button</li>
+            </ul>
+          </li>
+          <li><strong>Responsive Hero Image:</strong>
+            <ul>
+              <li>Use &lt;picture&gt; element</li>
+              <li>Mobile image for screens under 768px</li>
+              <li>Desktop image for larger screens</li>
+              <li>Proper alt text describing the hero image</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <!-- SUMMARY -->
+      <section id="summary" class="section summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>Links (&lt;a&gt;)</strong> - Use href for destination, target="_blank" for new tab, rel="noopener noreferrer" for security</li>
+          <li><strong>Link types</strong> - External, internal, anchor, email (mailto:), phone (tel:), download</li>
+          <li><strong>Images (&lt;img&gt;)</strong> - Always include src and alt attributes</li>
+          <li><strong>Alt text</strong> - Critical for accessibility, SEO, and when images fail</li>
+          <li><strong>Responsive images</strong> - Use &lt;picture&gt; for different screen sizes</li>
+          <li><strong>Image formats</strong> - JPEG (photos), PNG (transparency), WebP (modern), SVG (vectors)</li>
+          <li><strong>Performance</strong> - Use loading="lazy" for images below the fold</li>
+          <li><strong>Best practices</strong> - Descriptive link text, meaningful alt text, responsive design</li>
+        </ul>
+        <p>Links and images are fundamental to web pages. Always prioritize accessibility with proper alt text and security with appropriate link attributes!</p>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="adding-css.html">Adding CSS to HTML</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- shared JS -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

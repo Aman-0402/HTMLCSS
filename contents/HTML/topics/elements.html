@@ -1,0 +1,470 @@
+<!-- contents/HTML/topics/elements.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Elements & Attributes — Session 2</title>
+
+  <!-- external stylesheet (shared) -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 used by script.js for MCQ feedback -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 2</div>
+        <h1 id="lesson-title">HTML Elements & Attributes</h1>
+        <div class="meta">Elements • Types • Nesting • Attributes • Examples</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="head-metadata.html">Next: Head & Metadata →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main">
+
+      <!-- MINI TABLE OF CONTENTS -->
+      <nav class="toc" aria-label="Table of contents">
+        <a href="#elements">1. Elements</a>
+        <a href="#elements-quiz">Quiz (Elements)</a>
+        <a href="#attributes">2. Attributes</a>
+        <a href="#attributes-quiz">Quiz (Attributes)</a>
+        <a href="#practice">Practice</a>
+        <a href="#summary">Summary</a>
+      </nav>
+
+      <!-- ELEMENTS TOPIC -->
+      <section id="elements" class="section">
+        <h2>What is an HTML Element?</h2>
+        <p>An HTML element is the complete package: opening tag + content + closing tag. It's the fundamental building block of every webpage.</p>
+
+        <p><strong>Basic Structure:</strong></p>
+        <pre class="code-block" aria-hidden="false"><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+
+        <ul>
+          <li><code>&lt;p&gt;</code> — opening tag (starts the element)</li>
+          <li><code>This is a paragraph.</code> — content (what users see)</li>
+          <li><code>&lt;/p&gt;</code> — closing tag (ends the element)</li>
+        </ul>
+
+        <h3>Types of Elements</h3>
+        
+        <h4>1) Container Elements (Paired Tags)</h4>
+        <p>Most HTML elements have both opening and closing tags that wrap content:</p>
+        <pre class="code-block"><code>&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;div&gt;This is a container&lt;/div&gt;
+&lt;strong&gt;Bold text&lt;/strong&gt;
+&lt;em&gt;Italic text&lt;/em&gt;</code></pre>
+
+        <h4>2) Empty / Self-Closing Elements (Void Elements)</h4>
+        <p>Some elements don't have content or closing tags. They stand alone:</p>
+        <pre class="code-block"><code>&lt;br&gt;   &lt;!-- line break --&gt;
+&lt;hr&gt;   &lt;!-- horizontal rule (divider line) --&gt;
+&lt;img src="image.jpg" alt="Sample"&gt; &lt;!-- image --&gt;
+&lt;input type="text"&gt; &lt;!-- form input --&gt;
+&lt;meta charset="utf-8"&gt; &lt;!-- metadata --&gt;</code></pre>
+
+        <p><strong>Note:</strong> In HTML5, you don't need the trailing slash (/) for void elements, though <code>&lt;br /&gt;</code> is still valid.</p>
+
+        <h3>Nested Elements</h3>
+        <p>Elements can contain other elements. This is called <strong>nesting</strong>. Proper nesting is crucial!</p>
+        
+        <pre class="code-block"><code>&lt;p&gt;This is a &lt;strong&gt;bold&lt;/strong&gt; word inside a paragraph.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;h2&gt;Section Title&lt;/h2&gt;
+  &lt;p&gt;This paragraph is &lt;em&gt;inside&lt;/em&gt; a div.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+        <h4>Correct vs Incorrect Nesting:</h4>
+        <pre class="code-block"><code>&lt;!-- ✅ CORRECT --&gt;
+&lt;p&gt;This is &lt;strong&gt;properly&lt;/strong&gt; nested.&lt;/p&gt;
+
+&lt;!-- ❌ INCORRECT --&gt;
+&lt;p&gt;This is &lt;strong&gt;improperly&lt;/p&gt; nested.&lt;/strong&gt;</code></pre>
+
+        <h3>Block-level vs Inline Elements</h3>
+        <p>Understanding display behavior is key to controlling layout:</p>
+
+        <h4>Block-Level Elements:</h4>
+        <ul>
+          <li>Start on a <strong>new line</strong></li>
+          <li>Take up the <strong>full width</strong> available</li>
+          <li>Can contain other block or inline elements</li>
+        </ul>
+        <p><strong>Examples:</strong> <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;-&lt;h6&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code></p>
+
+        <h4>Inline Elements:</h4>
+        <ul>
+          <li><strong>Don't break the line</strong> flow</li>
+          <li>Only take up as much width as needed</li>
+          <li>Usually contain text or other inline elements</li>
+        </ul>
+        <p><strong>Examples:</strong> <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code></p>
+
+        <pre class="code-block"><code>&lt;div&gt;Block element (takes full width)&lt;/div&gt;
+&lt;div&gt;Another block (starts new line)&lt;/div&gt;
+
+&lt;span&gt;Inline element&lt;/span&gt; &lt;span&gt;stays on same line&lt;/span&gt;</code></pre>
+
+        <h3>Common HTML Elements Reference</h3>
+        <pre class="code-block"><code>&lt;!-- Headings (h1 is largest, h6 smallest) --&gt;
+&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Minor Heading&lt;/h3&gt;
+
+&lt;!-- Text Content --&gt;
+&lt;p&gt;Paragraph text&lt;/p&gt;
+&lt;strong&gt;Bold/important text&lt;/strong&gt;
+&lt;em&gt;Italic/emphasized text&lt;/em&gt;
+
+&lt;!-- Lists --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Unordered list item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ordered list item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Links and Images --&gt;
+&lt;a href="https://example.com"&gt;Link text&lt;/a&gt;
+&lt;img src="photo.jpg" alt="Description"&gt;
+
+&lt;!-- Containers --&gt;
+&lt;div&gt;Generic container&lt;/div&gt;
+&lt;span&gt;Inline container&lt;/span&gt;</code></pre>
+
+        <h3>Complete Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt; 
+  &lt;title&gt;Elements Demo&lt;/title&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;HTML Elements Demo&lt;/h1&gt;
+  &lt;p&gt;This is a &lt;strong&gt;paragraph&lt;/strong&gt; with &lt;em&gt;inline&lt;/em&gt; text.&lt;/p&gt;
+  
+  &lt;div&gt;
+    &lt;h2&gt;Section in a Block&lt;/h2&gt;
+    &lt;p&gt;Block elements create structure.&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;hr&gt;
+  &lt;img src="https://via.placeholder.com/120" alt="Sample Image"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- MCQs for Elements -->
+      <section class="section mcq" aria-labelledby="elements-quiz">
+        <h3 id="elements-quiz">Elements Quick Quiz</h3>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q1. Which of the following is an empty/void element?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;p&gt;</button>
+            <button class="choice">b) &lt;div&gt;</button>
+            <button class="choice">c) &lt;img&gt;</button>
+            <button class="choice">d) &lt;span&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q2. Which of these is a block-level element?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;span&gt;</button>
+            <button class="choice">b) &lt;a&gt;</button>
+            <button class="choice">c) &lt;p&gt;</button>
+            <button class="choice">d) &lt;img&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q3. What makes an element "nested"?</div>
+          <div class="choices">
+            <button class="choice">a) It has no closing tag</button>
+            <button class="choice">b) It's placed inside another element</button>
+            <button class="choice">c) It's a block-level element</button>
+            <button class="choice">d) It has multiple attributes</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <hr>
+
+      <!-- ATTRIBUTES TOPIC -->
+      <section id="attributes" class="section">
+        <h2>What are HTML Attributes?</h2>
+        <p>Attributes provide additional information about elements. They appear inside the opening tag as <code>name="value"</code> pairs.</p>
+
+        <p><strong>Syntax:</strong></p>
+        <pre class="code-block"><code>&lt;tagname attribute="value"&gt;Content&lt;/tagname&gt;</code></pre>
+
+        <p><strong>Example:</strong></p>
+        <pre class="code-block"><code>&lt;a href="https://google.com"&gt;Visit Google&lt;/a&gt;</code></pre>
+        <p>Here <code>href</code> is the attribute name and <code>"https://google.com"</code> is its value.</p>
+
+        <h3>Common Global Attributes</h3>
+        <p>These can be used on almost any HTML element:</p>
+        
+        <pre class="code-block"><code>id       — Unique identifier for the element
+class    — One or more class names (for CSS/JS)
+style    — Inline CSS styles
+title    — Tooltip text on hover
+lang     — Language of the element's content
+hidden   — Hides the element
+data-*   — Custom data attributes</code></pre>
+
+        <h4>Examples:</h4>
+        <pre class="code-block"><code>&lt;div id="main-content"&gt;...&lt;/div&gt;
+&lt;p class="highlight important"&gt;...&lt;/p&gt;
+&lt;span style="color: red;"&gt;Red text&lt;/span&gt;
+&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;
+&lt;button data-user-id="123"&gt;Click me&lt;/button&gt;</code></pre>
+
+        <h3>Element-Specific Attributes</h3>
+        <p>Some attributes only work with certain elements:</p>
+        
+        <pre class="code-block"><code>&lt;!-- Links --&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;Link&lt;/a&gt;
+  href    — URL destination
+  target  — Where to open (_blank, _self, _parent, _top)
+  rel     — Relationship (noopener, nofollow, etc.)
+
+&lt;!-- Images --&gt;
+&lt;img src="photo.jpg" alt="Description" width="300" height="200"&gt;
+  src     — Image source/path
+  alt     — Alternative text (accessibility!)
+  width   — Width in pixels
+  height  — Height in pixels
+
+&lt;!-- Forms --&gt;
+&lt;input type="text" name="username" placeholder="Enter name" required&gt;
+  type        — Input type (text, email, password, etc.)
+  name        — Form field name
+  placeholder — Hint text
+  required    — Field must be filled
+
+&lt;!-- Media --&gt;
+&lt;video src="video.mp4" controls autoplay muted&gt;
+  src      — Video source
+  controls — Show play/pause controls
+  autoplay — Start automatically
+  muted    — No sound by default</code></pre>
+
+        <h3>Boolean Attributes</h3>
+        <p>Some attributes don't need values—their presence means "true":</p>
+        <pre class="code-block"><code>&lt;input type="checkbox" checked&gt;
+&lt;input type="text" disabled&gt;
+&lt;input type="email" required&gt;
+&lt;script src="app.js" defer&gt;&lt;/script&gt;
+&lt;video src="video.mp4" autoplay muted&gt;&lt;/video&gt;</code></pre>
+
+        <h3>Complete Attributes Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Attributes Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 id="main-heading" class="title" style="color: navy;"&gt;
+    HTML Attributes Demo
+  &lt;/h1&gt;
+  
+  &lt;p class="info" title="Hover for tooltip"&gt;
+    Hover over this text to see a tooltip.
+  &lt;/p&gt;
+  
+  &lt;a href="https://www.wikipedia.org" 
+     target="_blank" 
+     rel="noopener noreferrer"&gt;
+    Go to Wikipedia (opens in new tab)
+  &lt;/a&gt;
+  
+  &lt;br&gt;&lt;br&gt;
+  
+  &lt;img src="https://via.placeholder.com/150" 
+       alt="Placeholder Image" 
+       width="150" 
+       height="150"
+       title="Sample placeholder image"&gt;
+  
+  &lt;br&gt;&lt;br&gt;
+  
+  &lt;input type="text" 
+         placeholder="Enter your name" 
+         required
+         data-validation="name"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Best Practices for Attributes</h3>
+        <ul>
+          <li>Always use <code>alt</code> for images (accessibility)</li>
+          <li>Use <code>id</code> for unique elements only</li>
+          <li>Use <code>class</code> for styling multiple elements</li>
+          <li>Quote attribute values with double quotes</li>
+          <li>Use lowercase for attribute names</li>
+          <li>Use semantic attributes when available</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- MCQs for Attributes -->
+      <section class="section mcq" aria-labelledby="attributes-quiz">
+        <h3 id="attributes-quiz">Attributes Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q4. Which attribute provides alternate text for an image?</div>
+          <div class="choices">
+            <button class="choice">a) title</button>
+            <button class="choice">b) alt</button>
+            <button class="choice">c) src</button>
+            <button class="choice">d) desc</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q5. Which attribute is used to apply inline CSS?</div>
+          <div class="choices">
+            <button class="choice">a) design</button>
+            <button class="choice">b) style</button>
+            <button class="choice">c) class</button>
+            <button class="choice">d) font</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q6. Which attribute makes a link open in a new tab?</div>
+          <div class="choices">
+            <button class="choice">a) target="_blank"</button>
+            <button class="choice">b) newtab="true"</button>
+            <button class="choice">c) window="new"</button>
+            <button class="choice">d) open="blank"</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <hr>
+
+      <!-- Table example -->
+      <section id="table-example" class="section">
+        <h3>Attribute Reference Table</h3>
+        <p>Quick reference for common HTML attributes:</p>
+
+        <table class="example-table" aria-label="attributes table">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Used With</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>href</td>
+              <td>&lt;a&gt;</td>
+              <td>Defines link URL destination</td>
+            </tr>
+            <tr>
+              <td>src</td>
+              <td>&lt;img&gt;, &lt;script&gt;, &lt;video&gt;</td>
+              <td>Source file path or URL</td>
+            </tr>
+            <tr>
+              <td>alt</td>
+              <td>&lt;img&gt;</td>
+              <td>Alternative text for accessibility</td>
+            </tr>
+            <tr>
+              <td>id</td>
+              <td>Any element</td>
+              <td>Unique identifier</td>
+            </tr>
+            <tr>
+              <td>class</td>
+              <td>Any element</td>
+              <td>CSS class name(s)</td>
+            </tr>
+            <tr>
+              <td>style</td>
+              <td>Any element</td>
+              <td>Inline CSS styles</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Practice tasks -->
+      <section id="practice" class="section">
+        <h3>Practice Exercises</h3>
+        <ol>
+          <li><strong>Create a page that includes:</strong>
+            <ul>
+              <li>A heading with <code>id="main-title"</code></li>
+              <li>A paragraph with <code>class="description"</code> and <code>title="Hover me!"</code></li>
+              <li>An image with <code>src</code>, <code>alt</code>, <code>width="200"</code> and <code>height="200"</code></li>
+              <li>A link with <code>href</code> and <code>target="_blank"</code></li>
+            </ul>
+          </li>
+          <li><strong>Demonstrate block vs inline:</strong> Create a page showing the difference between <code>&lt;div&gt;</code> (block) and <code>&lt;span&gt;</code> (inline) elements using borders or background colors.</li>
+          <li><strong>Nesting practice:</strong> Create a nested structure with a div containing a heading, paragraph, and list.</li>
+          <li><strong>Attributes challenge:</strong> Build a card component using only semantic HTML and inline styles (no external CSS).</li>
+        </ol>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Final summary -->
+      <section id="summary" class="section summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>Elements</strong> are the building blocks of HTML—either container (paired tags) or void (self-closing)</li>
+          <li><strong>Block-level elements</strong> create structure and start on new lines; <strong>inline elements</strong> flow with text</li>
+          <li><strong>Nesting</strong> allows complex structures—always close tags in the correct order</li>
+          <li><strong>Attributes</strong> add metadata and control element behavior/presentation</li>
+          <li>Common attributes: <code>href</code>, <code>src</code>, <code>alt</code>, <code>id</code>, <code>class</code>, <code>style</code></li>
+          <li>Always use <code>alt</code> attributes for images (accessibility!)</li>
+        </ul>
+        <p>Practice building pages using various elements and attributes. The more you code, the more natural it becomes!</p>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="head-metadata.html">Head & Metadata</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- external shared script (MCQ behavior) -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

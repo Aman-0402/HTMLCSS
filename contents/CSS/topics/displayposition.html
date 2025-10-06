@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display & Positioning</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>🔲 CSS Display & Positioning</h1>
+            <p class="topic-subtitle">Master display types and positioning methods for complete layout control</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="dimensions.html" class="nav-btn btn-back">← Previous: CSS Dimensions</a>
+            <a href="floating.html" class="nav-btn btn-next">Next Topic: Floating & Clear →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 Why Display & Positioning Matter</h2>
+            <p>The <strong>display</strong> and <strong>position</strong> properties are fundamental to CSS layout. They control how elements behave in the document flow, how they interact with other elements, and where they appear on the page.</p>
+            
+            <div class="info-box">
+                <h3>Key Layout Control:</h3>
+                <ul>
+                    <li>✅ Control element behavior (block vs inline)</li>
+                    <li>✅ Create complex layouts and designs</li>
+                    <li>✅ Position elements precisely on the page</li>
+                    <li>✅ Create overlapping elements and layers</li>
+                    <li>✅ Build navigation bars, modals, and tooltips</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Display Property Section -->
+        <section class="content-section">
+            <h2>📺 Display Property</h2>
+            <p>The <code>display</code> property specifies how an element is displayed in the document.</p>
+            
+            <h3>1. Block</h3>
+            <div class="code-block">
+                <pre><code>/* Block-level elements */
+div {
+    display: block;
+}
+
+/* Characteristics:
+   - Takes full width available
+   - Starts on a new line
+   - Can have width and height
+   - Examples: div, p, h1-h6, section, article
+*/</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Block Elements:</h3>
+                <div style="background: #e3f2fd; padding: 10px; margin: 5px 0; border-left: 4px solid #667eea;">
+                    Block Element 1 (takes full width)
+                </div>
+                <div style="background: #e3f2fd; padding: 10px; margin: 5px 0; border-left: 4px solid #667eea;">
+                    Block Element 2 (starts on new line)
+                </div>
+            </div>
+
+            <h3>2. Inline</h3>
+            <div class="code-block">
+                <pre><code>/* Inline elements */
+span {
+    display: inline;
+}
+
+/* Characteristics:
+   - Only takes up necessary width
+   - Stays on the same line
+   - Cannot have width and height
+   - Examples: span, a, strong, em, img
+*/</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Inline Elements:</h3>
+                <p>
+                    <span style="background: #fff3e0; padding: 5px; border: 1px solid #ff9800;">Inline 1</span>
+                    <span style="background: #fff3e0; padding: 5px; border: 1px solid #ff9800;">Inline 2</span>
+                    <span style="background: #fff3e0; padding: 5px; border: 1px solid #ff9800;">Inline 3</span>
+                    (They stay on the same line)
+                </p>
+            </div>
+
+            <h3>3. Inline-Block</h3>
+            <div class="code-block">
+                <pre><code>/* Inline-block elements */
+.box {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+/* Characteristics:
+   - Flows inline like text
+   - Can have width and height
+   - Best of both worlds!
+*/</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Inline-Block Elements:</h3>
+                <div style="display: inline-block; width: 100px; height: 80px; background: #f3e5f5; border: 2px solid #764ba2; margin: 5px; padding: 10px; vertical-align: top;">
+                    Box 1
+                </div>
+                <div style="display: inline-block; width: 100px; height: 80px; background: #f3e5f5; border: 2px solid #764ba2; margin: 5px; padding: 10px; vertical-align: top;">
+                    Box 2
+                </div>
+                <div style="display: inline-block; width: 100px; height: 80px; background: #f3e5f5; border: 2px solid #764ba2; margin: 5px; padding: 10px; vertical-align: top;">
+                    Box 3
+                </div>
+            </div>
+
+            <h3>4. None</h3>
+            <div class="code-block">
+                <pre><code>/* Hide element completely */
+.hidden {
+    display: none;  /* Removes from document flow */
+}
+
+/* Compare with visibility */
+.invisible {
+    visibility: hidden;  /* Hidden but takes up space */
+}</code></pre>
+            </div>
+
+            <h3>5. Flex</h3>
+            <div class="code-block">
+                <pre><code>/* Flexbox container */
+.container {
+    display: flex;
+}
+
+/* Creates flexible layout
+   - Powerful alignment options
+   - Responsive by nature
+   - Modern layout technique
+*/</code></pre>
+            </div>
+
+            <h3>6. Grid</h3>
+            <div class="code-block">
+                <pre><code>/* Grid container */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Creates two-dimensional grid layout
+   - Rows and columns
+   - Complex layouts made easy
+*/</code></pre>
+            </div>
+        </section>
+
+        <!-- Position Property Section -->
+        <section class="content-section">
+            <h2>📍 Position Property</h2>
+            <p>The <code>position</code> property specifies how an element is positioned in the document.</p>
+            
+            <h3>1. Static (Default)</h3>
+            <div class="code-block">
+                <pre><code>/* Default positioning */
+div {
+    position: static;
+}
+
+/* Characteristics:
+   - Default value
+   - Follows normal document flow
+   - top, right, bottom, left have no effect
+*/</code></pre>
+            </div>
+
+            <h3>2. Relative</h3>
+            <div class="code-block">
+                <pre><code>/* Relative positioning */
+.box {
+    position: relative;
+    top: 20px;     /* Move down 20px */
+    left: 30px;    /* Move right 30px */
+}
+
+/* Characteristics:
+   - Positioned relative to its normal position
+   - Original space is preserved
+   - Can use top, right, bottom, left
+   - Creates positioning context for children
+*/</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Relative Positioning Example:</h3>
+                <div style="background: #f0f0f0; padding: 20px; position: relative;">
+                    <div style="display: inline-block; width: 100px; height: 80px; background: #e3f2fd; border: 2px solid #667eea; margin: 5px;">
+                        Normal
+                    </div>
+                    <div style="display: inline-block; width: 100px; height: 80px; background: #fff3e0; border: 2px solid #ff9800; margin: 5px; position: relative; top: 20px; left: 20px;">
+                        Relative (moved)
+                    </div>
+                    <div style="display: inline-block; width: 100px; height: 80px; background: #e3f2fd; border: 2px solid #667eea; margin: 5px;">
+                        Normal
+                    </div>
+                </div>
+            </div>
+
+            <h3>3. Absolute</h3>
+            <div class="code-block">
+                <pre><code>/* Absolute positioning */
+.parent {
+    position: relative;  /* Create positioning context */
+}
+
+.child {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Characteristics:
+   - Removed from normal document flow
+   - Positioned relative to nearest positioned ancestor
+   - If no positioned ancestor, relative to document body
+   - Does not leave space in layout
+*/</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Absolute Positioning Example:</h3>
+                <div style="position: relative; background: #f0f0f0; padding: 20px; height: 200px; border: 2px dashed #999;">
+                    Parent (position: relative)
+                    <div style="position: absolute; top: 10px; right: 10px; background: #f093fb; padding: 10px; border: 2px solid #764ba2;">
+                        Absolute (top-right)
+                    </div>
+                    <div style="position: absolute; bottom: 10px; left: 10px; background: #43e97b; padding: 10px; border: 2px solid #2ecc71;">
+                        Absolute (bottom-left)
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Fixed</h3>
+            <div class="code-block">
+                <pre><code>/* Fixed positioning */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+}
+
+/* Characteristics:
+   - Removed from normal document flow
+   - Positioned relative to viewport
+   - Stays in place when scrolling
+   - Perfect for navigation bars
+*/</code></pre>
+            </div>
+
+            <h3>5. Sticky</h3>
+            <div class="code-block">
+                <pre><code>/* Sticky positioning */
+.header {
+    position: sticky;
+    top: 0;
+    background: white;
+}
+
+/* Characteristics:
+   - Hybrid of relative and fixed
+   - Acts relative until scroll threshold
+   - Then becomes fixed
+   - Great for table headers and section titles
+*/</code></pre>
+            </div>
+        </section>
+
+        <!-- Z-Index Section -->
+        <section class="content-section">
+            <h2>🗂️ Z-Index (Stacking Order)</h2>
+            <p>The <code>z-index</code> property controls the stacking order of positioned elements.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Z-index controls layering */
+.bottom {
+    position: relative;
+    z-index: 1;
+}
+
+.middle {
+    position: relative;
+    z-index: 2;
+}
+
+.top {
+    position: relative;
+    z-index: 3;
+}
+
+/* Higher z-index = appears on top
+   Only works on positioned elements (not static)
+   Default z-index is auto (0)
+*/</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Z-Index Stacking:</h3>
+                <div style="position: relative; height: 200px;">
+                    <div style="position: absolute; width: 150px; height: 100px; background: #e3f2fd; border: 2px solid #667eea; z-index: 1; top: 20px; left: 20px; padding: 10px;">
+                        z-index: 1
+                    </div>
+                    <div style="position: absolute; width: 150px; height: 100px; background: #f3e5f5; border: 2px solid #764ba2; z-index: 2; top: 50px; left: 70px; padding: 10px;">
+                        z-index: 2
+                    </div>
+                    <div style="position: absolute; width: 150px; height: 100px; background: #fff3e0; border: 2px solid #ff9800; z-index: 3; top: 80px; left: 120px; padding: 10px;">
+                        z-index: 3 (on top)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+            
+            <h3>Example 1: Centered Modal/Dialog</h3>
+            <div class="code-block">
+                <pre><code>.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 1001;
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Sticky Navigation</h3>
+            <div class="code-block">
+                <pre><code>nav {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Badge/Notification Icon</h3>
+            <div class="code-block">
+                <pre><code>.icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Card Grid Layout</h3>
+            <div class="code-block">
+                <pre><code>.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    display: block;
+    padding: 20px;
+    border: 1px solid #ddd;
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Tooltip</h3>
+            <div class="code-block">
+                <pre><code>.tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: none;
+}
+
+.tooltip-wrapper:hover .tooltip {
+    display: block;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Common Use Cases Section -->
+        <section class="content-section">
+            <h2>🎯 Common Use Cases Summary</h2>
+            
+            <div class="example-box">
+                <h3>When to Use Each Position Value:</h3>
+                <ul>
+                    <li><strong>static:</strong> Default, no special positioning needed</li>
+                    <li><strong>relative:</strong> Small adjustments, create positioning context for children</li>
+                    <li><strong>absolute:</strong> Tooltips, dropdowns, overlays, badges, precise placement</li>
+                    <li><strong>fixed:</strong> Navigation bars, floating buttons, chat widgets, cookie notices</li>
+                    <li><strong>sticky:</strong> Table headers, section titles, navigation that sticks on scroll</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>When to Use Each Display Value:</h3>
+                <ul>
+                    <li><strong>block:</strong> Full-width sections, containers, main content areas</li>
+                    <li><strong>inline:</strong> Text styling, small inline elements</li>
+                    <li><strong>inline-block:</strong> Navigation items, buttons in a row, image galleries</li>
+                    <li><strong>none:</strong> Hide elements, toggle visibility</li>
+                    <li><strong>flex:</strong> Modern layouts, alignment, distribution</li>
+                    <li><strong>grid:</strong> Complex two-dimensional layouts</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Display Types:</h3>
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: block; background: #e3f2fd; padding: 10px; margin: 5px 0; border-left: 4px solid #667eea;">
+                            Block (full width)
+                        </div>
+                        <span style="display: inline; background: #fff3e0; padding: 5px; border: 1px solid #ff9800;">Inline 1</span>
+                        <span style="display: inline; background: #fff3e0; padding: 5px; border: 1px solid #ff9800;">Inline 2</span>
+                    </div>
+
+                    <h3>Position Relative + Absolute:</h3>
+                    <div style="position: relative; background: #f0f0f0; padding: 40px; height: 150px; border: 2px dashed #999; margin-bottom: 20px;">
+                        Parent Container (relative)
+                        <div style="position: absolute; top: 10px; right: 10px; background: #667eea; color: white; padding: 10px; border-radius: 5px;">
+                            🎯 Positioned Top-Right
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: Which display value takes full width and starts on a new line?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> inline</label>
+                        <label><input type="radio" name="q1" value="b"> block</label>
+                        <label><input type="radio" name="q1" value="c"> inline-block</label>
+                        <label><input type="radio" name="q1" value="d"> flex</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: Which position value is used for navigation that sticks while scrolling?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> relative</label>
+                        <label><input type="radio" name="q2" value="b"> absolute</label>
+                        <label><input type="radio" name="q2" value="c"> fixed</label>
+                        <label><input type="radio" name="q2" value="d"> sticky</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'd')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: What does display: none do?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> Makes element invisible but keeps space</label>
+                        <label><input type="radio" name="q3" value="b"> Removes element completely from layout</label>
+                        <label><input type="radio" name="q3" value="c"> Makes element transparent</label>
+                        <label><input type="radio" name="q3" value="d"> Reduces element size</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: Position absolute is positioned relative to:</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> The viewport</label>
+                        <label><input type="radio" name="q4" value="b"> Its normal position</label>
+                        <label><input type="radio" name="q4" value="c"> Nearest positioned ancestor</label>
+                        <label><input type="radio" name="q4" value="d"> The body element always</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: Which property controls the stacking order of elements?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> z-order</label>
+                        <label><input type="radio" name="q5" value="b"> z-index</label>
+                        <label><input type="radio" name="q5" value="c"> stack-order</label>
+                        <label><input type="radio" name="q5" value="d"> layer</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create three inline-block boxes that sit side by side, each 150px wide and 100px tall.</li>
+                    <li>Position a "badge" element at the top-right corner of a parent container using absolute positioning.</li>
+                    <li>Create a fixed navigation bar that stays at the top of the page when scrolling.</li>
+                    <li>Use position: relative to move an element 20px down and 30px right from its normal position.</li>
+                    <li>Create three overlapping boxes with different z-index values (1, 2, 3) to control their stacking order.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>display: block:</strong> Full width, starts on new line</li>
+                    <li><strong>display: inline:</strong> Flows with text, no width/height</li>
+                    <li><strong>display: inline-block:</strong> Flows inline but can have width/height</li>
+                    <li><strong>display: none:</strong> Completely removes from layout</li>
+                    <li><strong>display: flex:</strong> Modern flexible layout system</li>
+                    <li><strong>display: grid:</strong> Two-dimensional grid layout</li>
+                    <li><strong>position: static:</strong> Default, normal flow</li>
+                    <li><strong>position: relative:</strong> Relative to normal position, keeps space</li>
+                    <li><strong>position: absolute:</strong> Relative to positioned ancestor, removes from flow</li>
+                    <li><strong>position: fixed:</strong> Relative to viewport, stays on scroll</li>
+                    <li><strong>position: sticky:</strong> Relative until scroll threshold, then fixed</li>
+                    <li><strong>z-index:</strong> Controls stacking order (higher = on top)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="dimensions.html" class="nav-btn btn-back">← Previous: CSS Dimensions</a>
+            <a href="floating.html" class="nav-btn btn-next">Next Topic: Floating & Clear →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

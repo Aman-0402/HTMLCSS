@@ -1,0 +1,500 @@
+<!-- contents/HTML/topics/text-formatting.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Text Formatting — Session 4</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 (for MCQ feedback) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 4</div>
+        <h1 id="lesson-title">HTML Text Formatting</h1>
+        <div class="meta">Headings • Paragraphs • Formatting Tags • Semantic HTML</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="links-images.html">Next: Links & Images →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main">
+
+      <!-- Headings -->
+      <section id="headings" class="section">
+        <h2>Headings in HTML</h2>
+        <p>Headings define the structure and hierarchy of your content. They're crucial for both user experience and SEO.</p>
+        
+        <h4>Key Points:</h4>
+        <ul>
+          <li>There are 6 levels: <code>&lt;h1&gt;</code> (largest/most important) to <code>&lt;h6&gt;</code> (smallest/least important)</li>
+          <li>Search engines use headings to understand page structure</li>
+          <li>Screen readers use headings for navigation</li>
+          <li>Always use headings in logical order (don't skip levels)</li>
+        </ul>
+
+        <h3>Heading Hierarchy</h3>
+        <pre class="code-block"><code>&lt;h1&gt;This is Heading 1 (Main Title)&lt;/h1&gt;
+&lt;h2&gt;This is Heading 2 (Major Section)&lt;/h2&gt;
+&lt;h3&gt;This is Heading 3 (Subsection)&lt;/h3&gt;
+&lt;h4&gt;This is Heading 4 (Sub-subsection)&lt;/h4&gt;
+&lt;h5&gt;This is Heading 5 (Minor Heading)&lt;/h5&gt;
+&lt;h6&gt;This is Heading 6 (Smallest Heading)&lt;/h6&gt;</code></pre>
+
+        <h3>Complete Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt; 
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;HTML Headings Example&lt;/title&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Complete Guide to Web Development&lt;/h1&gt;
+  
+  &lt;h2&gt;Chapter 1: HTML Basics&lt;/h2&gt;
+  &lt;h3&gt;Section 1.1: Introduction to HTML&lt;/h3&gt;
+  &lt;h4&gt;1.1.1: What is HTML?&lt;/h4&gt;
+  &lt;h4&gt;1.1.2: HTML History&lt;/h4&gt;
+  
+  &lt;h3&gt;Section 1.2: HTML Elements&lt;/h3&gt;
+  &lt;h4&gt;1.2.1: Tags and Attributes&lt;/h4&gt;
+  
+  &lt;h2&gt;Chapter 2: CSS Styling&lt;/h2&gt;
+  &lt;h3&gt;Section 2.1: CSS Basics&lt;/h3&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Best Practices</h3>
+        <ul>
+          <li><strong>One h1 per page</strong> - Use only one <code>&lt;h1&gt;</code> for the main title (important for SEO)</li>
+          <li><strong>Logical order</strong> - Don't skip levels (h1 → h2 → h3, not h1 → h3)</li>
+          <li><strong>Descriptive text</strong> - Make headings clear and meaningful</li>
+          <li><strong>Not for styling</strong> - Don't use headings just to make text big (use CSS instead)</li>
+          <li><strong>Keywords first</strong> - Put important keywords at the beginning of headings</li>
+        </ul>
+
+        <h4>❌ Bad Example (Wrong Hierarchy):</h4>
+        <pre class="code-block"><code>&lt;h1&gt;My Website&lt;/h1&gt;
+&lt;h3&gt;About Me&lt;/h3&gt;  &lt;!-- Skipped h2 --&gt;
+&lt;h1&gt;Contact&lt;/h1&gt;      &lt;!-- Multiple h1s --&gt;</code></pre>
+
+        <h4>✅ Good Example (Correct Hierarchy):</h4>
+        <pre class="code-block"><code>&lt;h1&gt;My Website&lt;/h1&gt;
+&lt;h2&gt;About Me&lt;/h2&gt;
+&lt;h2&gt;Contact&lt;/h2&gt;</code></pre>
+      </section>
+
+      <!-- Headings Quiz -->
+      <section class="section mcq">
+        <h3>Quick Quiz — Headings</h3>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q1. How many heading levels are available in HTML?</div>
+          <div class="choices">
+            <button class="choice">a) 3</button>
+            <button class="choice">b) 5</button>
+            <button class="choice">c) 6</button>
+            <button class="choice">d) 7</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q2. Which heading should be used only once per page for SEO?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;h1&gt;</button>
+            <button class="choice">b) &lt;h2&gt;</button>
+            <button class="choice">c) &lt;h3&gt;</button>
+            <button class="choice">d) &lt;h6&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q3. What's wrong with this structure: h1 → h3 → h2?</div>
+          <div class="choices">
+            <button class="choice">a) Nothing, it's fine</button>
+            <button class="choice">b) You shouldn't skip heading levels</button>
+            <button class="choice">c) h3 should come after h2</button>
+            <button class="choice">d) There are too many headings</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Paragraphs -->
+      <section id="paragraphs" class="section">
+        <h2>Paragraphs in HTML</h2>
+        <p>The <code>&lt;p&gt;</code> tag defines paragraphs - blocks of text separated by space. Browsers automatically add margin before and after each paragraph.</p>
+
+        <h3>Basic Syntax</h3>
+        <pre class="code-block"><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;p&gt;This is another paragraph.&lt;/p&gt;</code></pre>
+
+        <h3>Complete Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt; 
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;HTML Paragraph Example&lt;/title&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;About Me&lt;/h1&gt;
+  
+  &lt;p&gt;My name is Aman Raj. I am a passionate web developer learning HTML, CSS, and JavaScript.&lt;/p&gt;
+  
+  &lt;p&gt;I love creating beautiful and functional websites. My goal is to become a full-stack developer.&lt;/p&gt;
+  
+  &lt;p&gt;In my free time, I enjoy coding, playing games, and exploring new technologies like AI and machine learning.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Line Breaks with &lt;br&gt;</h3>
+        <p>The <code>&lt;br&gt;</code> tag creates a line break within text without starting a new paragraph:</p>
+        <pre class="code-block"><code>&lt;p&gt;
+  First line of text.&lt;br&gt;
+  Second line (same paragraph).&lt;br&gt;
+  Third line (still same paragraph).
+&lt;/p&gt;</code></pre>
+
+        <h4>When to Use &lt;br&gt;:</h4>
+        <ul>
+          <li>Postal addresses</li>
+          <li>Poems or song lyrics</li>
+          <li>Signatures in letters</li>
+        </ul>
+
+        <h4>❌ Don't Use &lt;br&gt; For:</h4>
+        <ul>
+          <li>Creating space between paragraphs (use CSS margin instead)</li>
+          <li>Controlling layout (use CSS for that)</li>
+        </ul>
+
+        <h3>Horizontal Rule &lt;hr&gt;</h3>
+        <p>Creates a horizontal line to separate content:</p>
+        <pre class="code-block"><code>&lt;h2&gt;Section 1&lt;/h2&gt;
+&lt;p&gt;Content here...&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;Section 2&lt;/h2&gt;
+&lt;p&gt;Different content...&lt;/p&gt;</code></pre>
+
+        <h3>Preformatted Text with &lt;pre&gt;</h3>
+        <p>Preserves spaces and line breaks exactly as written in the code:</p>
+        <pre class="code-block"><code>&lt;pre&gt;
+Line 1
+   Line 2 (indented with spaces)
+      Line 3 (more indented)
+Line 4
+&lt;/pre&gt;</code></pre>
+
+        <h4>Use Cases for &lt;pre&gt;:</h4>
+        <ul>
+          <li>Displaying code snippets</li>
+          <li>ASCII art</li>
+          <li>Text where spacing matters</li>
+        </ul>
+      </section>
+
+      <!-- Paragraphs Quiz -->
+      <section class="section mcq">
+        <h3>Quick Quiz — Paragraphs</h3>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q1. Which tag defines a paragraph in HTML?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;para&gt;</button>
+            <button class="choice">b) &lt;paragraph&gt;</button>
+            <button class="choice">c) &lt;p&gt;</button>
+            <button class="choice">d) &lt;pg&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q2. Which tag inserts a line break?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;break&gt;</button>
+            <button class="choice">b) &lt;lb&gt;</button>
+            <button class="choice">c) &lt;br&gt;</button>
+            <button class="choice">d) &lt;newline&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q3. Which tag preserves spaces and line breaks?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;p&gt;</button>
+            <button class="choice">b) &lt;pre&gt;</button>
+            <button class="choice">c) &lt;code&gt;</button>
+            <button class="choice">d) &lt;space&gt;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Formatting -->
+      <section id="formatting" class="section">
+        <h2>Text Formatting in HTML</h2>
+        <p>Formatting tags add style and emphasis to text. HTML provides both <strong>physical tags</strong> (just styling) and <strong>semantic tags</strong> (styling + meaning).</p>
+
+        <h3>Physical vs Semantic Tags</h3>
+        <ul>
+          <li><strong>Physical tags</strong> - Only change appearance: <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;u&gt;</code></li>
+          <li><strong>Semantic tags</strong> - Add meaning + appearance: <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;mark&gt;</code></li>
+          <li><strong>Best practice</strong> - Use semantic tags for better accessibility and SEO</li>
+        </ul>
+
+        <h3>Common Formatting Tags</h3>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Description</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&lt;strong&gt;</td>
+              <td>Important text (semantic, bold)</td>
+              <td>Warnings, key points</td>
+            </tr>
+            <tr>
+              <td>&lt;b&gt;</td>
+              <td>Bold text (physical only)</td>
+              <td>Keywords, product names</td>
+            </tr>
+            <tr>
+              <td>&lt;em&gt;</td>
+              <td>Emphasized text (semantic, italic)</td>
+              <td>Stress, alternative voice</td>
+            </tr>
+            <tr>
+              <td>&lt;i&gt;</td>
+              <td>Italic text (physical only)</td>
+              <td>Technical terms, foreign words</td>
+            </tr>
+            <tr>
+              <td>&lt;mark&gt;</td>
+              <td>Highlighted text (yellow background)</td>
+              <td>Search results, important info</td>
+            </tr>
+            <tr>
+              <td>&lt;small&gt;</td>
+              <td>Smaller text</td>
+              <td>Fine print, disclaimers</td>
+            </tr>
+            <tr>
+              <td>&lt;del&gt;</td>
+              <td>Deleted text (strikethrough)</td>
+              <td>Removed content, old prices</td>
+            </tr>
+            <tr>
+              <td>&lt;ins&gt;</td>
+              <td>Inserted text (underlined)</td>
+              <td>Added content, new prices</td>
+            </tr>
+            <tr>
+              <td>&lt;sub&gt;</td>
+              <td>Subscript</td>
+              <td>Chemical formulas (H₂O)</td>
+            </tr>
+            <tr>
+              <td>&lt;sup&gt;</td>
+              <td>Superscript</td>
+              <td>Math exponents (x²), footnotes</td>
+            </tr>
+            <tr>
+              <td>&lt;code&gt;</td>
+              <td>Inline code</td>
+              <td>Programming code snippets</td>
+            </tr>
+            <tr>
+              <td>&lt;kbd&gt;</td>
+              <td>Keyboard input</td>
+              <td>Shortcuts (Ctrl+C)</td>
+            </tr>
+            <tr>
+              <td>&lt;abbr&gt;</td>
+              <td>Abbreviation with tooltip</td>
+              <td>HTML, CSS, API</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Complete Example</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt; 
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;HTML Formatting Example&lt;/title&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Text Formatting Demo&lt;/h1&gt;
+  
+  &lt;!-- Semantic tags (preferred) --&gt;
+  &lt;p&gt;&lt;strong&gt;This is important information!&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;em&gt;This text is emphasized.&lt;/em&gt;&lt;/p&gt;
+  
+  &lt;!-- Physical tags --&gt;
+  &lt;p&gt;&lt;b&gt;This is bold text&lt;/b&gt; (just styling)&lt;/p&gt;
+  &lt;p&gt;&lt;i&gt;This is italic text&lt;/i&gt; (just styling)&lt;/p&gt;
+  
+  &lt;!-- Highlighting and marking --&gt;
+  &lt;p&gt;Search result: &lt;mark&gt;HTML tutorial&lt;/mark&gt;&lt;/p&gt;
+  
+  &lt;!-- Insertions and deletions --&gt;
+  &lt;p&gt;Price: &lt;del&gt;$50&lt;/del&gt; &lt;ins&gt;$35&lt;/ins&gt; (on sale!)&lt;/p&gt;
+  
+  &lt;!-- Scientific notation --&gt;
+  &lt;p&gt;Math: E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+  &lt;p&gt;Chemistry: H&lt;sub&gt;2&lt;/sub&gt;O (water)&lt;/p&gt;
+  
+  &lt;!-- Code and keyboard --&gt;
+  &lt;p&gt;Use &lt;code&gt;console.log()&lt;/code&gt; for debugging.&lt;/p&gt;
+  &lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt; to save.&lt;/p&gt;
+  
+  &lt;!-- Abbreviations --&gt;
+  &lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; is awesome!&lt;/p&gt;
+  
+  &lt;!-- Small text --&gt;
+  &lt;p&gt;&lt;small&gt;© 2025 All rights reserved&lt;/small&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Quotations</h3>
+        <pre class="code-block"><code>&lt;!-- Block quote (long quote) --&gt;
+&lt;blockquote cite="https://example.com"&gt;
+  This is a longer quotation that deserves its own block.
+&lt;/blockquote&gt;
+
+&lt;!-- Inline quote (short quote) --&gt;
+&lt;p&gt;Einstein said &lt;q&gt;Imagination is more important than knowledge.&lt;/q&gt;&lt;/p&gt;</code></pre>
+      </section>
+
+      <!-- Formatting Quiz -->
+      <section class="section mcq">
+        <h3>Quick Quiz — Formatting</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which tag is used for highlighting text?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;highlight&gt;</button>
+            <button class="choice">b) &lt;mark&gt;</button>
+            <button class="choice">c) &lt;u&gt;</button>
+            <button class="choice">d) &lt;strong&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q2. How do you correctly write H₂O using subscript?</div>
+          <div class="choices">
+            <button class="choice">a) H2O</button>
+            <button class="choice">b) H&lt;sub&gt;2&lt;/sub&gt;O</button>
+            <button class="choice">c) &lt;sub&gt;H2O&lt;/sub&gt;</button>
+            <button class="choice">d) H2&lt;sub&gt;O&lt;/sub&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q3. Which is the semantic (meaningful) version of bold?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;strong&gt;</button>
+            <button class="choice">b) &lt;b&gt;</button>
+            <button class="choice">c) &lt;bold&gt;</button>
+            <button class="choice">d) &lt;heavy&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q4. Which tag shows keyboard shortcuts?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;key&gt;</button>
+            <button class="choice">b) &lt;shortcut&gt;</button>
+            <button class="choice">c) &lt;kbd&gt;</button>
+            <button class="choice">d) &lt;code&gt;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice -->
+      <section class="section" id="practice">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Create a Resume Page:</strong>
+            <ul>
+              <li><code>&lt;h1&gt;</code> — Your Name</li>
+              <li><code>&lt;h2&gt;</code> — Education, Experience, Skills</li>
+              <li><code>&lt;h3&gt;</code> — Specific schools, jobs, skill categories</li>
+              <li>Use <code>&lt;p&gt;</code> for descriptions</li>
+              <li>Use <code>&lt;strong&gt;</code> for job titles</li>
+              <li>Use <code>&lt;em&gt;</code> for company names</li>
+            </ul>
+          </li>
+          <li><strong>Create a Recipe Page:</strong>
+            <ul>
+              <li>Recipe name in <code>&lt;h1&gt;</code></li>
+              <li>Sections: Ingredients, Instructions in <code>&lt;h2&gt;</code></li>
+              <li>Use <code>&lt;mark&gt;</code> to highlight key ingredients</li>
+              <li>Use <code>&lt;kbd&gt;</code> for oven temperatures</li>
+            </ul>
+          </li>
+          <li><strong>Create a Science Page:</strong>
+            <ul>
+              <li>Write chemical formulas: CO&lt;sub&gt;2&lt;/sub&gt;, H&lt;sub&gt;2&lt;/sub&gt;SO&lt;sub&gt;4&lt;/sub&gt;</li>
+              <li>Write equations: E = mc&lt;sup&gt;2&lt;/sup&gt;, x&lt;sup&gt;2&lt;/sup&gt; + y&lt;sup&gt;2&lt;/sup&gt;</li>
+              <li>Use <code>&lt;abbr&gt;</code> for DNA, RNA, ATP</li>
+              <li>Use <code>&lt;code&gt;</code> for programming examples</li>
+            </ul>
+          </li>
+          <li><strong>E-commerce Product Page:</strong>
+            <ul>
+              <li>Show old price with <code>&lt;del&gt;</code></li>
+              <li>Show new price with <code>&lt;ins&gt;</code></li>
+              <li>Highlight "Limited Time Offer" with <code>&lt;mark&gt;</code></li>
+              <li>Add fine print with <code>&lt;small&gt;</code></li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Summary -->
+      <section class="section summary" id="summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>Headings (h1-h6)</strong> create document structure - use one h1 per page and maintain logical hierarchy</li>
+          <li><strong>Paragraphs (&lt;p&gt;)</strong> group related text - browsers add automatic spacing</li>
+          <li><strong>Line breaks (&lt;br&gt;)</strong> for addresses and poetry - not for spacing</li>
+          <li><strong>Semantic tags</strong> (&lt;strong&gt;, &lt;em&gt;) add meaning - better for accessibility and SEO</li>
+          <li><strong>Physical tags</strong> (&lt;b&gt;, &lt;i&gt;) just change appearance - use sparingly</li>
+          <li><strong>Special formatting</strong> - subscript, superscript, code, keyboard, abbreviations</li>
+          <li><strong>Best practice</strong> - Always prefer semantic HTML over purely visual tags</li>
+        </ul>
+        <p>Proper text formatting makes content readable, accessible, and SEO-friendly. Always choose tags based on meaning, not just appearance!</p>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="links-images.html">Links & Images</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- shared script -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

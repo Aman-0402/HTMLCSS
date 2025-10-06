@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Backgrounds & Colors</title>
+    <link rel="stylesheet" href="../extra/style.css" />
+  </head>
+  <body>
+    <div class="topic-container">
+      <!-- Header -->
+      <header class="topic-header">
+        <h1>🎨 CSS Backgrounds & Colors</h1>
+        <p class="topic-subtitle">
+          Master color theory and background properties to create stunning
+          visual designs
+        </p>
+      </header>
+
+      <!-- Navigation Buttons Top -->
+      <div class="topic-nav">
+        <a href="csslinks.html" class="nav-btn btn-back"
+          >← Previous: CSS Links & Lists</a
+        >
+        <a href="boxmodel.html" class="nav-btn btn-next"
+          >Next Topic: Box Model →</a
+        >
+      </div>
+
+      <!-- Introduction Section -->
+      <section class="content-section">
+        <h2>🎯 Why Colors and Backgrounds Matter</h2>
+        <p>
+          Colors and backgrounds are essential elements of web design. They
+          create visual hierarchy, establish brand identity, evoke emotions, and
+          improve user experience. Understanding how to use CSS color and
+          background properties effectively is crucial for modern web
+          development.
+        </p>
+
+        <div class="info-box">
+          <h3>Benefits of Good Color & Background Design:</h3>
+          <ul>
+            <li>✅ Creates visual interest and appeal</li>
+            <li>✅ Establishes brand identity and consistency</li>
+            <li>✅ Improves readability and accessibility</li>
+            <li>✅ Guides user attention and focus</li>
+            <li>✅ Evokes emotions and sets mood</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CSS Colors Section -->
+      <section class="content-section">
+        <h2>🌈 CSS Color Values</h2>
+        <p>
+          CSS provides multiple ways to specify colors. Each method has its use
+          cases and benefits.
+        </p>
+
+        <h3>1. Color Names</h3>
+        <div class="code-block">
+          <pre><code>/* 147 named colors available */
+h1 { color: red; }
+p { color: blue; }
+div { color: navy; }
+.box { background-color: lightblue; }</code></pre>
+        </div>
+
+        <h3>2. Hexadecimal (Hex) Colors</h3>
+        <div class="code-block">
+          <pre><code>/* #RRGGBB format */
+h1 { color: #FF0000; }      /* Red */
+p { color: #0000FF; }       /* Blue */
+div { color: #667eea; }     /* Custom color */
+
+/* Short hex (#RGB) */
+.box { color: #F00; }       /* Same as #FF0000 */</code></pre>
+        </div>
+
+        <div class="example-box">
+          <p><strong>Hex Color Breakdown:</strong></p>
+          <ul>
+            <li>
+              <code
+                >#<span style="color: red">RR</span
+                ><span style="color: green">GG</span
+                ><span style="color: blue">BB</span></code
+              >
+            </li>
+            <li>RR = Red (00-FF)</li>
+            <li>GG = Green (00-FF)</li>
+            <li>BB = Blue (00-FF)</li>
+          </ul>
+        </div>
+
+        <h3>3. RGB Colors</h3>
+        <div class="code-block">
+          <pre><code>/* rgb(red, green, blue) - values 0-255 */
+h1 { color: rgb(255, 0, 0); }       /* Red */
+p { color: rgb(0, 128, 255); }      /* Blue */
+div { color: rgb(102, 126, 234); }  /* Custom */</code></pre>
+        </div>
+
+        <h3>4. RGBA Colors (with Transparency)</h3>
+        <div class="code-block">
+          <pre><code>/* rgba(red, green, blue, alpha) */
+/* alpha: 0 (transparent) to 1 (opaque) */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);  /* 50% transparent black */
+}
+
+.box {
+    background-color: rgba(102, 126, 234, 0.8);  /* 80% opaque */
+}</code></pre>
+        </div>
+
+        <h3>5. HSL Colors</h3>
+        <div class="code-block">
+          <pre><code>/* hsl(hue, saturation, lightness) */
+/* Hue: 0-360 degrees, Saturation: 0-100%, Lightness: 0-100% */
+h1 { color: hsl(0, 100%, 50%); }     /* Red */
+p { color: hsl(240, 100%, 50%); }    /* Blue */
+div { color: hsl(230, 77%, 66%); }   /* Custom */</code></pre>
+        </div>
+
+        <h3>6. HSLA Colors (with Transparency)</h3>
+        <div class="code-block">
+          <pre><code>/* hsla(hue, saturation, lightness, alpha) */
+.box {
+    background-color: hsla(230, 77%, 66%, 0.7);
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Background Color Section -->
+      <section class="content-section">
+        <h2>🎨 Background Color</h2>
+        <p>
+          The <code>background-color</code> property sets the background color
+          of an element.
+        </p>
+
+        <div class="code-block">
+          <pre><code>body {
+    background-color: #f0f0f0;
+}
+
+.header {
+    background-color: rgb(102, 126, 234);
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Background Image Section -->
+      <section class="content-section">
+        <h2>🖼️ Background Image</h2>
+        <p>
+          The <code>background-image</code> property sets one or more background
+          images for an element.
+        </p>
+
+        <div class="code-block">
+          <pre><code>/* Single image */
+.hero {
+    background-image: url('hero-bg.jpg');
+}
+
+/* Multiple images (layered) */
+.banner {
+    background-image: 
+        url('overlay.png'),
+        url('background.jpg');
+}
+
+/* Linear gradient */
+.gradient-box {
+    background-image: linear-gradient(to right, #667eea, #764ba2);
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Background Repeat Section -->
+      <section class="content-section">
+        <h2>🔁 Background Repeat</h2>
+        <p>Controls how background images are repeated.</p>
+
+        <div class="code-block">
+          <pre><code>/* No repeat */
+.box1 { background-repeat: no-repeat; }
+
+/* Repeat horizontally */
+.box2 { background-repeat: repeat-x; }
+
+/* Repeat vertically */
+.box3 { background-repeat: repeat-y; }
+
+/* Repeat both directions (default) */
+.box4 { background-repeat: repeat; }</code></pre>
+        </div>
+      </section>
+
+      <!-- Background Position Section -->
+      <section class="content-section">
+        <h2>📍 Background Position</h2>
+        <p>Specifies the position of the background image.</p>
+
+        <div class="code-block">
+          <pre><code>/* Keywords */
+.box { background-position: center; }
+.box { background-position: top right; }
+.box { background-position: bottom left; }
+
+/* Percentage */
+.box { background-position: 50% 50%; }  /* center */
+
+/* Pixels */
+.box { background-position: 100px 200px; }
+
+/* Mixed */
+.box { background-position: center 20px; }</code></pre>
+        </div>
+      </section>
+
+      <!-- Background Size Section -->
+      <section class="content-section">
+        <h2>📏 Background Size</h2>
+        <p>Specifies the size of the background image.</p>
+
+        <div class="code-block">
+          <pre><code>/* Cover - fills entire container */
+.hero {
+    background-size: cover;
+}
+
+/* Contain - fits within container */
+.banner {
+    background-size: contain;
+}
+
+/* Specific size */
+.box {
+    background-size: 200px 100px;
+}
+
+/* Auto (original size) */
+.image {
+    background-size: auto;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Cover vs Contain:</h3>
+          <ul>
+            <li>
+              <strong>cover:</strong> Scales image to cover entire container
+              (may crop)
+            </li>
+            <li>
+              <strong>contain:</strong> Scales image to fit within container (no
+              cropping)
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Background Attachment Section -->
+      <section class="content-section">
+        <h2>📌 Background Attachment</h2>
+        <p>Controls if background scrolls with the page or stays fixed.</p>
+
+        <div class="code-block">
+          <pre><code>/* Scrolls with page (default) */
+.box {
+    background-attachment: scroll;
+}
+
+/* Fixed position (parallax effect) */
+.parallax {
+    background-attachment: fixed;
+}
+
+/* Scrolls with element content */
+.scroll-box {
+    background-attachment: local;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Background Shorthand Section -->
+      <section class="content-section">
+        <h2>⚡ Background Shorthand</h2>
+        <p>Combine all background properties in one declaration.</p>
+
+        <h3>Syntax:</h3>
+        <div class="code-block">
+          <pre><code>background: [color] [image] [repeat] [attachment] [position] / [size];</code></pre>
+        </div>
+
+        <h3>Examples:</h3>
+        <div class="code-block">
+          <pre><code>/* Basic */
+.box {
+    background: #667eea;
+}
+
+/* With image */
+.hero {
+    background: url('bg.jpg') no-repeat center center;
+}
+
+/* Complete */
+.banner {
+    background: 
+        #f0f0f0 
+        url('pattern.png') 
+        repeat-x 
+        fixed 
+        top center / cover;
+}
+
+/* Multiple backgrounds */
+.complex {
+    background: 
+        url('top.png') top center no-repeat,
+        url('bottom.png') bottom center no-repeat,
+        linear-gradient(to bottom, #667eea, #764ba2);
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Gradients Section -->
+      <section class="content-section">
+        <h2>🌈 CSS Gradients</h2>
+        <p>Gradients are smooth transitions between colors.</p>
+
+        <h3>1. Linear Gradient</h3>
+        <div class="code-block">
+          <pre><code>/* Top to bottom (default) */
+.box1 {
+    background: linear-gradient(#667eea, #764ba2);
+}
+
+/* Direction */
+.box2 {
+    background: linear-gradient(to right, red, blue);
+}
+
+/* Angle */
+.box3 {
+    background: linear-gradient(45deg, yellow, green);
+}
+
+/* Multiple colors */
+.box4 {
+    background: linear-gradient(to right, red, yellow, green, blue);
+}
+
+/* Color stops */
+.box5 {
+    background: linear-gradient(to right, 
+        red 0%, 
+        yellow 50%, 
+        green 100%
+    );
+}</code></pre>
+        </div>
+
+        <h3>2. Radial Gradient</h3>
+        <div class="code-block">
+          <pre><code>/* Center to edges */
+.box1 {
+    background: radial-gradient(red, blue);
+}
+
+/* With shape */
+.box2 {
+    background: radial-gradient(circle, red, blue);
+}
+
+/* With size and position */
+.box3 {
+    background: radial-gradient(circle at top right, red, blue);
+}</code></pre>
+        </div>
+
+        <h3>3. Conic Gradient</h3>
+        <div class="code-block">
+          <pre><code>/* Rotating gradient */
+.box {
+    background: conic-gradient(red, yellow, green, blue, red);
+}
+
+/* Pie chart effect */
+.pie {
+    background: conic-gradient(
+        red 0deg 90deg,
+        blue 90deg 180deg,
+        green 180deg 270deg,
+        yellow 270deg 360deg
+    );
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Live Example -->
+      <section class="content-section">
+        <h2>🎨 Live Examples</h2>
+        <div class="live-demo">
+          <div class="demo-output">
+            <h3>Color Examples:</h3>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+                margin: 20px 0;
+              "
+            >
+              <div
+                style="
+                  padding: 20px;
+                  background-color: #ff0000;
+                  color: white;
+                  text-align: center;
+                  border-radius: 8px;
+                "
+              >
+                Hex: #FF0000
+              </div>
+              <div
+                style="
+                  padding: 20px;
+                  background-color: rgb(102, 126, 234);
+                  color: white;
+                  text-align: center;
+                  border-radius: 8px;
+                "
+              >
+                RGB
+              </div>
+              <div
+                style="
+                  padding: 20px;
+                  background-color: rgba(255, 193, 7, 0.7);
+                  text-align: center;
+                  border-radius: 8px;
+                "
+              >
+                RGBA (70% opacity)
+              </div>
+              <div
+                style="
+                  padding: 20px;
+                  background-color: hsl(230, 77%, 66%);
+                  color: white;
+                  text-align: center;
+                  border-radius: 8px;
+                "
+              >
+                HSL
+              </div>
+            </div>
+
+            <h3>Gradient Examples:</h3>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+                margin: 20px 0;
+              "
+            >
+              <div
+                style="
+                  padding: 30px;
+                  background: linear-gradient(to right, #667eea, #764ba2);
+                  color: white;
+                  text-align: center;
+                  border-radius: 8px;
+                "
+              >
+                Linear Gradient
+              </div>
+              <div
+                style="
+                  padding: 30px;
+                  background: radial-gradient(circle, #667eea, #764ba2);
+                  color: white;
+                  text-align: center;
+                  border-radius: 8px;
+                "
+              >
+                Radial Gradient
+              </div>
+              <div
+                style="
+                  padding: 30px;
+                  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+                  color: white;
+                  text-align: center;
+                  border-radius: 8px;
+                "
+              >
+                Multi-color
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MCQ Section -->
+      <section class="content-section">
+        <h2>📝 Test Your Knowledge - MCQ</h2>
+        <div class="mcq-container">
+          <div class="mcq-question" data-question="1">
+            <p><strong>Q1: Which color format allows transparency?</strong></p>
+            <div class="mcq-options">
+              <label><input type="radio" name="q1" value="a" /> Hex</label>
+              <label><input type="radio" name="q1" value="b" /> RGB</label>
+              <label><input type="radio" name="q1" value="c" /> RGBA</label>
+              <label
+                ><input type="radio" name="q1" value="d" /> Color name</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(1, 'c')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback1"></div>
+          </div>
+
+          <div class="mcq-question" data-question="2">
+            <p><strong>Q2: What does background-size: cover do?</strong></p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q2" value="a" /> Fits image within
+                container</label
+              >
+              <label
+                ><input type="radio" name="q2" value="b" /> Scales image to
+                cover entire container</label
+              >
+              <label
+                ><input type="radio" name="q2" value="c" /> Repeats the
+                image</label
+              >
+              <label
+                ><input type="radio" name="q2" value="d" /> Centers the
+                image</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(2, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback2"></div>
+          </div>
+
+          <div class="mcq-question" data-question="3">
+            <p>
+              <strong
+                >Q3: Which property creates a parallax scrolling effect?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q3" value="a" />
+                background-position</label
+              >
+              <label
+                ><input type="radio" name="q3" value="b" />
+                background-attachment: fixed</label
+              >
+              <label
+                ><input type="radio" name="q3" value="c" />
+                background-repeat</label
+              >
+              <label
+                ><input type="radio" name="q3" value="d" />
+                background-size</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(3, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback3"></div>
+          </div>
+
+          <div class="mcq-question" data-question="4">
+            <p><strong>Q4: In HSL, what does the 'H' stand for?</strong></p>
+            <div class="mcq-options">
+              <label><input type="radio" name="q4" value="a" /> Height</label>
+              <label><input type="radio" name="q4" value="b" /> Hue</label>
+              <label
+                ><input type="radio" name="q4" value="c" /> Horizontal</label
+              >
+              <label><input type="radio" name="q4" value="d" /> High</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(4, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback4"></div>
+          </div>
+
+          <div class="mcq-question" data-question="5">
+            <p>
+              <strong
+                >Q5: How do you prevent a background image from
+                repeating?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q5" value="a" /> background-repeat:
+                none</label
+              >
+              <label
+                ><input type="radio" name="q5" value="b" /> background-repeat:
+                no-repeat</label
+              >
+              <label
+                ><input type="radio" name="q5" value="c" /> background-repeat:
+                false</label
+              >
+              <label
+                ><input type="radio" name="q5" value="d" /> background-repeat:
+                stop</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(5, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice Questions -->
+      <section class="content-section">
+        <h2>💪 Practice Questions</h2>
+        <div class="practice-box">
+          <ol>
+            <li>
+              Create a div with a semi-transparent blue background using RGBA
+              (50% opacity).
+            </li>
+            <li>
+              Set a background image that covers the entire container without
+              repeating and is centered.
+            </li>
+            <li>
+              Create a linear gradient from purple (#667eea) to pink (#764ba2)
+              going from left to right.
+            </li>
+            <li>
+              Use the background shorthand to set a white background with a
+              pattern image that repeats horizontally.
+            </li>
+            <li>
+              Create a radial gradient that goes from red in the center to
+              transparent at the edges.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Summary Section -->
+      <section class="content-section summary-section">
+        <h2>📌 Summary</h2>
+        <div class="summary-box">
+          <ul>
+            <li>
+              <strong>Color Formats:</strong> Named colors, Hex (#RRGGBB), RGB,
+              RGBA, HSL, HSLA
+            </li>
+            <li>
+              <strong>RGBA/HSLA:</strong> Include alpha channel for transparency
+              (0-1)
+            </li>
+            <li>
+              <strong>background-color:</strong> Sets solid background color
+            </li>
+            <li>
+              <strong>background-image:</strong> Sets background image or
+              gradient
+            </li>
+            <li>
+              <strong>background-repeat:</strong> Controls image repetition
+              (repeat, no-repeat, repeat-x, repeat-y)
+            </li>
+            <li>
+              <strong>background-position:</strong> Controls image position
+              (center, top, bottom, left, right)
+            </li>
+            <li>
+              <strong>background-size:</strong> Controls image size (cover,
+              contain, or specific dimensions)
+            </li>
+            <li>
+              <strong>background-attachment:</strong> Controls scrolling
+              behavior (scroll, fixed, local)
+            </li>
+            <li>
+              <strong>Linear Gradient:</strong>
+              <code>linear-gradient(direction, color1, color2)</code>
+            </li>
+            <li>
+              <strong>Radial Gradient:</strong>
+              <code>radial-gradient(shape, color1, color2)</code>
+            </li>
+            <li>
+              <strong>Shorthand:</strong> Combine all properties in one
+              <code>background</code> declaration
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navigation Buttons Bottom -->
+      <div class="topic-nav">
+        <a href="csslinks.html" class="nav-btn btn-back"
+          >← Previous: CSS Links & Lists</a
+        >
+        <a href="boxmodel.html" class="nav-btn btn-next"
+          >Next Topic: Box Model →</a
+        >
+      </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+      function checkAnswer(questionNum, correctAnswer) {
+        const selected = document.querySelector(
+          `input[name="q${questionNum}"]:checked`
+        );
+        const feedback = document.getElementById(`feedback${questionNum}`);
+
+        if (!selected) {
+          feedback.innerHTML =
+            '<p class="warning">⚠️ Please select an answer!</p>';
+          return;
+        }
+
+        if (selected.value === correctAnswer) {
+          feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+        } else {
+          feedback.innerHTML =
+            '<p class="incorrect">❌ Incorrect. Try again!</p>';
+        }
+      }
+    </script>
+  </body>
+</html>

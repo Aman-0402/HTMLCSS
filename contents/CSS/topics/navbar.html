@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Navigation Bar</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>🧭 CSS Navigation Bar</h1>
+            <p class="topic-subtitle">Master creating horizontal and vertical navigation menus with modern CSS</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="floating.html" class="nav-btn btn-back">← Previous: Floating & Clear</a>
+            <a href="css3borders.html" class="nav-btn btn-next">Next Topic: CSS3 Borders →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 Why Navigation Matters</h2>
+            <p>Navigation bars are one of the most important elements of a website. They help users find content, understand site structure, and navigate between pages. Good navigation design improves user experience and accessibility.</p>
+            
+            <div class="info-box">
+                <h3>Navigation Best Practices:</h3>
+                <ul>
+                    <li>✅ Clear and descriptive menu labels</li>
+                    <li>✅ Consistent placement across pages</li>
+                    <li>✅ Visual feedback on hover and active states</li>
+                    <li>✅ Mobile-responsive design</li>
+                    <li>✅ Keyboard navigation support</li>
+                    <li>✅ Semantic HTML structure</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Basic Navigation HTML Section -->
+        <section class="content-section">
+            <h2>📝 Basic Navigation HTML Structure</h2>
+            <p>Navigation menus should use semantic HTML with <code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> elements.</p>
+            
+            <div class="code-block">
+                <pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="services.html"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>Why This Structure?</h3>
+                <ul>
+                    <li><strong>&lt;nav&gt;:</strong> Semantic element for navigation sections</li>
+                    <li><strong>&lt;ul&gt;:</strong> Unordered list for menu items</li>
+                    <li><strong>&lt;li&gt;:</strong> Individual list items</li>
+                    <li><strong>&lt;a&gt;:</strong> Clickable links</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Vertical Navigation Section -->
+        <section class="content-section">
+            <h2>↕️ Vertical Navigation Bar</h2>
+            <p>A vertical navigation bar displays menu items stacked vertically, typically used in sidebars.</p>
+            
+            <h3>Basic Vertical Navigation:</h3>
+            <div class="code-block">
+                <pre><code>/* Remove default list styling */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style links */
+nav a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover effect */
+nav a:hover {
+    background-color: #667eea;
+    color: white;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Vertical Navigation Example:</h3>
+                <div style="width: 200px; border: 2px solid #ddd;">
+                    <ul style="list-style: none; margin: 0; padding: 0;">
+                        <li><a href="#" style="display: block; padding: 12px 20px; text-decoration: none; color: #333; background: #f4f4f4; border-bottom: 1px solid #ddd;">Home</a></li>
+                        <li><a href="#" style="display: block; padding: 12px 20px; text-decoration: none; color: #333; background: #f4f4f4; border-bottom: 1px solid #ddd;">About</a></li>
+                        <li><a href="#" style="display: block; padding: 12px 20px; text-decoration: none; color: #333; background: #f4f4f4; border-bottom: 1px solid #ddd;">Services</a></li>
+                        <li><a href="#" style="display: block; padding: 12px 20px; text-decoration: none; color: #333; background: #f4f4f4; border-bottom: 1px solid #ddd;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Fixed Sidebar Navigation:</h3>
+            <div class="code-block">
+                <pre><code>/* Fixed vertical navigation */
+.sidebar-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #2c3e50;
+    overflow-y: auto;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background-color: #34495e;
+    padding-left: 35px;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Horizontal Navigation Section -->
+        <section class="content-section">
+            <h2>↔️ Horizontal Navigation Bar</h2>
+            <p>A horizontal navigation bar displays menu items side by side, commonly used for main site navigation.</p>
+            
+            <h3>Method 1: Using Inline-Block</h3>
+            <div class="code-block">
+                <pre><code>/* Horizontal nav with inline-block */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover {
+    background-color: #667eea;
+}</code></pre>
+            </div>
+
+            <h3>Method 2: Using Flexbox (Modern & Recommended)</h3>
+            <div class="code-block">
+                <pre><code>/* Horizontal nav with Flexbox */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    display: flex;
+}
+
+nav li {
+    /* flex items */
+}
+
+nav a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #667eea;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Horizontal Navigation Example:</h3>
+                <div style="background: #333; border-radius: 5px; overflow: hidden;">
+                    <ul style="list-style: none; margin: 0; padding: 0; display: flex;">
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Home</a></li>
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">About</a></li>
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Services</a></li>
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Method 3: Using Float (Legacy)</h3>
+            <div class="code-block">
+                <pre><code>/* Horizontal nav with float */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow: auto;  /* Clearfix */
+}
+
+nav li {
+    float: left;
+}
+
+nav a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover {
+    background-color: #667eea;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Active/Current Page Section -->
+        <section class="content-section">
+            <h2>🎯 Active/Current Page Indicator</h2>
+            <p>Highlight the current page to help users understand where they are in the site structure.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Active link styling */
+nav a.active {
+    background-color: #667eea;
+    color: white;
+    font-weight: bold;
+}
+
+/* Alternative with border */
+nav a.active {
+    border-bottom: 3px solid #667eea;
+}
+
+/* HTML usage */
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="index.html" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="services.html"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Active Page Example:</h3>
+                <div style="background: #333; border-radius: 5px; overflow: hidden;">
+                    <ul style="list-style: none; margin: 0; padding: 0; display: flex;">
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white; background: #667eea; font-weight: bold;">Home</a></li>
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">About</a></li>
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Services</a></li>
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sticky/Fixed Navigation Section -->
+        <section class="content-section">
+            <h2>📌 Sticky/Fixed Navigation</h2>
+            <p>Make navigation stay visible when scrolling for better user experience.</p>
+            
+            <h3>Fixed Navigation:</h3>
+            <div class="code-block">
+                <pre><code>/* Fixed to top */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Add padding to body to prevent content hiding */
+body {
+    padding-top: 60px;  /* Height of navbar */
+}</code></pre>
+            </div>
+
+            <h3>Sticky Navigation:</h3>
+            <div class="code-block">
+                <pre><code>/* Sticky navigation */
+nav {
+    position: sticky;
+    top: 0;
+    background-color: #333;
+    z-index: 100;
+}
+
+/* Becomes fixed when reaching top
+   No need for body padding */</code></pre>
+            </div>
+        </section>
+
+        <!-- Dropdown Menu Section -->
+        <section class="content-section">
+            <h2>📂 Dropdown Menu</h2>
+            <p>Create dropdown submenus for hierarchical navigation.</p>
+            
+            <h3>HTML Structure:</h3>
+            <div class="code-block">
+                <pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="dropdown"&gt;
+            &lt;a href="#"&gt;Services&lt;/a&gt;
+            &lt;ul class="dropdown-menu"&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Web Design&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;SEO&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Marketing&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+
+            <h3>CSS for Dropdown:</h3>
+            <div class="code-block">
+                <pre><code>/* Main navigation */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background: #333;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    display: block;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: #444;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #667eea;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Dropdown Navigation Example:</h3>
+                <div style="background: #333; border-radius: 5px; overflow: visible; position: relative;">
+                    <ul style="list-style: none; margin: 0; padding: 0; display: flex;">
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Home</a></li>
+                        <li style="position: relative;">
+                            <a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Services ▼</a>
+                            <div style="position: absolute; top: 100%; left: 0; background: #444; min-width: 150px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); display: none;" class="dropdown-demo">
+                                <a href="#" style="display: block; padding: 12px 20px; text-decoration: none; color: white; border-bottom: 1px solid #555;">Web Design</a>
+                                <a href="#" style="display: block; padding: 12px 20px; text-decoration: none; color: white; border-bottom: 1px solid #555;">SEO</a>
+                                <a href="#" style="display: block; padding: 12px 20px; text-decoration: none; color: white;">Marketing</a>
+                            </div>
+                        </li>
+                        <li><a href="#" style="display: block; padding: 14px 20px; text-decoration: none; color: white;">Contact</a></li>
+                    </ul>
+                </div>
+                <p style="margin-top: 10px; font-style: italic; color: #666;">Hover over "Services" to see dropdown</p>
+            </div>
+        </section>
+
+        <!-- Responsive Navigation Section -->
+        <section class="content-section">
+            <h2>📱 Responsive Navigation (Mobile Menu)</h2>
+            <p>Create mobile-friendly navigation that adapts to small screens.</p>
+            
+            <h3>Hamburger Menu Approach:</h3>
+            <div class="code-block">
+                <pre><code>/* Mobile menu button (hamburger) */
+.menu-toggle {
+    display: none;
+    background: #333;
+    color: white;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+}
+
+/* Desktop navigation */
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav li {
+        width: 100%;
+    }
+    
+    nav a {
+        border-bottom: 1px solid #444;
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Complete Navigation Examples</h2>
+            
+            <h3>Example 1: Modern Top Navigation</h3>
+            <div class="code-block">
+                <pre><code>nav {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    display: block;
+    padding: 18px 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+nav a.active {
+    background: rgba(255,255,255,0.3);
+    border-bottom: 3px solid white;
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Sidebar Navigation</h3>
+            <div class="code-block">
+                <pre><code>.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #2c3e50;
+    padding-top: 60px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 30px;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.sidebar a:hover {
+    background: #34495e;
+    border-left-color: #667eea;
+    padding-left: 40px;
+}
+
+.sidebar a.active {
+    background: #34495e;
+    border-left-color: #667eea;
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Tab Navigation</h3>
+            <div class="code-block">
+                <pre><code>.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tabs a {
+    padding: 12px 24px;
+    text-decoration: none;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.tabs a:hover {
+    color: #667eea;
+}
+
+.tabs a.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+    font-weight: bold;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Horizontal Navigation:</h3>
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 8px; overflow: hidden; margin-bottom: 30px;">
+                        <ul style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center;">
+                            <li><a href="#" style="display: block; padding: 16px 28px; text-decoration: none; color: white; font-weight: 500; background: rgba(255,255,255,0.2);">Home</a></li>
+                            <li><a href="#" style="display: block; padding: 16px 28px; text-decoration: none; color: white; font-weight: 500;">About</a></li>
+                            <li><a href="#" style="display: block; padding: 16px 28px; text-decoration: none; color: white; font-weight: 500;">Services</a></li>
+                            <li><a href="#" style="display: block; padding: 16px 28px; text-decoration: none; color: white; font-weight: 500;">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <h3>Vertical Navigation:</h3>
+                    <div style="width: 250px; background: #2c3e50; border-radius: 8px; overflow: hidden;">
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li><a href="#" style="display: block; padding: 15px 25px; text-decoration: none; color: #ecf0f1; border-left: 3px solid #667eea; background: #34495e;">Dashboard</a></li>
+                            <li><a href="#" style="display: block; padding: 15px 25px; text-decoration: none; color: #ecf0f1; border-left: 3px solid transparent;">Profile</a></li>
+                            <li><a href="#" style="display: block; padding: 15px 25px; text-decoration: none; color: #ecf0f1; border-left: 3px solid transparent;">Settings</a></li>
+                            <li><a href="#" style="display: block; padding: 15px 25px; text-decoration: none; color: #ecf0f1; border-left: 3px solid transparent;">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: Which HTML element is semantically correct for navigation?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> &lt;div&gt;</label>
+                        <label><input type="radio" name="q1" value="b"> &lt;nav&gt;</label>
+                        <label><input type="radio" name="q1" value="c"> &lt;menu&gt;</label>
+                        <label><input type="radio" name="q1" value="d"> &lt;header&gt;</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: What is the modern recommended method for horizontal navigation?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> Float</label>
+                        <label><input type="radio" name="q2" value="b"> Inline-block</label>
+                        <label><input type="radio" name="q2" value="c"> Flexbox</label>
+                        <label><input type="radio" name="q2" value="d"> Tables</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: How do you make navigation stay at the top while scrolling?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> position: absolute</label>
+                        <label><input type="radio" name="q3" value="b"> position: fixed or sticky</label>
+                        <label><input type="radio" name="q3" value="c"> float: top</label>
+                        <label><input type="radio" name="q3" value="d"> display: top</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: What property removes default list bullets/numbers?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> list-style-type: none</label>
+                        <label><input type="radio" name="q4" value="b"> list: none</label>
+                        <label><input type="radio" name="q4" value="c"> bullets: none</label>
+                        <label><input type="radio" name="q4" value="d"> display: none</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'a')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: For dropdown menus, which CSS property shows the submenu on hover?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> visibility: visible</label>
+                        <label><input type="radio" name="q5" value="b"> display: block</label>
+                        <label><input type="radio" name="q5" value="c"> show: true</label>
+                        <label><input type="radio" name="q5" value="d"> dropdown: show</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a horizontal navigation bar using Flexbox with hover effects.</li>
+                    <li>Build a vertical sidebar navigation with active page highlighting.</li>
+                    <li>Make a sticky navigation bar that stays at the top when scrolling.</li>
+                    <li>Create a dropdown menu that appears when hovering over a parent item.</li>
+                    <li>Design a responsive navigation that converts to a hamburger menu on mobile (max-width: 768px).</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>Semantic HTML:</strong> Use &lt;nav&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;a&gt; for navigation</li>
+                    <li><strong>Remove defaults:</strong> <code>list-style-type: none; margin: 0; padding: 0;</code></li>
+                    <li><strong>Vertical Nav:</strong> Default stacked behavior, use for sidebars</li>
+                    <li><strong>Horizontal Nav:</strong> Use <code>display: flex</code> (modern) or <code>display: inline-block</code></li>
+                    <li><strong>Active Page:</strong> Add <code>.active</code> class to current page link</li>
+                    <li><strong>Fixed Nav:</strong> <code>position: fixed; top: 0;</code> (stays on scroll)</li>
+                    <li><strong>Sticky Nav:</strong> <code>position: sticky; top: 0;</code> (hybrid)</li>
+                    <li><strong>Dropdown:</strong> Use <code>position: absolute</code> on submenu, <code>display: none</code> then <code>display: block</code> on hover</li>
+                    <li><strong>Hover Effects:</strong> Add <code>transition</code> for smooth animations</li>
+                    <li><strong>Mobile:</strong> Use hamburger menu with media queries for small screens</li>
+                    <li><strong>Best Practice:</strong> Use Flexbox for modern, responsive navigation</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="floating.html" class="nav-btn btn-back">← Previous: Floating & Clear</a>
+            <a href="css3borders.html" class="nav-btn btn-next">Next Topic: CSS3 Borders →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

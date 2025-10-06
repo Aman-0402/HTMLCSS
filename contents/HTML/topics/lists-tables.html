@@ -1,0 +1,550 @@
+<!-- contents/HTML/topics/lists-tables.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lists & Tables — Session 7</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 (for MCQ feedback via script.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 7</div>
+        <h1 id="lesson-title">HTML Lists & Tables</h1>
+        <div class="meta">Unordered • Ordered • Description • Tables • Accessibility</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="colours.html">Next: Colours →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main">
+
+      <!-- Mini TOC -->
+      <nav class="toc" aria-label="Table of contents">
+        <a href="#lists">Lists</a>
+        <a href="#lists-quiz">Quiz (Lists)</a>
+        <a href="#tables">Tables</a>
+        <a href="#tables-quiz">Quiz (Tables)</a>
+        <a href="#practice">Practice</a>
+        <a href="#summary">Summary</a>
+      </nav>
+
+      <!-- LISTS -->
+      <section id="lists" class="section">
+        <h2>What are Lists in HTML?</h2>
+        <p>Lists organize related items in a structured, easy-to-read format. HTML provides three types of lists, each serving different purposes.</p>
+
+        <h3>Types of Lists</h3>
+        <ul>
+          <li><strong>Unordered Lists</strong> (<code>&lt;ul&gt;</code>) — Bullet points, no specific order</li>
+          <li><strong>Ordered Lists</strong> (<code>&lt;ol&gt;</code>) — Numbered or lettered, sequential order matters</li>
+          <li><strong>Description Lists</strong> (<code>&lt;dl&gt;</code>) — Term-definition pairs, like a glossary</li>
+        </ul>
+
+        <h3>1. Unordered Lists (<code>&lt;ul&gt;</code>)</h3>
+        <p>Use unordered lists when the order doesn't matter. Each item is marked with <code>&lt;li&gt;</code> (list item).</p>
+
+        <h4>Basic Syntax:</h4>
+        <pre class="code-block"><code>&lt;ul&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+  &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h4>Complete Example:</h4>
+        <pre class="code-block"><code>&lt;h2&gt;My Hobbies&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reading books&lt;/li&gt;
+  &lt;li&gt;Coding projects&lt;/li&gt;
+  &lt;li&gt;Playing guitar&lt;/li&gt;
+  &lt;li&gt;Traveling&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h4>When to Use:</h4>
+        <ul>
+          <li>Shopping lists</li>
+          <li>Feature lists</li>
+          <li>Navigation menus</li>
+          <li>Any items where order doesn't matter</li>
+        </ul>
+
+        <h3>2. Ordered Lists (<code>&lt;ol&gt;</code>)</h3>
+        <p>Use ordered lists when sequence or ranking matters. Items are automatically numbered.</p>
+
+        <h4>Basic Syntax:</h4>
+        <pre class="code-block"><code>&lt;ol&gt;
+  &lt;li&gt;First step&lt;/li&gt;
+  &lt;li&gt;Second step&lt;/li&gt;
+  &lt;li&gt;Third step&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+        <h4>Complete Example:</h4>
+        <pre class="code-block"><code>&lt;h2&gt;How to Make Coffee&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Boil water&lt;/li&gt;
+  &lt;li&gt;Add coffee grounds to filter&lt;/li&gt;
+  &lt;li&gt;Pour hot water over grounds&lt;/li&gt;
+  &lt;li&gt;Wait 4 minutes&lt;/li&gt;
+  &lt;li&gt;Pour and enjoy&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+        <h4>Ordered List Attributes:</h4>
+        <pre class="code-block"><code>&lt;!-- Different numbering types --&gt;
+&lt;ol type="1"&gt;...&lt;/ol&gt;  &lt;!-- 1, 2, 3 (default) --&gt;
+&lt;ol type="A"&gt;...&lt;/ol&gt;  &lt;!-- A, B, C --&gt;
+&lt;ol type="a"&gt;...&lt;/ol&gt;  &lt;!-- a, b, c --&gt;
+&lt;ol type="I"&gt;...&lt;/ol&gt;  &lt;!-- I, II, III --&gt;
+&lt;ol type="i"&gt;...&lt;/ol&gt;  &lt;!-- i, ii, iii --&gt;
+
+&lt;!-- Start from a specific number --&gt;
+&lt;ol start="5"&gt;
+  &lt;li&gt;This is item 5&lt;/li&gt;
+  &lt;li&gt;This is item 6&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Reverse order --&gt;
+&lt;ol reversed&gt;
+  &lt;li&gt;Third&lt;/li&gt;
+  &lt;li&gt;Second&lt;/li&gt;
+  &lt;li&gt;First&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+        <h4>When to Use:</h4>
+        <ul>
+          <li>Step-by-step instructions</li>
+          <li>Rankings or top 10 lists</li>
+          <li>Procedures or recipes</li>
+          <li>Any items where order matters</li>
+        </ul>
+
+        <h3>3. Description Lists (<code>&lt;dl&gt;</code>)</h3>
+        <p>Use description lists for term-definition pairs. Uses <code>&lt;dt&gt;</code> (term) and <code>&lt;dd&gt;</code> (description).</p>
+
+        <h4>Basic Syntax:</h4>
+        <pre class="code-block"><code>&lt;dl&gt;
+  &lt;dt&gt;Term&lt;/dt&gt;
+  &lt;dd&gt;Definition or description&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+        <h4>Complete Example:</h4>
+        <pre class="code-block"><code>&lt;h2&gt;HTML Terms&lt;/h2&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language - the structure of web pages&lt;/dd&gt;
+
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets - controls the visual appearance&lt;/dd&gt;
+
+  &lt;dt&gt;JavaScript&lt;/dt&gt;
+  &lt;dd&gt;Programming language that adds interactivity to websites&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+        <h4>Multiple Descriptions:</h4>
+        <pre class="code-block"><code>&lt;dl&gt;
+  &lt;dt&gt;Coffee&lt;/dt&gt;
+  &lt;dd&gt;A hot beverage made from roasted beans&lt;/dd&gt;
+  &lt;dd&gt;Contains caffeine&lt;/dd&gt;
+  &lt;dd&gt;Popular morning drink worldwide&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+        <h4>When to Use:</h4>
+        <ul>
+          <li>Glossaries</li>
+          <li>FAQs</li>
+          <li>Metadata displays</li>
+          <li>Name-value pairs</li>
+        </ul>
+
+        <h3>Nested Lists</h3>
+        <p>Lists can be nested inside other lists to create hierarchies:</p>
+
+        <pre class="code-block"><code>&lt;h2&gt;Website Structure&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Home
+    &lt;ul&gt;
+      &lt;li&gt;Hero Section&lt;/li&gt;
+      &lt;li&gt;Features&lt;/li&gt;
+      &lt;li&gt;Testimonials&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Products
+    &lt;ol&gt;
+      &lt;li&gt;Category A&lt;/li&gt;
+      &lt;li&gt;Category B&lt;/li&gt;
+      &lt;li&gt;Category C&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Contact&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h4>Best Practices for Lists:</h4>
+        <ul>
+          <li>Keep list items concise and parallel in structure</li>
+          <li>Use the appropriate list type for the content</li>
+          <li>Don't nest too deeply (2-3 levels maximum for readability)</li>
+          <li>Use semantic HTML - don't use lists just for layout</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- LISTS QUIZ -->
+      <section id="lists-quiz" class="section mcq" aria-labelledby="lists-quiz-title">
+        <h3 id="lists-quiz-title">Lists Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which tag creates a numbered list?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;ul&gt;</button>
+            <button class="choice">b) &lt;ol&gt;</button>
+            <button class="choice">c) &lt;li&gt;</button>
+            <button class="choice">d) &lt;dl&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q2. Which tag defines a list item?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;item&gt;</button>
+            <button class="choice">b) &lt;list&gt;</button>
+            <button class="choice">c) &lt;li&gt;</button>
+            <button class="choice">d) &lt;dt&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q3. Which list type is used for terms and definitions?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;dl&gt;</button>
+            <button class="choice">b) &lt;ul&gt;</button>
+            <button class="choice">c) &lt;ol&gt;</button>
+            <button class="choice">d) &lt;list&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q4. What attribute makes an ordered list use letters (A, B, C)?</div>
+          <div class="choices">
+            <button class="choice">a) type="letters"</button>
+            <button class="choice">b) type="A"</button>
+            <button class="choice">c) style="alpha"</button>
+            <button class="choice">d) format="ABC"</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <hr>
+
+      <!-- TABLES -->
+      <section id="tables" class="section">
+        <h2>What are Tables in HTML?</h2>
+        <p>Tables display data in rows and columns - perfect for structured information like schedules, pricing, or statistics.</p>
+
+        <h3>Basic Table Structure</h3>
+        <p>Tables use these essential tags:</p>
+        <ul>
+          <li><code>&lt;table&gt;</code> — Container for the entire table</li>
+          <li><code>&lt;tr&gt;</code> — Table Row</li>
+          <li><code>&lt;th&gt;</code> — Table Header (bold, centered by default)</li>
+          <li><code>&lt;td&gt;</code> — Table Data (regular cell)</li>
+          <li><code>&lt;thead&gt;</code> — Groups header rows (optional but recommended)</li>
+          <li><code>&lt;tbody&gt;</code> — Groups body rows (optional but recommended)</li>
+          <li><code>&lt;tfoot&gt;</code> — Groups footer rows (optional)</li>
+        </ul>
+
+        <h3>Simple Table Example</h3>
+        <pre class="code-block"><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Alice&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Bob&lt;/td&gt;
+    &lt;td&gt;30&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <h3>Complete Table with Sections</h3>
+        <pre class="code-block"><code>&lt;h2&gt;Student Grades&lt;/h2&gt;
+&lt;table class="example-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Student Name&lt;/th&gt;
+      &lt;th&gt;Subject&lt;/th&gt;
+      &lt;th&gt;Grade&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Aman Raj&lt;/td&gt;
+      &lt;td&gt;Mathematics&lt;/td&gt;
+      &lt;td&gt;A+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Priya Sharma&lt;/td&gt;
+      &lt;td&gt;Physics&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Rahul Kumar&lt;/td&gt;
+      &lt;td&gt;Chemistry&lt;/td&gt;
+      &lt;td&gt;B+&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;Average&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+
+        <h3>Table Attributes: colspan & rowspan</h3>
+        <p><strong>colspan</strong> - Merges cells horizontally (across columns)</p>
+        <p><strong>rowspan</strong> - Merges cells vertically (across rows)</p>
+
+        <h4>Colspan Example:</h4>
+        <pre class="code-block"><code>&lt;table class="example-table"&gt;
+  &lt;tr&gt;
+    &lt;th colspan="3"&gt;Student Information&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+    &lt;th&gt;Grade&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;20&lt;/td&gt;
+    &lt;td&gt;A&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <h4>Rowspan Example:</h4>
+        <pre class="code-block"><code>&lt;table class="example-table"&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="3"&gt;Subjects&lt;/th&gt;
+    &lt;td&gt;Math&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Science&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;English&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <h4>Complex Table (Timetable):</h4>
+        <pre class="code-block"><code>&lt;table class="example-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Monday&lt;/th&gt;
+      &lt;th&gt;Tuesday&lt;/th&gt;
+      &lt;th&gt;Wednesday&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9:00 AM&lt;/td&gt;
+      &lt;td&gt;Math&lt;/td&gt;
+      &lt;td&gt;Science&lt;/td&gt;
+      &lt;td&gt;English&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10:00 AM&lt;/td&gt;
+      &lt;td colspan="3"&gt;Break&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;11:00 AM&lt;/td&gt;
+      &lt;td&gt;History&lt;/td&gt;
+      &lt;td rowspan="2"&gt;Lab&lt;/td&gt;
+      &lt;td&gt;Geography&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;12:00 PM&lt;/td&gt;
+      &lt;td&gt;Art&lt;/td&gt;
+      &lt;td&gt;Music&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+        <h3>Table Accessibility</h3>
+        <p>Make tables accessible with proper attributes:</p>
+        <pre class="code-block"><code>&lt;table class="example-table" summary="Student grades for semester 1"&gt;
+  &lt;caption&gt;First Semester Results&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Name&lt;/th&gt;
+      &lt;th scope="col"&gt;Grade&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Aman&lt;/th&gt;
+      &lt;td&gt;A+&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+        <h4>Table Best Practices:</h4>
+        <ul>
+          <li>Use <code>&lt;caption&gt;</code> to describe table purpose</li>
+          <li>Use <code>scope</code> attribute on headers (col/row)</li>
+          <li>Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code> for structure</li>
+          <li>Don't use tables for layout - use CSS Grid or Flexbox instead</li>
+          <li>Keep tables simple - complex tables are hard to read on mobile</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- TABLES QUIZ -->
+      <section id="tables-quiz" class="section mcq" aria-labelledby="tables-quiz-title">
+        <h3 id="tables-quiz-title">Tables Quick Quiz</h3>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q5. Which tag defines a row in an HTML table?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;tr&gt;</button>
+            <button class="choice">b) &lt;td&gt;</button>
+            <button class="choice">c) &lt;th&gt;</button>
+            <button class="choice">d) &lt;row&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q6. What does &lt;td&gt; stand for?</div>
+          <div class="choices">
+            <button class="choice">a) Table Data</button>
+            <button class="choice">b) Table Division</button>
+            <button class="choice">c) Table Description</button>
+            <button class="choice">d) Table Detail</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q7. Which attribute merges cells across multiple rows?</div>
+          <div class="choices">
+            <button class="choice">a) rowspan</button>
+            <button class="choice">b) colspan</button>
+            <button class="choice">c) merge</button>
+            <button class="choice">d) span</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q8. Which tag adds a caption/title to a table?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;title&gt;</button>
+            <button class="choice">b) &lt;caption&gt;</button>
+            <button class="choice">c) &lt;header&gt;</button>
+            <button class="choice">d) &lt;label&gt;</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <hr>
+
+      <!-- PRACTICE -->
+      <section id="practice" class="section">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Create Lists:</strong>
+            <ul>
+              <li>Unordered list of your 5 favorite movies</li>
+              <li>Ordered list of steps to make a sandwich</li>
+              <li>Description list of 3 HTML tags and their purposes</li>
+            </ul>
+          </li>
+          
+          <li><strong>Nested List Project:</strong>
+            <ul>
+              <li>Create a course syllabus with nested lists</li>
+              <li>Main topics as outer list</li>
+              <li>Subtopics as nested lists</li>
+            </ul>
+          </li>
+          
+          <li><strong>Student Grade Table:</strong>
+            <ul>
+              <li>5 students with Name, Roll No, Math, Science, Total</li>
+              <li>Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code></li>
+              <li>Add a caption</li>
+            </ul>
+          </li>
+          
+          <li><strong>Weekly Schedule Table:</strong>
+            <ul>
+              <li>Time slots in first column</li>
+              <li>Days of week as columns</li>
+              <li>Use <code>colspan</code> for breaks/lunch</li>
+              <li>Use <code>rowspan</code> for longer classes</li>
+            </ul>
+          </li>
+          
+          <li><strong>Pricing Table:</strong>
+            <ul>
+              <li>3 pricing tiers (Basic, Pro, Enterprise)</li>
+              <li>Features in rows</li>
+              <li>Use checkmarks or X for included/excluded features</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- SUMMARY -->
+      <section id="summary" class="section summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>Three list types:</strong> Unordered (&lt;ul&gt;), Ordered (&lt;ol&gt;), Description (&lt;dl&gt;)</li>
+          <li><strong>List items:</strong> Use &lt;li&gt; for ul/ol, &lt;dt&gt; and &lt;dd&gt; for dl</li>
+          <li><strong>Ordered lists:</strong> Support type (1, A, a, I, i), start, and reversed attributes</li>
+          <li><strong>Tables:</strong> Use &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; for structure</li>
+          <li><strong>Table sections:</strong> &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt; improve organization</li>
+          <li><strong>Cell merging:</strong> colspan (horizontal), rowspan (vertical)</li>
+          <li><strong>Accessibility:</strong> Use &lt;caption&gt;, scope attribute, semantic structure</li>
+          <li><strong>Best practice:</strong> Use tables for data, not layout</li>
+        </ul>
+        <p>Lists and tables are essential for organizing information. Choose the right type based on your content structure and always prioritize accessibility!</p>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="colours.html">HTML Colours</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- shared JS -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

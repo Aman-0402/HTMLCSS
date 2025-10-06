@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>📦 CSS Box Model</h1>
+            <p class="topic-subtitle">Understand margin, padding, border, and outline to master element spacing and layout</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="cssbackgrounds.html" class="nav-btn btn-back">← Previous: CSS Backgrounds</a>
+            <a href="dimensions.html" class="nav-btn btn-next">Next Topic: CSS Dimensions →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 What is the CSS Box Model?</h2>
+            <p>The <strong>CSS Box Model</strong> is a fundamental concept that describes how elements are structured and spaced on a webpage. Every HTML element is essentially a rectangular box with four main areas: content, padding, border, and margin.</p>
+            
+            <div class="info-box">
+                <h3>Box Model Components (from inside out):</h3>
+                <ul>
+                    <li>✅ <strong>Content:</strong> The actual content (text, images, etc.)</li>
+                    <li>✅ <strong>Padding:</strong> Space between content and border (inside)</li>
+                    <li>✅ <strong>Border:</strong> A line around the padding and content</li>
+                    <li>✅ <strong>Margin:</strong> Space outside the border (between elements)</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>Visual Representation:</h3>
+                <div style="background: #f0f0f0; padding: 20px; text-align: center;">
+                    <div style="background: #ffc107; padding: 15px; display: inline-block;">
+                        <div style="background: #4caf50; padding: 15px;">
+                            <div style="background: #2196f3; padding: 15px;">
+                                <div style="background: white; padding: 20px; color: #333;">
+                                    Content
+                                </div>
+                                ⬆️ Padding
+                            </div>
+                            ⬆️ Border
+                        </div>
+                        ⬆️ Margin
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Padding Section -->
+        <section class="content-section">
+            <h2>📐 Padding</h2>
+            <p>Padding creates space <strong>inside</strong> an element, between the content and the border. It's part of the element's background.</p>
+            
+            <h3>Padding Properties:</h3>
+            <div class="code-block">
+                <pre><code>/* Individual sides */
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 10px;
+padding-left: 20px;
+
+/* Shorthand - all sides */
+padding: 15px;
+
+/* Shorthand - vertical horizontal */
+padding: 10px 20px;  /* top/bottom  left/right */
+
+/* Shorthand - top right/left bottom */
+padding: 10px 20px 15px;
+
+/* Shorthand - top right bottom left (clockwise) */
+padding: 10px 20px 15px 5px;</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Padding Shorthand Memory Trick:</h3>
+                <ul>
+                    <li><code>padding: 10px;</code> - All sides</li>
+                    <li><code>padding: 10px 20px;</code> - Vertical | Horizontal</li>
+                    <li><code>padding: 10px 20px 15px;</code> - Top | Right/Left | Bottom</li>
+                    <li><code>padding: 10px 20px 15px 5px;</code> - Top | Right | Bottom | Left (🕐 clockwise)</li>
+                </ul>
+            </div>
+
+            <h3>Example:</h3>
+            <div class="code-block">
+                <pre><code>.box {
+    padding: 20px;
+    background-color: lightblue;
+}
+
+.button {
+    padding: 10px 25px;  /* 10px top/bottom, 25px left/right */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Border Section -->
+        <section class="content-section">
+            <h2>🔲 Border</h2>
+            <p>The border is a line that goes around the padding and content. You can style its width, style, and color.</p>
+            
+            <h3>Border Properties:</h3>
+            <div class="code-block">
+                <pre><code>/* Individual properties */
+border-width: 2px;
+border-style: solid;
+border-color: blue;
+
+/* Shorthand */
+border: 2px solid blue;
+
+/* Individual sides */
+border-top: 1px solid red;
+border-right: 2px dashed green;
+border-bottom: 3px dotted blue;
+border-left: 4px double orange;</code></pre>
+            </div>
+
+            <h3>Border Styles:</h3>
+            <div class="code-block">
+                <pre><code>border-style: solid;    /* Solid line */
+border-style: dashed;   /* Dashed line */
+border-style: dotted;   /* Dotted line */
+border-style: double;   /* Double line */
+border-style: groove;   /* 3D grooved */
+border-style: ridge;    /* 3D ridged */
+border-style: inset;    /* 3D inset */
+border-style: outset;   /* 3D outset */
+border-style: none;     /* No border */
+border-style: hidden;   /* Hidden border */</code></pre>
+            </div>
+
+            <h3>Border Radius (Rounded Corners):</h3>
+            <div class="code-block">
+                <pre><code>/* All corners */
+border-radius: 10px;
+
+/* Specific corners (top-left, top-right, bottom-right, bottom-left) */
+border-radius: 10px 20px 30px 40px;
+
+/* Circle */
+border-radius: 50%;
+
+/* Ellipse */
+border-radius: 50px / 25px;</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Common Border Patterns:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="padding: 15px; border: 2px solid #667eea; border-radius: 5px;">
+                        Solid Border
+                    </div>
+                    <div style="padding: 15px; border: 3px dashed #764ba2;">
+                        Dashed Border
+                    </div>
+                    <div style="padding: 15px; border: 3px dotted #f093fb;">
+                        Dotted Border
+                    </div>
+                    <div style="padding: 15px; border: 4px double #43e97b;">
+                        Double Border
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Margin Section -->
+        <section class="content-section">
+            <h2>📏 Margin</h2>
+            <p>Margin creates space <strong>outside</strong> an element, between elements. Margins are transparent and don't have a background color.</p>
+            
+            <h3>Margin Properties:</h3>
+            <div class="code-block">
+                <pre><code>/* Individual sides */
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 10px;
+margin-left: 20px;
+
+/* Shorthand (same as padding) */
+margin: 20px;              /* All sides */
+margin: 10px 20px;         /* Vertical | Horizontal */
+margin: 10px 20px 15px;    /* Top | Right/Left | Bottom */
+margin: 10px 20px 15px 5px; /* Top | Right | Bottom | Left */
+
+/* Auto - centering */
+margin: 0 auto;            /* Center horizontally */
+
+/* Negative margins */
+margin-top: -10px;         /* Pulls element up */</code></pre>
+            </div>
+
+            <h3>Centering Elements:</h3>
+            <div class="code-block">
+                <pre><code>/* Center block element horizontally */
+.container {
+    width: 800px;
+    margin: 0 auto;  /* Top/bottom: 0, Left/right: auto */
+}</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>⚠️ Margin Collapse</h3>
+                <p>When two vertical margins meet, they collapse into a single margin equal to the larger of the two. This doesn't happen with horizontal margins.</p>
+            </div>
+        </section>
+
+        <!-- Outline Section -->
+        <section class="content-section">
+            <h2>🖍️ Outline</h2>
+            <p>The outline is drawn <strong>outside</strong> the border and doesn't affect the element's dimensions. Unlike borders, outlines don't take up space.</p>
+            
+            <h3>Outline Properties:</h3>
+            <div class="code-block">
+                <pre><code>/* Individual properties */
+outline-width: 2px;
+outline-style: solid;
+outline-color: red;
+
+/* Shorthand */
+outline: 2px solid red;
+
+/* Outline offset */
+outline-offset: 5px;  /* Space between outline and border */
+
+/* Remove default outline (accessibility concern!) */
+button:focus {
+    outline: none;  /* ⚠️ Provide alternative focus indicator */
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Border vs Outline:</h3>
+                <ul>
+                    <li><strong>Border:</strong> Part of box model, takes up space, can have rounded corners</li>
+                    <li><strong>Outline:</strong> Outside border, doesn't take space, always rectangular</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Box Sizing Section -->
+        <section class="content-section">
+            <h2>📦 Box Sizing</h2>
+            <p>The <code>box-sizing</code> property controls how the total width and height of an element is calculated.</p>
+            
+            <h3>Content-box (Default):</h3>
+            <div class="code-block">
+                <pre><code>/* Width/height applies to content only */
+.box {
+    box-sizing: content-box;  /* Default */
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+}
+/* Total width: 200 + 40 (padding) + 10 (border) = 250px */</code></pre>
+            </div>
+
+            <h3>Border-box (Recommended):</h3>
+            <div class="code-block">
+                <pre><code>/* Width/height includes padding and border */
+.box {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+}
+/* Total width: 200px (padding and border included) */</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>💡 Best Practice:</h3>
+                <p>Use <code>border-box</code> for easier sizing calculations:</p>
+                <div class="code-block">
+                    <pre><code>* {
+    box-sizing: border-box;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Examples</h2>
+            
+            <h3>Example 1: Card Component</h3>
+            <div class="code-block">
+                <pre><code>.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Button with States</h3>
+            <div class="code-block">
+                <pre><code>.button {
+    padding: 12px 24px;
+    margin: 10px;
+    border: 2px solid #667eea;
+    border-radius: 25px;
+    background: white;
+    color: #667eea;
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background: #667eea;
+    color: white;
+}
+
+.button:focus {
+    outline: 3px solid rgba(102, 126, 234, 0.3);
+    outline-offset: 2px;
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Spacing System</h3>
+            <div class="code-block">
+                <pre><code>/* Consistent spacing */
+.m-1 { margin: 8px; }
+.m-2 { margin: 16px; }
+.m-3 { margin: 24px; }
+.m-4 { margin: 32px; }
+
+.p-1 { padding: 8px; }
+.p-2 { padding: 16px; }
+.p-3 { padding: 24px; }
+.p-4 { padding: 32px; }</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Example</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Box Model Visualization:</h3>
+                    <div style="margin: 30px; padding: 30px; border: 5px solid #667eea; background: #e3f2fd; display: inline-block;">
+                        <div style="padding: 20px; background: white; border: 3px dashed #764ba2;">
+                            <strong>Content Area</strong>
+                            <br>This is the content
+                        </div>
+                        <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                            Blue area = Padding | Purple dashed = Border | Outside = Margin
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 40px;">Border & Outline Example:</h3>
+                    <div style="display: inline-block; padding: 20px; margin: 20px; border: 3px solid #667eea; outline: 3px solid #f093fb; outline-offset: 5px; background: white;">
+                        Border (blue) & Outline (pink)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: Which property creates space INSIDE an element?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> Margin</label>
+                        <label><input type="radio" name="q1" value="b"> Padding</label>
+                        <label><input type="radio" name="q1" value="c"> Border</label>
+                        <label><input type="radio" name="q1" value="d"> Outline</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: What is the correct order of the box model from inside to outside?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> Margin, Border, Padding, Content</label>
+                        <label><input type="radio" name="q2" value="b"> Content, Padding, Border, Margin</label>
+                        <label><input type="radio" name="q2" value="c"> Content, Border, Padding, Margin</label>
+                        <label><input type="radio" name="q2" value="d"> Padding, Content, Border, Margin</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: Which box-sizing value includes padding and border in the width?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> content-box</label>
+                        <label><input type="radio" name="q3" value="b"> border-box</label>
+                        <label><input type="radio" name="q3" value="c"> padding-box</label>
+                        <label><input type="radio" name="q3" value="d"> full-box</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: How do you center a block element horizontally?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> padding: auto</label>
+                        <label><input type="radio" name="q4" value="b"> margin: 0 auto</label>
+                        <label><input type="radio" name="q4" value="c"> border: center</label>
+                        <label><input type="radio" name="q4" value="d"> align: center</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: What's the difference between border and outline?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> No difference</label>
+                        <label><input type="radio" name="q5" value="b"> Outline doesn't take up space</label>
+                        <label><input type="radio" name="q5" value="c"> Border is always blue</label>
+                        <label><input type="radio" name="q5" value="d"> Outline is invisible</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a box with 20px padding on all sides, a 2px solid red border, and 15px margin on top and bottom.</li>
+                    <li>Make a circular element using border-radius (hint: use 50%).</li>
+                    <li>Center a 600px wide container horizontally on the page.</li>
+                    <li>Create a button with 10px vertical padding, 25px horizontal padding, rounded corners, and a 2px border.</li>
+                    <li>Use box-sizing: border-box to create two boxes that are exactly 50% width each, side by side.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>Box Model:</strong> Content → Padding → Border → Margin (inside to outside)</li>
+                    <li><strong>Padding:</strong> Space inside element, part of background</li>
+                    <li><strong>Border:</strong> Line around padding, can be styled with width/style/color</li>
+                    <li><strong>Margin:</strong> Space outside element, transparent, used for spacing between elements</li>
+                    <li><strong>Outline:</strong> Outside border, doesn't affect layout, always rectangular</li>
+                    <li><strong>Shorthand Order:</strong> Top → Right → Bottom → Left (clockwise 🕐)</li>
+                    <li><strong>border-radius:</strong> Creates rounded corners (50% for circles)</li>
+                    <li><strong>box-sizing: border-box:</strong> Includes padding and border in width (recommended)</li>
+                    <li><strong>Centering:</strong> Use <code>margin: 0 auto</code> for horizontal centering</li>
+                    <li><strong>Margin Collapse:</strong> Vertical margins collapse, horizontal don't</li>
+                    <li><strong>Best Practice:</strong> Apply <code>box-sizing: border-box</code> to all elements</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="cssbackgrounds.html" class="nav-btn btn-back">← Previous: CSS Backgrounds</a>
+            <a href="dimensions.html" class="nav-btn btn-next">Next Topic: CSS Dimensions →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

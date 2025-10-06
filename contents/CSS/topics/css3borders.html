@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Borders & Backgrounds</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>🎭 CSS3 Borders & Backgrounds</h1>
+            <p class="topic-subtitle">Master advanced border styling and gradient backgrounds with CSS3</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="navbar.html" class="nav-btn btn-back">← Previous: Navigation Bar</a>
+            <a href="texteffects.html" class="nav-btn btn-next">Next Topic: Text Effects →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 CSS3 Enhanced Styling</h2>
+            <p>CSS3 introduced powerful new features for borders and backgrounds, including <strong>border-radius</strong> for rounded corners, <strong>box-shadow</strong> for depth, <strong>border-image</strong> for custom borders, and <strong>gradients</strong> for colorful backgrounds without images.</p>
+            
+            <div class="info-box">
+                <h3>CSS3 Border & Background Features:</h3>
+                <ul>
+                    <li>✅ Border-radius for rounded corners</li>
+                    <li>✅ Box-shadow for depth and elevation</li>
+                    <li>✅ Border-image for decorative borders</li>
+                    <li>✅ Multiple backgrounds on one element</li>
+                    <li>✅ Linear and radial gradients</li>
+                    <li>✅ Background-size and background-clip</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Border Radius Section -->
+        <section class="content-section">
+            <h2>⭕ Border Radius</h2>
+            <p>The <code>border-radius</code> property creates rounded corners on elements.</p>
+            
+            <h3>Basic Border Radius:</h3>
+            <div class="code-block">
+                <pre><code>/* All corners equal */
+.box {
+    border-radius: 10px;
+}
+
+/* Different corners */
+.box {
+    border-radius: 10px 20px 30px 40px;
+    /* top-left, top-right, bottom-right, bottom-left */
+}
+
+/* Circle */
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+/* Ellipse */
+.oval {
+    width: 300px;
+    height: 200px;
+    border-radius: 50%;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Border Radius Examples:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; text-align: center; border-radius: 10px;">
+                        10px radius
+                    </div>
+                    <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 30px; text-align: center; border-radius: 25px;">
+                        25px radius
+                    </div>
+                    <div style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto;">
+                        Circle
+                    </div>
+                    <div style="background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; padding: 30px; text-align: center; border-radius: 10px 50px;">
+                        Mixed
+                    </div>
+                </div>
+            </div>
+
+            <h3>Individual Corners:</h3>
+            <div class="code-block">
+                <pre><code>/* Specific corners */
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+border-bottom-right-radius: 20px;
+border-bottom-left-radius: 20px;
+
+/* Horizontal / Vertical radius */
+border-radius: 50px / 25px;  /* Creates elliptical corners */</code></pre>
+            </div>
+        </section>
+
+        <!-- Box Shadow Section -->
+        <section class="content-section">
+            <h2>🌑 Box Shadow</h2>
+            <p>The <code>box-shadow</code> property adds shadow effects around an element's frame.</p>
+            
+            <h3>Syntax:</h3>
+            <div class="code-block">
+                <pre><code>/* Syntax: h-offset v-offset blur spread color */
+box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+
+/* Multiple shadows */
+box-shadow: 
+    2px 2px 5px rgba(0, 0, 0, 0.3),
+    -2px -2px 5px rgba(255, 255, 255, 0.5);
+
+/* Inset shadow (inner) */
+box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);</code></pre>
+            </div>
+
+            <h3>Common Shadow Patterns:</h3>
+            <div class="code-block">
+                <pre><code>/* Subtle shadow */
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Material Design elevation */
+.elevated {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Glow effect */
+.glow {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+}
+
+/* Neumorphism */
+.neumorphic {
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.2),
+        -8px -8px 16px rgba(255, 255, 255, 0.7);
+}
+
+/* Pressed effect */
+.pressed {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Box Shadow Examples:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div style="background: white; padding: 30px; text-align: center; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+                        Subtle
+                    </div>
+                    <div style="background: white; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border-radius: 8px;">
+                        Elevated
+                    </div>
+                    <div style="background: #667eea; color: white; padding: 30px; text-align: center; box-shadow: 0 0 30px rgba(102, 126, 234, 0.8); border-radius: 8px;">
+                        Glow
+                    </div>
+                    <div style="background: #f0f0f0; padding: 30px; text-align: center; box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.9); border-radius: 8px;">
+                        Neumorphic
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Border Image Section -->
+        <section class="content-section">
+            <h2>🖼️ Border Image</h2>
+            <p>The <code>border-image</code> property allows you to use an image as the border of an element.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Using an image as border */
+.fancy-border {
+    border: 10px solid transparent;
+    border-image: url('border.png') 30 round;
+}
+
+/* Gradient border */
+.gradient-border {
+    border: 5px solid;
+    border-image: linear-gradient(45deg, #667eea, #764ba2) 1;
+}
+
+/* Border image properties */
+border-image-source: url('border.png');
+border-image-slice: 30;
+border-image-width: 10px;
+border-image-repeat: round;  /* or stretch, repeat, space */</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Gradient Border Example:</h3>
+                <div style="padding: 30px; text-align: center; border: 5px solid; border-image: linear-gradient(45deg, #667eea, #764ba2, #f093fb) 1; margin: 20px 0;">
+                    Element with gradient border
+                </div>
+            </div>
+        </section>
+
+        <!-- Multiple Backgrounds Section -->
+        <section class="content-section">
+            <h2>🎨 Multiple Backgrounds</h2>
+            <p>CSS3 allows multiple background images on a single element.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Multiple backgrounds (stacked) */
+.element {
+    background: 
+        url('top-pattern.png') top left no-repeat,
+        url('bottom-pattern.png') bottom right no-repeat,
+        linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Each background can have different properties */
+.complex {
+    background-image: 
+        url('overlay.png'),
+        url('texture.png'),
+        linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+    background-position: 
+        center,
+        top left,
+        center;
+    background-size: 
+        cover,
+        200px 200px,
+        cover;
+    background-repeat: 
+        no-repeat,
+        repeat,
+        no-repeat;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Linear Gradients Section -->
+        <section class="content-section">
+            <h2>📊 Linear Gradients</h2>
+            <p>Linear gradients create smooth color transitions along a straight line.</p>
+            
+            <h3>Basic Linear Gradient:</h3>
+            <div class="code-block">
+                <pre><code>/* Top to bottom (default) */
+background: linear-gradient(#667eea, #764ba2);
+
+/* Direction keywords */
+background: linear-gradient(to right, red, blue);
+background: linear-gradient(to bottom right, red, blue);
+
+/* Angle */
+background: linear-gradient(45deg, red, blue);
+background: linear-gradient(180deg, red, blue);
+
+/* Multiple colors */
+background: linear-gradient(to right, red, yellow, green, blue);
+
+/* Color stops */
+background: linear-gradient(to right,
+    red 0%,
+    yellow 25%,
+    green 50%,
+    blue 100%
+);</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Linear Gradient Examples:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: linear-gradient(to right, #667eea, #764ba2); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        Horizontal
+                    </div>
+                    <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        Diagonal (45deg)
+                    </div>
+                    <div style="background: linear-gradient(to bottom, #4facfe, #00f2fe); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        Vertical
+                    </div>
+                    <div style="background: linear-gradient(to right, #fa709a 0%, #fee140 100%); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        With Color Stops
+                    </div>
+                </div>
+            </div>
+
+            <h3>Advanced Linear Gradients:</h3>
+            <div class="code-block">
+                <pre><code>/* Transparent gradient */
+background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0.8),
+    transparent
+);
+
+/* Striped pattern */
+background: linear-gradient(45deg,
+    #667eea 25%,
+    #764ba2 25%,
+    #764ba2 50%,
+    #667eea 50%,
+    #667eea 75%,
+    #764ba2 75%
+);
+background-size: 40px 40px;
+
+/* Subtle gradient */
+background: linear-gradient(to bottom,
+    #ffffff,
+    #f5f5f5
+);</code></pre>
+            </div>
+        </section>
+
+        <!-- Radial Gradients Section -->
+        <section class="content-section">
+            <h2>⭕ Radial Gradients</h2>
+            <p>Radial gradients create circular or elliptical color transitions from a center point.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Basic radial gradient */
+background: radial-gradient(#667eea, #764ba2);
+
+/* Circle shape */
+background: radial-gradient(circle, #667eea, #764ba2);
+
+/* Ellipse (default) */
+background: radial-gradient(ellipse, #667eea, #764ba2);
+
+/* Size keywords */
+background: radial-gradient(circle closest-side, red, blue);
+/* closest-side, farthest-side, closest-corner, farthest-corner */
+
+/* Position */
+background: radial-gradient(circle at top right, red, blue);
+background: radial-gradient(at 30% 40%, red, blue);
+
+/* Multiple color stops */
+background: radial-gradient(circle,
+    red 0%,
+    yellow 30%,
+    green 60%,
+    blue 100%
+);</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Radial Gradient Examples:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: radial-gradient(circle, #667eea, #764ba2); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        Circle
+                    </div>
+                    <div style="background: radial-gradient(ellipse, #f093fb, #f5576c); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        Ellipse
+                    </div>
+                    <div style="background: radial-gradient(circle at top left, #4facfe, #00f2fe); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        Positioned
+                    </div>
+                    <div style="background: radial-gradient(circle, #43e97b 30%, #38f9d7 100%); color: white; padding: 40px; text-align: center; border-radius: 8px;">
+                        With Stops
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conic Gradients Section -->
+        <section class="content-section">
+            <h2>🎯 Conic Gradients</h2>
+            <p>Conic gradients rotate colors around a center point (like a pie chart).</p>
+            
+            <div class="code-block">
+                <pre><code>/* Basic conic gradient */
+background: conic-gradient(red, yellow, green, blue, red);
+
+/* From angle */
+background: conic-gradient(from 45deg, red, blue);
+
+/* At position */
+background: conic-gradient(at 30% 40%, red, blue);
+
+/* Pie chart effect */
+background: conic-gradient(
+    red 0deg 90deg,
+    blue 90deg 180deg,
+    green 180deg 270deg,
+    yellow 270deg 360deg
+);
+
+/* Color wheel */
+background: conic-gradient(
+    red, yellow, lime, aqua, blue, magenta, red
+);</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Conic Gradient Examples:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: conic-gradient(#667eea, #764ba2, #f093fb, #667eea); width: 150px; height: 150px; border-radius: 50%; margin: 0 auto;"></div>
+                    <div style="background: conic-gradient(red 0deg 90deg, blue 90deg 180deg, green 180deg 270deg, yellow 270deg 360deg); width: 150px; height: 150px; border-radius: 50%; margin: 0 auto;"></div>
+                    <div style="background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red); width: 150px; height: 150px; border-radius: 50%; margin: 0 auto;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Background Size & Clip Section -->
+        <section class="content-section">
+            <h2>📏 Background Size & Clip</h2>
+            
+            <h3>Background Size:</h3>
+            <div class="code-block">
+                <pre><code>/* Cover entire container */
+background-size: cover;
+
+/* Contain within container */
+background-size: contain;
+
+/* Specific size */
+background-size: 200px 100px;
+
+/* Responsive */
+background-size: 100% auto;</code></pre>
+            </div>
+
+            <h3>Background Clip:</h3>
+            <div class="code-block">
+                <pre><code>/* Background clips to different areas */
+background-clip: border-box;  /* Default */
+background-clip: padding-box; /* Inside border */
+background-clip: content-box; /* Inside padding */
+background-clip: text;        /* Clips to text (with -webkit-) */
+
+/* Gradient text effect */
+.gradient-text {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Gradient Text Example:</h3>
+                <h2 style="background: linear-gradient(45deg, #667eea, #764ba2, #f093fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3rem; font-weight: bold; text-align: center;">
+                    Gradient Text!
+                </h2>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+            
+            <h3>Example 1: Modern Card</h3>
+            <div class="code-block">
+                <pre><code>.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Gradient Button</h3>
+            <div class="code-block">
+                <pre><code>.gradient-button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.gradient-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Neumorphic Element</h3>
+            <div class="code-block">
+                <pre><code>.neumorphic {
+    background: #e0e0e0;
+    border-radius: 20px;
+    box-shadow: 
+        10px 10px 20px rgba(0, 0, 0, 0.1),
+        -10px -10px 20px rgba(255, 255, 255, 0.7);
+    padding: 30px;
+}
+
+.neumorphic:active {
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Glass morphism</h3>
+            <div class="code-block">
+                <pre><code>.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Animated Gradient Background</h3>
+            <div class="code-block">
+                <pre><code>.animated-gradient {
+    background: linear-gradient(
+        45deg,
+        #667eea, #764ba2, #f093fb, #4facfe
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Modern Card with Shadow:</h3>
+                    <div style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); padding: 30px; max-width: 400px; margin: 20px auto;">
+                        <h4 style="margin: 0 0 10px 0; color: #333;">Beautiful Card</h4>
+                        <p style="margin: 0; color: #666;">This card has rounded corners and a subtle shadow for depth.</p>
+                    </div>
+
+                    <h3 style="margin-top: 40px;">Gradient Button:</h3>
+                    <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 40px; border: none; border-radius: 50px; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); cursor: pointer; font-size: 16px; font-weight: 600;">
+                        Click Me!
+                    </button>
+
+                    <h3 style="margin-top: 40px;">Neumorphic Design:</h3>
+                    <div style="background: #e0e0e0; border-radius: 20px; box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.7); padding: 30px; max-width: 400px; margin: 20px auto; text-align: center;">
+                        <strong>Neumorphic Element</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: What value makes a square element circular?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> border-radius: 100px</label>
+                        <label><input type="radio" name="q1" value="b"> border-radius: 50%</label>
+                        <label><input type="radio" name="q1" value="c"> border-radius: circle</label>
+                        <label><input type="radio" name="q1" value="d"> border-radius: round</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: What does box-shadow: inset do?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> Removes the shadow</label>
+                        <label><input type="radio" name="q2" value="b"> Creates an inner shadow</label>
+                        <label><input type="radio" name="q2" value="c"> Makes shadow transparent</label>
+                        <label><input type="radio" name="q2" value="d"> Increases shadow size</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: Which gradient type rotates colors around a center point?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> linear-gradient</label>
+                        <label><input type="radio" name="q3" value="b"> radial-gradient</label>
+                        <label><input type="radio" name="q3" value="c"> conic-gradient</label>
+                        <label><input type="radio" name="q3" value="d"> circular-gradient</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: How do you create gradient text?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> color: gradient()</label>
+                        <label><input type="radio" name="q4" value="b"> background-clip: text</label>
+                        <label><input type="radio" name="q4" value="c"> text-gradient: linear</label>
+                        <label><input type="radio" name="q4" value="d"> gradient-text: true</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: What is the correct syntax for a linear gradient from left to right?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> background: linear-gradient(left, red, blue)</label>
+                        <label><input type="radio" name="q5" value="b"> background: linear-gradient(to right, red, blue)</label>
+                        <label><input type="radio" name="q5" value="c"> background: gradient(right, red, blue)</label>
+                        <label><input type="radio" name="q5" value="d"> background: linear(to right, red, blue)</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a card with 20px border-radius, white background, and a subtle box-shadow.</li>
+                    <li>Make a circular profile image container (150px × 150px) using border-radius.</li>
+                    <li>Create a button with a gradient background (purple to pink) and hover effect that lifts it up.</li>
+                    <li>Design gradient text that goes from blue to purple using background-clip.</li>
+                    <li>Create a neumorphic button with proper shadows for both normal and pressed states.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>border-radius:</strong> Creates rounded corners (use 50% for circles)</li>
+                    <li><strong>box-shadow:</strong> Adds depth with shadows (h-offset v-offset blur spread color)</li>
+                    <li><strong>box-shadow: inset:</strong> Creates inner shadows (pressed effect)</li>
+                    <li><strong>border-image:</strong> Uses images or gradients as borders</li>
+                    <li><strong>Multiple Backgrounds:</strong> Stack multiple images/gradients on one element</li>
+                    <li><strong>linear-gradient:</strong> Color transitions along a line (use to right, 45deg, etc.)</li>
+                    <li><strong>radial-gradient:</strong> Circular/elliptical color transitions from center</li>
+                    <li><strong>conic-gradient:</strong> Rotating colors around center (pie chart effect)</li>
+                    <li><strong>background-size:</strong> cover (fills container), contain (fits within)</li>
+                    <li><strong>background-clip: text:</strong> Clips gradient to text for colorful typography</li>
+                    <li><strong>Neumorphism:</strong> Soft UI with double shadows (light + dark)</li>
+                    <li><strong>Best Practice:</strong> Use subtle shadows and smooth gradients for modern designs</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="navbar.html" class="nav-btn btn-back">← Previous: Navigation Bar</a>
+            <a href="texteffects.html" class="nav-btn btn-next">Next Topic: Text Effects →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

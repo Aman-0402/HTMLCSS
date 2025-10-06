@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introduction to HTML — Session 1</title>
+
+  <!-- Page-specific stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 for quiz feedback -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 1</div>
+        <h1 id="lesson-title">Introduction to HTML</h1>
+        <div class="meta">Overview • Editors • Basic Syntax</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="elements.html">Next: Elements & Attributes →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main" aria-labelledby="overview-title">
+      <h2 id="overview-title">What is HTML?</h2>
+      <p>HTML (HyperText Markup Language) is the standard markup language used to create web pages. It provides the structure of a webpage by using elements (tags) that describe headings, paragraphs, links, images and more.</p>
+
+      <section class="section">
+        <h3>Why HTML Matters</h3>
+        <p>Think of HTML as the skeleton of a website:</p>
+        <ul>
+          <li><strong>HTML</strong> = Structure (the bones)</li>
+          <li><strong>CSS</strong> = Presentation (the skin and clothes)</li>
+          <li><strong>JavaScript</strong> = Behavior (the muscles and movement)</li>
+        </ul>
+        <p>Every website you visit—from Google to Facebook—is built with HTML at its core. Without HTML, there would be no web pages!</p>
+      </section>
+
+      <section class="section">
+        <h3>Learning Objectives</h3>
+        <ul>
+          <li>Understand what HTML is and where it fits in the web stack</li>
+          <li>Know common code editors and quick setup tips</li>
+          <li>Write a basic, valid HTML document with proper doctype, head, and body</li>
+          <li>Learn about HTML tags, elements, and attributes</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Recommended Code Editors</h3>
+        <p>You can write HTML in any text editor, but these make it easier:</p>
+        <ul>
+          <li><strong>VS Code</strong> — Most popular, free, with tons of extensions</li>
+          <li><strong>Sublime Text</strong> — Fast and lightweight</li>
+          <li><strong>Atom</strong> — Open-source and customizable</li>
+          <li><strong>Notepad++</strong> — Simple Windows editor</li>
+        </ul>
+        <p><em>Pro tip:</em> Install the "Live Server" extension in VS Code to see your changes instantly in the browser!</p>
+      </section>
+
+      <section class="section">
+        <h3>Basic Syntax — Your First HTML File</h3>
+        <p>The minimal structure of an HTML document looks like this:</p>
+
+        <pre class="code-block" aria-hidden="false"><code id="sample-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;p&gt;This is a simple HTML document.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h4>Breaking It Down:</h4>
+        <ul>
+          <li><code>&lt;!DOCTYPE html&gt;</code> — Tells the browser this is HTML5</li>
+          <li><code>&lt;html lang="en"&gt;</code> — Root element; "en" specifies English language</li>
+          <li><code>&lt;head&gt;</code> — Contains metadata (not visible on page)</li>
+          <li><code>&lt;meta charset="utf-8"&gt;</code> — Defines character encoding</li>
+          <li><code>&lt;meta name="viewport"...&gt;</code> — Makes page responsive on mobile</li>
+          <li><code>&lt;title&gt;</code> — Text shown in browser tab</li>
+          <li><code>&lt;body&gt;</code> — Contains visible content</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Understanding HTML Tags</h3>
+        <p>HTML uses <strong>tags</strong> to mark up content. Most tags come in pairs:</p>
+        
+        <pre class="code-block"><code>&lt;tagname&gt;Content goes here&lt;/tagname&gt;</code></pre>
+
+        <h4>Common Examples:</h4>
+        <pre class="code-block"><code>&lt;h1&gt;This is a heading&lt;/h1&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;strong&gt;This is bold text&lt;/strong&gt;
+&lt;em&gt;This is italic text&lt;/em&gt;</code></pre>
+
+        <p><strong>Self-closing tags</strong> don't need a closing tag:</p>
+        <pre class="code-block"><code>&lt;img src="photo.jpg" alt="A photo" /&gt;
+&lt;br /&gt;
+&lt;hr /&gt;</code></pre>
+      </section>
+
+      <section class="section">
+        <h3>HTML Attributes</h3>
+        <p>Attributes provide additional information about elements. They're written inside the opening tag:</p>
+
+        <pre class="code-block"><code>&lt;a href="https://google.com" target="_blank"&gt;Visit Google&lt;/a&gt;
+&lt;img src="logo.png" alt="Company Logo" width="200" /&gt;
+&lt;p class="highlight" id="intro"&gt;Important text&lt;/p&gt;</code></pre>
+
+        <h4>Common Attributes:</h4>
+        <ul>
+          <li><code>href</code> — Link destination (for &lt;a&gt; tags)</li>
+          <li><code>src</code> — Source file (for &lt;img&gt;, &lt;script&gt; tags)</li>
+          <li><code>alt</code> — Alternative text (for images)</li>
+          <li><code>class</code> — CSS class name</li>
+          <li><code>id</code> — Unique identifier</li>
+          <li><code>style</code> — Inline CSS styling</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Practical Example: A Simple Webpage</h3>
+        <p>Here's a more complete example combining what we've learned:</p>
+
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;title&gt;My Portfolio&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to My Portfolio&lt;/h1&gt;
+    &lt;p&gt;Hi! I'm learning HTML and this is my first webpage.&lt;/p&gt;
+    
+    &lt;h2&gt;About Me&lt;/h2&gt;
+    &lt;p&gt;I'm a &lt;strong&gt;web developer&lt;/strong&gt; in training.&lt;/p&gt;
+    
+    &lt;h2&gt;My Photo&lt;/h2&gt;
+    &lt;img src="profile.jpg" alt="My profile photo" width="300" /&gt;
+    
+    &lt;h2&gt;Contact&lt;/h2&gt;
+    &lt;p&gt;Email me at: &lt;a href="mailto:hello@example.com"&gt;hello@example.com&lt;/a&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <section class="section">
+        <h3>Semantics & Accessibility</h3>
+        <p>Use semantic tags to make documents easier to read for humans and assistive technologies:</p>
+
+        <pre class="code-block"><code>&lt;header&gt;...&lt;/header&gt;  &lt;!-- Top of page --&gt;
+&lt;nav&gt;...&lt;/nav&gt;        &lt;!-- Navigation links --&gt;
+&lt;main&gt;...&lt;/main&gt;      &lt;!-- Main content --&gt;
+&lt;article&gt;...&lt;/article&gt; &lt;!-- Independent content --&gt;
+&lt;aside&gt;...&lt;/aside&gt;    &lt;!-- Sidebar content --&gt;
+&lt;footer&gt;...&lt;/footer&gt;  &lt;!-- Bottom of page --&gt;</code></pre>
+
+        <h4>Accessibility Best Practices:</h4>
+        <ul>
+          <li>Always add <code>alt</code> text for images</li>
+          <li>Use headings in logical order (h1 → h2 → h3)</li>
+          <li>Use semantic HTML instead of generic divs</li>
+          <li>Provide meaningful link text (avoid "click here")</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Quick Exercises</h3>
+        <ol>
+          <li>Create an HTML file with a page title and a short paragraph about yourself</li>
+          <li>Add an image using the <code>&lt;img&gt;</code> tag and include an <code>alt</code> attribute</li>
+          <li>Try adding a link to an external site using the <code>&lt;a&gt;</code> tag</li>
+          <li>Create a heading hierarchy: h1 for main title, h2 for sections, h3 for subsections</li>
+          <li>Add a list of your favorite hobbies using <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> tags</li>
+        </ol>
+      </section>
+
+      <!-- MCQ QUIZ -->
+      <section class="section mcq">
+        <h3>Mini Quiz — Check Your Understanding</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">1. Which tag defines the most important heading on a page?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;head&gt;</button>
+            <button class="choice">b) &lt;h1&gt;</button>
+            <button class="choice">c) &lt;header&gt;</button>
+            <button class="choice">d) &lt;title&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">2. Which attribute provides alternate text for images?</div>
+          <div class="choices">
+            <button class="choice">a) src</button>
+            <button class="choice">b) title</button>
+            <button class="choice">c) alt</button>
+            <button class="choice">d) caption</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">3. Which tag is used to create a link?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;a&gt;</button>
+            <button class="choice">b) &lt;link&gt;</button>
+            <button class="choice">c) &lt;nav&gt;</button>
+            <button class="choice">d) &lt;button&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">4. What does DOCTYPE tell the browser?</div>
+          <div class="choices">
+            <button class="choice">a) The HTML version being used</button>
+            <button class="choice">b) The page title</button>
+            <button class="choice">c) The character encoding</button>
+            <button class="choice">d) The page author</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">5. Which section contains metadata not visible on the page?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;body&gt;</button>
+            <button class="choice">b) &lt;head&gt;</button>
+            <button class="choice">c) &lt;header&gt;</button>
+            <button class="choice">d) &lt;footer&gt;</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Lesson summary -->
+      <section class="section summary">
+        <h3>Lesson Summary</h3>
+        <p>This lesson introduced HTML as the structure layer of the web. You learned about:</p>
+        <ul>
+          <li>The minimal HTML document skeleton and its components</li>
+          <li>HTML tags, elements, and attributes</li>
+          <li>Semantic elements and accessibility best practices</li>
+          <li>Common code editors for web development</li>
+          <li>How to create your first simple webpage</li>
+        </ul>
+        <p><strong>Remember:</strong> Structure with HTML, style with CSS, and add behavior with JavaScript.</p>
+      </section>
+
+      <section class="section resources">
+        <h3>Additional Resources</h3>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Web Docs — HTML Reference</a></li>
+          <li><a href="https://html.spec.whatwg.org/" target="_blank">HTML Living Standard — Official Specification</a></li>
+          <li><a href="https://www.w3schools.com/html/" target="_blank">W3Schools — HTML Tutorial</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank">VS Code Live Server Extension</a></li>
+        </ul>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="elements.html">HTML Elements & Attributes</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

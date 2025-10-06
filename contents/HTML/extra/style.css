@@ -1,0 +1,1269 @@
+/* ==========================================
+   CSS Variables & Theme Configuration
+   ========================================== */
+   :root {
+    /* Primary Colors */
+    --accent: #5eead4;
+    --accent-2: #7c3aed;
+    --accent-3: #ec4899;
+    --white: #ffffff;
+    --muted: rgba(255, 255, 255, 0.75);
+    --dim: rgba(255, 255, 255, 0.5);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #5eead4 100%);
+    --gradient-accent: linear-gradient(90deg, var(--accent-2), var(--accent));
+    --gradient-glow: linear-gradient(135deg, #00f0ff 0%, #ff2d95 100%);
+    
+    /* Spacing & Layout */
+    --card-radius: 12px;
+    --card-radius-lg: 16px;
+    --container: 980px;
+    --gap-xs: 8px;
+    --gap-sm: 12px;
+    --gap-md: 16px;
+    --gap-lg: 24px;
+    --gap-xl: 32px;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 40px rgba(94, 234, 212, 0.3);
+    --shadow-glow-purple: 0 0 40px rgba(124, 58, 237, 0.3);
+    
+    /* Typography */
+    --font-primary: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  }
+  
+  /* ==========================================
+     Theme Variants
+     ========================================== */
+  body.dark-navy {
+    background: linear-gradient(180deg, #000814, #001133 65%);
+    color: var(--white);
+    position: relative;
+  }
+  
+  body.dark-navy::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: radial-gradient(ellipse at top, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  body.pure-black {
+    background: #000000;
+    color: var(--white);
+    position: relative;
+  }
+  
+  body.pure-black::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: radial-gradient(circle at 20% 50%, rgba(94, 234, 212, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* ==========================================
+     Global Reset & Base Styles
+     ========================================== */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 28px 18px;
+    line-height: 1.6;
+    position: relative;
+  }
+  
+  /* ==========================================
+     Lesson Container
+     ========================================== */
+  .lesson-container {
+    max-width: var(--container);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease backwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ==========================================
+     Lesson Hero Section
+     ========================================== */
+  .lesson-hero {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-md);
+    padding: 24px;
+    border-radius: var(--card-radius-lg);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  
+  .lesson-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%);
+    animation: float 15s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(20px, -20px) rotate(120deg);
+    }
+    66% {
+      transform: translate(-15px, 15px) rotate(240deg);
+    }
+  }
+  
+  .lesson-hero:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .lesson-left {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Badge Styling */
+  .badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(94, 234, 212, 0.2));
+    backdrop-filter: blur(10px);
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  .badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(94, 234, 212, 0.4);
+  }
+  
+  /* Headings in Hero */
+  .lesson-hero h1 {
+    margin: 10px 0 6px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+  
+  .meta {
+    color: var(--muted);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    flex-wrap: wrap;
+  }
+  
+  .meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .meta span::before {
+    content: '•';
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+  
+  .meta span:first-child::before {
+    display: none;
+  }
+  
+  /* ==========================================
+     Button Styles
+     ========================================== */
+  .lesson-actions {
+    display: flex;
+    gap: var(--gap-xs);
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .btn {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .btn:hover::before {
+    opacity: 1;
+  }
+  
+  .btn.primary {
+    background: var(--gradient-accent);
+    color: #000000;
+    border-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn.primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.5), var(--shadow-glow);
+  }
+  
+  .btn:active {
+    transform: translateY(-1px);
+  }
+  
+  /* ==========================================
+     Lesson Card
+     ========================================== */
+  .lesson-card {
+    margin-top: 24px;
+    padding: 24px;
+    border-radius: var(--card-radius-lg);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(255, 255, 255, 0.005) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    animation: fadeInUp 0.6s ease 0.2s backwards;
+  }
+  
+  /* ==========================================
+     Content Sections
+     ========================================== */
+  .section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  
+  .section:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  
+  .section h2 {
+    font-size: clamp(1.4rem, 3vw, 1.75rem);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    position: relative;
+    padding-left: 16px;
+  }
+  
+  .section h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+  }
+  
+  .section h3 {
+    margin-bottom: 12px;
+    margin-top: 20px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: -0.01em;
+  }
+  
+  .section h4 {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+  
+  .section p {
+    line-height: 1.7;
+    margin-bottom: 14px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .section ul,
+  .section ol {
+    line-height: 1.7;
+    margin-left: 24px;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .section li {
+    margin-bottom: 8px;
+    padding-left: 8px;
+  }
+  
+  .section li::marker {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  
+  .small {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  /* Strong/Bold emphasis */
+  strong,
+  b {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  
+  /* ==========================================
+     Inline Code
+     ========================================== */
+  code {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(94, 234, 212, 0.15));
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    color: var(--accent);
+    border: 1px solid rgba(94, 234, 212, 0.2);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+  
+  code:hover {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(94, 234, 212, 0.25));
+    box-shadow: 0 0 12px rgba(94, 234, 212, 0.3);
+  }
+  
+  /* ==========================================
+     Code Block
+     ========================================== */
+  .code-block {
+    position: relative;
+    background: linear-gradient(135deg, #001022, #001830 80%);
+    border: 1px solid rgba(94, 234, 212, 0.15);
+    border-radius: var(--card-radius-lg);
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #e6f6ff;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.1),
+                0 8px 24px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(0, 240, 255, 0.1);
+    transition: all var(--transition-base);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 600px;
+  }
+  
+  /* Code block inside .code-block */
+  .code-block code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    border: none;
+    white-space: pre-wrap;
+  }
+  
+  /* Enhanced hover effect */
+  .code-block:hover,
+  .code-block:focus-within {
+    transform: translateY(-4px) scale(1.005);
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 32px rgba(0, 240, 255, 0.2),
+                0 0 56px rgba(255, 45, 149, 0.1),
+                0 12px 32px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(0, 240, 255, 0.2);
+  }
+  
+  /* Shine animation overlay */
+  .code-block::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      120deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 60%
+    );
+    transform: rotate(25deg);
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    pointer-events: none;
+  }
+  
+  .code-block:hover::before {
+    opacity: 1;
+    animation: shine 2.5s linear infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(25deg);
+    }
+    100% {
+      transform: translateX(100%) rotate(25deg);
+    }
+  }
+  
+  /* Copy button area (if you add JS for copy functionality) */
+  .code-block::after {
+    content: 'Hover to highlight';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+  }
+  
+  .code-block:hover::after {
+    opacity: 1;
+  }
+  
+  /* Custom scrollbar */
+  .code-block::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  
+  .code-block::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    margin: 4px;
+  }
+  
+  .code-block::-webkit-scrollbar-thumb {
+    background: var(--gradient-glow);
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .code-block::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff2d95, #00f0ff);
+    box-shadow: 0 0 12px rgba(255, 45, 149, 0.6);
+  }
+  
+  /* Syntax highlighting */
+  .code-block .keyword {
+    color: #00f0ff;
+    font-weight: 600;
+  }
+  
+  .code-block .string {
+    color: #ffd400;
+  }
+  
+  .code-block .function {
+    color: #ff2d95;
+    font-weight: 600;
+  }
+  
+  .code-block .comment {
+    color: #6b8299;
+    font-style: italic;
+    opacity: 0.8;
+  }
+  
+  .code-block .number {
+    color: #a78bfa;
+  }
+  
+  .code-block .operator {
+    color: #00f0ff;
+  }
+  
+  /* Pure black variant */
+  body.pure-black .code-block {
+    background: linear-gradient(135deg, #0a0a0a, #151515);
+    border-color: rgba(94, 234, 212, 0.2);
+  }
+  
+  /* ==========================================
+     MCQ (Multiple Choice Questions)
+     ========================================== */
+  .mcq {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+    margin: 24px 0;
+  }
+  
+  .mcq .question {
+    padding: 20px;
+    border-radius: var(--card-radius);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+  }
+  
+  .mcq .question:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(94, 234, 212, 0.2);
+  }
+  
+  .q-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .q-title::before {
+    content: '?';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--gradient-accent);
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #000;
+    flex-shrink: 0;
+  }
+  
+  .choices {
+    display: flex;
+    gap: var(--gap-sm);
+    flex-wrap: wrap;
+  }
+  
+  .choice {
+    min-width: 140px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .choice::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+  
+  .choice:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .choice:hover::before {
+    opacity: 1;
+  }
+  
+  .choice.correct {
+    background: rgba(94, 234, 212, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(94, 234, 212, 0.3);
+    animation: correctPulse 0.5s ease;
+  }
+  
+  .choice.correct::after {
+    content: '✓';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  
+  .choice.wrong {
+    background: rgba(255, 82, 82, 0.15);
+    border-color: #ff5252;
+    box-shadow: 0 0 20px rgba(255, 82, 82, 0.3);
+    animation: wrongShake 0.5s ease;
+  }
+  
+  .choice.wrong::after {
+    content: '✗';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ff5252;
+  }
+  
+  @keyframes correctPulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes wrongShake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-8px);
+    }
+    75% {
+      transform: translateX(8px);
+    }
+  }
+  
+  /* ==========================================
+     Summary Section
+     ========================================== */
+  .summary {
+    background: linear-gradient(135deg, rgba(94, 234, 212, 0.05), rgba(94, 234, 212, 0.02));
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: var(--card-radius);
+    margin: 24px 0;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .summary::before {
+    content: '📝';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    opacity: 0.1;
+  }
+  
+  .summary h3 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  
+  .summary p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .summary ul {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  
+  .summary li {
+    margin-bottom: 8px;
+  }
+  
+  /* ==========================================
+     Resources Section
+     ========================================== */
+  .resources {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(124, 58, 237, 0.02));
+    border-left: 4px solid var(--accent-2);
+    padding: 20px 24px;
+    border-radius: var(--card-radius);
+    margin: 24px 0;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .resources::before {
+    content: '🔗';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    opacity: 0.1;
+  }
+  
+  .resources h3 {
+    color: var(--accent-2);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  
+  .resources a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-fast);
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 2px;
+  }
+  
+  .resources a::after {
+    content: '→';
+    margin-left: 6px;
+    opacity: 0;
+    transition: all var(--transition-fast);
+  }
+  
+  .resources a:hover {
+    color: var(--white);
+    border-bottom-color: var(--accent);
+  }
+  
+  .resources a:hover::after {
+    opacity: 1;
+    margin-left: 10px;
+  }
+  
+  /* ==========================================
+     Table Styles
+     ========================================== */
+  .example-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95rem;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.01)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .example-table thead {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(94, 234, 212, 0.2));
+    backdrop-filter: blur(10px);
+  }
+  
+  .example-table thead th {
+    color: #ffffff;
+    text-align: left;
+    padding: 14px 16px;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(94, 234, 212, 0.3);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .example-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    transition: background var(--transition-fast);
+  }
+  
+  .example-table tbody tr {
+    transition: all var(--transition-fast);
+  }
+  
+  .example-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.015);
+  }
+  
+  .example-table tbody tr:hover {
+    background: rgba(94, 234, 212, 0.05);
+    transform: scale(1.01);
+  }
+  
+  .example-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Code cells in tables */
+  .example-table code {
+    font-size: 0.85rem;
+    padding: 2px 6px;
+  }
+  
+  /* ==========================================
+     Table of Contents (TOC)
+     ========================================== */
+  .toc {
+    display: flex;
+    gap: var(--gap-sm);
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 16px 0 24px;
+    padding: 16px 20px;
+    border-radius: var(--card-radius);
+    background: linear-gradient(
+      90deg,
+      rgba(124, 58, 237, 0.05),
+      rgba(94, 234, 212, 0.05)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .toc::before {
+    content: '📑';
+    margin-right: 8px;
+    font-size: 1.2rem;
+  }
+  
+  .toc a {
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .toc a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: -1;
+  }
+  
+  .toc a:hover {
+    transform: translateY(-3px);
+    color: #000;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(94, 234, 212, 0.3);
+  }
+  
+  .toc a:hover::before {
+    opacity: 1;
+  }
+  
+  /* ==========================================
+     Back to Top Link
+     ========================================== */
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 2px solid rgba(94, 234, 212, 0.3);
+    background: rgba(94, 234, 212, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-base);
+    font-weight: 600;
+  }
+  
+  .back-to-top::before {
+    content: '↑';
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  
+  .back-to-top:hover {
+    background: rgba(94, 234, 212, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(94, 234, 212, 0.4);
+    border-color: var(--accent);
+  }
+  
+  /* ==========================================
+     Horizontal Rule
+     ========================================== */
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(94, 234, 212, 0.3),
+      rgba(124, 58, 237, 0.3),
+      transparent
+    );
+    margin: 32px 0;
+    position: relative;
+  }
+  
+  hr::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-primary, #000814);
+    padding: 0 12px;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+  
+  body.pure-black hr::before {
+    background: #000000;
+  }
+  
+  /* ==========================================
+     Footer Section
+     ========================================== */
+  .lesson-footer {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  
+  .lesson-footer .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-lg);
+    flex-wrap: wrap;
+  }
+  
+  .lesson-footer .col {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .lesson-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .lesson-footer a:hover {
+    color: var(--white);
+    border-bottom-color: var(--accent);
+    transform: translateX(4px);
+  }
+  
+  /* ==========================================
+     Accessibility
+     ========================================== */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    background: var(--accent-2);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 10000;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .skip-link:focus {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+  }
+  
+  /* Focus styles for keyboard navigation */
+  *:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  
+  /* ==========================================
+     Utility Classes
+     ========================================== */
+  .highlight {
+    background: linear-gradient(135deg, rgba(94, 234, 212, 0.2), rgba(124, 58, 237, 0.2));
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  .note {
+    padding: 16px 20px;
+    border-left: 4px solid var(--accent-3);
+    background: rgba(236, 72, 153, 0.05);
+    border-radius: var(--card-radius);
+    margin: 16px 0;
+  }
+  
+  .warning {
+    padding: 16px 20px;
+    border-left: 4px solid #fbbf24;
+    background: rgba(251, 191, 36, 0.05);
+    border-radius: var(--card-radius);
+    margin: 16px 0;
+  }
+  
+  .info {
+    padding: 16px 20px;
+    border-left: 4px solid #3b82f6;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: var(--card-radius);
+    margin: 16px 0;
+  }
+  
+  /* ==========================================
+     Responsive Design
+     ========================================== */
+  @media (max-width: 780px) {
+    body {
+      padding: 20px 14px;
+    }
+  
+    .lesson-hero {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+    }
+  
+    .lesson-hero h1 {
+      font-size: 1.5rem;
+    }
+  
+    .lesson-actions {
+      width: 100%;
+    }
+  
+    .btn {
+      flex: 1;
+      text-align: center;
+      justify-content: center;
+    }
+  
+    .choices {
+      flex-direction: column;
+    }
+  
+    .choice {
+      min-width: unset;
+      width: 100%;
+    }
+  
+    .lesson-footer .row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .lesson-footer .col {
+      width: 100%;
+    }
+  
+    .section h2 {
+      font-size: 1.4rem;
+    }
+  
+    .code-block {
+      padding: 16px;
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .example-table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      font-size: 0.85rem;
+    }
+  
+    .toc {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .toc a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  /* ==========================================
+     Print Styles
+     ========================================== */
+  @media print {
+    body {
+      background: white !important;
+      color: black !important;
+    }
+  
+    .lesson-hero,
+    .lesson-actions,
+    .btn,
+    .back-to-top,
+    .skip-link {
+      display: none;
+    }
+  
+    .code-block {
+      border: 1px solid #ccc;
+      box-shadow: none;
+      page-break-inside: avoid;
+    }
+  
+    a {
+      color: black;
+      text-decoration: underline;
+    }
+  }
+  
+  /* ==========================================
+     Reduced Motion
+     ========================================== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }

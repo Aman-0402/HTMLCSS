@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Mastery Quiz - Test Your Knowledge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <!-- Quiz Header -->
+        <header class="quiz-header">
+            <h1>CSS Mastery Quiz</h1>
+            <p class="quiz-subtitle">Test your CSS knowledge with 30 challenging questions</p>
+        </header>
+
+        <!-- Quiz Stats -->
+        <div class="quiz-stats">
+            <div class="stat-item">
+                <span class="stat-label">Question</span>
+                <span class="stat-value" id="currentQuestion">1</span>
+                <span class="stat-total">/ 30</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Score</span>
+                <span class="stat-value" id="currentScore">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Time</span>
+                <span class="stat-value" id="timer">00:00</span>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- Mode Selection -->
+        <div class="mode-selector">
+            <button class="mode-btn active">Quiz Mode</button>
+            <a href="practice.html" class="mode-btn">Practice Mode</a>
+        </div>
+
+        <!-- Start Screen -->
+        <div class="start-screen" id="startScreen">
+            <div class="start-content">
+                <h2>Ready to Test Your CSS Skills?</h2>
+                <p>This quiz contains 30 multiple-choice questions covering various CSS topics including:</p>
+                <ul>
+                    <li>Selectors and Specificity</li>
+                    <li>Box Model and Layout</li>
+                    <li>Flexbox and Grid</li>
+                    <li>Animations and Transitions</li>
+                    <li>Transforms and Filters</li>
+                    <li>Responsive Design</li>
+                </ul>
+                <div class="start-info">
+                    <div class="info-card">
+                        <span class="info-icon">📝</span>
+                        <span>30 Questions</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">⏱️</span>
+                        <span>No Time Limit</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">🏆</span>
+                        <span>Instant Results</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-large" id="startBtn">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz Questions -->
+        <div class="quiz-content" id="quizContent" style="display: none;">
+            <!-- Question Card -->
+            <div class="question-card">
+                <div class="question-number" id="questionNumber">Question 1</div>
+                <div class="question-text" id="questionText"></div>
+                
+                <!-- Options -->
+                <div class="options-container" id="optionsContainer"></div>
+
+                <!-- Navigation Buttons -->
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" disabled>Previous</button>
+                    <button class="btn btn-primary" id="nextBtn">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="results-screen" id="resultsScreen" style="display: none;">
+            <div class="results-content">
+                <div class="results-icon" id="resultsIcon">🎉</div>
+                <h2 id="resultsTitle">Quiz Completed!</h2>
+                <div class="score-display">
+                    <div class="final-score" id="finalScore">0/30</div>
+                    <div class="percentage" id="percentage">0%</div>
+                </div>
+                
+                <div class="results-message" id="resultsMessage"></div>
+                
+                <div class="results-stats">
+                    <div class="result-stat">
+                        <span class="result-label">Correct Answers</span>
+                        <span class="result-value correct" id="correctAnswers">0</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-label">Wrong Answers</span>
+                        <span class="result-value wrong" id="wrongAnswers">0</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-label">Time Taken</span>
+                        <span class="result-value" id="timeTaken">00:00</span>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn btn-primary btn-large" id="retryBtn">Retry Quiz</button>
+                    <button class="btn btn-secondary btn-large" id="reviewBtn">Review Answers</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Screen -->
+        <div class="review-screen" id="reviewScreen" style="display: none;">
+            <div class="review-header">
+                <h2>Answer Review</h2>
+                <button class="btn btn-secondary" id="backToResultsBtn">Back to Results</button>
+            </div>
+            <div class="review-content" id="reviewContent"></div>
+        </div>
+        <center>
+            <a href="../../index.html" class="back-btn">← Back to Home</a>
+          </center>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

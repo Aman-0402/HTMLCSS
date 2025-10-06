@@ -1,0 +1,688 @@
+/* ==========================================
+   CSS Variables & Root Styles
+   ========================================== */
+   :root {
+    /* Color Palette */
+    --primary-color: #667eea;
+    --primary-dark: #5568d3;
+    --primary-light: #7c8ff0;
+    --secondary-color: #764ba2;
+    --accent-color: #f093fb;
+    
+    /* Gradient Colors */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-card: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    --gradient-hover: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #151932;
+    --bg-card: #1a1f3a;
+    --bg-card-hover: #1f2544;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --text-muted: #718096;
+    
+    /* Border & Shadow */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.3);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Typography */
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+  }
+  
+  /* ==========================================
+     Global Reset & Base Styles
+     ========================================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+  
+  body {
+    font-family: var(--font-primary);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* ==========================================
+     Skip Link for Accessibility
+     ========================================== */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-decoration: none;
+    border-radius: 0 0 var(--radius-sm) 0;
+    font-weight: var(--font-weight-semibold);
+    z-index: 1000;
+    transition: top var(--transition-fast);
+  }
+  
+  .skip-link:focus {
+    top: 0;
+  }
+  
+  /* ==========================================
+     Utility Classes
+     ========================================== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+  
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* ==========================================
+     Header Styles
+     ========================================== */
+  .ebook-header {
+    background: var(--gradient-primary);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ebook-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  .ebook-header::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    animation: float 15s ease-in-out infinite reverse;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(30px, -30px) rotate(120deg);
+    }
+    66% {
+      transform: translate(-20px, 20px) rotate(240deg);
+    }
+  }
+  
+  .ebook-header .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .ebook-header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .course-badge {
+    font-size: 2.5rem;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-lg);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  /* Progress Bar */
+  .progress-container {
+    max-width: 600px;
+    margin: var(--spacing-lg) auto 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-xl);
+    padding: 4px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .progress-bar {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    height: 32px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .progress-text {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-dark);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .progress-bar[aria-valuenow]:not([aria-valuenow="0"]) .progress-text {
+    opacity: 1;
+  }
+  
+  /* ==========================================
+     Session Intro
+     ========================================== */
+  .session-intro {
+    background: var(--bg-secondary);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .session-heading {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .session-description {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* ==========================================
+     Main Content Area
+     ========================================== */
+  main {
+    padding: var(--spacing-2xl) 0;
+    min-height: calc(100vh - 400px);
+  }
+  
+  /* ==========================================
+     Lesson Groups
+     ========================================== */
+  .lesson-group {
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .lesson-group:last-child {
+    margin-bottom: 0;
+  }
+  
+  .group-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-primary);
+    padding: 0 var(--spacing-md);
+  }
+  
+  .group-icon {
+    font-size: 1.75rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+  
+  /* ==========================================
+     Cards Grid
+     ========================================== */
+  .cards-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  /* ==========================================
+     Individual Cards
+     ========================================== */
+  .card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .card:focus-within {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+  }
+  
+  /* Card Glow Effect */
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-card);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .card:hover .card-glow {
+    opacity: 1;
+  }
+  
+  /* Card Inner Content */
+  .card-inner {
+    position: relative;
+    z-index: 2;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: background var(--transition-base), border-color var(--transition-base);
+  }
+  
+  .card:hover .card-inner {
+    background: var(--bg-card-hover);
+    border-color: rgba(102, 126, 234, 0.3);
+  }
+  
+  /* Card Top Section */
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .card-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    transition: transform var(--transition-base);
+  }
+  
+  .card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .lesson-number {
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* Card Title */
+  .card-title {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+  }
+  
+  .card:hover .card-title {
+    color: var(--primary-light);
+  }
+  
+  /* Card Text */
+  .card-text {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* Card Footer */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+  }
+  
+  .card-cta {
+    color: var(--primary-light);
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.9375rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: gap var(--transition-fast), color var(--transition-fast);
+  }
+  
+  .card:hover .card-cta {
+    gap: 0.625rem;
+    color: var(--accent-color);
+  }
+  
+  /* Difficulty Badges */
+  .card-meta {
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+  
+  .difficulty {
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .difficulty.beginner {
+    background: rgba(72, 187, 120, 0.2);
+    color: #68d391;
+    border: 1px solid rgba(72, 187, 120, 0.3);
+  }
+  
+  .difficulty.intermediate {
+    background: rgba(237, 137, 54, 0.2);
+    color: #f6ad55;
+    border: 1px solid rgba(237, 137, 54, 0.3);
+  }
+  
+  .difficulty.advanced {
+    background: rgba(245, 101, 101, 0.2);
+    color: #fc8181;
+    border: 1px solid rgba(245, 101, 101, 0.3);
+  }
+  
+  /* Completed State */
+  .card[data-completed="true"] .card-inner {
+    background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%);
+    border-color: rgba(72, 187, 120, 0.3);
+  }
+  
+  .card[data-completed="true"] .card-inner::after {
+    content: '✓';
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: #48bb78;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+    font-size: 1.125rem;
+    box-shadow: 0 2px 8px rgba(72, 187, 120, 0.4);
+  }
+  
+  /* ==========================================
+     Footer Styles
+     ========================================== */
+  .ebook-footer {
+    background: var(--bg-secondary);
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+  }
+  
+  .ebook-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-decoration: none;
+    color: var(--primary-light);
+    font-weight: var(--font-weight-semibold);
+    font-size: 1.0625rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    background: transparent;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .back-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: -1;
+  }
+  
+  .back-button:hover,
+  .back-button:focus {
+    color: white;
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+  }
+  
+  .back-button:hover::before,
+  .back-button:focus::before {
+    opacity: 1;
+  }
+  
+  .footer-info {
+    margin-top: var(--spacing-sm);
+  }
+  
+  .footer-text {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+  
+  /* ==========================================
+     Responsive Design
+     ========================================== */
+  @media (max-width: 768px) {
+    .cards-wrap {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+    
+    .ebook-header {
+      padding: var(--spacing-lg) 0;
+    }
+    
+    main {
+      padding: var(--spacing-lg) 0;
+    }
+    
+    .lesson-group {
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .group-title {
+      font-size: 1.5rem;
+      padding: 0 var(--spacing-sm);
+    }
+    
+    .cards-wrap {
+      padding: 0 var(--spacing-sm);
+    }
+    
+    .session-intro {
+      padding: var(--spacing-lg) 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    :root {
+      font-size: 14px;
+    }
+    
+    .card-inner {
+      padding: var(--spacing-md);
+    }
+    
+    .card-icon {
+      font-size: 2rem;
+    }
+    
+    .lesson-number {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+  
+  /* ==========================================
+     Print Styles
+     ========================================== */
+  @media print {
+    body {
+      background: white;
+      color: black;
+    }
+    
+    .ebook-header,
+    .ebook-footer,
+    .card-glow,
+    .card-cta {
+      display: none;
+    }
+    
+    .card {
+      page-break-inside: avoid;
+      border: 1px solid #ccc;
+      box-shadow: none;
+    }
+  }
+  
+  /* ==========================================
+     Animations & Keyframes
+     ========================================== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .card {
+    animation: fadeInUp 0.6s ease backwards;
+  }
+  
+  .card:nth-child(1) { animation-delay: 0.1s; }
+  .card:nth-child(2) { animation-delay: 0.2s; }
+  .card:nth-child(3) { animation-delay: 0.3s; }
+  .card:nth-child(4) { animation-delay: 0.1s; }
+  .card:nth-child(5) { animation-delay: 0.2s; }
+  .card:nth-child(6) { animation-delay: 0.3s; }
+  
+  /* ==========================================
+     Reduced Motion
+     ========================================== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }

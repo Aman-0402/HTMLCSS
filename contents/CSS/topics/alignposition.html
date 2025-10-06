@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Align & Position Enhancements</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>📐 CSS Align & Position Enhancements</h1>
+            <p class="topic-subtitle">Master modern alignment with Flexbox and Grid for powerful layouts</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="texteffects.html" class="nav-btn btn-back">← Previous: Text Effects</a>
+            <a href="pseudoclasses.html" class="nav-btn btn-next">Next Topic: Pseudo-classes →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 Modern Layout Systems</h2>
+            <p>CSS3 introduced <strong>Flexbox</strong> and <strong>Grid</strong>, revolutionizing how we create layouts. These powerful tools make alignment, distribution, and responsive design much easier than traditional methods.</p>
+            
+            <div class="info-box">
+                <h3>Modern Layout Benefits:</h3>
+                <ul>
+                    <li>✅ Easy vertical and horizontal alignment</li>
+                    <li>✅ Responsive layouts without media queries</li>
+                    <li>✅ Equal height columns automatically</li>
+                    <li>✅ Flexible item ordering</li>
+                    <li>✅ Space distribution between items</li>
+                    <li>✅ Two-dimensional layouts with Grid</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Flexbox Basics Section -->
+        <section class="content-section">
+            <h2>📦 Flexbox Basics</h2>
+            <p>Flexbox is a one-dimensional layout system for arranging items in rows or columns.</p>
+            
+            <h3>Creating a Flex Container:</h3>
+            <div class="code-block">
+                <pre><code>/* Make element a flex container */
+.container {
+    display: flex;
+}
+
+/* Flex direction */
+flex-direction: row;           /* Default: left to right */
+flex-direction: row-reverse;   /* Right to left */
+flex-direction: column;        /* Top to bottom */
+flex-direction: column-reverse; /* Bottom to top */</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Flex Direction Examples:</h3>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div>
+                        <strong>Row (default):</strong>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <div style="background: #667eea; color: white; padding: 20px; flex: 1; text-align: center;">1</div>
+                            <div style="background: #764ba2; color: white; padding: 20px; flex: 1; text-align: center;">2</div>
+                            <div style="background: #f093fb; color: white; padding: 20px; flex: 1; text-align: center;">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <strong>Column:</strong>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px; width: 200px;">
+                            <div style="background: #667eea; color: white; padding: 20px; text-align: center;">1</div>
+                            <div style="background: #764ba2; color: white; padding: 20px; text-align: center;">2</div>
+                            <div style="background: #f093fb; color: white; padding: 20px; text-align: center;">3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Justify Content Section -->
+        <section class="content-section">
+            <h2>↔️ Justify Content (Main Axis)</h2>
+            <p>Controls alignment along the main axis (horizontal in row, vertical in column).</p>
+            
+            <div class="code-block">
+                <pre><code>/* Main axis alignment */
+justify-content: flex-start;    /* Start (default) */
+justify-content: flex-end;      /* End */
+justify-content: center;        /* Center */
+justify-content: space-between; /* Equal space between */
+justify-content: space-around;  /* Equal space around */
+justify-content: space-evenly;  /* Equal space everywhere */</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Justify Content Examples:</h3>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div>
+                        <strong>center:</strong>
+                        <div style="display: flex; justify-content: center; gap: 10px; background: #f0f0f0; padding: 10px; margin-top: 5px;">
+                            <div style="background: #667eea; color: white; padding: 15px; width: 60px; text-align: center;">1</div>
+                            <div style="background: #764ba2; color: white; padding: 15px; width: 60px; text-align: center;">2</div>
+                            <div style="background: #f093fb; color: white; padding: 15px; width: 60px; text-align: center;">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <strong>space-between:</strong>
+                        <div style="display: flex; justify-content: space-between; gap: 10px; background: #f0f0f0; padding: 10px; margin-top: 5px;">
+                            <div style="background: #667eea; color: white; padding: 15px; width: 60px; text-align: center;">1</div>
+                            <div style="background: #764ba2; color: white; padding: 15px; width: 60px; text-align: center;">2</div>
+                            <div style="background: #f093fb; color: white; padding: 15px; width: 60px; text-align: center;">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <strong>space-evenly:</strong>
+                        <div style="display: flex; justify-content: space-evenly; gap: 10px; background: #f0f0f0; padding: 10px; margin-top: 5px;">
+                            <div style="background: #667eea; color: white; padding: 15px; width: 60px; text-align: center;">1</div>
+                            <div style="background: #764ba2; color: white; padding: 15px; width: 60px; text-align: center;">2</div>
+                            <div style="background: #f093fb; color: white; padding: 15px; width: 60px; text-align: center;">3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Align Items Section -->
+        <section class="content-section">
+            <h2>↕️ Align Items (Cross Axis)</h2>
+            <p>Controls alignment along the cross axis (vertical in row, horizontal in column).</p>
+            
+            <div class="code-block">
+                <pre><code>/* Cross axis alignment */
+align-items: stretch;      /* Default: fill container */
+align-items: flex-start;   /* Top (in row) */
+align-items: flex-end;     /* Bottom (in row) */
+align-items: center;       /* Center */
+align-items: baseline;     /* Align text baselines */</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Align Items Examples:</h3>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div>
+                        <strong>center:</strong>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #f0f0f0; padding: 10px; height: 120px; margin-top: 5px;">
+                            <div style="background: #667eea; color: white; padding: 15px; text-align: center;">Small</div>
+                            <div style="background: #764ba2; color: white; padding: 25px; text-align: center;">Medium</div>
+                            <div style="background: #f093fb; color: white; padding: 15px; text-align: center;">Small</div>
+                        </div>
+                    </div>
+                    <div>
+                        <strong>flex-start:</strong>
+                        <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0f0f0; padding: 10px; height: 120px; margin-top: 5px;">
+                            <div style="background: #667eea; color: white; padding: 15px; text-align: center;">1</div>
+                            <div style="background: #764ba2; color: white; padding: 25px; text-align: center;">2</div>
+                            <div style="background: #f093fb; color: white; padding: 15px; text-align: center;">3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perfect Centering Section -->
+        <section class="content-section">
+            <h2>🎯 Perfect Centering</h2>
+            <p>Combine justify-content and align-items to center elements perfectly.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Perfect centering with Flexbox */
+.center-container {
+    display: flex;
+    justify-content: center;  /* Horizontal */
+    align-items: center;      /* Vertical */
+    height: 100vh;            /* Full viewport height */
+}
+
+/* Center multiple items */
+.center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;   /* Stack vertically */
+    gap: 20px;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Perfect Center Example:</h3>
+                <div style="display: flex; justify-content: center; align-items: center; height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px;">
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <h3 style="margin: 0; color: #667eea;">Perfectly Centered!</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flex Wrap Section -->
+        <section class="content-section">
+            <h2>🔄 Flex Wrap</h2>
+            <p>Controls whether flex items wrap to new lines.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Wrapping behavior */
+flex-wrap: nowrap;    /* Default: single line */
+flex-wrap: wrap;      /* Wrap to multiple lines */
+flex-wrap: wrap-reverse; /* Wrap in reverse */
+
+/* Shorthand for direction + wrap */
+flex-flow: row wrap;  /* direction + wrap */</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Flex Wrap Example:</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; background: #f0f0f0; padding: 15px; border-radius: 8px;">
+                    <div style="background: #667eea; color: white; padding: 20px; min-width: 150px; text-align: center;">Item 1</div>
+                    <div style="background: #764ba2; color: white; padding: 20px; min-width: 150px; text-align: center;">Item 2</div>
+                    <div style="background: #f093fb; color: white; padding: 20px; min-width: 150px; text-align: center;">Item 3</div>
+                    <div style="background: #4facfe; color: white; padding: 20px; min-width: 150px; text-align: center;">Item 4</div>
+                    <div style="background: #43e97b; color: white; padding: 20px; min-width: 150px; text-align: center;">Item 5</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gap Property Section -->
+        <section class="content-section">
+            <h2>📏 Gap Property</h2>
+            <p>Modern way to add spacing between flex/grid items.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Gap between items */
+.container {
+    display: flex;
+    gap: 20px;           /* Equal gap */
+    gap: 20px 10px;      /* row-gap column-gap */
+}
+
+/* Individual gaps */
+row-gap: 20px;
+column-gap: 10px;</code></pre>
+            </div>
+        </section>
+
+        <!-- CSS Grid Basics Section -->
+        <section class="content-section">
+            <h2>🔲 CSS Grid Basics</h2>
+            <p>Grid is a two-dimensional layout system for rows and columns.</p>
+            
+            <h3>Creating a Grid Container:</h3>
+            <div class="code-block">
+                <pre><code>/* Basic grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 100px 100px;
+    gap: 20px;
+}
+
+/* Fractional units (fr) */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* Equal columns */
+    grid-template-columns: 2fr 1fr;      /* 2:1 ratio */
+}
+
+/* Repeat notation */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 equal columns */
+    grid-template-columns: repeat(4, 200px); /* 4 x 200px columns */
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Grid Layout Example:</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+                    <div style="background: #667eea; color: white; padding: 30px; text-align: center; border-radius: 8px;">1</div>
+                    <div style="background: #764ba2; color: white; padding: 30px; text-align: center; border-radius: 8px;">2</div>
+                    <div style="background: #f093fb; color: white; padding: 30px; text-align: center; border-radius: 8px;">3</div>
+                    <div style="background: #4facfe; color: white; padding: 30px; text-align: center; border-radius: 8px;">4</div>
+                    <div style="background: #43e97b; color: white; padding: 30px; text-align: center; border-radius: 8px;">5</div>
+                    <div style="background: #fa709a; color: white; padding: 30px; text-align: center; border-radius: 8px;">6</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Auto Fit & Auto Fill Section -->
+        <section class="content-section">
+            <h2>📱 Responsive Grid (auto-fit & auto-fill)</h2>
+            <p>Create responsive grids without media queries.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Responsive grid with auto-fit */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* auto-fill vs auto-fit:
+   - auto-fill: Creates empty tracks
+   - auto-fit: Collapses empty tracks
+*/
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Grid Alignment Section -->
+        <section class="content-section">
+            <h2>🎯 Grid Alignment</h2>
+            <p>Grid uses similar alignment properties to Flexbox.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Align entire grid */
+justify-content: center;   /* Horizontal */
+align-content: center;     /* Vertical */
+
+/* Align items within cells */
+justify-items: center;     /* Horizontal */
+align-items: center;       /* Vertical */
+
+/* Align individual item */
+.item {
+    justify-self: center;  /* Horizontal */
+    align-self: center;    /* Vertical */
+}
+
+/* Shorthand for both */
+place-items: center;       /* align-items + justify-items */
+place-content: center;     /* align-content + justify-content */
+place-self: center;        /* align-self + justify-self */</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+            
+            <h3>Example 1: Navigation Bar (Flexbox)</h3>
+            <div class="code-block">
+                <pre><code>nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Card Grid (Grid)</h3>
+            <div class="code-block">
+                <pre><code>.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Hero Section (Flexbox)</h3>
+            <div class="code-block">
+                <pre><code>.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    gap: 2rem;
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Dashboard Layout (Grid)</h3>
+            <div class="code-block">
+                <pre><code>.dashboard {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.sidebar {
+    grid-column: 1;
+    grid-row: 1 / -1;  /* Span all rows */
+}
+
+.header {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.main {
+    grid-column: 2;
+    grid-row: 2;
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Centered Modal (Flexbox)</h3>
+            <div class="code-block">
+                <pre><code>.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Flexbox vs Grid Section -->
+        <section class="content-section">
+            <h2>🆚 Flexbox vs Grid - When to Use What?</h2>
+            
+            <div class="example-box">
+                <h3>Use Flexbox For:</h3>
+                <ul>
+                    <li>✅ One-dimensional layouts (row OR column)</li>
+                    <li>✅ Navigation bars and menus</li>
+                    <li>✅ Aligning items in a single direction</li>
+                    <li>✅ Distributing space between items</li>
+                    <li>✅ When content determines layout</li>
+                    <li>✅ Simple, flexible arrangements</li>
+                </ul>
+            </div>
+
+            <div class="example-box" style="margin-top: 20px;">
+                <h3>Use Grid For:</h3>
+                <ul>
+                    <li>✅ Two-dimensional layouts (rows AND columns)</li>
+                    <li>✅ Page layouts and complex structures</li>
+                    <li>✅ Card grids and galleries</li>
+                    <li>✅ Dashboard layouts</li>
+                    <li>✅ When layout determines content placement</li>
+                    <li>✅ Overlapping elements</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Flexbox - Centered Content:</h3>
+                    <div style="display: flex; justify-content: center; align-items: center; height: 150px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; margin-bottom: 30px;">
+                        <div style="background: white; padding: 20px; border-radius: 8px;">
+                            <strong>Centered with Flexbox</strong>
+                        </div>
+                    </div>
+
+                    <h3>Grid - Card Layout:</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; text-align: center;">Card 1</div>
+                        <div style="background: #f3e5f5; padding: 20px; border-radius: 8px; text-align: center;">Card 2</div>
+                        <div style="background: #fff3e0; padding: 20px; border-radius: 8px; text-align: center;">Card 3</div>
+                        <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; text-align: center;">Card 4</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: Which property centers items horizontally in Flexbox (row)?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> align-items</label>
+                        <label><input type="radio" name="q1" value="b"> justify-content</label>
+                        <label><input type="radio" name="q1" value="c"> align-content</label>
+                        <label><input type="radio" name="q1" value="d"> center-items</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: What does "fr" unit stand for in CSS Grid?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> From</label>
+                        <label><input type="radio" name="q2" value="b"> Fraction</label>
+                        <label><input type="radio" name="q2" value="c"> Frame</label>
+                        <label><input type="radio" name="q2" value="d"> Flexible ratio</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: How do you perfectly center an element with Flexbox?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> justify-content: center only</label>
+                        <label><input type="radio" name="q3" value="b"> align-items: center only</label>
+                        <label><input type="radio" name="q3" value="c"> justify-content: center AND align-items: center</label>
+                        <label><input type="radio" name="q3" value="d"> place-items: stretch</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: Which creates a responsive grid without media queries?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> grid-template-columns: 1fr 1fr 1fr</label>
+                        <label><input type="radio" name="q4" value="b"> grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))</label>
+                        <label><input type="radio" name="q4" value="c"> grid-template-columns: 33%</label>
+                        <label><input type="radio" name="q4" value="d"> grid-auto-flow: dense</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: When should you use Flexbox over Grid?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> For two-dimensional layouts</label>
+                        <label><input type="radio" name="q5" value="b"> For one-dimensional layouts</label>
+                        <label><input type="radio" name="q5" value="c"> For complex page layouts</label>
+                        <label><input type="radio" name="q5" value="d"> Never use Flexbox</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a flex container that centers content both horizontally and vertically with 100vh height.</li>
+                    <li>Build a navigation bar using Flexbox with logo on left and menu items on right.</li>
+                    <li>Create a responsive grid layout with 3 columns that adapts to smaller screens (use auto-fit and minmax).</li>
+                    <li>Make a flex row with space-between alignment and wrap behavior for mobile.</li>
+                    <li>Design a dashboard layout using Grid with sidebar (250px), header, and main content area.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>Flexbox:</strong> One-dimensional layout (row OR column)</li>
+                    <li><strong>display: flex:</strong> Creates flex container</li>
+                    <li><strong>justify-content:</strong> Main axis alignment (horizontal in row)</li>
+                    <li><strong>align-items:</strong> Cross axis alignment (vertical in row)</li>
+                    <li><strong>Perfect center:</strong> justify-content: center + align-items: center</li>
+                    <li><strong>gap:</strong> Modern spacing between items</li>
+                    <li><strong>CSS Grid:</strong> Two-dimensional layout (rows AND columns)</li>
+                    <li><strong>display: grid:</strong> Creates grid container</li>
+                    <li><strong>grid-template-columns:</strong> Define column structure</li>
+                    <li><strong>fr unit:</strong> Fractional unit for flexible sizing</li>
+                    <li><strong>repeat():</strong> Repeat pattern (e.g., repeat(3, 1fr))</li>
+                    <li><strong>auto-fit/auto-fill:</strong> Responsive grids without media queries</li>
+                    <li><strong>Use Flexbox:</strong> For navigation, rows of items, simple layouts</li>
+                    <li><strong>Use Grid:</strong> For card grids, page layouts, complex structures</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="texteffects.html" class="nav-btn btn-back">← Previous: Text Effects</a>
+            <a href="pseudoclasses.html" class="nav-btn btn-next">Next Topic: Pseudo-classes →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

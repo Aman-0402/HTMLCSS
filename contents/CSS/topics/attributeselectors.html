@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Attribute Selectors & Media Types</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>🔍 CSS Attribute Selectors & Media Types</h1>
+            <p class="topic-subtitle">Select elements by attributes and create responsive designs with media queries</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="pseudoclasses.html" class="nav-btn btn-back">← Previous: Pseudo-classes</a>
+            <a href="cssimages.html" class="nav-btn btn-next">Next Topic: CSS Images →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 What are Attribute Selectors?</h2>
+            <p><strong>Attribute selectors</strong> allow you to select elements based on their attributes and attribute values. They provide powerful targeting without needing classes or IDs.</p>
+            
+            <div class="info-box">
+                <h3>Why Use Attribute Selectors?</h3>
+                <ul>
+                    <li>✅ Target elements by data attributes</li>
+                    <li>✅ Style forms based on input types</li>
+                    <li>✅ Select links by URL patterns</li>
+                    <li>✅ Target elements without adding classes</li>
+                    <li>✅ Create flexible, maintainable selectors</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Basic Attribute Selectors Section -->
+        <section class="content-section">
+            <h2>📝 Basic Attribute Selectors</h2>
+            
+            <h3>1. [attribute] - Has Attribute</h3>
+            <div class="code-block">
+                <pre><code>/* Select elements with specific attribute */
+a[target] {
+    background: yellow;
+}
+
+input[required] {
+    border-left: 3px solid red;
+}
+
+img[alt] {
+    border: 2px solid green;
+}</code></pre>
+            </div>
+
+            <h3>2. [attribute="value"] - Exact Match</h3>
+            <div class="code-block">
+                <pre><code>/* Exact value match */
+input[type="text"] {
+    border: 1px solid blue;
+}
+
+a[target="_blank"] {
+    color: red;
+}
+
+button[type="submit"] {
+    background: green;
+    color: white;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Exact Match Example:</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" placeholder="Text input" style="padding: 10px; border: 2px solid blue; border-radius: 5px;">
+                    <input type="email" placeholder="Email input" style="padding: 10px; border: 2px solid #ddd; border-radius: 5px;">
+                    <input type="password" placeholder="Password input" style="padding: 10px; border: 2px solid #ddd; border-radius: 5px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- String Matching Selectors Section -->
+        <section class="content-section">
+            <h2>🔤 String Matching Attribute Selectors</h2>
+            
+            <h3>3. [attribute^="value"] - Starts With</h3>
+            <div class="code-block">
+                <pre><code>/* Starts with value */
+a[href^="https"] {
+    color: green;
+    font-weight: bold;
+}
+
+a[href^="http://"] {
+    color: blue;
+}
+
+a[href^="mailto:"] {
+    color: orange;
+}
+
+/* Class names starting with btn- */
+[class^="btn-"] {
+    padding: 10px 20px;
+    border-radius: 5px;
+}</code></pre>
+            </div>
+
+            <h3>4. [attribute$="value"] - Ends With</h3>
+            <div class="code-block">
+                <pre><code>/* Ends with value */
+a[href$=".pdf"] {
+    color: red;
+    font-weight: bold;
+}
+
+a[href$=".pdf"]::after {
+    content: " 📄";
+}
+
+a[href$=".zip"]::after {
+    content: " 📦";
+}
+
+img[src$=".jpg"],
+img[src$=".png"] {
+    border: 2px solid gray;
+}</code></pre>
+            </div>
+
+            <h3>5. [attribute*="value"] - Contains</h3>
+            <div class="code-block">
+                <pre><code>/* Contains value anywhere */
+a[href*="google"] {
+    color: #4285f4;
+}
+
+a[href*="github"] {
+    color: #333;
+}
+
+[class*="icon"] {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+input[name*="email"] {
+    background: url('email-icon.png') no-repeat right;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>String Matching Examples:</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                    <a href="https://example.com" style="color: green; font-weight: bold; text-decoration: none;">Secure Link (starts with https)</a>
+                    <a href="document.pdf" style="color: red; font-weight: bold; text-decoration: none;">PDF File (ends with .pdf) 📄</a>
+                    <a href="https://google.com" style="color: #4285f4; font-weight: bold; text-decoration: none;">Google Link (contains google)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Space and Hyphen Selectors Section -->
+        <section class="content-section">
+            <h2>🔧 Space and Hyphen Selectors</h2>
+            
+            <h3>6. [attribute~="value"] - Space-Separated Word</h3>
+            <div class="code-block">
+                <pre><code>/* Matches space-separated word */
+[class~="button"] {
+    padding: 10px 20px;
+}
+
+/* Works with multiple classes */
+/* class="primary button large" */
+[class~="button"] {
+    /* Matches */
+}</code></pre>
+            </div>
+
+            <h3>7. [attribute|="value"] - Hyphen-Separated Start</h3>
+            <div class="code-block">
+                <pre><code>/* Matches exact value or value- */
+[lang|="en"] {
+    color: blue;
+}
+
+/* Matches: lang="en" or lang="en-US" or lang="en-GB" */</code></pre>
+            </div>
+        </section>
+
+        <!-- Case Sensitivity Section -->
+        <section class="content-section">
+            <h2>🔠 Case Sensitivity</h2>
+            <p>Add <code>i</code> flag for case-insensitive matching.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Case-insensitive matching */
+a[href$=".PDF" i] {
+    color: red;
+}
+
+/* Matches: .pdf, .PDF, .Pdf, .pDF, etc. */
+
+input[type="email" i] {
+    border-color: blue;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Data Attributes Section -->
+        <section class="content-section">
+            <h2>📊 Data Attributes</h2>
+            <p>Custom data attributes are perfect for JavaScript interaction and CSS styling.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Select by data attributes */
+[data-status="active"] {
+    background: green;
+    color: white;
+}
+
+[data-status="pending"] {
+    background: orange;
+    color: white;
+}
+
+[data-status="inactive"] {
+    background: gray;
+    color: white;
+}
+
+/* Use in tooltips */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: #333;
+    color: white;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Data Attribute Example:</h3>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span style="background: green; color: white; padding: 8px 16px; border-radius: 5px;">Active</span>
+                    <span style="background: orange; color: white; padding: 8px 16px; border-radius: 5px;">Pending</span>
+                    <span style="background: gray; color: white; padding: 8px 16px; border-radius: 5px;">Inactive</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Attribute Selector Examples</h2>
+            
+            <h3>Example 1: Style External Links</h3>
+            <div class="code-block">
+                <pre><code>/* Style external links differently */
+a[href^="http"]::after {
+    content: " ↗";
+    font-size: 0.8em;
+}
+
+/* Internal links (no icon) */
+a[href^="/"],
+a[href^="#"] {
+    /* No icon */
+}</code></pre>
+            </div>
+
+            <h3>Example 2: File Type Icons</h3>
+            <div class="code-block">
+                <pre><code>/* Add icons based on file type */
+a[href$=".pdf"]::before {
+    content: "📄 ";
+}
+
+a[href$=".doc"]::before,
+a[href$=".docx"]::before {
+    content: "📝 ";
+}
+
+a[href$=".zip"]::before {
+    content: "📦 ";
+}
+
+a[href$=".mp3"]::before,
+a[href$=".wav"]::before {
+    content: "🎵 ";
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Required Form Fields</h3>
+            <div class="code-block">
+                <pre><code>/* Style required inputs */
+input[required] {
+    border-left: 3px solid #e74c3c;
+}
+
+/* Add asterisk to required labels */
+label[for] input[required] ~ label::after,
+input[required] + label::after {
+    content: " *";
+    color: red;
+    font-weight: bold;
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Button States</h3>
+            <div class="code-block">
+                <pre><code>/* Different button types */
+button[type="submit"] {
+    background: #27ae60;
+    color: white;
+}
+
+button[type="reset"] {
+    background: #e74c3c;
+    color: white;
+}
+
+button[disabled] {
+    background: #95a5a6;
+    cursor: not-allowed;
+    opacity: 0.6;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Media Queries Section -->
+        <section class="content-section">
+            <h2>📱 Media Queries</h2>
+            <p>Media queries enable responsive design by applying styles based on device characteristics.</p>
+            
+            <h3>Basic Syntax:</h3>
+            <div class="code-block">
+                <pre><code>/* Basic media query */
+@media screen and (max-width: 768px) {
+    /* Styles for screens 768px and smaller */
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Common Breakpoints:</h3>
+            <div class="code-block">
+                <pre><code>/* Mobile First Approach */
+
+/* Extra Small (phones, less than 576px) */
+/* Default styles go here */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container { max-width: 540px; }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container { max-width: 720px; }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container { max-width: 960px; }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container { max-width: 1140px; }
+}</code></pre>
+            </div>
+
+            <h3>Desktop First Approach:</h3>
+            <div class="code-block">
+                <pre><code>/* Desktop styles by default */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .sidebar { width: 200px; }
+}
+
+/* Mobile (max 768px) */
+@media (max-width: 768px) {
+    .sidebar { 
+        width: 100%;
+        position: static;
+    }
+}
+
+/* Small mobile (max 480px) */
+@media (max-width: 480px) {
+    .container { padding: 10px; }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Media Features Section -->
+        <section class="content-section">
+            <h2>🔧 Media Features</h2>
+            
+            <h3>Width and Height:</h3>
+            <div class="code-block">
+                <pre><code>/* Width queries */
+@media (min-width: 600px) { }
+@media (max-width: 1200px) { }
+@media (width: 800px) { }
+
+/* Height queries */
+@media (min-height: 600px) { }
+@media (max-height: 800px) { }</code></pre>
+            </div>
+
+            <h3>Orientation:</h3>
+            <div class="code-block">
+                <pre><code>/* Portrait (height > width) */
+@media (orientation: portrait) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Landscape (width > height) */
+@media (orientation: landscape) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}</code></pre>
+            </div>
+
+            <h3>Aspect Ratio:</h3>
+            <div class="code-block">
+                <pre><code>/* Specific aspect ratio */
+@media (aspect-ratio: 16/9) {
+    .video { width: 100%; }
+}
+
+/* Minimum aspect ratio */
+@media (min-aspect-ratio: 16/9) {
+    /* Wide screens */
+}</code></pre>
+            </div>
+
+            <h3>Resolution:</h3>
+            <div class="code-block">
+                <pre><code>/* High-resolution displays (Retina) */
+@media (min-resolution: 2dppx) {
+    .logo {
+        background-image: url('logo@2x.png');
+        background-size: 100px 50px;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Prefers Color Scheme:</h3>
+            <div class="code-block">
+                <pre><code>/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1a1a1a;
+        color: #ffffff;
+    }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    body {
+        background: #ffffff;
+        color: #000000;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Prefers Reduced Motion:</h3>
+            <div class="code-block">
+                <pre><code>/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Media Types Section -->
+        <section class="content-section">
+            <h2>🖥️ Media Types</h2>
+            
+            <div class="code-block">
+                <pre><code>/* Screen (default) */
+@media screen {
+    body { font-family: sans-serif; }
+}
+
+/* Print */
+@media print {
+    header, footer, nav {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: black;
+    }
+    
+    a::after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* All media types */
+@media all {
+    /* Applies to everything */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Combining Media Queries Section -->
+        <section class="content-section">
+            <h2>🔗 Combining Media Queries</h2>
+            
+            <div class="code-block">
+                <pre><code>/* AND operator */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Tablets only */
+}
+
+/* OR operator (comma) */
+@media (max-width: 768px), (orientation: portrait) {
+    /* Mobile OR portrait */
+}
+
+/* NOT operator */
+@media not print {
+    /* Everything except print */
+}
+
+/* Complex combination */
+@media screen and (min-width: 768px) and (orientation: landscape) {
+    /* Landscape tablets and desktops */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Media Query Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Media Query Examples</h2>
+            
+            <h3>Example 1: Responsive Navigation</h3>
+            <div class="code-block">
+                <pre><code>/* Desktop navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Mobile navigation */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        flex-direction: column;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Responsive Grid</h3>
+            <div class="code-block">
+                <pre><code>/* Desktop: 4 columns */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Font Sizes</h3>
+            <div class="code-block">
+                <pre><code>/* Base font sizes */
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+p { font-size: 1rem; }
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    p { font-size: 0.95rem; }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Attribute Selector Examples:</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <div>
+                            <strong>Input Types:</strong>
+                            <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                                <input type="text" placeholder="Text" style="padding: 8px; border: 2px solid blue; border-radius: 5px;">
+                                <input type="email" placeholder="Email" style="padding: 8px; border: 2px solid #ddd; border-radius: 5px;">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <strong>Link Types:</strong>
+                            <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 10px;">
+                                <a href="https://example.com" style="color: green; font-weight: bold;">Secure link (https)</a>
+                                <a href="document.pdf" style="color: red; font-weight: bold;">PDF file 📄</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 30px;">Responsive Design Info:</h3>
+                    <div style="padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 8px; text-align: center;">
+                        <p style="margin: 0; font-weight: bold;">Resize your browser to see responsive changes!</p>
+                        <p style="margin: 10px 0 0 0; font-size: 0.9rem;">Media queries adapt layouts for different screen sizes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: Which selector targets links ending with .pdf?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> a[href^=".pdf"]</label>
+                        <label><input type="radio" name="q1" value="b"> a[href$=".pdf"]</label>
+                        <label><input type="radio" name="q1" value="c"> a[href*=".pdf"]</label>
+                        <label><input type="radio" name="q1" value="d"> a[href~=".pdf"]</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: What does [href*="google"] select?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> Links starting with google</label>
+                        <label><input type="radio" name="q2" value="b"> Links ending with google</label>
+                        <label><input type="radio" name="q2" value="c"> Links containing google anywhere</label>
+                        <label><input type="radio" name="q2" value="d"> Exact match google</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: What is the correct syntax for a max-width media query?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> @media (max-width: 768px) { }</label>
+                        <label><input type="radio" name="q3" value="b"> @media max-width: 768px { }</label>
+                        <label><input type="radio" name="q3" value="c"> media (max-width: 768px) { }</label>
+                        <label><input type="radio" name="q3" value="d"> @media-query (max-width: 768px) { }</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'a')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: Which media feature detects dark mode preference?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> prefers-dark-mode</label>
+                        <label><input type="radio" name="q4" value="b"> prefers-color-scheme</label>
+                        <label><input type="radio" name="q4" value="c"> color-mode</label>
+                        <label><input type="radio" name="q4" value="d"> dark-mode</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: What does [attribute^="value"] match?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> Ends with value</label>
+                        <label><input type="radio" name="q5" value="b"> Starts with value</label>
+                        <label><input type="radio" name="q5" value="c"> Contains value</label>
+                        <label><input type="radio" name="q5" value="d"> Exact match</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Select all links starting with "https" and make them green using attribute selectors.</li>
+                    <li>Add a PDF icon (📄) after all links ending with ".pdf" using ::after pseudo-element.</li>
+                    <li>Create a media query that changes a 3-column grid to 1 column on screens smaller than 768px.</li>
+                    <li>Style all required input fields with a red left border using [required] selector.</li>
+                    <li>Write a media query for dark mode that changes background to dark and text to light colors.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>[attribute]:</strong> Has attribute</li>
+                    <li><strong>[attribute="value"]:</strong> Exact match</li>
+                    <li><strong>[attribute^="value"]:</strong> Starts with value</li>
+                    <li><strong>[attribute$="value"]:</strong> Ends with value</li>
+                    <li><strong>[attribute*="value"]:</strong> Contains value anywhere</li>
+                    <li><strong>[attribute~="value"]:</strong> Space-separated word match</li>
+                    <li><strong>[attribute|="value"]:</strong> Hyphen-separated start</li>
+                    <li><strong>Case insensitive:</strong> Add <code>i</code> flag (e.g., [href$=".pdf" i])</li>
+                    <li><strong>Data attributes:</strong> Use [data-*] for custom attributes</li>
+                    <li><strong>Media queries:</strong> @media (condition) { }</li>
+                    <li><strong>Common breakpoints:</strong> 576px, 768px, 992px, 1200px</li>
+                    <li><strong>Mobile first:</strong> Use min-width</li>
+                    <li><strong>Desktop first:</strong> Use max-width</li>
+                    <li><strong>prefers-color-scheme:</strong> Detect dark/light mode</li>
+                    <li><strong>orientation:</strong> portrait or landscape</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="pseudoclasses.html" class="nav-btn btn-back">← Previous: Pseudo-classes</a>
+            <a href="cssimages.html" class="nav-btn btn-next">Next Topic: CSS Images →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

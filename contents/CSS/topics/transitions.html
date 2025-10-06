@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Transitions - Smooth Animations</title>
+    <link rel="stylesheet" href="../extra/style.css">
+    <style>
+        /* Additional styles for key points */
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .key-point {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .key-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .key-point h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .key-point p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Warning box style */
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .warning-box p {
+            color: #856404;
+        }
+
+        .warning-box pre {
+            margin-top: 10px;
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .warning-box code {
+            color: #d4d4d4;
+            font-family: "Courier New", monospace;
+        }
+
+        /* Enhanced interactive demos */
+        .timing-demo-box {
+            width: 100%;
+            height: 40px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .timing-demo-item {
+            width: 50px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>⏱️ CSS3 Transitions</h1>
+            <p class="topic-subtitle">Create smooth animations between property changes with timing and easing functions</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="transforms.html" class="nav-btn btn-back">← Previous: CSS3 Transforms</a>
+            <a href="animations.html" class="nav-btn btn-next">Next Topic: CSS3 Animations →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 What are CSS Transitions?</h2>
+            <p>CSS Transitions allow you to change property values smoothly over a specified duration. Instead of instant changes, transitions create smooth, animated effects that enhance user experience and make interfaces feel more polished and responsive.</p>
+            
+            <div class="info-box">
+                <h3>Transition Capabilities:</h3>
+                <ul>
+                    <li>✅ Smooth property changes on hover, focus, or state change</li>
+                    <li>✅ Control animation duration and timing</li>
+                    <li>✅ Use easing functions for natural motion</li>
+                    <li>✅ Delay transitions for sequenced effects</li>
+                    <li>✅ Animate multiple properties simultaneously</li>
+                    <li>✅ Create interactive UI elements</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Transition Properties Section -->
+        <section class="content-section">
+            <h2>🔧 Transition Properties</h2>
+            
+            <h3>1. transition-property:</h3>
+            <p>Specifies which CSS property to animate.</p>
+            <div class="code-block">
+                <pre><code>/* Single property */
+.element {
+    transition-property: background-color;
+}
+
+/* Multiple properties */
+.element {
+    transition-property: width, height, background-color;
+}
+
+/* All animatable properties */
+.element {
+    transition-property: all;
+}
+
+/* Specific properties only */
+.element {
+    transition-property: transform, opacity;
+}</code></pre>
+            </div>
+
+            <h3>2. transition-duration:</h3>
+            <p>Sets how long the transition takes to complete.</p>
+            <div class="code-block">
+                <pre><code>/* Duration in seconds */
+.element {
+    transition-duration: 0.3s;   /* 300 milliseconds */
+    transition-duration: 1s;     /* 1 second */
+    transition-duration: 2.5s;   /* 2.5 seconds */
+}
+
+/* Duration in milliseconds */
+.element {
+    transition-duration: 300ms;
+    transition-duration: 1000ms;
+}
+
+/* Multiple durations for multiple properties */
+.element {
+    transition-property: width, opacity;
+    transition-duration: 0.5s, 1s;
+}</code></pre>
+            </div>
+
+            <h3>3. transition-timing-function:</h3>
+            <p>Controls the speed curve of the transition.</p>
+            <div class="code-block">
+                <pre><code>/* Predefined timing functions */
+.element {
+    transition-timing-function: ease;        /* Default - slow start, fast, slow end */
+    transition-timing-function: linear;      /* Constant speed */
+    transition-timing-function: ease-in;     /* Slow start */
+    transition-timing-function: ease-out;    /* Slow end */
+    transition-timing-function: ease-in-out; /* Slow start and end */
+}
+
+/* Custom cubic-bezier curves */
+.element {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bounce */
+    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);         /* Custom */
+}
+
+/* Step functions */
+.element {
+    transition-timing-function: steps(4, end);     /* 4 steps */
+    transition-timing-function: step-start;        /* Jump to end immediately */
+    transition-timing-function: step-end;          /* Stay at start, jump at end */
+}</code></pre>
+            </div>
+
+            <h3>4. transition-delay:</h3>
+            <p>Delays the start of the transition.</p>
+            <div class="code-block">
+                <pre><code>/* Delay before transition starts */
+.element {
+    transition-delay: 0s;      /* No delay (default) */
+    transition-delay: 0.5s;    /* 500ms delay */
+    transition-delay: 1s;      /* 1 second delay */
+}
+
+/* Negative delay (starts partway through) */
+.element {
+    transition-delay: -0.5s;
+}
+
+/* Multiple delays */
+.element {
+    transition-property: width, opacity;
+    transition-delay: 0s, 0.3s;  /* Opacity starts 0.3s after width */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Shorthand Syntax Section -->
+        <section class="content-section">
+            <h2>✍️ Transition Shorthand</h2>
+            <p>Combine all transition properties in one declaration.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Shorthand syntax: property duration timing-function delay */
+.element {
+    transition: background-color 0.3s ease 0s;
+}
+
+/* Simplified (duration is required) */
+.element {
+    transition: all 0.3s;
+}
+
+/* With timing function */
+.element {
+    transition: transform 0.5s ease-in-out;
+}
+
+/* With delay */
+.element {
+    transition: opacity 0.4s ease 0.2s;
+}
+
+/* Multiple transitions (comma-separated) */
+.element {
+    transition: width 0.3s ease,
+                height 0.3s ease 0.1s,
+                background-color 0.5s linear;
+}
+
+/* Common pattern */
+.button {
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #3498db;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}</code></pre>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Using "all" Carefully</h3>
+                <p>While <code>transition: all</code> is convenient, it can cause performance issues. Specify exact properties when possible for better performance.</p>
+            </div>
+        </section>
+
+        <!-- Timing Functions Visual Section -->
+        <section class="content-section">
+            <h2>📊 Timing Functions Visualized</h2>
+            
+            <div class="example-box">
+                <h3>Timing Function Comparison (Click to Animate):</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div>
+                        <p style="margin-bottom: 5px; font-weight: bold;">Linear - Constant Speed</p>
+                        <div class="timing-demo-box" onclick="this.querySelector('.timing-demo-item').style.left='calc(100% - 50px)'; setTimeout(() => this.querySelector('.timing-demo-item').style.left='0', 2000)">
+                            <div class="timing-demo-item" style="background: linear-gradient(135deg, #667eea, #764ba2); transition: left 2s linear;"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <p style="margin-bottom: 5px; font-weight: bold;">Ease - Slow Start & End (Default)</p>
+                        <div class="timing-demo-box" onclick="this.querySelector('.timing-demo-item').style.left='calc(100% - 50px)'; setTimeout(() => this.querySelector('.timing-demo-item').style.left='0', 2000)">
+                            <div class="timing-demo-item" style="background: linear-gradient(135deg, #f093fb, #f5576c); transition: left 2s ease;"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <p style="margin-bottom: 5px; font-weight: bold;">Ease-In - Slow Start</p>
+                        <div class="timing-demo-box" onclick="this.querySelector('.timing-demo-item').style.left='calc(100% - 50px)'; setTimeout(() => this.querySelector('.timing-demo-item').style.left='0', 2000)">
+                            <div class="timing-demo-item" style="background: linear-gradient(135deg, #4facfe, #00f2fe); transition: left 2s ease-in;"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <p style="margin-bottom: 5px; font-weight: bold;">Ease-Out - Slow End</p>
+                        <div class="timing-demo-box" onclick="this.querySelector('.timing-demo-item').style.left='calc(100% - 50px)'; setTimeout(() => this.querySelector('.timing-demo-item').style.left='0', 2000)">
+                            <div class="timing-demo-item" style="background: linear-gradient(135deg, #43e97b, #38f9d7); transition: left 2s ease-out;"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <p style="margin-bottom: 5px; font-weight: bold;">Ease-In-Out - Slow Start & End</p>
+                        <div class="timing-demo-box" onclick="this.querySelector('.timing-demo-item').style.left='calc(100% - 50px)'; setTimeout(() => this.querySelector('.timing-demo-item').style.left='0', 2000)">
+                            <div class="timing-demo-item" style="background: linear-gradient(135deg, #fa709a, #fee140); transition: left 2s ease-in-out;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; text-align: center; color: #666; font-style: italic;">Click any box to see the timing function in action!</p>
+            </div>
+        </section>
+
+        <!-- Transitionable Properties Section -->
+        <section class="content-section">
+            <h2>🎨 Commonly Transitioned Properties</h2>
+            
+            <div class="code-block">
+                <pre><code>/* Color Properties */
+.element {
+    transition: background-color 0.3s,
+                color 0.3s,
+                border-color 0.3s;
+}
+
+/* Transform Properties */
+.element {
+    transition: transform 0.4s ease;
+}
+
+/* Opacity & Visibility */
+.element {
+    transition: opacity 0.3s,
+                visibility 0.3s;
+}
+
+/* Box Model Properties */
+.element {
+    transition: width 0.3s,
+                height 0.3s,
+                padding 0.3s,
+                margin 0.3s;
+}
+
+/* Position Properties */
+.element {
+    transition: top 0.3s,
+                left 0.3s,
+                right 0.3s,
+                bottom 0.3s;
+}
+
+/* Shadow & Outline */
+.element {
+    transition: box-shadow 0.3s,
+                text-shadow 0.3s,
+                outline 0.3s;
+}
+
+/* Filter Effects */
+.element {
+    transition: filter 0.3s;
+}</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>⚡ Performance-Friendly Properties:</h3>
+                <p>For best performance, prefer transitioning:</p>
+                <ul>
+                    <li><strong>transform</strong> - GPU accelerated</li>
+                    <li><strong>opacity</strong> - GPU accelerated</li>
+                    <li><strong>filter</strong> - GPU accelerated (modern browsers)</li>
+                </ul>
+                <p>Avoid transitioning layout properties (width, height, margin, padding) when possible, as they trigger reflow.</p>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+            
+            <h3>Example 1: Button Hover Effect</h3>
+            <div class="code-block">
+                <pre><code>.button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease,
+                transform 0.2s ease,
+                box-shadow 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Card Expand Effect</h3>
+            <div class="code-block">
+                <pre><code>.card {
+    width: 300px;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Navigation Menu Slide</h3>
+            <div class="code-block">
+                <pre><code>.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: #2c3e50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-menu.open {
+    transform: translateX(0);
+}
+
+.nav-menu a {
+    display: block;
+    padding: 15px;
+    color: white;
+    transition: background-color 0.2s,
+                padding-left 0.2s;
+}
+
+.nav-menu a:hover {
+    background-color: #34495e;
+    padding-left: 25px;
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Image Zoom & Overlay</h3>
+            <div class="code-block">
+                <pre><code>.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.2);
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Dropdown Menu</h3>
+            <div class="code-block">
+                <pre><code>.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease,
+                visibility 0.3s ease,
+                transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section class="content-section">
+            <h2>🎨 Interactive Transition Demo</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px;">
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; margin: 0 auto; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold;">Hover Me</div>
+                            </div>
+                            <p style="margin-top: 15px;">Lift Effect</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 10px; margin: 0 auto; transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); cursor: pointer;" onmouseover="this.style.transform='scale(1.2) rotate(10deg)'" onmouseout="this.style.transform='scale(1) rotate(0)'">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold;">Hover Me</div>
+                            </div>
+                            <p style="margin-top: 15px;">Bounce & Rotate</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 50%; margin: 0 auto; transition: border-radius 0.5s ease, transform 0.5s ease; cursor: pointer;" onmouseover="this.style.borderRadius='10px'; this.style.transform='rotate(180deg)'" onmouseout="this.style.borderRadius='50%'; this.style.transform='rotate(0)'">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold;">Hover Me</div>
+                            </div>
+                            <p style="margin-top: 15px;">Morph Shape</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Techniques Section -->
+        <section class="content-section">
+            <h2>🚀 Advanced Transition Techniques</h2>
+            
+            <h3>Staggered Transitions:</h3>
+            <div class="code-block">
+                <pre><code>/* Delay each child element */
+.list-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease,
+                transform 0.3s ease;
+}
+
+.list-item:nth-child(1) { transition-delay: 0.1s; }
+.list-item:nth-child(2) { transition-delay: 0.2s; }
+.list-item:nth-child(3) { transition-delay: 0.3s; }
+.list-item:nth-child(4) { transition-delay: 0.4s; }
+
+.list.visible .list-item {
+    opacity: 1;
+    transform: translateY(0);
+}</code></pre>
+            </div>
+
+            <h3>Transition Events (JavaScript):</h3>
+            <div class="code-block">
+                <pre><code>// Listen for transition end
+element.addEventListener('transitionend', (event) => {
+    console.log(`${event.propertyName} transition completed`);
+});
+
+// Trigger transition with JavaScript
+element.classList.add('active');
+
+/* CSS */
+.element {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.element.active {
+    opacity: 1;
+}</code></pre>
+            </div>
+
+            <h3>Reverse Transitions:</h3>
+            <div class="code-block">
+                <pre><code>/* Different timing for hover in and out */
+.button {
+    background-color: #3498db;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2980b9;
+    transition: background-color 0.1s ease;  /* Faster on hover */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Common Pitfalls Section -->
+        <section class="content-section">
+            <h2>⚠️ Common Pitfalls & Solutions</h2>
+            
+            <div class="warning-box">
+                <h3>Pitfall 1: Transitioning to/from auto</h3>
+                <pre><code>/* ❌ Won't work */
+.element {
+    height: 0;
+    transition: height 0.3s;
+}
+.element.expanded {
+    height: auto;  /* Can't transition to auto */
+}
+
+/* ✅ Solution: Use max-height */
+.element {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.element.expanded {
+    max-height: 500px;  /* Larger than content */
+}</code></pre>
+            </div>
+
+            <div class="warning-box">
+                <h3>Pitfall 2: Invisible transitions on display</h3>
+                <pre><code>/* ❌ Won't animate */
+.element {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.element.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* ✅ Solution: Use visibility or position */
+.element {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.element.visible {
+    visibility: visible;
+    opacity: 1;
+}</code></pre>
+            </div>
+
+            <div class="warning-box">
+                <h3>Pitfall 3: Performance issues</h3>
+                <pre><code>/* ❌ Causes reflow */
+.element {
+    transition: width 0.3s, height 0.3s;
+}
+
+/* ✅ Better performance */
+.element {
+    transition: transform 0.3s, opacity 0.3s;
+}
+.element:hover {
+    transform: scale(1.1);  /* GPU accelerated */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: What is the correct shorthand syntax for transitions?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> transition: 0.3s ease all</label>
+                        <label><input type="radio" name="q1" value="b"> transition: all 0.3s ease</label>
+                        <label><input type="radio" name="q1" value="c"> transition: ease 0.3s all</label>
+                        <label><input type="radio" name="q1" value="d"> transition: 0.3s all ease</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: Which timing function provides constant speed?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> ease</label>
+                        <label><input type="radio" name="q2" value="b"> ease-in-out</label>
+                        <label><input type="radio" name="q2" value="c"> linear</label>
+                        <label><input type="radio" name="q2" value="d"> ease-out</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: Which properties are best for performance when transitioning?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> width and height</label>
+                        <label><input type="radio" name="q3" value="b"> margin and padding</label>
+                        <label><input type="radio" name="q3" value="c"> transform and opacity</label>
+                        <label><input type="radio" name="q3" value="d"> top and left</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: Can you transition the display property?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> Yes, with any timing function</label>
+                        <label><input type="radio" name="q4" value="b"> No, use visibility or opacity instead</label>
+                        <label><input type="radio" name="q4" value="c"> Yes, but only with ease</label>
+                        <label><input type="radio" name="q4" value="d"> Yes, but only in modern browsers</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: What does transition-delay do?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> Makes the transition slower</label>
+                        <label><input type="radio" name="q5" value="b"> Delays when the transition starts</label>
+                        <label><input type="radio" name="q5" value="c"> Sets the duration</label>
+                        <label><input type="radio" name="q5" value="d"> Controls the timing function</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a button that changes background color, lifts up, and adds shadow on hover.</li>
+                    <li>Build a card that smoothly scales up by 10% when hovered.</li>
+                    <li>Create a navigation menu that slides in from the left with a smooth transition.</li>
+                    <li>Make an image zoom in with an overlay that fades in on hover.</li>
+                    <li>Build a dropdown menu with smooth opacity and transform transitions.</li>
+                    <li>Create staggered list items that fade in one after another.</li>
+                    <li>Design a loading skeleton with a smooth shimmer effect.</li>
+                    <li>Make a collapsible section using max-height transitions.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>Transition Properties:</strong> property, duration, timing-function, delay</li>
+                    <li><strong>Shorthand:</strong> <code>transition: property duration timing-function delay</code></li>
+                    <li><strong>Timing Functions:</strong> ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier()</li>
+                    <li><strong>Best Performance:</strong> Use transform and opacity for smooth animations</li>
+                    <li><strong>Multiple Transitions:</strong> Separate with commas for different properties</li>
+                    <li><strong>Common Uses:</strong> Hover effects, menu animations, modal appearances</li>
+                    <li><strong>Avoid:</strong> Transitioning display; use visibility or opacity instead</li>
+                    <li><strong>Auto Values:</strong> Can't transition to/from auto; use max-height workaround</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <section class="content-section">
+            <h2>🔑 Key Takeaways</h2>
+            <div class="key-points">
+                <div class="key-point">
+                    <h3>⚡ Performance First</h3>
+                    <p>Always prefer transitioning transform and opacity. They're GPU-accelerated and won't cause layout recalculation.</p>
+                </div>
+                <div class="key-point">
+                    <h3>🎯 Be Specific</h3>
+                    <p>Instead of "transition: all", specify exact properties for better performance and control.</p>
+                </div>
+                <div class="key-point">
+                    <h3>⏱️ Timing Matters</h3>
+                    <p>Choose appropriate timing functions: ease-out for entrances, ease-in for exits, ease-in-out for looping.</p>
+                </div>
+                <div class="key-point">
+                    <h3>🔄 Smooth UX</h3>
+                    <p>Transitions make interfaces feel responsive and polished. Use 200-400ms for most UI interactions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cheat Sheet -->
+        <section class="content-section">
+            <h2>📋 Quick Reference Cheat Sheet</h2>
+            <div class="code-block">
+                <pre><code>/* Basic Pattern */
+.element {
+    transition: property duration timing-function delay;
+}
+
+/* Common Durations */
+Quick:  0.15s - 0.2s   (micro-interactions)
+Normal: 0.3s - 0.4s    (standard UI)
+Slow:   0.5s - 0.8s    (emphasis)
+
+/* Popular Timing Functions */
+ease:        slow start, fast middle, slow end (default)
+linear:      constant speed
+ease-in:     slow start, fast end
+ease-out:    fast start, slow end
+ease-in-out: slow start and end
+
+/* Performance-Friendly Properties */
+✅ transform
+✅ opacity
+✅ filter
+❌ width, height (causes reflow)
+❌ margin, padding (causes reflow)
+❌ top, left, right, bottom (causes reflow)
+
+/* Common Patterns */
+/* Hover lift */
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+/* Fade in/out */
+transition: opacity 0.3s ease, visibility 0.3s ease;
+
+/* Color change */
+transition: background-color 0.3s ease, color 0.3s ease;
+
+/* Scale effect */
+transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+/* Slide menu */
+transition: transform 0.3s ease-in-out;</code></pre>
+            </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section class="content-section">
+            <h2>✨ Best Practices</h2>
+            <div class="info-box">
+                <ul>
+                    <li>✅ Keep transitions under 500ms for UI interactions</li>
+                    <li>✅ Use ease-out for elements entering the screen</li>
+                    <li>✅ Use ease-in for elements leaving the screen</li>
+                    <li>✅ Test on slower devices to ensure smooth performance</li>
+                    <li>✅ Provide visual feedback for all interactive elements</li>
+                    <li>✅ Use cubic-bezier for custom easing curves</li>
+                    <li>⚠️ Don't overuse transitions - they can be distracting</li>
+                    <li>⚠️ Avoid transitioning too many properties at once</li>
+                    <li>⚠️ Consider reduced motion preferences for accessibility</li>
+                </ul>
+            </div>
+
+            <h3>Accessibility Consideration:</h3>
+            <div class="code-block">
+                <pre><code>/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* Or disable completely */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Real-World Examples Gallery -->
+        <section class="content-section">
+            <h2>🌟 Real-World Examples Gallery</h2>
+            <div class="example-box">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <!-- Example 1: Social Button -->
+                    <div>
+                        <h4>Social Share Button</h4>
+                        <button style="background: #1da1f2; color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; font-weight: bold;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 10px 25px rgba(29,161,242,0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+                            Share on Twitter
+                        </button>
+                    </div>
+
+                    <!-- Example 2: Input Focus -->
+                    <div>
+                        <h4>Input Focus Effect</h4>
+                        <input type="text" placeholder="Click to focus" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 5px; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#667eea'; this.style.boxShadow='0 0 0 3px rgba(102,126,234,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+                    </div>
+
+                    <!-- Example 3: Toggle Switch -->
+                    <div>
+                        <h4>Toggle Switch</h4>
+                        <div style="width: 60px; height: 30px; background: #ddd; border-radius: 15px; position: relative; cursor: pointer; transition: background-color 0.3s ease;" onclick="this.style.backgroundColor=this.style.backgroundColor=='rgb(102, 126, 234)'?'#ddd':'#667eea'; this.querySelector('div').style.transform=this.querySelector('div').style.transform=='translateX(30px)'?'translateX(0)':'translateX(30px)'">
+                            <div style="width: 26px; height: 26px; background: white; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: transform 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="transforms.html" class="nav-btn btn-back">← Previous: CSS3 Transforms</a>
+            <a href="animations.html" class="nav-btn btn-next">Next Topic: CSS3 Animations →</a>
+        </div>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script src="../extra/script.js"></script>
+    
+    <!-- MCQ Check Answer Function -->
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selectedOption) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selectedOption.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

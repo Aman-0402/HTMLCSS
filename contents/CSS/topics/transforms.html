@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Transforms - 2D & 3D Transformations</title>
+    <link rel="stylesheet" href="../extra/style.css">
+    <style>
+        /* Additional styles for key points */
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .key-point {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .key-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .key-point h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .key-point p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Warning box style */
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .warning-box p {
+            color: #856404;
+        }
+
+        /* Interactive demo enhancements */
+        .transform-demo {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* 3D card flip demo */
+        .flip-demo-container {
+            perspective: 1000px;
+            width: 200px;
+            height: 250px;
+            margin: 20px auto;
+        }
+
+        .flip-demo-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-demo-container:hover .flip-demo-card {
+            transform: rotateY(180deg);
+        }
+
+        .flip-demo-front,
+        .flip-demo-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .flip-demo-front {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .flip-demo-back {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            transform: rotateY(180deg);
+        }
+
+        /* Spinning loader demo */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-demo {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>🔄 CSS3 Transforms</h1>
+            <p class="topic-subtitle">Master 2D and 3D transformations to create dynamic visual effects</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="cssimages.html" class="nav-btn btn-back">← Previous: CSS Images</a>
+            <a href="transitions.html" class="nav-btn btn-next">Next Topic: CSS3 Transitions →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 What are CSS Transforms?</h2>
+            <p>CSS Transforms allow you to modify the coordinate space of elements, enabling rotation, scaling, skewing, and translating without affecting document flow. They're essential for creating modern, interactive web experiences.</p>
+            
+            <div class="info-box">
+                <h3>Transform Capabilities:</h3>
+                <ul>
+                    <li>✅ Rotate elements in 2D and 3D space</li>
+                    <li>✅ Scale elements up or down</li>
+                    <li>✅ Move elements with translate</li>
+                    <li>✅ Skew elements for perspective effects</li>
+                    <li>✅ Create 3D transformations</li>
+                    <li>✅ Combine multiple transforms</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2D Transforms Section -->
+        <section class="content-section">
+            <h2>📐 2D Transform Functions</h2>
+            
+            <h3>1. Translate (Move):</h3>
+            <div class="code-block">
+                <pre><code>/* Move element horizontally and vertically */
+.element {
+    transform: translate(50px, 100px);  /* X, Y */
+}
+
+/* Individual axes */
+.element {
+    transform: translateX(50px);   /* Move right */
+    transform: translateY(100px);  /* Move down */
+}
+
+/* Percentage values (relative to element size) */
+.element {
+    transform: translate(50%, 50%);
+}
+
+/* Common use: Perfect centering */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}</code></pre>
+            </div>
+
+            <h3>2. Rotate:</h3>
+            <div class="code-block">
+                <pre><code>/* Rotate in degrees */
+.element {
+    transform: rotate(45deg);    /* Clockwise */
+    transform: rotate(-45deg);   /* Counter-clockwise */
+}
+
+/* Full rotation */
+.element {
+    transform: rotate(360deg);
+}
+
+/* Common use: Icon spin */
+.icon:hover {
+    transform: rotate(180deg);
+}</code></pre>
+            </div>
+
+            <h3>3. Scale:</h3>
+            <div class="code-block">
+                <pre><code>/* Scale uniformly */
+.element {
+    transform: scale(1.5);      /* 150% size */
+    transform: scale(0.5);      /* 50% size */
+}
+
+/* Scale on individual axes */
+.element {
+    transform: scale(2, 1);     /* X, Y - width doubled */
+    transform: scaleX(2);       /* Width only */
+    transform: scaleY(0.5);     /* Height only */
+}
+
+/* Common use: Hover zoom */
+.card:hover {
+    transform: scale(1.1);
+}</code></pre>
+            </div>
+
+            <h3>4. Skew:</h3>
+            <div class="code-block">
+                <pre><code>/* Skew (distort) element */
+.element {
+    transform: skew(20deg, 10deg);  /* X-axis, Y-axis */
+    transform: skewX(20deg);        /* Horizontal skew */
+    transform: skewY(10deg);        /* Vertical skew */
+}
+
+/* Parallelogram effect */
+.parallelogram {
+    transform: skewX(-20deg);
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>2D Transform Examples (Hover to Reset):</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div class="transform-demo" style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 8px; margin: 20px auto; transform: translate(20px, 0);" onmouseover="this.style.transform='translate(0, 0)'" onmouseout="this.style.transform='translate(20px, 0)'"></div>
+                        <p>Translate</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="transform-demo" style="width: 80px; height: 80px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 8px; margin: 20px auto; transform: rotate(45deg);" onmouseover="this.style.transform='rotate(0deg)'" onmouseout="this.style.transform='rotate(45deg)'"></div>
+                        <p>Rotate</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="transform-demo" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 8px; margin: 20px auto; transform: scale(1.3);" onmouseover="this.style.transform='scale(1)'" onmouseout="this.style.transform='scale(1.3)'"></div>
+                        <p>Scale</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="transform-demo" style="width: 80px; height: 80px; background: linear-gradient(135deg, #43e97b, #38f9d7); border-radius: 8px; margin: 20px auto; transform: skewX(-15deg);" onmouseover="this.style.transform='skewX(0deg)'" onmouseout="this.style.transform='skewX(-15deg)'"></div>
+                        <p>Skew</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Combining Transforms Section -->
+        <section class="content-section">
+            <h2>🔗 Combining Multiple Transforms</h2>
+            <p>You can apply multiple transform functions by separating them with spaces.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Multiple transforms (space-separated) */
+.element {
+    transform: rotate(45deg) scale(1.5) translate(50px, 50px);
+}
+
+/* Order matters! These produce different results: */
+.element-1 {
+    transform: rotate(45deg) translate(100px, 0);
+}
+
+.element-2 {
+    transform: translate(100px, 0) rotate(45deg);
+}
+
+/* Common combinations */
+.card:hover {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.tilt-zoom {
+    transform: rotate(-5deg) scale(1.2);
+}</code></pre>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Important: Transform Order</h3>
+                <p>The order of transform functions matters! Transforms are applied from right to left, and each transform affects the coordinate system for the next one.</p>
+            </div>
+
+            <div class="example-box">
+                <h3>Order Demonstration:</h3>
+                <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+                    <div style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 8px; transform: rotate(45deg) translate(50px, 0);"></div>
+                        <p style="margin-top: 60px; font-size: 0.9rem;">rotate → translate</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 8px; transform: translate(50px, 0) rotate(45deg);"></div>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">translate → rotate</p>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; text-align: center; color: #666;">Notice the different final positions!</p>
+            </div>
+        </section>
+
+        <!-- Transform Origin Section -->
+        <section class="content-section">
+            <h2>📍 Transform Origin</h2>
+            <p>The transform-origin property sets the point around which transformations occur.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Default is center */
+.element {
+    transform-origin: center;  /* Same as 50% 50% */
+}
+
+/* Keywords */
+.element {
+    transform-origin: top left;
+    transform-origin: bottom right;
+    transform-origin: center top;
+}
+
+/* Precise values */
+.element {
+    transform-origin: 0 0;           /* Top left corner */
+    transform-origin: 100% 100%;     /* Bottom right */
+    transform-origin: 50px 50px;     /* Specific point */
+}
+
+/* Practical example: Rotate from corner */
+.door {
+    transform-origin: left center;
+    transform: rotateY(90deg);  /* Opens like a door */
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Transform Origin Examples:</h3>
+                <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="position: relative; width: 80px; height: 80px;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 8px; transform: rotate(30deg); transform-origin: center;"></div>
+                            <div style="position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; background: red; border-radius: 50%; transform: translate(-50%, -50%);"></div>
+                        </div>
+                        <p style="margin-top: 10px;">Origin: Center</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="position: relative; width: 80px; height: 80px;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 8px; transform: rotate(30deg); transform-origin: top left;"></div>
+                            <div style="position: absolute; top: 0; left: 0; width: 6px; height: 6px; background: red; border-radius: 50%;"></div>
+                        </div>
+                        <p style="margin-top: 10px;">Origin: Top Left</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="position: relative; width: 80px; height: 80px;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 8px; transform: rotate(30deg); transform-origin: bottom right;"></div>
+                            <div style="position: absolute; bottom: 0; right: 0; width: 6px; height: 6px; background: red; border-radius: 50%;"></div>
+                        </div>
+                        <p style="margin-top: 10px;">Origin: Bottom Right</p>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; text-align: center; color: #666; font-size: 0.9rem;">Red dots show the pivot point</p>
+            </div>
+        </section>
+
+        <!-- 3D Transforms Section -->
+        <section class="content-section">
+            <h2>🎲 3D Transforms</h2>
+            <p>Create depth and perspective with 3D transformations.</p>
+            
+            <h3>Setting Up 3D Space:</h3>
+            <div class="code-block">
+                <pre><code>/* Enable 3D space on parent */
+.container {
+    perspective: 1000px;  /* Distance to 3D space */
+    perspective-origin: center;
+}
+
+/* Preserve 3D for children */
+.parent {
+    transform-style: preserve-3d;
+}</code></pre>
+            </div>
+
+            <h3>3D Transform Functions:</h3>
+            <div class="code-block">
+                <pre><code>/* 3D Rotation */
+.element {
+    transform: rotateX(45deg);  /* Rotate around X-axis */
+    transform: rotateY(45deg);  /* Rotate around Y-axis */
+    transform: rotateZ(45deg);  /* Same as rotate() */
+}
+
+/* 3D Translation */
+.element {
+    transform: translateZ(100px);    /* Move toward viewer */
+    transform: translate3d(x, y, z); /* All three axes */
+}
+
+/* 3D Scale */
+.element {
+    transform: scaleZ(2);
+    transform: scale3d(1.5, 1.5, 2);
+}
+
+/* Card flip effect */
+.card {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}</code></pre>
+            </div>
+
+            <h3>Backface Visibility:</h3>
+            <div class="code-block">
+                <pre><code>/* Control back side visibility */
+.element {
+    backface-visibility: visible;  /* Default */
+    backface-visibility: hidden;   /* Hide back face */
+}
+
+/* Card flip with hidden back */
+.card-front,
+.card-back {
+    backface-visibility: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>3D Flip Card Demo (Hover Me!):</h3>
+                <div class="flip-demo-container">
+                    <div class="flip-demo-card">
+                        <div class="flip-demo-front">
+                            FRONT
+                        </div>
+                        <div class="flip-demo-back">
+                            BACK
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+            
+            <h3>Example 1: Hover Card Effect</h3>
+            <div class="code-block">
+                <pre><code>.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}</code></pre>
+            </div>
+
+            <h3>Example 2: 3D Flip Card</h3>
+            <div class="code-block">
+                <pre><code>.flip-container {
+    perspective: 1000px;
+}
+
+.flip-card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-container:hover .flip-card {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Rotating Loader</h3>
+            <div class="code-block">
+                <pre><code>@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Loader Demo:</h3>
+                <div class="loader-demo"></div>
+            </div>
+
+            <h3>Example 4: Perspective Button</h3>
+            <div class="code-block">
+                <pre><code>.btn-3d {
+    position: relative;
+    background: #667eea;
+    padding: 15px 30px;
+    transform: translateY(0);
+    transition: transform 0.1s;
+}
+
+.btn-3d::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #5568d3;
+    transform: translateY(6px);
+    z-index: -1;
+}
+
+.btn-3d:active {
+    transform: translateY(6px);
+}
+
+.btn-3d:active::before {
+    transform: translateY(0);
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Image Reveal on Hover</h3>
+            <div class="code-block">
+                <pre><code>.image-container {
+    overflow: hidden;
+}
+
+.image-container img {
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.2) rotate(5deg);
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Interactive Demo -->
+        <section class="content-section">
+            <h2>🎨 Interactive Transform Demo</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; padding: 40px 20px;">
+                        <div style="text-align: center;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; transition: transform 0.3s; cursor: pointer;" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold;">Hover Me</div>
+                            </div>
+                            <p style="margin-top: 10px;">Rotate + Scale</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 10px; transition: transform 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-15px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold;">Hover Me</div>
+                            </div>
+                            <p style="margin-top: 10px;">Translate Up</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 10px; transition: transform 0.3s; cursor: pointer;" onmouseover="this.style.transform='skewX(-10deg) scale(1.1)'" onmouseout="this.style.transform='skewX(0) scale(1)'">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold;">Hover Me</div>
+                            </div>
+                            <p style="margin-top: 10px;">Skew + Scale</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Tips -->
+        <section class="content-section">
+            <h2>⚡ Performance Best Practices</h2>
+            <div class="info-box">
+                <h3>Optimizing Transforms:</h3>
+                <ul>
+                    <li>✅ Transforms are GPU-accelerated and very performant</li>
+                    <li>✅ Use transforms instead of position properties (top, left) for animations</li>
+                    <li>✅ Prefer transform: translate() over margin/position changes</li>
+                    <li>✅ Use will-change: transform for complex animations (sparingly)</li>
+                    <li>✅ Combine multiple transforms in one property</li>
+                    <li>⚠️ Avoid animating multiple properties simultaneously when transforms can do it</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <pre><code>/* ❌ Poor performance */
+.element {
+    position: relative;
+    transition: top 0.3s, left 0.3s;
+}
+.element:hover {
+    top: -10px;
+    left: 10px;
+}
+
+/* ✅ Better performance */
+.element {
+    transition: transform 0.3s;
+}
+.element:hover {
+    transform: translate(10px, -10px);
+}
+
+/* For complex animations */
+.complex-animation {
+    will-change: transform;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Common Use Cases -->
+        <section class="content-section">
+            <h2>🎯 Common Transform Use Cases</h2>
+            
+            <div class="code-block">
+                <pre><code>/* 1. Perfect Centering */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 2. Modal/Dialog Animation */
+.modal {
+    transform: scale(0);
+    transition: transform 0.3s;
+}
+.modal.active {
+    transform: scale(1);
+}
+
+/* 3. Navigation Menu Slide */
+.menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+.menu.open {
+    transform: translateX(0);
+}
+
+/* 4. Image Zoom on Hover */
+.image-wrapper {
+    overflow: hidden;
+}
+.image-wrapper img {
+    transition: transform 0.5s;
+}
+.image-wrapper:hover img {
+    transform: scale(1.2);
+}
+
+/* 5. Rotating Icon */
+.icon {
+    transition: transform 0.3s;
+}
+.icon:hover {
+    transform: rotate(180deg);
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: Which transform function moves an element?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> rotate()</label>
+                        <label><input type="radio" name="q1" value="b"> translate()</label>
+                        <label><input type="radio" name="q1" value="c"> scale()</label>
+                        <label><input type="radio" name="q1" value="d"> skew()</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: What does transform-origin control?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> The starting position of an animation</label>
+                        <label><input type="radio" name="q2" value="b"> The point around which transformations occur</label>
+                        <label><input type="radio" name="q2" value="c"> The element's original position</label>
+                        <label><input type="radio" name="q2" value="d"> The transform duration</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: Which property creates 3D space for child elements?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> transform-style: preserve-3d</label>
+                        <label><input type="radio" name="q3" value="b"> perspective: 1000px</label>
+                        <label><input type="radio" name="q3" value="c"> Both a and b</label>
+                        <label><input type="radio" name="q3" value="d"> backface-visibility: hidden</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: What's the correct syntax for multiple transforms?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> transform: rotate(45deg), scale(1.5);</label>
+                        <label><input type="radio" name="q4" value="b"> transform: rotate(45deg) scale(1.5);</label>
+                        <label><input type="radio" name="q4" value="c"> transform: rotate(45deg); scale(1.5);</label>
+                        <label><input type="radio" name="q4" value="d"> transform: rotate(45deg) + scale(1.5);</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: Which value makes an element twice its size?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> transform: scale(1)</label>
+                        <label><input type="radio" name="q5" value="b"> transform: scale(2)</label>
+                        <label><input type="radio" name="q5" value="c"> transform: scale(200%)</label>
+                        <label><input type="radio" name="q5" value="d"> transform: scale(0.5)</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a card that lifts up and scales slightly when hovered.</li>
+                    <li>Build a 3D flip card that rotates 180 degrees on hover.</li>
+                    <li>Center a div perfectly using position and transform.</li>
+                    <li>Create a rotating loader animation using transform.</li>
+                    <li>Make an image zoom in by 20% when its container is hovered.</li>
+                    <li>Build a button with a 3D press effect using transform.</li>
+                    <li>Create a menu that slides in from the left using translateX.</li>
+                    <li>Rotate an element from its top-left corner instead of center.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>2D Transforms:</strong> <code>translate()</code>, <code>rotate()</code>, <code>scale()</code>, <code>skew()</code></li>
+                    <li><strong>3D Transforms:</strong> <code>rotateX/Y/Z()</code>, <code>translateZ()</code>, <code>perspective</code></li>
+                    <li><strong>Transform Origin:</strong> Sets the pivot point for transformations</li>
+                    <li><strong>Multiple Transforms:</strong> Separate with spaces, order matters (right to left)</li>
+                    <li><strong>Performance:</strong> Transforms are GPU-accelerated and highly performant</li>
+                    <li><strong>Preserve 3D:</strong> Use <code>transform-style: preserve-3d</code> for 3D effects</li>
+                    <li><strong>Backface:</strong> <code>backface-visibility</code> controls visibility of rotated elements</li>
+                    <li><strong>Common Uses:</strong> Centering, hover effects, animations, 3D cards, loaders</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <section class="content-section">
+            <h2>🔑 Key Takeaways</h2>
+            <div class="key-points">
+                <div class="key-point">
+                    <h3>🚀 Performance</h3>
+                    <p>Transforms are GPU-accelerated. Always prefer transform over position properties for animations to ensure smooth, 60fps performance.</p>
+                </div>
+                <div class="key-point">
+                    <h3>🔄 Order Matters</h3>
+                    <p>The order of transform functions affects the final result. Transforms apply from right to left, with each affecting the coordinate system.</p>
+                </div>
+                <div class="key-point">
+                    <h3>📍 Transform Origin</h3>
+                    <p>Control where transformations pivot from using transform-origin property. Change the pivot point to create effects like door swings.</p>
+                </div>
+                <div class="key-point">
+                    <h3>🎲 3D Effects</h3>
+                    <p>Use perspective and preserve-3d to create stunning 3D transformations. Perfect for card flips and immersive interfaces.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="cssimages.html" class="nav-btn btn-back">← Previous: CSS Images</a>
+            <a href="transitions.html" class="nav-btn btn-next">Next Topic: CSS3 Transitions →</a>
+        </div>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script src="../extra/script.js"></script>
+    
+    <!-- MCQ Check Answer Function -->
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selectedOption) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selectedOption.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

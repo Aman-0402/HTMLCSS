@@ -1,0 +1,499 @@
+<!-- contents/HTML/topics/adding-css.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adding CSS to HTML — Session 6</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 (for MCQ feedback) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 6</div>
+        <h1 id="lesson-title">Adding CSS to HTML</h1>
+        <div class="meta">Inline • Internal • External • Best Practices</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="lists-tables.html">Next: Lists & Tables →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main">
+
+      <!-- What is CSS -->
+      <section id="intro" class="section">
+        <h2>What is CSS?</h2>
+        <p><strong>CSS (Cascading Style Sheets)</strong> is the language that makes websites beautiful. While HTML provides structure, CSS controls appearance.</p>
+        
+        <h4>What CSS Controls:</h4>
+        <ul>
+          <li><strong>Colors</strong> - Text, backgrounds, borders</li>
+          <li><strong>Typography</strong> - Fonts, sizes, spacing, alignment</li>
+          <li><strong>Layout</strong> - Positioning, spacing, flexbox, grid</li>
+          <li><strong>Visual effects</strong> - Shadows, gradients, transforms</li>
+          <li><strong>Animations</strong> - Transitions, keyframe animations</li>
+          <li><strong>Responsive design</strong> - Different styles for different screen sizes</li>
+        </ul>
+
+        <p><strong>Key Concept:</strong> CSS follows the "cascading" principle - styles flow down and can be overridden based on specificity and order.</p>
+      </section>
+
+      <!-- The Three Ways -->
+      <section id="three-ways" class="section">
+        <h2>Three Ways to Add CSS</h2>
+        <p>There are three methods to apply CSS to HTML, each with different use cases:</p>
+      </section>
+
+      <!-- Inline CSS -->
+      <section id="inline-css" class="section">
+        <h3>1. Inline CSS</h3>
+        <p>CSS written directly inside an HTML element using the <code>style</code> attribute. Affects only that specific element.</p>
+
+        <h4>Syntax:</h4>
+        <pre class="code-block"><code>&lt;element style="property: value; property: value;"&gt;Content&lt;/element&gt;</code></pre>
+
+        <h4>Examples:</h4>
+        <pre class="code-block"><code>&lt;p style="color: blue; font-size: 20px;"&gt;Blue text, 20px size&lt;/p&gt;
+
+&lt;h1 style="color: red; text-align: center; font-family: Arial;"&gt;
+  Centered Red Heading
+&lt;/h1&gt;
+
+&lt;div style="background-color: yellow; padding: 10px; border: 2px solid black;"&gt;
+  Yellow box with border
+&lt;/div&gt;</code></pre>
+
+        <h4>When to Use Inline CSS:</h4>
+        <ul>
+          <li>Quick testing or debugging</li>
+          <li>Email HTML templates (some email clients require inline styles)</li>
+          <li>Overriding styles for a single element</li>
+        </ul>
+
+        <h4>Disadvantages:</h4>
+        <ul>
+          <li>Hard to maintain - changes must be made element by element</li>
+          <li>No reusability - can't share styles across elements</li>
+          <li>Mixes content with presentation (bad practice)</li>
+          <li>Highest specificity (hard to override)</li>
+        </ul>
+      </section>
+
+      <!-- Internal CSS -->
+      <section id="internal-css" class="section">
+        <h3>2. Internal CSS (Embedded)</h3>
+        <p>CSS written inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> section. Styles apply to the entire page.</p>
+
+        <h4>Syntax:</h4>
+        <pre class="code-block"><code>&lt;head&gt;
+  &lt;style&gt;
+    selector {
+      property: value;
+      property: value;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+        <h4>Complete Example:</h4>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Internal CSS Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Element selector */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      border-bottom: 3px solid #3498db;
+    }
+
+    p {
+      color: #333;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* Class selector */
+    .highlight {
+      background-color: yellow;
+      padding: 5px;
+    }
+
+    /* ID selector */
+    #main-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="main-content"&gt;
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph with normal styling.&lt;/p&gt;
+    &lt;p class="highlight"&gt;This paragraph is highlighted!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h4>When to Use Internal CSS:</h4>
+        <ul>
+          <li>Single-page websites</li>
+          <li>Page-specific styles that won't be reused</li>
+          <li>Testing styles before moving to external file</li>
+          <li>Email newsletters or standalone HTML documents</li>
+        </ul>
+
+        <h4>Advantages:</h4>
+        <ul>
+          <li>Keeps styles organized in one place</li>
+          <li>No external file requests (faster for single pages)</li>
+          <li>Can use selectors (class, ID, element)</li>
+        </ul>
+
+        <h4>Disadvantages:</h4>
+        <ul>
+          <li>Styles can't be shared across multiple pages</li>
+          <li>Makes HTML file larger</li>
+          <li>Browser can't cache styles separately</li>
+        </ul>
+      </section>
+
+      <!-- External CSS -->
+      <section id="external-css" class="section">
+        <h3>3. External CSS (Linked)</h3>
+        <p>CSS written in a separate <code>.css</code> file and linked to HTML. <strong>This is the recommended method</strong> for production websites.</p>
+
+        <h4>How It Works:</h4>
+        <pre class="code-block"><code>&lt;!-- HTML File: index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;External CSS Example&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Styled with External CSS&lt;/h1&gt;
+  &lt;p class="intro"&gt;This uses an external stylesheet.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <pre class="code-block"><code>/* CSS File: styles.css */
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.intro {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}</code></pre>
+
+        <h4>Multiple CSS Files:</h4>
+        <pre class="code-block"><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="reset.css"&gt;     &lt;!-- CSS reset --&gt;
+  &lt;link rel="stylesheet" href="layout.css"&gt;    &lt;!-- Layout styles --&gt;
+  &lt;link rel="stylesheet" href="components.css"&gt; &lt;!-- Component styles --&gt;
+  &lt;link rel="stylesheet" href="responsive.css"&gt; &lt;!-- Media queries --&gt;
+&lt;/head&gt;</code></pre>
+
+        <h4>When to Use External CSS:</h4>
+        <ul>
+          <li>Multi-page websites (ALWAYS use this)</li>
+          <li>Any production website</li>
+          <li>When you need to share styles across pages</li>
+          <li>Team projects with multiple developers</li>
+        </ul>
+
+        <h4>Advantages:</h4>
+        <ul>
+          <li><strong>Reusability</strong> - One CSS file for entire website</li>
+          <li><strong>Maintainability</strong> - Update one file to change entire site</li>
+          <li><strong>Clean HTML</strong> - Separation of content and presentation</li>
+          <li><strong>Browser caching</strong> - CSS file cached, faster subsequent loads</li>
+          <li><strong>Team collaboration</strong> - Different people work on HTML and CSS</li>
+        </ul>
+
+        <h4>Best Practices:</h4>
+        <ul>
+          <li>Use descriptive filenames: <code>main.css</code>, <code>layout.css</code>, <code>typography.css</code></li>
+          <li>Organize large sites with multiple CSS files</li>
+          <li>Place CSS files in a dedicated <code>css/</code> folder</li>
+          <li>Minify CSS files for production (reduces file size)</li>
+        </ul>
+      </section>
+
+      <!-- Combined Example -->
+      <section id="combined-example" class="section">
+        <h3>All Three Methods Together</h3>
+        <p>This example shows all three methods working together (though in practice, avoid mixing them unnecessarily):</p>
+
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;CSS Methods Demo&lt;/title&gt;
+  
+  &lt;!-- External CSS --&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+  
+  &lt;!-- Internal CSS --&gt;
+  &lt;style&gt;
+    h1 {
+      color: purple;
+      text-align: center;
+    }
+    
+    .box {
+      background-color: lightblue;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    
+    #special {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;CSS Methods Demonstration&lt;/h1&gt;
+  
+  &lt;!-- Inline CSS (highest priority) --&gt;
+  &lt;p style="color: red; font-size: 18px;"&gt;
+    This paragraph uses inline CSS
+  &lt;/p&gt;
+  
+  &lt;!-- Internal CSS (class selector) --&gt;
+  &lt;div class="box"&gt;
+    This div uses internal CSS with a class
+  &lt;/div&gt;
+  
+  &lt;!-- Internal CSS (ID selector) --&gt;
+  &lt;p id="special"&gt;
+    This paragraph uses internal CSS with an ID
+  &lt;/p&gt;
+  
+  &lt;!-- External CSS --&gt;
+  &lt;p class="external-style"&gt;
+    This paragraph uses external CSS
+  &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <!-- Comparison Table -->
+      <section id="comparison" class="section">
+        <h3>Comparison: Inline vs Internal vs External CSS</h3>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Inline</th>
+              <th>Internal</th>
+              <th>External</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Location</strong></td>
+              <td>style attribute</td>
+              <td>&lt;style&gt; in &lt;head&gt;</td>
+              <td>Separate .css file</td>
+            </tr>
+            <tr>
+              <td><strong>Scope</strong></td>
+              <td>Single element</td>
+              <td>Single page</td>
+              <td>Multiple pages</td>
+            </tr>
+            <tr>
+              <td><strong>Reusability</strong></td>
+              <td>None</td>
+              <td>Same page only</td>
+              <td>Entire website</td>
+            </tr>
+            <tr>
+              <td><strong>Maintainability</strong></td>
+              <td>Very difficult</td>
+              <td>Moderate</td>
+              <td>Easy</td>
+            </tr>
+            <tr>
+              <td><strong>CSS Priority</strong></td>
+              <td>Highest</td>
+              <td>Medium</td>
+              <td>Lowest</td>
+            </tr>
+            <tr>
+              <td><strong>Caching</strong></td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Best For</strong></td>
+              <td>Testing, emails</td>
+              <td>Single pages</td>
+              <td>All websites</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>CSS Specificity Order (when styles conflict):</h4>
+        <pre class="code-block"><code>Inline CSS  >  Internal CSS  >  External CSS  >  Browser Default
+
+(Highest priority)              (Lowest priority)</code></pre>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="section mcq" id="quiz">
+        <h3>Quick Quiz</h3>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q1. Which CSS method is best for large, multi-page websites?</div>
+          <div class="choices">
+            <button class="choice">a) Inline CSS</button>
+            <button class="choice">b) Internal CSS</button>
+            <button class="choice">c) External CSS</button>
+            <button class="choice">d) All are equally good</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q2. Which CSS method has the highest priority?</div>
+          <div class="choices">
+            <button class="choice">a) External CSS</button>
+            <button class="choice">b) Internal CSS</button>
+            <button class="choice">c) Inline CSS</button>
+            <button class="choice">d) They have equal priority</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q3. Where do you write internal CSS?</div>
+          <div class="choices">
+            <button class="choice">a) In a .css file</button>
+            <button class="choice">b) In &lt;style&gt; tags in &lt;head&gt;</button>
+            <button class="choice">c) In style attribute</button>
+            <button class="choice">d) In &lt;script&gt; tags</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q4. What's the main advantage of external CSS?</div>
+          <div class="choices">
+            <button class="choice">a) Highest priority</button>
+            <button class="choice">b) Easier to write</button>
+            <button class="choice">c) Reusable across multiple pages</button>
+            <button class="choice">d) No advantages</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice -->
+      <section id="practice" class="section">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Single Page with Internal CSS:</strong>
+            <ul>
+              <li>Create index.html with internal CSS</li>
+              <li>Style h1: green color, center aligned, 36px</li>
+              <li>Style paragraphs: gray color, 18px, line-height 1.6</li>
+              <li>Create .highlight class: yellow background, bold</li>
+              <li>Create #intro ID: larger font, different color</li>
+            </ul>
+          </li>
+          
+          <li><strong>Multi-Page Site with External CSS:</strong>
+            <ul>
+              <li>Create 3 HTML files: index.html, about.html, contact.html</li>
+              <li>Create styles.css with shared styles</li>
+              <li>Link CSS to all 3 pages</li>
+              <li>Test that style changes affect all pages</li>
+            </ul>
+          </li>
+          
+          <li><strong>CSS Priority Test:</strong>
+            <ul>
+              <li>Create a paragraph with all three CSS methods</li>
+              <li>Set different colors in each method</li>
+              <li>Observe which color wins (inline should win)</li>
+            </ul>
+          </li>
+          
+          <li><strong>Real Project Structure:</strong>
+            <ul>
+              <li>Create folder: css/</li>
+              <li>Create files: reset.css, main.css, responsive.css</li>
+              <li>Link all CSS files to your HTML</li>
+              <li>Organize styles logically across files</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Summary -->
+      <section id="summary" class="section summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>CSS (Cascading Style Sheets)</strong> controls the visual presentation of HTML</li>
+          <li><strong>Three methods:</strong> Inline (style attribute), Internal (&lt;style&gt; tag), External (.css file)</li>
+          <li><strong>Inline CSS</strong> - Highest priority, hardest to maintain, use sparingly</li>
+          <li><strong>Internal CSS</strong> - Good for single pages, moderate maintainability</li>
+          <li><strong>External CSS</strong> - Best practice for all websites, most maintainable and reusable</li>
+          <li><strong>Priority order:</strong> Inline &gt; Internal &gt; External &gt; Browser default</li>
+          <li><strong>Best practice:</strong> Always use external CSS for production websites</li>
+          <li><strong>Separation of concerns:</strong> Keep HTML (structure) and CSS (presentation) separate</li>
+        </ul>
+        <p>Remember: External CSS is the professional standard. It makes your code cleaner, more maintainable, and easier to collaborate on!</p>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="lists-tables.html">Lists & Tables</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- shared script -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Pseudo-classes & Pseudo-elements</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>🎪 CSS Pseudo-classes & Pseudo-elements</h1>
+            <p class="topic-subtitle">Master advanced selectors for state-based and virtual element styling</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="alignposition.html" class="nav-btn btn-back">← Previous: Align & Position</a>
+            <a href="attributeselectors.html" class="nav-btn btn-next">Next Topic: Attribute Selectors →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 What are Pseudo-classes and Pseudo-elements?</h2>
+            <p><strong>Pseudo-classes</strong> select elements based on their state or position, while <strong>pseudo-elements</strong> let you style specific parts of elements or create virtual elements.</p>
+            
+            <div class="info-box">
+                <h3>Key Differences:</h3>
+                <ul>
+                    <li>✅ <strong>Pseudo-class:</strong> Uses single colon <code>:hover</code></li>
+                    <li>✅ <strong>Pseudo-element:</strong> Uses double colon <code>::before</code></li>
+                    <li>✅ Pseudo-classes target element states or positions</li>
+                    <li>✅ Pseudo-elements create or target parts of elements</li>
+                    <li>✅ Both are powerful selectors for advanced styling</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Interactive Pseudo-classes Section -->
+        <section class="content-section">
+            <h2>🖱️ Interactive Pseudo-classes</h2>
+            <p>These pseudo-classes respond to user interactions.</p>
+            
+            <h3>1. :hover</h3>
+            <div class="code-block">
+                <pre><code>/* Style on mouse hover */
+button:hover {
+    background-color: #667eea;
+    transform: scale(1.05);
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+}</code></pre>
+            </div>
+
+            <h3>2. :active</h3>
+            <div class="code-block">
+                <pre><code>/* Style when being clicked */
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+}</code></pre>
+            </div>
+
+            <h3>3. :focus</h3>
+            <div class="code-block">
+                <pre><code>/* Style when focused (keyboard/click) */
+input:focus {
+    outline: 2px solid #667eea;
+    border-color: #667eea;
+}
+
+/* Better focus with focus-visible (keyboard only) */
+button:focus-visible {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Interactive Example:</h3>
+                <button style="background: #667eea; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s;">
+                    Hover Over Me!
+                </button>
+                <p style="margin-top: 10px; font-style: italic; color: #666;">Hover, click, and focus on the button to see effects</p>
+            </div>
+
+            <h3>4. :visited (Links Only)</h3>
+            <div class="code-block">
+                <pre><code>/* Visited links */
+a:visited {
+    color: purple;
+}
+
+/* Link states in order (LVHA) */
+a:link { color: blue; }
+a:visited { color: purple; }
+a:hover { color: red; }
+a:active { color: orange; }</code></pre>
+            </div>
+        </section>
+
+        <!-- Structural Pseudo-classes Section -->
+        <section class="content-section">
+            <h2>📋 Structural Pseudo-classes</h2>
+            <p>Select elements based on their position in the document structure.</p>
+            
+            <h3>Child Selectors:</h3>
+            <div class="code-block">
+                <pre><code>/* First child */
+li:first-child {
+    font-weight: bold;
+}
+
+/* Last child */
+li:last-child {
+    border-bottom: none;
+}
+
+/* Only child (no siblings) */
+p:only-child {
+    text-align: center;
+}
+
+/* Nth child */
+li:nth-child(2) {        /* Second item */
+    color: red;
+}
+
+li:nth-child(odd) {      /* 1st, 3rd, 5th... */
+    background: #f0f0f0;
+}
+
+li:nth-child(even) {     /* 2nd, 4th, 6th... */
+    background: white;
+}
+
+li:nth-child(3n) {       /* Every 3rd: 3, 6, 9... */
+    color: blue;
+}
+
+li:nth-child(3n+1) {     /* 1st, 4th, 7th... */
+    color: green;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Nth-child Example:</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="padding: 10px; background: #f0f0f0; border: 1px solid #ddd;">Item 1 (odd)</li>
+                    <li style="padding: 10px; background: white; border: 1px solid #ddd;">Item 2 (even)</li>
+                    <li style="padding: 10px; background: #f0f0f0; border: 1px solid #ddd;">Item 3 (odd)</li>
+                    <li style="padding: 10px; background: white; border: 1px solid #ddd;">Item 4 (even)</li>
+                    <li style="padding: 10px; background: #f0f0f0; border: 1px solid #ddd;">Item 5 (odd)</li>
+                </ul>
+            </div>
+
+            <h3>Type Selectors:</h3>
+            <div class="code-block">
+                <pre><code>/* First of type */
+p:first-of-type {
+    font-size: 1.2em;
+}
+
+/* Last of type */
+p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Nth of type */
+p:nth-of-type(2) {
+    color: blue;
+}
+
+/* Only of type */
+p:only-of-type {
+    text-align: center;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Form Pseudo-classes Section -->
+        <section class="content-section">
+            <h2>📝 Form Pseudo-classes</h2>
+            <p>Target form elements based on their state.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Enabled/Disabled */
+input:enabled {
+    background: white;
+}
+
+input:disabled {
+    background: #f0f0f0;
+    cursor: not-allowed;
+}
+
+/* Checked (checkbox/radio) */
+input:checked {
+    accent-color: #667eea;
+}
+
+input:checked + label {
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* Required/Optional */
+input:required {
+    border-left: 3px solid red;
+}
+
+input:optional {
+    border-left: 3px solid gray;
+}
+
+/* Valid/Invalid */
+input:valid {
+    border-color: green;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+/* In range / Out of range */
+input:in-range {
+    border-color: green;
+}
+
+input:out-of-range {
+    border-color: red;
+}
+
+/* Placeholder shown */
+input:placeholder-shown {
+    border-color: #ccc;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Form States Example:</h3>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="text" placeholder="Required field" required style="padding: 10px; border: 2px solid #ddd; border-left: 3px solid red; border-radius: 5px;">
+                    <input type="email" placeholder="Optional email" style="padding: 10px; border: 2px solid #ddd; border-left: 3px solid gray; border-radius: 5px;">
+                    <input type="text" disabled placeholder="Disabled" style="padding: 10px; border: 2px solid #ddd; border-radius: 5px; background: #f0f0f0; cursor: not-allowed;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Useful Pseudo-classes Section -->
+        <section class="content-section">
+            <h2>🔧 Other Useful Pseudo-classes</h2>
+            
+            <div class="code-block">
+                <pre><code>/* Not selector (exclude) */
+li:not(.special) {
+    color: gray;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+/* Empty (no children or text) */
+div:empty {
+    display: none;
+}
+
+/* Root element (html) */
+:root {
+    --primary-color: #667eea;
+}
+
+/* Target (URL anchor) */
+:target {
+    background: yellow;
+    border: 2px solid orange;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Pseudo-elements Section -->
+        <section class="content-section">
+            <h2>✨ Pseudo-elements</h2>
+            <p>Pseudo-elements create virtual elements or target specific parts of elements.</p>
+            
+            <h3>1. ::before and ::after</h3>
+            <div class="code-block">
+                <pre><code>/* Add content before element */
+h2::before {
+    content: "→ ";
+    color: #667eea;
+    font-weight: bold;
+}
+
+/* Add content after element */
+h2::after {
+    content: " ←";
+    color: #764ba2;
+}
+
+/* Decorative elements */
+.quote::before {
+    content: """;
+    font-size: 3em;
+    color: #667eea;
+}
+
+/* Icons using Unicode */
+.link::before {
+    content: "🔗 ";
+}
+
+/* Required asterisk */
+label.required::after {
+    content: " *";
+    color: red;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>::before and ::after Example:</h3>
+                <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: #667eea; margin: 0;">
+                        <span style="color: #667eea; font-weight: bold;">→ </span>
+                        Heading with Decorations
+                        <span style="color: #764ba2; font-weight: bold;"> ←</span>
+                    </h3>
+                </div>
+            </div>
+
+            <h3>2. ::first-letter</h3>
+            <div class="code-block">
+                <pre><code>/* Style first letter (drop cap) */
+p::first-letter {
+    font-size: 3em;
+    font-weight: bold;
+    color: #667eea;
+    float: left;
+    line-height: 1;
+    margin-right: 5px;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>::first-letter Example:</h3>
+                <p style="margin: 0;">
+                    <span style="font-size: 3em; font-weight: bold; color: #667eea; float: left; line-height: 1; margin-right: 5px;">L</span>
+                    orem ipsum dolor sit amet, consectetur adipiscing elit. This paragraph demonstrates the drop cap effect using the ::first-letter pseudo-element.
+                </p>
+            </div>
+
+            <h3>3. ::first-line</h3>
+            <div class="code-block">
+                <pre><code>/* Style first line */
+p::first-line {
+    font-weight: bold;
+    color: #667eea;
+    text-transform: uppercase;
+}</code></pre>
+            </div>
+
+            <h3>4. ::selection</h3>
+            <div class="code-block">
+                <pre><code>/* Style selected text */
+::selection {
+    background: #667eea;
+    color: white;
+}
+
+/* Firefox */
+::-moz-selection {
+    background: #667eea;
+    color: white;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>::selection Example:</h3>
+                <p style="user-select: text; padding: 15px; background: #f0f0f0; border-radius: 5px;">
+                    Try selecting this text! The selection highlight will be styled. (Note: In this demo, default selection styling applies, but in your CSS you can customize it)
+                </p>
+            </div>
+
+            <h3>5. ::placeholder</h3>
+            <div class="code-block">
+                <pre><code>/* Style placeholder text */
+input::placeholder {
+    color: #999;
+    font-style: italic;
+    opacity: 0.7;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+            
+            <h3>Example 1: Styled Quote</h3>
+            <div class="code-block">
+                <pre><code>.quote {
+    position: relative;
+    padding: 30px 20px 20px 60px;
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+}
+
+.quote::before {
+    content: """;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 4rem;
+    color: #667eea;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Tooltip</h3>
+            <div class="code-block">
+                <pre><code>.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: #333;
+    color: white;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Badge Counter</h3>
+            <div class="code-block">
+                <pre><code>.notification {
+    position: relative;
+}
+
+.notification::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Custom Checkbox</h3>
+            <div class="code-block">
+                <pre><code>/* Hide default checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Custom checkbox */
+input[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #667eea;
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Checked state */
+input[type="checkbox"]:checked + label::before {
+    background: #667eea;
+    content: "✓";
+    color: white;
+    text-align: center;
+    line-height: 20px;
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Clearfix</h3>
+            <div class="code-block">
+                <pre><code>/* Classic clearfix */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}</code></pre>
+            </div>
+
+            <h3>Example 6: Striped Table</h3>
+            <div class="code-block">
+                <pre><code>/* Alternating row colors */
+tr:nth-child(odd) {
+    background: #f8f9fa;
+}
+
+tr:nth-child(even) {
+    background: white;
+}
+
+tr:hover {
+    background: #e3f2fd;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Combining Selectors Section -->
+        <section class="content-section">
+            <h2>🔗 Combining Pseudo-classes and Pseudo-elements</h2>
+            
+            <div class="code-block">
+                <pre><code>/* Hover effect on pseudo-element */
+button:hover::before {
+    transform: scale(1.2);
+}
+
+/* First child's before element */
+li:first-child::before {
+    content: "👑 ";
+}
+
+/* Checked state with after element */
+input:checked + label::after {
+    content: " ✓";
+    color: green;
+}
+
+/* Focus visible with custom outline */
+button:focus-visible::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 2px solid #667eea;
+    border-radius: inherit;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Hover Effects:</h3>
+                    <div style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+                        <button style="background: #667eea; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s;">
+                            Hover Me
+                        </button>
+                        <button style="background: #764ba2; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s;">
+                            Click Me
+                        </button>
+                    </div>
+
+                    <h3>Striped List:</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; max-width: 400px;">
+                        <li style="padding: 12px; background: #f8f9fa; border: 1px solid #ddd;">First Item</li>
+                        <li style="padding: 12px; background: white; border: 1px solid #ddd; border-top: none;">Second Item</li>
+                        <li style="padding: 12px; background: #f8f9fa; border: 1px solid #ddd; border-top: none;">Third Item</li>
+                        <li style="padding: 12px; background: white; border: 1px solid #ddd; border-top: none;">Fourth Item</li>
+                    </ul>
+
+                    <h3 style="margin-top: 30px;">Decorative Heading:</h3>
+                    <h2 style="color: #667eea; margin: 0;">
+                        <span style="color: #667eea; margin-right: 10px;">→</span>
+                        Beautiful Title
+                        <span style="color: #764ba2; margin-left: 10px;">←</span>
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: What's the difference between : and :: in selectors?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> No difference</label>
+                        <label><input type="radio" name="q1" value="b"> : for pseudo-classes, :: for pseudo-elements</label>
+                        <label><input type="radio" name="q1" value="c"> :: is deprecated</label>
+                        <label><input type="radio" name="q1" value="d"> : is for older browsers only</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: Which pseudo-class selects every other row?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> :nth-child(2)</label>
+                        <label><input type="radio" name="q2" value="b"> :nth-child(odd)</label>
+                        <label><input type="radio" name="q2" value="c"> :every-other</label>
+                        <label><input type="radio" name="q2" value="d"> :alternate</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: What is required for ::before and ::after to work?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> Nothing special</label>
+                        <label><input type="radio" name="q3" value="b"> content property</label>
+                        <label><input type="radio" name="q3" value="c"> display: block</label>
+                        <label><input type="radio" name="q3" value="d"> position: absolute</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: Which pseudo-class targets focused elements?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> :active</label>
+                        <label><input type="radio" name="q4" value="b"> :focus</label>
+                        <label><input type="radio" name="q4" value="c"> :hover</label>
+                        <label><input type="radio" name="q4" value="d"> :selected</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: What does :not(.class) do?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> Selects elements with that class</label>
+                        <label><input type="radio" name="q5" value="b"> Selects elements without that class</label>
+                        <label><input type="radio" name="q5" value="c"> Disables the class</label>
+                        <label><input type="radio" name="q5" value="d"> Removes the class</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a button with hover, active, and focus states (different colors for each).</li>
+                    <li>Style a list where every odd item has a light gray background using :nth-child.</li>
+                    <li>Add a decorative icon before all headings using ::before with content property.</li>
+                    <li>Create custom styling for selected text using ::selection with purple background.</li>
+                    <li>Style form inputs to show green border when :valid and red border when :invalid.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>Pseudo-class:</strong> Single colon (:), targets element states or positions</li>
+                    <li><strong>Pseudo-element:</strong> Double colon (::), creates/targets parts of elements</li>
+                    <li><strong>:hover:</strong> When mouse hovers over element</li>
+                    <li><strong>:active:</strong> When element is being clicked</li>
+                    <li><strong>:focus:</strong> When element has keyboard/click focus</li>
+                    <li><strong>:first-child:</strong> First child of parent</li>
+                    <li><strong>:last-child:</strong> Last child of parent</li>
+                    <li><strong>:nth-child(n):</strong> Specific child (odd, even, 3n, 3n+1, etc.)</li>
+                    <li><strong>:not():</strong> Excludes matching elements</li>
+                    <li><strong>::before/::after:</strong> Creates virtual elements (requires content property)</li>
+                    <li><strong>::first-letter:</strong> Styles first letter (drop cap)</li>
+                    <li><strong>::first-line:</strong> Styles first line</li>
+                    <li><strong>::selection:</strong> Styles selected text</li>
+                    <li><strong>::placeholder:</strong> Styles input placeholder text</li>
+                    <li><strong>Best Practice:</strong> Use pseudo-classes for interactivity, pseudo-elements for decorations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="alignposition.html" class="nav-btn btn-back">← Previous: Align & Position</a>
+            <a href="attributeselectors.html" class="nav-btn btn-next">Next Topic: Attribute Selectors →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

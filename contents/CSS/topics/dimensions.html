@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Dimensions</title>
+    <link rel="stylesheet" href="../extra/style.css">
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>📏 CSS Dimensions</h1>
+            <p class="topic-subtitle">Master width, height, and min/max constraints to control element sizing</p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="boxmodel.html" class="nav-btn btn-back">← Previous: Box Model</a>
+            <a href="displayposition.html" class="nav-btn btn-next">Next Topic: Display & Positioning →</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 Why Control Dimensions?</h2>
+            <p>Understanding how to control the <strong>width</strong> and <strong>height</strong> of elements is essential for creating responsive, well-structured layouts. CSS provides multiple properties to set exact sizes, minimum and maximum constraints, and responsive dimensions.</p>
+            
+            <div class="info-box">
+                <h3>Dimension Control Benefits:</h3>
+                <ul>
+                    <li>✅ Create precise layouts and designs</li>
+                    <li>✅ Build responsive websites that adapt to screen sizes</li>
+                    <li>✅ Prevent content overflow and layout breaking</li>
+                    <li>✅ Maintain aspect ratios and proportions</li>
+                    <li>✅ Control element behavior across devices</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Width Property Section -->
+        <section class="content-section">
+            <h2>↔️ Width Property</h2>
+            <p>The <code>width</code> property sets the width of an element's content area.</p>
+            
+            <h3>Setting Width:</h3>
+            <div class="code-block">
+                <pre><code>/* Absolute units */
+.box {
+    width: 300px;      /* Pixels */
+}
+
+/* Relative units */
+.container {
+    width: 50%;        /* Percentage of parent */
+    width: 20em;       /* Relative to font size */
+    width: 30rem;      /* Relative to root font size */
+}
+
+/* Viewport units */
+.hero {
+    width: 100vw;      /* 100% of viewport width */
+    width: 50vw;       /* 50% of viewport width */
+}
+
+/* Auto (default) */
+.element {
+    width: auto;       /* Browser calculates width */
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Common Width Units:</h3>
+                <ul>
+                    <li><strong>px (pixels):</strong> Fixed size, exact control</li>
+                    <li><strong>% (percentage):</strong> Relative to parent element</li>
+                    <li><strong>em:</strong> Relative to element's font size</li>
+                    <li><strong>rem:</strong> Relative to root (html) font size</li>
+                    <li><strong>vw (viewport width):</strong> 1vw = 1% of viewport width</li>
+                    <li><strong>auto:</strong> Browser calculates automatically</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Height Property Section -->
+        <section class="content-section">
+            <h2>↕️ Height Property</h2>
+            <p>The <code>height</code> property sets the height of an element's content area.</p>
+            
+            <h3>Setting Height:</h3>
+            <div class="code-block">
+                <pre><code>/* Absolute units */
+.box {
+    height: 200px;     /* Pixels */
+}
+
+/* Relative units */
+.sidebar {
+    height: 100%;      /* 100% of parent height */
+}
+
+/* Viewport units */
+.hero {
+    height: 100vh;     /* 100% of viewport height */
+    height: 50vh;      /* 50% of viewport height */
+}
+
+/* Auto (default) */
+.content {
+    height: auto;      /* Height based on content */
+}</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>⚠️ Height Percentage Gotcha</h3>
+                <p>For percentage heights to work, the parent element must have an explicit height set. Otherwise, use <code>vh</code> units or set parent heights.</p>
+            </div>
+        </section>
+
+        <!-- Max Width Section -->
+        <section class="content-section">
+            <h2>⬅️ Max-Width</h2>
+            <p>The <code>max-width</code> property sets the maximum width of an element. The element can be smaller but never larger than this value.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Responsive container */
+.container {
+    width: 100%;
+    max-width: 1200px;  /* Never wider than 1200px */
+    margin: 0 auto;     /* Center it */
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;    /* Never overflow parent */
+    height: auto;       /* Maintain aspect ratio */
+}
+
+/* Flexible box */
+.card {
+    width: 90%;
+    max-width: 400px;   /* Cap at 400px */
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Why Use Max-Width?</h3>
+                <ul>
+                    <li>✅ Create responsive layouts that work on all screens</li>
+                    <li>✅ Prevent content from becoming too wide on large screens</li>
+                    <li>✅ Keep images from breaking layout</li>
+                    <li>✅ Maintain readability with optimal line lengths</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Min Width Section -->
+        <section class="content-section">
+            <h2>➡️ Min-Width</h2>
+            <p>The <code>min-width</code> property sets the minimum width of an element. The element can be larger but never smaller than this value.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Prevent element from being too narrow */
+.button {
+    min-width: 120px;   /* At least 120px wide */
+    padding: 10px 20px;
+}
+
+/* Flexible with minimum */
+.sidebar {
+    width: 20%;
+    min-width: 250px;   /* Never narrower than 250px */
+}
+
+/* Input fields */
+input[type="text"] {
+    width: 100%;
+    min-width: 200px;   /* Minimum usable width */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Max Height Section -->
+        <section class="content-section">
+            <h2>⬆️ Max-Height</h2>
+            <p>The <code>max-height</code> property sets the maximum height of an element.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Scrollable container */
+.comments {
+    max-height: 400px;
+    overflow-y: auto;   /* Add scrollbar if needed */
+}
+
+/* Dropdown menu */
+.dropdown {
+    max-height: 300px;
+    overflow: auto;
+}
+
+/* Modal content */
+.modal-body {
+    max-height: 80vh;   /* Max 80% of viewport height */
+    overflow-y: auto;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Min Height Section -->
+        <section class="content-section">
+            <h2>⬇️ Min-Height</h2>
+            <p>The <code>min-height</code> property sets the minimum height of an element.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Full viewport height minimum */
+.hero {
+    min-height: 100vh;  /* At least full screen height */
+}
+
+/* Flexible section */
+.section {
+    min-height: 400px;  /* Minimum height for content */
+    padding: 40px;
+}
+
+/* Card with minimum height */
+.card {
+    min-height: 200px;  /* Never shorter than 200px */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Combining Dimensions Section -->
+        <section class="content-section">
+            <h2>🔗 Combining Dimension Properties</h2>
+            <p>You can combine multiple dimension properties for flexible and responsive designs.</p>
+            
+            <h3>Example 1: Responsive Container</h3>
+            <div class="code-block">
+                <pre><code>.container {
+    width: 90%;         /* Flexible width */
+    max-width: 1200px;  /* Don't get too wide */
+    min-width: 320px;   /* Don't get too narrow */
+    margin: 0 auto;     /* Center horizontally */
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Flexible Card</h3>
+            <div class="code-block">
+                <pre><code>.card {
+    width: 100%;
+    max-width: 400px;
+    min-height: 300px;
+    max-height: 600px;
+    overflow: auto;     /* Scroll if content exceeds max-height */
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Responsive Image</h3>
+            <div class="code-block">
+                <pre><code>img {
+    width: 100%;        /* Fluid width */
+    max-width: 100%;    /* Never overflow container */
+    height: auto;       /* Maintain aspect ratio */
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Full-Screen Hero</h3>
+            <div class="code-block">
+                <pre><code>.hero {
+    width: 100vw;
+    min-height: 100vh;  /* At least full screen */
+    max-height: 1200px; /* Cap at 1200px */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Aspect Ratio Section -->
+        <section class="content-section">
+            <h2>📐 Aspect Ratio</h2>
+            <p>The <code>aspect-ratio</code> property maintains a specific width-to-height ratio.</p>
+            
+            <div class="code-block">
+                <pre><code>/* Square */
+.square {
+    aspect-ratio: 1 / 1;
+    width: 200px;       /* Height will be 200px */
+}
+
+/* Widescreen (16:9) */
+.video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+/* Portrait (3:4) */
+.card {
+    aspect-ratio: 3 / 4;
+    width: 300px;       /* Height will be 400px */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+            
+            <h3>Example 1: Centered Content Container</h3>
+            <div class="code-block">
+                <pre><code>.main-content {
+    width: 90%;
+    max-width: 1140px;
+    min-width: 320px;
+    margin: 0 auto;
+    padding: 20px;
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Responsive Card Grid</h3>
+            <div class="code-block">
+                <pre><code>.card {
+    width: 100%;
+    max-width: 350px;
+    min-height: 400px;
+    padding: 20px;
+    margin: 10px;
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Full-Height Sidebar</h3>
+            <div class="code-block">
+                <pre><code>.sidebar {
+    width: 250px;
+    min-width: 200px;
+    height: 100vh;
+    overflow-y: auto;
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Responsive Button</h3>
+            <div class="code-block">
+                <pre><code>.button {
+    padding: 12px 24px;
+    min-width: 120px;
+    height: 44px;       /* Touch-friendly size */
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Modal Dialog</h3>
+            <div class="code-block">
+                <pre><code>.modal {
+    width: 90%;
+    max-width: 600px;
+    min-width: 300px;
+    max-height: 90vh;
+    overflow-y: auto;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Example -->
+        <section class="content-section">
+            <h2>🎨 Live Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <h3>Fixed Width:</h3>
+                    <div style="width: 300px; padding: 15px; background: #e3f2fd; border: 2px solid #667eea; margin: 10px 0;">
+                        300px fixed width
+                    </div>
+
+                    <h3>Percentage Width:</h3>
+                    <div style="width: 50%; padding: 15px; background: #f3e5f5; border: 2px solid #764ba2; margin: 10px 0;">
+                        50% width (of parent)
+                    </div>
+
+                    <h3>Max-Width Responsive:</h3>
+                    <div style="width: 100%; max-width: 400px; padding: 15px; background: #fff3e0; border: 2px solid #ff9800; margin: 10px 0;">
+                        100% width, max 400px
+                    </div>
+
+                    <h3>Min & Max Height with Scroll:</h3>
+                    <div style="min-height: 100px; max-height: 150px; overflow-y: auto; padding: 15px; background: #e8f5e9; border: 2px solid #4caf50; margin: 10px 0;">
+                        This box has min-height: 100px and max-height: 150px. If content exceeds max-height, it becomes scrollable. Try resizing to see the effect. This is useful for creating fixed-height containers with overflow handling.
+                    </div>
+
+                    <h3>Aspect Ratio (Square):</h3>
+                    <div style="aspect-ratio: 1/1; width: 150px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; border-radius: 10px;">
+                        1:1 Ratio
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: Which property prevents an element from becoming too wide?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> min-width</label>
+                        <label><input type="radio" name="q1" value="b"> max-width</label>
+                        <label><input type="radio" name="q1" value="c"> width</label>
+                        <label><input type="radio" name="q1" value="d"> flex-width</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: What does 100vh represent?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> 100 pixels</label>
+                        <label><input type="radio" name="q2" value="b"> 100% of parent height</label>
+                        <label><input type="radio" name="q2" value="c"> 100% of viewport height</label>
+                        <label><input type="radio" name="q2" value="d"> 100 vertical units</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: How do you make an image responsive?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> width: 100%; height: 100%</label>
+                        <label><input type="radio" name="q3" value="b"> max-width: 100%; height: auto</label>
+                        <label><input type="radio" name="q3" value="c"> min-width: 100%; height: auto</label>
+                        <label><input type="radio" name="q3" value="d"> width: auto; height: 100%</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: What is the purpose of min-height?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> Sets maximum height</label>
+                        <label><input type="radio" name="q4" value="b"> Sets minimum height element can have</label>
+                        <label><input type="radio" name="q4" value="c"> Sets exact height</label>
+                        <label><input type="radio" name="q4" value="d"> Disables height property</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: Which unit is relative to the root font size?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> px</label>
+                        <label><input type="radio" name="q5" value="b"> em</label>
+                        <label><input type="radio" name="q5" value="c"> rem</label>
+                        <label><input type="radio" name="q5" value="d"> %</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a container that is 90% width with a maximum width of 1200px and centered horizontally.</li>
+                    <li>Make a square box (equal width and height) using aspect-ratio that is 250px wide.</li>
+                    <li>Create a full-height hero section that covers at least 100vh but has a maximum height of 1000px.</li>
+                    <li>Style an image to be responsive: full width of container, maintain aspect ratio, never overflow.</li>
+                    <li>Create a scrollable div with minimum height of 200px, maximum height of 400px, and auto overflow.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>width:</strong> Sets the width of element's content area</li>
+                    <li><strong>height:</strong> Sets the height of element's content area</li>
+                    <li><strong>max-width:</strong> Sets maximum width (element can be smaller, not larger)</li>
+                    <li><strong>min-width:</strong> Sets minimum width (element can be larger, not smaller)</li>
+                    <li><strong>max-height:</strong> Sets maximum height (use with overflow for scrolling)</li>
+                    <li><strong>min-height:</strong> Sets minimum height (useful for full-screen sections)</li>
+                    <li><strong>aspect-ratio:</strong> Maintains width-to-height ratio</li>
+                    <li><strong>Units:</strong> px (fixed), % (relative to parent), em/rem (font-based), vw/vh (viewport)</li>
+                    <li><strong>Responsive Images:</strong> <code>max-width: 100%; height: auto;</code></li>
+                    <li><strong>Responsive Container:</strong> <code>width: 90%; max-width: 1200px; margin: 0 auto;</code></li>
+                    <li><strong>Full Viewport Height:</strong> Use <code>height: 100vh</code> or <code>min-height: 100vh</code></li>
+                    <li><strong>Best Practice:</strong> Combine width with max-width for responsive designs</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="boxmodel.html" class="nav-btn btn-back">← Previous: Box Model</a>
+            <a href="displayposition.html" class="nav-btn btn-next">Next Topic: Display & Positioning →</a>
+        </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selected) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

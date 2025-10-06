@@ -1,0 +1,468 @@
+<!-- contents/HTML/topics/block-inline.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Block vs Inline Elements — Session 9</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 for quizzes -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+    <!-- Header -->
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 9</div>
+        <h1 id="lesson-title">Block vs Inline Elements</h1>
+        <div class="meta">Display Behavior • Layout Flow • Practical Examples</div>
+      </div>
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="layout.html">Next: Layout →</a>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main id="content" class="lesson-card" role="main">
+
+      <!-- TOC -->
+      <nav class="toc" aria-label="Table of contents">
+        <a href="#intro">Introduction</a>
+        <a href="#block">Block Elements</a>
+        <a href="#inline">Inline Elements</a>
+        <a href="#inline-block">Inline-Block</a>
+        <a href="#div-vs-span">Div vs Span</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#practice">Practice</a>
+      </nav>
+
+      <!-- Introduction -->
+      <section id="intro" class="section">
+        <h2>Understanding Display Behavior</h2>
+        <p>Every HTML element has a default display behavior that determines how it appears in the page layout. The two main types are <strong>block-level</strong> and <strong>inline</strong> elements.</p>
+
+        <h4>Why This Matters:</h4>
+        <ul>
+          <li>Controls how elements stack and flow on the page</li>
+          <li>Affects spacing, width, and positioning</li>
+          <li>Determines which elements can contain others</li>
+          <li>Essential for understanding CSS layout</li>
+        </ul>
+
+        <p><strong>Key Point:</strong> You can change an element's display with CSS (<code>display: block;</code>, <code>display: inline;</code>, etc.), but understanding defaults is crucial.</p>
+      </section>
+
+      <!-- Block -->
+      <section id="block" class="section">
+        <h2>Block-Level Elements</h2>
+        <p>Block elements are the structural building blocks of a webpage. They create distinct sections and stack vertically.</p>
+
+        <h3>Characteristics:</h3>
+        <ul>
+          <li><strong>Always start on a new line</strong> - Forces content after it to the next line</li>
+          <li><strong>Take full width available</strong> - Stretches to parent container width by default</li>
+          <li><strong>Can contain block or inline elements</strong> - Very flexible nesting</li>
+          <li><strong>Respect width/height properties</strong> - Can be sized with CSS</li>
+          <li><strong>Accept all margin/padding</strong> - Top, right, bottom, left spacing works</li>
+        </ul>
+
+        <h3>Common Block Elements:</h3>
+        <pre class="code-block"><code>&lt;div&gt;      Generic container (most common)
+&lt;p&gt;        Paragraph
+&lt;h1&gt;-&lt;h6&gt;  Headings
+&lt;ul&gt;, &lt;ol&gt; Lists
+&lt;li&gt;       List item
+&lt;table&gt;    Table
+&lt;form&gt;     Form
+&lt;header&gt;   Header section
+&lt;nav&gt;      Navigation
+&lt;main&gt;     Main content
+&lt;section&gt;  Section
+&lt;article&gt;  Article
+&lt;aside&gt;    Sidebar
+&lt;footer&gt;   Footer
+&lt;blockquote&gt; Long quote</code></pre>
+
+        <h3>Block Element Example:</h3>
+        <pre class="code-block"><code>&lt;!-- Each element starts on a new line --&gt;
+&lt;div style="background: lightblue; padding: 10px;"&gt;
+  This is a div (block element)
+&lt;/div&gt;
+&lt;p style="background: lightgreen; padding: 10px;"&gt;
+  This is a paragraph (block element)
+&lt;/p&gt;
+&lt;h2 style="background: lightyellow; padding: 10px;"&gt;
+  This is a heading (block element)
+&lt;/h2&gt;</code></pre>
+
+        <h4>Visual Result:</h4>
+        <p>Each element appears on its own line, taking full width:</p>
+        <pre class="code-block"><code>┌────────────────────────────────┐
+│ This is a div (block element)  │
+└────────────────────────────────┘
+┌────────────────────────────────┐
+│ This is a paragraph            │
+└────────────────────────────────┘
+┌────────────────────────────────┐
+│ This is a heading              │
+└────────────────────────────────┘</code></pre>
+
+        <h3>When to Use Block Elements:</h3>
+        <ul>
+          <li>Creating page structure and layout sections</li>
+          <li>Grouping related content together</li>
+          <li>Building card components or containers</li>
+          <li>Organizing content vertically</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Inline -->
+      <section id="inline" class="section">
+        <h2>Inline Elements</h2>
+        <p>Inline elements flow with text and don't break the line. They're used within block elements to style or add meaning to text.</p>
+
+        <h3>Characteristics:</h3>
+        <ul>
+          <li><strong>Don't start on a new line</strong> - Flow with surrounding content</li>
+          <li><strong>Take only necessary width</strong> - Width matches content size</li>
+          <li><strong>Cannot contain block elements</strong> - Only other inline elements</li>
+          <li><strong>Ignore width/height properties</strong> - Size determined by content</li>
+          <li><strong>Vertical margin/padding partially ignored</strong> - Left/right work, top/bottom don't affect layout</li>
+        </ul>
+
+        <h3>Common Inline Elements:</h3>
+        <pre class="code-block"><code>&lt;span&gt;     Generic inline container
+&lt;a&gt;        Link (anchor)
+&lt;img&gt;      Image
+&lt;strong&gt;   Important text (bold)
+&lt;em&gt;       Emphasized text (italic)
+&lt;b&gt;        Bold text
+&lt;i&gt;        Italic text
+&lt;code&gt;     Inline code
+&lt;mark&gt;     Highlighted text
+&lt;small&gt;    Small text
+&lt;sub&gt;      Subscript
+&lt;sup&gt;      Superscript
+&lt;label&gt;    Form label
+&lt;input&gt;    Form input
+&lt;button&gt;   Button</code></pre>
+
+        <h3>Inline Element Example:</h3>
+        <pre class="code-block"><code>&lt;p&gt;
+  This is a paragraph with 
+  &lt;span style="color: red;"&gt;red text&lt;/span&gt;, 
+  &lt;span style="color: blue;"&gt;blue text&lt;/span&gt;, and 
+  &lt;a href="#"&gt;a link&lt;/a&gt; all on the same line.
+&lt;/p&gt;</code></pre>
+
+        <h4>Visual Result:</h4>
+        <p>All inline elements flow together:</p>
+        <pre class="code-block"><code>This is a paragraph with red text, blue text, and a link all on the same line.</code></pre>
+
+        <h3>Width/Height Behavior:</h3>
+        <pre class="code-block"><code>&lt;!-- Width/height ignored on inline elements --&gt;
+&lt;span style="width: 200px; height: 100px; background: yellow;"&gt;
+  This span ignores width/height
+&lt;/span&gt;
+
+&lt;!-- Only takes content width --&gt;
+&lt;span style="background: lightblue; padding: 5px;"&gt;
+  Fits content
+&lt;/span&gt;</code></pre>
+
+        <h3>When to Use Inline Elements:</h3>
+        <ul>
+          <li>Styling parts of text within paragraphs</li>
+          <li>Adding links within sentences</li>
+          <li>Inserting images within text flow</li>
+          <li>Applying formatting to specific words</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Inline-Block -->
+      <section id="inline-block" class="section">
+        <h2>Inline-Block Elements</h2>
+        <p>CSS allows a hybrid behavior: <code>display: inline-block;</code> combines benefits of both types.</p>
+
+        <h3>Inline-Block Characteristics:</h3>
+        <ul>
+          <li>Flows inline like inline elements (doesn't break line)</li>
+          <li>Accepts width/height like block elements</li>
+          <li>Respects all margin/padding like block elements</li>
+          <li>Perfect for creating side-by-side boxes</li>
+        </ul>
+
+        <h3>Example:</h3>
+        <pre class="code-block"><code>&lt;!-- Create boxes that sit side-by-side --&gt;
+&lt;div style="display: inline-block; width: 100px; height: 100px; background: red; margin: 5px;"&gt;
+  Box 1
+&lt;/div&gt;
+&lt;div style="display: inline-block; width: 100px; height: 100px; background: blue; margin: 5px;"&gt;
+  Box 2
+&lt;/div&gt;
+&lt;div style="display: inline-block; width: 100px; height: 100px; background: green; margin: 5px;"&gt;
+  Box 3
+&lt;/div&gt;</code></pre>
+
+        <h4>Visual Result:</h4>
+        <pre class="code-block"><code>┌──────┐ ┌──────┐ ┌──────┐
+│ Box 1│ │ Box 2│ │ Box 3│
+└──────┘ └──────┘ └──────┘</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Div vs Span -->
+      <section id="div-vs-span" class="section">
+        <h2>&lt;div&gt; vs &lt;span&gt;</h2>
+        <p>The most common generic containers - understanding when to use each is essential.</p>
+
+        <h3>Comparison Table:</h3>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>&lt;div&gt;</th>
+              <th>&lt;span&gt;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Display Type</td>
+              <td>Block-level</td>
+              <td>Inline</td>
+            </tr>
+            <tr>
+              <td>Line Break</td>
+              <td>Starts on new line</td>
+              <td>Stays on same line</td>
+            </tr>
+            <tr>
+              <td>Default Width</td>
+              <td>100% of parent</td>
+              <td>Content width only</td>
+            </tr>
+            <tr>
+              <td>Can Contain</td>
+              <td>Block & inline elements</td>
+              <td>Only inline elements</td>
+            </tr>
+            <tr>
+              <td>Sizing</td>
+              <td>Accepts width/height</td>
+              <td>Ignores width/height</td>
+            </tr>
+            <tr>
+              <td>Typical Use</td>
+              <td>Layout sections, containers</td>
+              <td>Text styling, small portions</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Practical Example:</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Div vs Span Example&lt;/title&gt;
+  &lt;style&gt;
+    .container {
+      background: lightgray;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    .highlight {
+      background: yellow;
+      padding: 2px 5px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Div: Block-level container --&gt;
+  &lt;div class="container"&gt;
+    &lt;h2&gt;This is a Section&lt;/h2&gt;
+    &lt;p&gt;This entire section is wrapped in a div.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Span: Inline styling --&gt;
+  &lt;p&gt;
+    This paragraph has &lt;span class="highlight"&gt;highlighted text&lt;/span&gt; 
+    using span. The span only affects specific words.
+  &lt;/p&gt;
+
+  &lt;!-- Multiple divs stack vertically --&gt;
+  &lt;div class="container"&gt;First div&lt;/div&gt;
+  &lt;div class="container"&gt;Second div&lt;/div&gt;
+
+  &lt;!-- Multiple spans stay inline --&gt;
+  &lt;p&gt;
+    &lt;span style="color: red;"&gt;Red&lt;/span&gt;
+    &lt;span style="color: green;"&gt;Green&lt;/span&gt;
+    &lt;span style="color: blue;"&gt;Blue&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Best Practices:</h3>
+        <ul>
+          <li><strong>Use &lt;div&gt; for:</strong> Layout structure, grouping content sections, creating containers</li>
+          <li><strong>Use &lt;span&gt; for:</strong> Styling specific text portions, inline elements within text</li>
+          <li><strong>Semantic alternatives:</strong> Prefer semantic HTML when possible (header, nav, section vs div)</li>
+          <li><strong>Avoid nested divs:</strong> Too many divs create "div soup" - use semantic elements</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Quiz -->
+      <section id="quiz" class="section mcq">
+        <h3>Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which of the following is a block element?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;span&gt;</button>
+            <button class="choice">b) &lt;div&gt;</button>
+            <button class="choice">c) &lt;a&gt;</button>
+            <button class="choice">d) &lt;img&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q2. Which element is used as an inline container?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;div&gt;</button>
+            <button class="choice">b) &lt;p&gt;</button>
+            <button class="choice">c) &lt;span&gt;</button>
+            <button class="choice">d) &lt;section&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q3. What happens with inline elements and width/height CSS?</div>
+          <div class="choices">
+            <button class="choice">a) They are ignored</button>
+            <button class="choice">b) They work normally</button>
+            <button class="choice">c) Only width works</button>
+            <button class="choice">d) Only height works</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q4. What display value combines inline flow with block sizing?</div>
+          <div class="choices">
+            <button class="choice">a) display: flex</button>
+            <button class="choice">b) display: inline-block</button>
+            <button class="choice">c) display: block-inline</button>
+            <button class="choice">d) display: hybrid</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q5. Which element can contain both block and inline elements?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;div&gt;</button>
+            <button class="choice">b) &lt;span&gt;</button>
+            <button class="choice">c) &lt;a&gt;</button>
+            <button class="choice">d) &lt;strong&gt;</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Practice -->
+      <section id="practice" class="section">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Block Element Demo:</strong>
+            <ul>
+              <li>Create 3 divs with different background colors</li>
+              <li>Add padding and margin to each</li>
+              <li>Observe how they stack vertically</li>
+            </ul>
+          </li>
+
+          <li><strong>Inline Element Demo:</strong>
+            <ul>
+              <li>Create a paragraph with multiple span elements</li>
+              <li>Style each span with different colors</li>
+              <li>Try adding width/height and observe what happens</li>
+            </ul>
+          </li>
+
+          <li><strong>Inline-Block Cards:</strong>
+            <ul>
+              <li>Create 3 card divs with display: inline-block</li>
+              <li>Set width: 200px, height: 150px for each</li>
+              <li>Add different background colors</li>
+              <li>They should sit side-by-side</li>
+            </ul>
+          </li>
+
+          <li><strong>Div vs Span Comparison:</strong>
+            <ul>
+              <li>Create a page showing div behavior (stacking)</li>
+              <li>Create a page showing span behavior (inline flow)</li>
+              <li>Use borders/backgrounds to visualize differences</li>
+            </ul>
+          </li>
+
+          <li><strong>Real-World Layout:</strong>
+            <ul>
+              <li>Build a simple blog post layout using divs for structure</li>
+              <li>Use spans to highlight important keywords in text</li>
+              <li>Add inline-block social media icons</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Summary -->
+      <section id="summary" class="section summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>Block elements:</strong> Start new line, take full width, accept all sizing/spacing</li>
+          <li><strong>Inline elements:</strong> Flow with text, take content width, ignore width/height</li>
+          <li><strong>Common block elements:</strong> div, p, h1-h6, ul, ol, table, header, footer, section</li>
+          <li><strong>Common inline elements:</strong> span, a, img, strong, em, code, button</li>
+          <li><strong>Div:</strong> Generic block container for layout and structure</li>
+          <li><strong>Span:</strong> Generic inline container for text styling</li>
+          <li><strong>Inline-block:</strong> Flows inline but accepts width/height (best of both)</li>
+          <li><strong>CSS control:</strong> Can change any element's display with display property</li>
+          <li><strong>Best practice:</strong> Use semantic HTML when possible, avoid excessive divs</li>
+        </ul>
+        <p>Understanding block vs inline behavior is fundamental to HTML layout. This knowledge is essential before learning CSS positioning and flexbox/grid!</p>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="layout.html">HTML Layout</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- shared script -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

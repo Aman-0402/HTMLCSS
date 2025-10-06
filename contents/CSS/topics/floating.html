@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Floating & Clear</title>
+    <link rel="stylesheet" href="../extra/style.css" />
+  </head>
+  <body>
+    <div class="topic-container">
+      <!-- Header -->
+      <header class="topic-header">
+        <h1>🌊 CSS Floating & Clear</h1>
+        <p class="topic-subtitle">
+          Master float and clear properties for wrapping text and creating
+          layouts
+        </p>
+      </header>
+
+      <!-- Navigation Buttons Top -->
+      <div class="topic-nav">
+        <a href="displayposition.html" class="nav-btn btn-back"
+          >← Previous: Display & Positioning</a
+        >
+        <a href="navbar.html" class="nav-btn btn-next"
+          >Next Topic: Navigation Bar →</a
+        >
+      </div>
+
+      <!-- Introduction Section -->
+      <section class="content-section">
+        <h2>🎯 What is Float?</h2>
+        <p>
+          The <strong>float</strong> property was originally designed to wrap
+          text around images (like in magazines). While modern layouts use
+          Flexbox and Grid, float is still useful for text wrapping and is
+          important to understand for legacy code.
+        </p>
+
+        <div class="info-box">
+          <h3>Float Use Cases:</h3>
+          <ul>
+            <li>✅ Wrapping text around images</li>
+            <li>✅ Creating magazine-style layouts</li>
+            <li>✅ Pull quotes and side notes</li>
+            <li>✅ Understanding legacy layouts</li>
+            <li>✅ Simple multi-column layouts</li>
+          </ul>
+        </div>
+
+        <div
+          class="info-box"
+          style="
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-left-color: #ff9800;
+          "
+        >
+          <h3>⚠️ Modern Note:</h3>
+          <p>
+            For modern layouts, prefer <strong>Flexbox</strong> or
+            <strong>Grid</strong> over floats. However, floats remain the best
+            choice for text wrapping around images.
+          </p>
+        </div>
+      </section>
+
+      <!-- Float Property Section -->
+      <section class="content-section">
+        <h2>🏊 Float Property</h2>
+        <p>
+          The <code>float</code> property removes an element from normal
+          document flow and shifts it to the left or right, allowing content to
+          wrap around it.
+        </p>
+
+        <h3>Float Values:</h3>
+        <div class="code-block">
+          <pre><code>/* Float to the left */
+.left {
+    float: left;
+}
+
+/* Float to the right */
+.right {
+    float: right;
+}
+
+/* No float (default) */
+.none {
+    float: none;
+}
+
+/* Inherit from parent */
+.inherit {
+    float: inherit;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Float Left Section -->
+      <section class="content-section">
+        <h2>⬅️ Float Left</h2>
+        <p>
+          Floats the element to the left side, allowing text and inline elements
+          to wrap around its right side.
+        </p>
+
+        <div class="code-block">
+          <pre><code>/* Classic example: Image with text wrapping */
+img {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: 200px;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Float Left Example:</h3>
+          <div style="border: 2px solid #ddd; padding: 15px; background: white">
+            <div
+              style="
+                float: left;
+                width: 120px;
+                height: 100px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                margin-right: 15px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+              "
+            >
+              Image
+            </div>
+            <p style="text-align: justify">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. The image
+              floats to the left, and this text wraps around it naturally. This
+              is how magazine layouts work, with images integrated into text
+              content. Sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Float Right Section -->
+      <section class="content-section">
+        <h2>➡️ Float Right</h2>
+        <p>
+          Floats the element to the right side, allowing text and inline
+          elements to wrap around its left side.
+        </p>
+
+        <div class="code-block">
+          <pre><code>/* Float image to right */
+.profile-pic {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    width: 150px;
+    border-radius: 50%;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Float Right Example:</h3>
+          <div style="border: 2px solid #ddd; padding: 15px; background: white">
+            <div
+              style="
+                float: right;
+                width: 120px;
+                height: 100px;
+                background: linear-gradient(135deg, #f093fb, #f5576c);
+                margin-left: 15px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+              "
+            >
+              Image
+            </div>
+            <p style="text-align: justify">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. The image
+              floats to the right, and this text wraps around its left side.
+              This creates an elegant layout where text flows naturally around
+              visual elements. Ut enim ad minim veniam, quis nostrud
+              exercitation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multiple Floats Section -->
+      <section class="content-section">
+        <h2>🔄 Multiple Floats</h2>
+        <p>
+          Multiple floated elements stack next to each other horizontally until
+          they run out of space.
+        </p>
+
+        <div class="code-block">
+          <pre><code>/* Three-column layout with floats */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+
+/* Four boxes side by side */
+.box {
+    float: left;
+    width: 25%;
+    height: 100px;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Multiple Floats Example:</h3>
+          <div
+            style="
+              border: 2px solid #ddd;
+              padding: 15px;
+              background: white;
+              overflow: auto;
+            "
+          >
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 80px;
+                background: #e3f2fd;
+                border: 2px solid #667eea;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Box 1
+            </div>
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 80px;
+                background: #f3e5f5;
+                border: 2px solid #764ba2;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Box 2
+            </div>
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 80px;
+                background: #fff3e0;
+                border: 2px solid #ff9800;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Box 3
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Float Collapse Problem Section -->
+      <section class="content-section">
+        <h2>⚠️ The Float Collapse Problem</h2>
+        <p>
+          When all children of a container are floated, the container's height
+          collapses to zero because floated elements are removed from normal
+          document flow.
+        </p>
+
+        <div class="example-box">
+          <h3>Problem Demonstration:</h3>
+          <div
+            style="
+              border: 3px solid red;
+              background: #ffebee;
+              padding: 5px;
+              margin-bottom: 20px;
+            "
+          >
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 60px;
+                background: #667eea;
+                color: white;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Float
+            </div>
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 60px;
+                background: #764ba2;
+                color: white;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Float
+            </div>
+          </div>
+          <p style="margin-top: 10px">
+            <strong>Notice:</strong> The red container has collapsed (very thin
+            height) because both children are floated.
+          </p>
+        </div>
+      </section>
+
+      <!-- Clear Property Section -->
+      <section class="content-section">
+        <h2>🧹 Clear Property</h2>
+        <p>
+          The <code>clear</code> property controls how elements behave next to
+          floated elements. It forces an element to move below floated elements.
+        </p>
+
+        <h3>Clear Values:</h3>
+        <div class="code-block">
+          <pre><code>/* Clear left floats */
+.clear-left {
+    clear: left;
+}
+
+/* Clear right floats */
+.clear-right {
+    clear: right;
+}
+
+/* Clear both left and right floats */
+.clear-both {
+    clear: both;  /* Most commonly used */
+}
+
+/* No clearing (default) */
+.clear-none {
+    clear: none;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Clear Example:</h3>
+          <div style="border: 2px solid #ddd; padding: 15px; background: white">
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 60px;
+                background: #667eea;
+                color: white;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Float Left
+            </div>
+            <div
+              style="
+                float: right;
+                width: 100px;
+                height: 60px;
+                background: #764ba2;
+                color: white;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Float Right
+            </div>
+            <div
+              style="
+                clear: both;
+                padding: 10px;
+                background: #e8f5e9;
+                border: 2px solid #4caf50;
+                margin-top: 10px;
+              "
+            >
+              This element uses clear: both, so it appears below all floats.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clearfix Technique Section -->
+      <section class="content-section">
+        <h2>🔧 Clearfix Technique</h2>
+        <p>
+          The <strong>clearfix</strong> is a technique to fix the float collapse
+          problem by making the container recognize its floated children.
+        </p>
+
+        <h3>Method 1: Clearfix with ::after Pseudo-element (Best)</h3>
+        <div class="code-block">
+          <pre><code>/* Modern clearfix */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Usage */
+.container {
+    /* container will now contain floated children */
+}
+
+&lt;div class="container clearfix"&gt;
+    &lt;div class="float-left"&gt;...&lt;/div&gt;
+    &lt;div class="float-right"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <h3>Method 2: Overflow Method</h3>
+        <div class="code-block">
+          <pre><code>/* Simple overflow fix */
+.container {
+    overflow: auto;  /* or overflow: hidden */
+}
+
+/* This creates a new block formatting context
+   which contains the floats */</code></pre>
+        </div>
+
+        <h3>Method 3: Float the Container</h3>
+        <div class="code-block">
+          <pre><code>/* Float the parent */
+.container {
+    float: left;
+    width: 100%;
+}
+
+/* Parent contains floated children
+   but parent itself is floated */</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Clearfix in Action:</h3>
+          <div
+            style="
+              border: 3px solid #4caf50;
+              background: #e8f5e9;
+              padding: 10px;
+              overflow: auto;
+            "
+          >
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 60px;
+                background: #667eea;
+                color: white;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Float
+            </div>
+            <div
+              style="
+                float: left;
+                width: 100px;
+                height: 60px;
+                background: #764ba2;
+                color: white;
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Float
+            </div>
+          </div>
+          <p style="margin-top: 10px">
+            <strong>Success!</strong> The green container now has proper height
+            because we used overflow: auto.
+          </p>
+        </div>
+      </section>
+
+      <!-- Practical Examples Section -->
+      <section class="content-section">
+        <h2>💼 Practical Real-World Examples</h2>
+
+        <h3>Example 1: Article with Image</h3>
+        <div class="code-block">
+          <pre><code>/* Magazine-style article layout */
+.article-image {
+    float: left;
+    width: 300px;
+    margin: 0 20px 20px 0;
+    border-radius: 8px;
+}
+
+.article-content {
+    text-align: justify;
+}
+
+.article-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}</code></pre>
+        </div>
+
+        <h3>Example 2: Simple Two-Column Layout</h3>
+        <div class="code-block">
+          <pre><code>/* Two columns with float */
+.sidebar {
+    float: left;
+    width: 25%;
+    padding: 20px;
+}
+
+.main-content {
+    float: right;
+    width: 75%;
+    padding: 20px;
+}
+
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}</code></pre>
+        </div>
+
+        <h3>Example 3: Card Grid</h3>
+        <div class="code-block">
+          <pre><code>/* Card grid using floats */
+.card {
+    float: left;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+}
+
+.card-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}</code></pre>
+        </div>
+
+        <h3>Example 4: Pull Quote</h3>
+        <div class="code-block">
+          <pre><code>/* Pull quote floated to side */
+.pull-quote {
+    float: right;
+    width: 40%;
+    margin: 0 0 20px 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-left: 4px solid #667eea;
+    font-style: italic;
+    font-size: 1.2em;
+}</code></pre>
+        </div>
+
+        <h3>Example 5: Button Group</h3>
+        <div class="code-block">
+          <pre><code>/* Buttons floated in a row */
+.button-left {
+    float: left;
+}
+
+.button-right {
+    float: right;
+}
+
+.button-group::after {
+    content: "";
+    display: table;
+    clear: both;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Float vs Modern Layouts Section -->
+      <section class="content-section">
+        <h2>🆚 Float vs Modern Layouts</h2>
+
+        <div class="example-box">
+          <h3>When to Use Float:</h3>
+          <ul>
+            <li>✅ Text wrapping around images</li>
+            <li>✅ Pull quotes and side notes</li>
+            <li>✅ Magazine-style layouts</li>
+            <li>✅ Legacy browser support needed</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h3>When to Use Flexbox/Grid Instead:</h3>
+          <ul>
+            <li>✅ Modern page layouts</li>
+            <li>✅ Navigation menus</li>
+            <li>✅ Card grids</li>
+            <li>✅ Centering and alignment</li>
+            <li>✅ Responsive designs</li>
+            <li>✅ Complex multi-column layouts</li>
+          </ul>
+        </div>
+
+        <div class="code-block">
+          <pre><code>/* Float for text wrapping (GOOD) */
+img {
+    float: left;
+    margin-right: 20px;
+}
+
+/* Flexbox for navigation (BETTER) */
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Grid for page layout (BETTER) */
+.page {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Live Example -->
+      <section class="content-section">
+        <h2>🎨 Live Examples</h2>
+        <div class="live-demo">
+          <div class="demo-output">
+            <h3>Float with Text Wrapping:</h3>
+            <div
+              style="
+                border: 2px solid #ddd;
+                padding: 20px;
+                background: white;
+                margin-bottom: 30px;
+              "
+            >
+              <div
+                style="
+                  float: left;
+                  width: 150px;
+                  height: 120px;
+                  background: linear-gradient(135deg, #667eea, #764ba2);
+                  margin: 0 20px 15px 0;
+                  border-radius: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-weight: bold;
+                  font-size: 18px;
+                "
+              >
+                Floated
+              </div>
+              <p style="text-align: justify; line-height: 1.6">
+                This is a demonstration of how floating works with text. The
+                colored box on the left is floated, and this text wraps around
+                it naturally. This technique is commonly used in blogs,
+                articles, and magazine-style layouts where you want images
+                integrated with text content. Notice how the text flows around
+                the floated element smoothly.
+              </p>
+            </div>
+
+            <h3>Multiple Floats Side by Side:</h3>
+            <div
+              style="
+                border: 2px solid #ddd;
+                padding: 15px;
+                background: white;
+                overflow: auto;
+              "
+            >
+              <div
+                style="
+                  float: left;
+                  width: 30%;
+                  background: #e3f2fd;
+                  padding: 20px;
+                  margin: 5px;
+                  border-radius: 8px;
+                  text-align: center;
+                "
+              >
+                Column 1
+              </div>
+              <div
+                style="
+                  float: left;
+                  width: 30%;
+                  background: #f3e5f5;
+                  padding: 20px;
+                  margin: 5px;
+                  border-radius: 8px;
+                  text-align: center;
+                "
+              >
+                Column 2
+              </div>
+              <div
+                style="
+                  float: left;
+                  width: 30%;
+                  background: #fff3e0;
+                  padding: 20px;
+                  margin: 5px;
+                  border-radius: 8px;
+                  text-align: center;
+                "
+              >
+                Column 3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MCQ Section -->
+      <section class="content-section">
+        <h2>📝 Test Your Knowledge - MCQ</h2>
+        <div class="mcq-container">
+          <div class="mcq-question" data-question="1">
+            <p><strong>Q1: What does the float property do?</strong></p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q1" value="a" /> Centers an
+                element</label
+              >
+              <label
+                ><input type="radio" name="q1" value="b" /> Removes element from
+                flow and shifts it left/right</label
+              >
+              <label
+                ><input type="radio" name="q1" value="c" /> Makes element
+                invisible</label
+              >
+              <label
+                ><input type="radio" name="q1" value="d" /> Adds animation to
+                element</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(1, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback1"></div>
+          </div>
+
+          <div class="mcq-question" data-question="2">
+            <p><strong>Q2: What is the clearfix technique used for?</strong></p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q2" value="a" /> To remove
+                floats</label
+              >
+              <label
+                ><input type="radio" name="q2" value="b" /> To fix float
+                collapse problem</label
+              >
+              <label
+                ><input type="radio" name="q2" value="c" /> To center
+                elements</label
+              >
+              <label
+                ><input type="radio" name="q2" value="d" /> To add
+                borders</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(2, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback2"></div>
+          </div>
+
+          <div class="mcq-question" data-question="3">
+            <p>
+              <strong
+                >Q3: Which clear value clears both left and right
+                floats?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q3" value="a" /> clear: all</label
+              >
+              <label
+                ><input type="radio" name="q3" value="b" /> clear: both</label
+              >
+              <label
+                ><input type="radio" name="q3" value="c" /> clear: none</label
+              >
+              <label
+                ><input type="radio" name="q3" value="d" /> clear:
+                left-right</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(3, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback3"></div>
+          </div>
+
+          <div class="mcq-question" data-question="4">
+            <p>
+              <strong
+                >Q4: What is the modern alternative to floats for
+                layouts?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label><input type="radio" name="q4" value="a" /> Tables</label>
+              <label
+                ><input type="radio" name="q4" value="b" /> Flexbox and
+                Grid</label
+              >
+              <label
+                ><input type="radio" name="q4" value="c" /> Inline-block</label
+              >
+              <label
+                ><input type="radio" name="q4" value="d" /> Absolute
+                positioning</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(4, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback4"></div>
+          </div>
+
+          <div class="mcq-question" data-question="5">
+            <p><strong>Q5: When should you still use floats today?</strong></p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q5" value="a" /> For all
+                layouts</label
+              >
+              <label
+                ><input type="radio" name="q5" value="b" /> For text wrapping
+                around images</label
+              >
+              <label
+                ><input type="radio" name="q5" value="c" /> For navigation
+                menus</label
+              >
+              <label
+                ><input type="radio" name="q5" value="d" /> Never use
+                floats</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(5, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice Questions -->
+      <section class="content-section">
+        <h2>💪 Practice Questions</h2>
+        <div class="practice-box">
+          <ol>
+            <li>
+              Create an image that floats to the left with 20px right margin so
+              text wraps around it.
+            </li>
+            <li>
+              Write the clearfix code using ::after pseudo-element to fix
+              container collapse.
+            </li>
+            <li>
+              Create a two-column layout: sidebar (25% width, float left) and
+              main content (75% width, float right).
+            </li>
+            <li>
+              Add a clear: both element below floated elements to push content
+              below them.
+            </li>
+            <li>
+              Fix a collapsed container using the overflow method instead of
+              clearfix.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Summary Section -->
+      <section class="content-section summary-section">
+        <h2>📌 Summary</h2>
+        <div class="summary-box">
+          <ul>
+            <li>
+              <strong>float:</strong> Removes element from flow, shifts left or
+              right
+            </li>
+            <li>
+              <strong>float: left:</strong> Floats element to left, text wraps
+              on right
+            </li>
+            <li>
+              <strong>float: right:</strong> Floats element to right, text wraps
+              on left
+            </li>
+            <li>
+              <strong>Float Collapse:</strong> Container height becomes zero
+              when all children float
+            </li>
+            <li>
+              <strong>clear:</strong> Forces element below floats (left, right,
+              both)
+            </li>
+            <li>
+              <strong>clear: both:</strong> Most commonly used, clears all
+              floats
+            </li>
+            <li>
+              <strong>Clearfix:</strong>
+              <code>::after { content: ""; display: table; clear: both; }</code>
+            </li>
+            <li>
+              <strong>Overflow Fix:</strong> <code>overflow: auto</code> on
+              parent contains floats
+            </li>
+            <li>
+              <strong>Best Use:</strong> Text wrapping around images and pull
+              quotes
+            </li>
+            <li>
+              <strong>Modern Alternative:</strong> Use Flexbox/Grid for layouts
+            </li>
+            <li>
+              <strong>Legacy:</strong> Understanding floats helps with older
+              codebases
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navigation Buttons Bottom -->
+      <div class="topic-nav">
+        <a href="displayposition.html" class="nav-btn btn-back"
+          >← Previous: Display & Positioning</a
+        >
+        <a href="navbar.html" class="nav-btn btn-next"
+          >Next Topic: Navigation Bar →</a
+        >
+      </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+      function checkAnswer(questionNum, correctAnswer) {
+        const selected = document.querySelector(
+          `input[name="q${questionNum}"]:checked`
+        );
+        const feedback = document.getElementById(`feedback${questionNum}`);
+
+        if (!selected) {
+          feedback.innerHTML =
+            '<p class="warning">⚠️ Please select an answer!</p>';
+          return;
+        }
+
+        if (selected.value === correctAnswer) {
+          feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+        } else {
+          feedback.innerHTML =
+            '<p class="incorrect">❌ Incorrect. Try again!</p>';
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Introduction, Syntax & Selectors</title>
+    <link rel="stylesheet" href="../extra/style.css" />
+  </head>
+  <body>
+    <div class="topic-container">
+      <!-- Header -->
+      <header class="topic-header">
+        <h1>📚 CSS Introduction, Syntax & Selectors</h1>
+        <p class="topic-subtitle">
+          Learn the fundamentals of CSS and master the art of selecting elements
+        </p>
+      </header>
+
+      <!-- Navigation Buttons Top -->
+      <div class="topic-nav">
+        <a href="../content.html" class="nav-btn btn-back">← Back to Content</a>
+        <a href="cssidclass.html" class="nav-btn btn-next"
+          >Next Topic: CSS Id & Class →</a
+        >
+      </div>
+
+      <!-- Introduction Section -->
+      <section class="content-section">
+        <h2>🎯 What is CSS?</h2>
+        <p>
+          <strong>CSS (Cascading Style Sheets)</strong> is a stylesheet language
+          used to describe the presentation of a document written in HTML. CSS
+          controls the layout, colors, fonts, and overall visual appearance of
+          web pages.
+        </p>
+
+        <div class="info-box">
+          <h3>Why Use CSS?</h3>
+          <ul>
+            <li>✅ Separates content (HTML) from presentation (CSS)</li>
+            <li>✅ Makes websites more maintainable and organized</li>
+            <li>✅ Enables responsive design for different devices</li>
+            <li>✅ Improves page loading speed through external stylesheets</li>
+            <li>✅ Provides powerful styling capabilities</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CSS Syntax Section -->
+      <section class="content-section">
+        <h2>📝 CSS Syntax</h2>
+        <p>
+          A CSS rule consists of a <strong>selector</strong> and a
+          <strong>declaration block</strong>:
+        </p>
+
+        <div class="code-block">
+          <pre><code>selector {
+    property: value;
+    property: value;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Example:</h3>
+          <div class="code-block">
+            <pre><code>h1 {
+    color: blue;
+    font-size: 24px;
+    text-align: center;
+}</code></pre>
+          </div>
+          <p><strong>Explanation:</strong></p>
+          <ul>
+            <li>
+              <code>h1</code> - Selector (targets all &lt;h1&gt; elements)
+            </li>
+            <li><code>color: blue;</code> - Declaration (property: value)</li>
+            <li>Each declaration ends with a semicolon</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CSS Selectors Section -->
+      <section class="content-section">
+        <h2>🎯 CSS Selectors</h2>
+        <p>
+          Selectors are used to target HTML elements that you want to style.
+        </p>
+
+        <h3>1. Element Selector</h3>
+        <p>Selects all elements of a specific type.</p>
+        <div class="code-block">
+          <pre><code>p {
+    color: green;
+}
+/* Selects all &lt;p&gt; elements */</code></pre>
+        </div>
+
+        <h3>2. Class Selector</h3>
+        <p>Selects elements with a specific class attribute (uses a dot).</p>
+        <div class="code-block">
+          <pre><code>.highlight {
+    background-color: yellow;
+}
+/* Selects all elements with class="highlight" */</code></pre>
+        </div>
+
+        <h3>3. ID Selector</h3>
+        <p>Selects a unique element with a specific ID (uses a hash).</p>
+        <div class="code-block">
+          <pre><code>#header {
+    font-size: 32px;
+}
+/* Selects the element with id="header" */</code></pre>
+        </div>
+
+        <h3>4. Universal Selector</h3>
+        <p>Selects all elements on the page.</p>
+        <div class="code-block">
+          <pre><code>* {
+    margin: 0;
+    padding: 0;
+}
+/* Selects all elements */</code></pre>
+        </div>
+
+        <h3>5. Grouping Selector</h3>
+        <p>Applies the same styles to multiple selectors.</p>
+        <div class="code-block">
+          <pre><code>h1, h2, h3 {
+    color: navy;
+    font-family: Arial;
+}
+/* Selects all h1, h2, and h3 elements */</code></pre>
+        </div>
+      </section>
+
+      <!-- Ways to Add CSS -->
+      <section class="content-section">
+        <h2>📋 Three Ways to Add CSS</h2>
+
+        <h3>1. Inline CSS</h3>
+        <p>Applied directly to an HTML element using the style attribute.</p>
+        <div class="code-block">
+          <pre><code>&lt;p style="color: red; font-size: 18px;"&gt;This is inline CSS&lt;/p&gt;</code></pre>
+        </div>
+
+        <h3>2. Internal CSS</h3>
+        <p>
+          Placed inside a &lt;style&gt; tag in the HTML document's &lt;head&gt;.
+        </p>
+        <div class="code-block">
+          <pre><code>&lt;head&gt;
+    &lt;style&gt;
+        p {
+            color: blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+
+        <h3>3. External CSS</h3>
+        <p>Stored in a separate .css file and linked to HTML.</p>
+        <div class="code-block">
+          <pre><code>&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Live Example -->
+      <section class="content-section">
+        <h2>🎨 Live Example</h2>
+        <div class="live-demo">
+          <div class="demo-output">
+            <h3 style="color: #667eea; text-align: center">Hello, CSS!</h3>
+            <p
+              style="
+                background-color: #f0f0f0;
+                padding: 15px;
+                border-left: 4px solid #667eea;
+              "
+            >
+              This paragraph is styled with CSS properties.
+            </p>
+            <p class="demo-class" style="color: green; font-weight: bold">
+              This uses a class selector.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MCQ Section -->
+      <section class="content-section">
+        <h2>📝 Test Your Knowledge - MCQ</h2>
+        <div class="mcq-container">
+          <div class="mcq-question" data-question="1">
+            <p><strong>Q1: What does CSS stand for?</strong></p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q1" value="a" /> Computer Style
+                Sheets</label
+              >
+              <label
+                ><input type="radio" name="q1" value="b" /> Cascading Style
+                Sheets</label
+              >
+              <label
+                ><input type="radio" name="q1" value="c" /> Creative Style
+                Sheets</label
+              >
+              <label
+                ><input type="radio" name="q1" value="d" /> Colorful Style
+                Sheets</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(1, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback1"></div>
+          </div>
+
+          <div class="mcq-question" data-question="2">
+            <p>
+              <strong
+                >Q2: Which selector is used to select elements with a specific
+                class?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label><input type="radio" name="q2" value="a" /> #</label>
+              <label><input type="radio" name="q2" value="b" /> .</label>
+              <label><input type="radio" name="q2" value="c" /> *</label>
+              <label><input type="radio" name="q2" value="d" /> %</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(2, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback2"></div>
+          </div>
+
+          <div class="mcq-question" data-question="3">
+            <p><strong>Q3: What is the correct CSS syntax?</strong></p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q3" value="a" /> {body:
+                color=black;}</label
+              >
+              <label
+                ><input type="radio" name="q3" value="b" /> body {color:
+                black;}</label
+              >
+              <label
+                ><input type="radio" name="q3" value="c" /> body: {color:
+                black;}</label
+              >
+              <label
+                ><input type="radio" name="q3" value="d" /> {body; color:
+                black;}</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(3, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback3"></div>
+          </div>
+
+          <div class="mcq-question" data-question="4">
+            <p>
+              <strong
+                >Q4: Which is the correct way to select an element with
+                id="demo"?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label><input type="radio" name="q4" value="a" /> .demo</label>
+              <label><input type="radio" name="q4" value="b" /> *demo</label>
+              <label><input type="radio" name="q4" value="c" /> #demo</label>
+              <label><input type="radio" name="q4" value="d" /> demo</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(4, 'c')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback4"></div>
+          </div>
+
+          <div class="mcq-question" data-question="5">
+            <p>
+              <strong
+                >Q5: Which CSS property is used to change text color?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q5" value="a" /> text-color</label
+              >
+              <label
+                ><input type="radio" name="q5" value="b" /> font-color</label
+              >
+              <label><input type="radio" name="q5" value="c" /> color</label>
+              <label
+                ><input type="radio" name="q5" value="d" /> text-style</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(5, 'c')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice Questions -->
+      <section class="content-section">
+        <h2>💪 Practice Questions</h2>
+        <div class="practice-box">
+          <ol>
+            <li>
+              Create a CSS rule to make all paragraphs have blue text and 16px
+              font size.
+            </li>
+            <li>
+              Write CSS to select all elements with class "container" and give
+              them a red border.
+            </li>
+            <li>
+              Select the element with id "main" and center-align its text.
+            </li>
+            <li>
+              Create a grouped selector to make all h1, h2, and h3 elements use
+              Arial font.
+            </li>
+            <li>
+              Write an inline style to make a div have a yellow background and
+              20px padding.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Summary Section -->
+      <section class="content-section summary-section">
+        <h2>📌 Summary</h2>
+        <div class="summary-box">
+          <ul>
+            <li>
+              <strong>CSS</strong> stands for Cascading Style Sheets and is used
+              to style HTML documents
+            </li>
+            <li>
+              <strong>CSS Syntax:</strong>
+              <code>selector { property: value; }</code>
+            </li>
+            <li>
+              <strong>Element Selector:</strong> Targets elements by tag name
+              (e.g., <code>p</code>)
+            </li>
+            <li>
+              <strong>Class Selector:</strong> Uses a dot (e.g.,
+              <code>.classname</code>)
+            </li>
+            <li>
+              <strong>ID Selector:</strong> Uses a hash (e.g.,
+              <code>#idname</code>)
+            </li>
+            <li>
+              <strong>Universal Selector:</strong> Uses asterisk
+              <code>*</code> to select all elements
+            </li>
+            <li>
+              <strong>Three ways to add CSS:</strong> Inline, Internal, and
+              External
+            </li>
+            <li>
+              <strong>Best Practice:</strong> Use external CSS for better
+              maintainability
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navigation Buttons Bottom -->
+      <div class="topic-nav">
+        <a href="../content.html" class="nav-btn btn-back">← Back to Content</a>
+        <a href="cssidclass.html" class="nav-btn btn-next"
+          >Next Topic: CSS Id & Class →</a
+        >
+      </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+      function checkAnswer(questionNum, correctAnswer) {
+        const selected = document.querySelector(
+          `input[name="q${questionNum}"]:checked`
+        );
+        const feedback = document.getElementById(`feedback${questionNum}`);
+
+        if (!selected) {
+          feedback.innerHTML =
+            '<p class="warning">⚠️ Please select an answer!</p>';
+          return;
+        }
+
+        if (selected.value === correctAnswer) {
+          feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+        } else {
+          feedback.innerHTML =
+            '<p class="incorrect">❌ Incorrect. Try again!</p>';
+        }
+      }
+    </script>
+  </body>
+</html>

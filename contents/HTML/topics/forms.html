@@ -1,0 +1,546 @@
+<!-- contents/HTML/topics/forms.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Forms — Session 11</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 for MCQs -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+    <!-- Header -->
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 11</div>
+        <h1 id="lesson-title">HTML Forms</h1>
+        <div class="meta">Input Types • Form Elements • Validation • Accessibility</div>
+      </div>
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="special-features.html">Next: Special Features →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card">
+      <!-- TOC -->
+      <nav class="toc" aria-label="Table of contents">
+        <a href="#intro">Introduction</a>
+        <a href="#basic">Basic Form</a>
+        <a href="#inputs">Input Types</a>
+        <a href="#elements">Form Elements</a>
+        <a href="#validation">Validation</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#practice">Practice</a>
+        <a href="#summary">Summary</a>
+      </nav>
+
+      <!-- Introduction -->
+      <section id="intro" class="section">
+        <h2>What are HTML Forms?</h2>
+        <p>Forms are the primary way users interact with websites - they allow data collection, user input, and communication. Every login, search, signup, or contact form uses HTML form elements.</p>
+
+        <h3>Common Form Uses:</h3>
+        <ul>
+          <li><strong>User authentication:</strong> Login and signup forms</li>
+          <li><strong>Data collection:</strong> Contact forms, surveys, feedback</li>
+          <li><strong>Search:</strong> Search bars and filters</li>
+          <li><strong>E-commerce:</strong> Checkout, payment, shipping forms</li>
+          <li><strong>Content submission:</strong> Comments, posts, file uploads</li>
+        </ul>
+
+        <h3>Form Workflow:</h3>
+        <pre class="code-block"><code>1. User fills out form
+2. User clicks submit button
+3. Browser validates input (HTML5 validation)
+4. Data sent to server (via action URL)
+5. Server processes data
+6. Response sent back to user</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Basic Form -->
+      <section id="basic" class="section">
+        <h2>Basic Form Structure</h2>
+        <p>Every form starts with the <code>&lt;form&gt;</code> element and contains input fields and a submit button.</p>
+
+        <h3>Form Element Attributes:</h3>
+        <ul>
+          <li><code>action</code> - URL where form data is sent</li>
+          <li><code>method</code> - HTTP method (GET or POST)</li>
+          <li><code>name</code> - Form identifier</li>
+          <li><code>enctype</code> - Encoding type (for file uploads)</li>
+        </ul>
+
+        <h3>Simple Form Example:</h3>
+        <pre class="code-block"><code>&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+  
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+  
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+        <h3>GET vs POST:</h3>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>GET</th>
+              <th>POST</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data Location</td>
+              <td>URL (visible in address bar)</td>
+              <td>Request body (hidden)</td>
+            </tr>
+            <tr>
+              <td>Security</td>
+              <td>Less secure (visible)</td>
+              <td>More secure (hidden)</td>
+            </tr>
+            <tr>
+              <td>Data Limit</td>
+              <td>~2000 characters</td>
+              <td>No limit</td>
+            </tr>
+            <tr>
+              <td>Use Case</td>
+              <td>Search, filters, non-sensitive data</td>
+              <td>Login, signup, sensitive data</td>
+            </tr>
+            <tr>
+              <td>Cacheable</td>
+              <td>Yes</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Input Types -->
+      <section id="inputs" class="section">
+        <h2>Input Types</h2>
+        <p>HTML5 provides many input types with built-in validation and mobile keyboard optimization.</p>
+
+        <h3>Text-Based Inputs:</h3>
+        <pre class="code-block"><code>&lt;!-- Regular text --&gt;
+&lt;input type="text" placeholder="Enter text"&gt;
+
+&lt;!-- Email (validates email format) --&gt;
+&lt;input type="email" placeholder="email@example.com"&gt;
+
+&lt;!-- Password (hidden characters) --&gt;
+&lt;input type="password" placeholder="Password"&gt;
+
+&lt;!-- Search (shows clear button) --&gt;
+&lt;input type="search" placeholder="Search..."&gt;
+
+&lt;!-- Phone number --&gt;
+&lt;input type="tel" placeholder="+1-555-123-4567"&gt;
+
+&lt;!-- URL (validates URL format) --&gt;
+&lt;input type="url" placeholder="https://example.com"&gt;</code></pre>
+
+        <h3>Number Inputs:</h3>
+        <pre class="code-block"><code>&lt;!-- Number (with increment/decrement) --&gt;
+&lt;input type="number" min="0" max="100" step="1"&gt;
+
+&lt;!-- Range slider --&gt;
+&lt;input type="range" min="0" max="100" value="50"&gt;</code></pre>
+
+        <h3>Date & Time Inputs:</h3>
+        <pre class="code-block"><code>&lt;input type="date"&gt;           &lt;!-- Date picker --&gt;
+&lt;input type="time"&gt;           &lt;!-- Time picker --&gt;
+&lt;input type="datetime-local"&gt; &lt;!-- Date and time --&gt;
+&lt;input type="month"&gt;          &lt;!-- Month picker --&gt;
+&lt;input type="week"&gt;           &lt;!-- Week picker --&gt;</code></pre>
+
+        <h3>Choice Inputs:</h3>
+        <pre class="code-block"><code>&lt;!-- Checkbox (multiple selections) --&gt;
+&lt;input type="checkbox" id="agree" name="agree"&gt;
+&lt;label for="agree"&gt;I agree to terms&lt;/label&gt;
+
+&lt;!-- Radio buttons (single selection) --&gt;
+&lt;input type="radio" id="male" name="gender" value="male"&gt;
+&lt;label for="male"&gt;Male&lt;/label&gt;
+
+&lt;input type="radio" id="female" name="gender" value="female"&gt;
+&lt;label for="female"&gt;Female&lt;/label&gt;</code></pre>
+
+        <h3>File & Color Inputs:</h3>
+        <pre class="code-block"><code>&lt;!-- File upload --&gt;
+&lt;input type="file" accept="image/*"&gt;
+
+&lt;!-- Color picker --&gt;
+&lt;input type="color" value="#ff0000"&gt;</code></pre>
+
+        <h3>Hidden Input:</h3>
+        <pre class="code-block"><code>&lt;!-- Not visible to user, but submitted with form --&gt;
+&lt;input type="hidden" name="user_id" value="12345"&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Form Elements -->
+      <section id="elements" class="section">
+        <h2>Other Form Elements</h2>
+
+        <h3>Textarea (Multi-line Text):</h3>
+        <pre class="code-block"><code>&lt;label for="message"&gt;Message:&lt;/label&gt;
+&lt;textarea id="message" name="message" rows="5" cols="30"&gt;
+  Default text here...
+&lt;/textarea&gt;</code></pre>
+
+        <h3>Select Dropdown:</h3>
+        <pre class="code-block"><code>&lt;label for="country"&gt;Country:&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+  &lt;option value=""&gt;-- Select Country --&lt;/option&gt;
+  &lt;option value="us"&gt;United States&lt;/option&gt;
+  &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+  &lt;option value="in" selected&gt;India&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+        <h3>Grouped Options (Optgroup):</h3>
+        <pre class="code-block"><code>&lt;select name="car"&gt;
+  &lt;optgroup label="German Cars"&gt;
+    &lt;option value="bmw"&gt;BMW&lt;/option&gt;
+    &lt;option value="audi"&gt;Audi&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label="Japanese Cars"&gt;
+    &lt;option value="toyota"&gt;Toyota&lt;/option&gt;
+    &lt;option value="honda"&gt;Honda&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+
+        <h3>Datalist (Auto-complete):</h3>
+        <pre class="code-block"><code>&lt;label for="browser"&gt;Choose browser:&lt;/label&gt;
+&lt;input list="browsers" id="browser" name="browser"&gt;
+
+&lt;datalist id="browsers"&gt;
+  &lt;option value="Chrome"&gt;
+  &lt;option value="Firefox"&gt;
+  &lt;option value="Safari"&gt;
+  &lt;option value="Edge"&gt;
+&lt;/datalist&gt;</code></pre>
+
+        <h3>Buttons:</h3>
+        <pre class="code-block"><code>&lt;!-- Submit button --&gt;
+&lt;button type="submit"&gt;Submit Form&lt;/button&gt;
+
+&lt;!-- Reset button (clears form) --&gt;
+&lt;button type="reset"&gt;Reset&lt;/button&gt;
+
+&lt;!-- Regular button (for JavaScript) --&gt;
+&lt;button type="button" onclick="alert('Clicked!')"&gt;Click Me&lt;/button&gt;</code></pre>
+
+        <h3>Fieldset & Legend (Grouping):</h3>
+        <pre class="code-block"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Personal Information&lt;/legend&gt;
+  &lt;label for="fname"&gt;First Name:&lt;/label&gt;
+  &lt;input type="text" id="fname" name="fname"&gt;
+  
+  &lt;label for="lname"&gt;Last Name:&lt;/label&gt;
+  &lt;input type="text" id="lname" name="lname"&gt;
+&lt;/fieldset&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Validation -->
+      <section id="validation" class="section">
+        <h2>Form Validation</h2>
+        <p>HTML5 provides built-in validation attributes to ensure data quality before submission.</p>
+
+        <h3>Validation Attributes:</h3>
+        <pre class="code-block"><code>&lt;!-- Required field (cannot be empty) --&gt;
+&lt;input type="text" required&gt;
+
+&lt;!-- Minimum length --&gt;
+&lt;input type="text" minlength="3"&gt;
+
+&lt;!-- Maximum length --&gt;
+&lt;input type="text" maxlength="20"&gt;
+
+&lt;!-- Pattern (regex validation) --&gt;
+&lt;input type="text" pattern="[A-Za-z]{3,}" title="At least 3 letters"&gt;
+
+&lt;!-- Number range --&gt;
+&lt;input type="number" min="1" max="100"&gt;
+
+&lt;!-- Email validation (built-in) --&gt;
+&lt;input type="email" required&gt;</code></pre>
+
+        <h3>Complete Validation Example:</h3>
+        <pre class="code-block"><code>&lt;form action="/register" method="POST"&gt;
+  &lt;!-- Username: 3-15 characters, letters/numbers only --&gt;
+  &lt;label for="username"&gt;Username:&lt;/label&gt;
+  &lt;input type="text" 
+         id="username" 
+         name="username" 
+         pattern="[A-Za-z0-9]{3,15}" 
+         title="3-15 alphanumeric characters"
+         required&gt;
+
+  &lt;!-- Email: valid email format --&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" 
+         id="email" 
+         name="email" 
+         required&gt;
+
+  &lt;!-- Password: minimum 8 characters --&gt;
+  &lt;label for="password"&gt;Password:&lt;/label&gt;
+  &lt;input type="password" 
+         id="password" 
+         name="password" 
+         minlength="8"
+         required&gt;
+
+  &lt;!-- Age: 13-120 --&gt;
+  &lt;label for="age"&gt;Age:&lt;/label&gt;
+  &lt;input type="number" 
+         id="age" 
+         name="age" 
+         min="13" 
+         max="120"
+         required&gt;
+
+  &lt;button type="submit"&gt;Register&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+        <h3>Accessibility Best Practices:</h3>
+        <ul>
+          <li><strong>Always use labels:</strong> Connect labels to inputs with <code>for</code> and <code>id</code></li>
+          <li><strong>Use placeholders wisely:</strong> Don't rely on them as labels</li>
+          <li><strong>Provide error messages:</strong> Use <code>title</code> attribute or custom JS</li>
+          <li><strong>Group related fields:</strong> Use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code></li>
+          <li><strong>Logical tab order:</strong> Ensure keyboard navigation works smoothly</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Complete Example -->
+      <section id="complete-example" class="section">
+        <h2>Complete Form Example</h2>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Contact Form&lt;/title&gt;
+  &lt;style&gt;
+    form { max-width: 500px; margin: 20px auto; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, textarea, select { 
+      width: 100%; 
+      padding: 8px; 
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button { 
+      margin-top: 15px; 
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form action="/contact" method="POST"&gt;
+    &lt;h2&gt;Contact Us&lt;/h2&gt;
+
+    &lt;label for="name"&gt;Full Name: *&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required&gt;
+
+    &lt;label for="email"&gt;Email: *&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+
+    &lt;label for="phone"&gt;Phone:&lt;/label&gt;
+    &lt;input type="tel" id="phone" name="phone"&gt;
+
+    &lt;label for="subject"&gt;Subject: *&lt;/label&gt;
+    &lt;select id="subject" name="subject" required&gt;
+      &lt;option value=""&gt;-- Select Subject --&lt;/option&gt;
+      &lt;option value="general"&gt;General Inquiry&lt;/option&gt;
+      &lt;option value="support"&gt;Support&lt;/option&gt;
+      &lt;option value="sales"&gt;Sales&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;label for="message"&gt;Message: *&lt;/label&gt;
+    &lt;textarea id="message" name="message" rows="5" required&gt;&lt;/textarea&gt;
+
+    &lt;label&gt;
+      &lt;input type="checkbox" name="subscribe" value="yes"&gt;
+      Subscribe to newsletter
+    &lt;/label&gt;
+
+    &lt;button type="submit"&gt;Send Message&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Quiz -->
+      <section id="quiz" class="section mcq">
+        <h3>Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which method should be used for sensitive data like passwords?</div>
+          <div class="choices">
+            <button class="choice">a) GET</button>
+            <button class="choice">b) POST</button>
+            <button class="choice">c) PUT</button>
+            <button class="choice">d) DELETE</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q2. Which input type provides a color picker?</div>
+          <div class="choices">
+            <button class="choice">a) type="picker"</button>
+            <button class="choice">b) type="palette"</button>
+            <button class="choice">c) type="color"</button>
+            <button class="choice">d) type="rgb"</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q3. Which attribute makes a field mandatory?</div>
+          <div class="choices">
+            <button class="choice">a) required</button>
+            <button class="choice">b) mandatory</button>
+            <button class="choice">c) needed</button>
+            <button class="choice">d) important</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q4. Which element creates a dropdown list?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;dropdown&gt;</button>
+            <button class="choice">b) &lt;select&gt;</button>
+            <button class="choice">c) &lt;list&gt;</button>
+            <button class="choice">d) &lt;menu&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q5. What's the purpose of the label element?</div>
+          <div class="choices">
+            <button class="choice">a) Decorative text only</button>
+            <button class="choice">b) Form validation</button>
+            <button class="choice">c) Associate text with input (accessibility)</button>
+            <button class="choice">d) Styling purposes</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Practice -->
+      <section id="practice" class="section">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Registration Form:</strong>
+            <ul>
+              <li>Username (text, 3-15 characters, required)</li>
+              <li>Email (email type, required)</li>
+              <li>Password (password type, min 8 chars, required)</li>
+              <li>Confirm Password (password type, required)</li>
+              <li>Date of Birth (date input)</li>
+              <li>Gender (radio buttons)</li>
+              <li>Terms checkbox (required)</li>
+              <li>Submit button</li>
+            </ul>
+          </li>
+
+          <li><strong>Job Application Form:</strong>
+            <ul>
+              <li>Personal info (name, email, phone)</li>
+              <li>Position dropdown (select)</li>
+              <li>Experience level (radio: entry/mid/senior)</li>
+              <li>Skills (checkboxes: HTML, CSS, JS, etc.)</li>
+              <li>Cover letter (textarea)</li>
+              <li>Resume upload (file input)</li>
+            </ul>
+          </li>
+
+          <li><strong>Survey Form:</strong>
+            <ul>
+              <li>Rating scale (1-5 using radio or range)</li>
+              <li>Multiple choice questions (checkboxes)</li>
+              <li>Open-ended feedback (textarea)</li>
+              <li>Would recommend? (yes/no radio)</li>
+            </ul>
+          </li>
+
+          <li><strong>Booking Form:</strong>
+            <ul>
+              <li>Name, email, phone</li>
+              <li>Check-in date (date input)</li>
+              <li>Check-out date (date input)</li>
+              <li>Number of guests (number input, 1-10)</li>
+              <li>Room type (select dropdown)</li>
+              <li>Special requests (textarea)</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Summary -->
+      <section id="summary" class="section summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>Forms:</strong> Primary method for user input and data collection</li>
+          <li><strong>Form element:</strong> Container with action (URL) and method (GET/POST) attributes</li>
+          <li><strong>POST:</strong> Use for sensitive data, unlimited size, hidden from URL</li>
+          <li><strong>GET:</strong> Use for searches/filters, data visible in URL, limited size</li>
+          <li><strong>Input types:</strong> text, email, password, number, date, file, color, checkbox, radio, etc.</li>
+          <li><strong>Other elements:</strong> textarea, select, option, button, datalist, fieldset</li>
+          <li><strong>Validation:</strong> required, minlength, maxlength, min, max, pattern attributes</li>
+          <li><strong>Labels:</strong> Always associate labels with inputs for accessibility</li>
+          <li><strong>Accessibility:</strong> Use semantic HTML, proper labels, logical tab order</li>
+          <li><strong>Best practice:</strong> Validate on both client (HTML5) and server (security)</li>
+        </ul>
+        <p>Forms are essential for web interactivity. Master input types, validation, and accessibility to create user-friendly forms!</p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="special-features.html">Special Features</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- shared script -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>

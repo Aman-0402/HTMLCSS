@@ -1,0 +1,216 @@
+<!-- contents/HTML/topics/colours.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Colours — Session 8</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 (for MCQ feedback used by script.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="/contents/HTML/content.html">Skip to content</a>
+
+  <div class="lesson-container">
+
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 8</div>
+        <h1 id="lesson-title">HTML Colours</h1>
+        <div class="meta">Colour Names • HEX • RGB • HSL • Transparency</div>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="btn" href="/contents/HTML/content.html">← Back to Course</a>
+        <a class="btn primary" href="/contents/HTML/topics/forms.html">Next: Forms →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card" role="main">
+
+      <!-- Mini TOC -->
+      <nav class="toc" aria-label="Table of contents">
+        <a href="#intro">Intro</a>
+        <a href="#methods">Colour Methods</a>
+        <a href="#colornames">HTML Color Names</a>
+        <a href="#values">Color Values</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#practice">Practice</a>
+        <a href="#summary">Summary</a>
+      </nav>
+
+      <!-- Intro -->
+      <section id="intro" class="section">
+        <h2>📑 What are Colours in HTML?</h2>
+        <p>Colours style text, backgrounds, borders and other elements. They are applied using CSS properties such as <code>color</code>, <code>background-color</code>, and <code>border-color</code>. HTML provides structure; CSS provides colour and design.</p>
+      </section>
+
+      <!-- Methods -->
+      <section id="methods" class="section">
+        <h3>🔹 Different Ways to Define Colours</h3>
+
+        <h4>1. By Name</h4>
+        <p>Use one of the 140+ predefined colour names (case-insensitive).</p>
+        <pre class="code-block"><code>&lt;p style="color:red;"&gt;This is red text.&lt;/p&gt;
+&lt;p style="background-color:lightblue;"&gt;This has a light blue background.&lt;/p&gt;</code></pre>
+
+        <h4>2. By HEX Code</h4>
+        <p>Hex codes use <code>#RRGGBB</code>.</p>
+        <pre class="code-block"><code>&lt;p style="color:#ff0000;"&gt;This is red (hex).&lt;/p&gt;</code></pre>
+
+        <h4>3. By RGB Values</h4>
+        <pre class="code-block"><code>&lt;p style="color:rgb(0,255,0);"&gt;This is green (rgb).&lt;/p&gt;</code></pre>
+
+        <h4>4. By RGBA (with transparency)</h4>
+        <pre class="code-block"><code>&lt;p style="color:rgba(0,0,255,0.5);"&gt;This is semi-transparent blue.&lt;/p&gt;</code></pre>
+
+        <h4>5. By HSL (Hue, Saturation, Lightness)</h4>
+        <pre class="code-block"><code>&lt;p style="color:hsl(120,100%,50%);"&gt;This is green (hsl).&lt;/p&gt;</code></pre>
+
+        <h4>6. By HSLA (with transparency)</h4>
+        <pre class="code-block"><code>&lt;p style="color:hsla(300,100%,50%,0.5);"&gt;This is transparent pink (hsla).&lt;/p&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Color names -->
+      <section id="colornames" class="section">
+        <h3>📑 HTML Colour Names</h3>
+        <p>HTML supports 140 standard colour names (e.g., <code>red</code>, <code>blue</code>, <code>LightBlue</code>). Colour names are case-insensitive.</p>
+
+        <pre class="code-block"><code>&lt;h1 style="color:Red;"&gt;This is Red&lt;/h1&gt;
+&lt;p style="color:Blue;"&gt;This is Blue&lt;/p&gt;
+&lt;p style="background-color:LightGreen;"&gt;This has a Light Green background&lt;/p&gt;</code></pre>
+
+        <h4>Popular Names</h4>
+        <p>Basic: <code>Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Black, White, Gray</code> — Shades: <code>LightBlue, DarkBlue, LightGreen</code>, etc.</p>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Color values -->
+      <section id="values" class="section">
+        <h3>🔹 Color Values: HEX, RGB, RGBA, HSL, HSLA</h3>
+
+        <h4>HEX</h4>
+        <pre class="code-block"><code>&lt;p style="color:#ff0000;"&gt;Red (HEX: #ff0000)&lt;/p&gt;</code></pre>
+
+        <h4>RGB</h4>
+        <pre class="code-block"><code>&lt;p style="color:rgb(255,0,0);"&gt;Red (RGB)&lt;/p&gt;</code></pre>
+
+        <h4>RGBA (with Alpha)</h4>
+        <pre class="code-block"><code>&lt;p style="color:rgba(0,0,255,0.3);"&gt;Transparent blue (RGBA)&lt;/p&gt;</code></pre>
+
+        <h4>HSL</h4>
+        <pre class="code-block"><code>&lt;p style="color:hsl(200,100%,50%);"&gt;Bright blue (HSL)&lt;/p&gt;</code></pre>
+
+        <h4>HSLA</h4>
+        <pre class="code-block"><code>&lt;p style="color:hsla(120,100%,50%,0.3);"&gt;Transparent green (HSLA)&lt;/p&gt;</code></pre>
+
+        <h4>Where to use</h4>
+        <p>Use <code>color</code> for text, <code>background-color</code> for backgrounds, and <code>border-color</code> for borders. Prefer CSS classes instead of inline styles for maintainability.</p>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Examples -->
+      <section id="examples" class="section">
+        <h3>✅ Example Code (Various Methods)</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;HTML Colours Example&lt;/title&gt;&lt;/head&gt;
+&lt;body style="background-color:LightYellow;"&gt;
+  &lt;h1 style="color:DarkBlue;"&gt;Heading in DarkBlue&lt;/h1&gt;
+  &lt;p style="color:#008000;"&gt;This is Green (Hex)&lt;/p&gt;
+  &lt;p style="color:rgb(255,165,0);"&gt;This is Orange (RGB)&lt;/p&gt;
+  &lt;p style="color:rgba(0,0,255,0.5);"&gt;Transparent Blue (RGBA)&lt;/p&gt;
+  &lt;div style="color:white; background-color:blue; border:3px solid red; padding:10px;"&gt;
+    Styled Box with Colours
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Quiz -->
+      <section id="quiz" class="section mcq">
+        <h3>📝 Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which property sets text colour?</div>
+          <div class="choices">
+            <button class="choice">a) font-color</button>
+            <button class="choice">b) color</button>
+            <button class="choice">c) text-color</button>
+            <button class="choice">d) background</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q2. What is the hex code for black?</div>
+          <div class="choices">
+            <button class="choice">a) #000000</button>
+            <button class="choice">b) #111111</button>
+            <button class="choice">c) #FFFFFF</button>
+            <button class="choice">d) #101010</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q3. What does the "A" in RGBA/HSLA stand for?</div>
+          <div class="choices">
+            <button class="choice">a) Alpha (transparency)</button>
+            <button class="choice">b) Angle</button>
+            <button class="choice">c) Average</button>
+            <button class="choice">d) Amount</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Practice -->
+      <section id="practice" class="section">
+        <h3>🏋️ Practice Questions</h3>
+        <ol>
+          <li>Create a page with:
+            <ul>
+              <li>A heading in <code>DarkBlue</code>.</li>
+              <li>A paragraph in <code>Gray</code>.</li>
+              <li>Background colour <code>LightYellow</code>.</li>
+            </ul>
+          </li>
+          <li>Display three paragraphs using HEX, RGB and HSL respectively.</li>
+          <li>Show "Transparent Text" in blue with 50% transparency using <code>rgba()</code>.</li>
+          <li>Create three coloured boxes (<code>&lt;div&gt;</code>) using HEX, RGB, and HSL.</li>
+        </ol>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Summary -->
+      <section id="summary" class="section summary">
+        <h3>✅ Summary</h3>
+        <p>HTML colours can be defined using names, HEX, RGB, RGBA, HSL and HSLA. Use <code>color</code> for text, <code>background-color</code> for backgrounds, and <code>border-color</code> for borders. RGBA/HSLA add transparency. Prefer CSS classes for maintainable styling.</p>
+      </section>
+
+    </main>
+
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="forms.html">Forms</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../../index.html">Back to Course</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- shared JS -->
+  <script src="/contents/HTML/extra/script.js" defer></script>
+</body>
+</html>

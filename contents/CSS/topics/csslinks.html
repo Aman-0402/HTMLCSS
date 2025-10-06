@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Links & Lists Styling</title>
+    <link rel="stylesheet" href="../extra/style.css" />
+  </head>
+  <body>
+    <div class="topic-container">
+      <!-- Header -->
+      <header class="topic-header">
+        <h1>🔗 CSS Links & Lists Styling</h1>
+        <p class="topic-subtitle">
+          Master the art of styling hyperlinks and list elements for better user
+          experience
+        </p>
+      </header>
+
+      <!-- Navigation Buttons Top -->
+      <div class="topic-nav">
+        <a href="cssfonts.html" class="nav-btn btn-back"
+          >← Previous: CSS Fonts & Text</a
+        >
+        <a href="cssbackgrounds.html" class="nav-btn btn-next"
+          >Next Topic: CSS Backgrounds →</a
+        >
+      </div>
+
+      <!-- Introduction Section -->
+      <section class="content-section">
+        <h2>🎯 Why Style Links and Lists?</h2>
+        <p>
+          Links and lists are fundamental elements of web pages. Proper styling
+          improves navigation, enhances user experience, and makes your content
+          more organized and visually appealing.
+        </p>
+
+        <div class="info-box">
+          <h3>Benefits of Good Link & List Styling:</h3>
+          <ul>
+            <li>✅ Improves website navigation and usability</li>
+            <li>✅ Provides clear visual feedback to users</li>
+            <li>✅ Enhances accessibility for all users</li>
+            <li>✅ Creates consistent design patterns</li>
+            <li>✅ Makes content more scannable and organized</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CSS Links Section -->
+      <section class="content-section">
+        <h2>🔗 CSS Link States</h2>
+        <p>
+          Links have four different states that can be styled individually using
+          pseudo-classes:
+        </p>
+
+        <div class="example-box">
+          <h3>The Four Link States:</h3>
+          <ul>
+            <li><strong>:link</strong> - Normal, unvisited link</li>
+            <li><strong>:visited</strong> - Link that has been visited</li>
+            <li><strong>:hover</strong> - Link when mouse hovers over it</li>
+            <li>
+              <strong>:active</strong> - Link at the moment it's being clicked
+            </li>
+          </ul>
+        </div>
+
+        <h3>Syntax & Order (LVHA):</h3>
+        <div class="code-block">
+          <pre><code>/* Order matters! Use LVHA rule */
+a:link {
+    color: blue;
+    text-decoration: none;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+a:active {
+    color: orange;
+}</code></pre>
+        </div>
+
+        <div class="info-box">
+          <h3>⚠️ Important: LVHA Order</h3>
+          <p>
+            Always style link states in this order: <strong>L</strong>ink,
+            <strong>V</strong>isited, <strong>H</strong>over,
+            <strong>A</strong>ctive. This ensures proper cascading.
+          </p>
+        </div>
+      </section>
+
+      <!-- Link Styling Properties Section -->
+      <section class="content-section">
+        <h2>🎨 Common Link Styling Properties</h2>
+
+        <h3>1. Remove Underline</h3>
+        <div class="code-block">
+          <pre><code>a {
+    text-decoration: none;
+}</code></pre>
+        </div>
+
+        <h3>2. Change Link Color</h3>
+        <div class="code-block">
+          <pre><code>a {
+    color: #667eea;
+}
+
+a:hover {
+    color: #5568d3;
+}</code></pre>
+        </div>
+
+        <h3>3. Add Background on Hover</h3>
+        <div class="code-block">
+          <pre><code>a {
+    padding: 5px 10px;
+    background-color: transparent;
+    transition: background 0.3s;
+}
+
+a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}</code></pre>
+        </div>
+
+        <h3>4. Button-Style Links</h3>
+        <div class="code-block">
+          <pre><code>.btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.btn-link:hover {
+    background-color: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Advanced Link Effects Section -->
+      <section class="content-section">
+        <h2>✨ Advanced Link Effects</h2>
+
+        <h3>1. Underline Animation</h3>
+        <div class="code-block">
+          <pre><code>a {
+    position: relative;
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #667eea;
+    transition: width 0.3s;
+}
+
+a:hover::after {
+    width: 100%;
+}</code></pre>
+        </div>
+
+        <h3>2. Border Bottom Transition</h3>
+        <div class="code-block">
+          <pre><code>a {
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+a:hover {
+    border-bottom-color: #667eea;
+}</code></pre>
+        </div>
+
+        <h3>3. Glow Effect</h3>
+        <div class="code-block">
+          <pre><code>a {
+    transition: all 0.3s;
+}
+
+a:hover {
+    text-shadow: 0 0 10px #667eea;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- CSS Lists Section -->
+      <section class="content-section">
+        <h2>📋 CSS List Styling</h2>
+        <p>
+          Lists can be styled using various properties to change markers,
+          position, and appearance.
+        </p>
+
+        <h3>List Style Type</h3>
+        <div class="code-block">
+          <pre><code>/* Unordered Lists */
+ul.disc { list-style-type: disc; }        /* ● */
+ul.circle { list-style-type: circle; }    /* ○ */
+ul.square { list-style-type: square; }    /* ■ */
+ul.none { list-style-type: none; }        /* No marker */
+
+/* Ordered Lists */
+ol.decimal { list-style-type: decimal; }           /* 1, 2, 3 */
+ol.upper-alpha { list-style-type: upper-alpha; }   /* A, B, C */
+ol.lower-alpha { list-style-type: lower-alpha; }   /* a, b, c */
+ol.upper-roman { list-style-type: upper-roman; }   /* I, II, III */
+ol.lower-roman { list-style-type: lower-roman; }   /* i, ii, iii */</code></pre>
+        </div>
+      </section>
+
+      <!-- List Position Section -->
+      <section class="content-section">
+        <h2>📍 List Style Position</h2>
+
+        <div class="code-block">
+          <pre><code>/* Outside (default) - marker outside content */
+ul {
+    list-style-position: outside;
+}
+
+/* Inside - marker inside content */
+ul {
+    list-style-position: inside;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h3>Difference:</h3>
+          <ul>
+            <li>
+              <strong>outside:</strong> Bullets appear outside the content box
+            </li>
+            <li>
+              <strong>inside:</strong> Bullets appear inside the content box
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Custom List Markers Section -->
+      <section class="content-section">
+        <h2>🎨 Custom List Markers</h2>
+
+        <h3>1. Using Images as Markers</h3>
+        <div class="code-block">
+          <pre><code>ul {
+    list-style-image: url('checkmark.png');
+}
+
+/* Better approach with background */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    padding-left: 30px;
+    background: url('icon.png') no-repeat left center;
+    background-size: 20px 20px;
+}</code></pre>
+        </div>
+
+        <h3>2. Custom Markers with ::before</h3>
+        <div class="code-block">
+          <pre><code>ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li::before {
+    content: "✓";
+    color: green;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Different markers */
+ul.arrow li::before { content: "→"; }
+ul.star li::before { content: "★"; }
+ul.check li::before { content: "✔"; }</code></pre>
+        </div>
+      </section>
+
+      <!-- Horizontal Lists Section -->
+      <section class="content-section">
+        <h2>↔️ Horizontal Lists (Navigation)</h2>
+        <p>Convert vertical lists to horizontal for navigation menus.</p>
+
+        <h3>Method 1: Using display: inline</h3>
+        <div class="code-block">
+          <pre><code>ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    display: inline;
+    margin-right: 20px;
+}</code></pre>
+        </div>
+
+        <h3>Method 2: Using Flexbox (Modern)</h3>
+        <div class="code-block">
+          <pre><code>ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}</code></pre>
+        </div>
+
+        <h3>Complete Navigation Example</h3>
+        <div class="code-block">
+          <pre><code>nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: #333;
+}
+
+nav li {
+    flex: 1;
+}
+
+nav a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #667eea;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Nested Lists Section -->
+      <section class="content-section">
+        <h2>🪆 Styling Nested Lists</h2>
+
+        <div class="code-block">
+          <pre><code>/* Parent list */
+ul {
+    list-style-type: disc;
+}
+
+/* First level nested list */
+ul ul {
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+/* Second level nested list */
+ul ul ul {
+    list-style-type: square;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Live Example -->
+      <section class="content-section">
+        <h2>🎨 Live Examples</h2>
+        <div class="live-demo">
+          <div class="demo-output">
+            <h3>Link States Example:</h3>
+            <div style="margin: 20px 0">
+              <a
+                href="#"
+                style="
+                  color: #667eea;
+                  text-decoration: none;
+                  padding: 5px 10px;
+                  transition: all 0.3s;
+                "
+              >
+                Hover over this link
+              </a>
+            </div>
+
+            <h3>Button Link:</h3>
+            <div style="margin: 20px 0">
+              <a
+                href="#"
+                style="
+                  display: inline-block;
+                  padding: 12px 24px;
+                  background: #667eea;
+                  color: white;
+                  text-decoration: none;
+                  border-radius: 25px;
+                  transition: all 0.3s;
+                "
+              >
+                Click Me
+              </a>
+            </div>
+
+            <h3>List Styles:</h3>
+            <div style="display: flex; gap: 30px; flex-wrap: wrap">
+              <div>
+                <strong>Disc:</strong>
+                <ul style="list-style-type: disc">
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Square:</strong>
+                <ul style="list-style-type: square">
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Numbered:</strong>
+                <ol>
+                  <li>First</li>
+                  <li>Second</li>
+                  <li>Third</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MCQ Section -->
+      <section class="content-section">
+        <h2>📝 Test Your Knowledge - MCQ</h2>
+        <div class="mcq-container">
+          <div class="mcq-question" data-question="1">
+            <p>
+              <strong
+                >Q1: What is the correct order for styling link states?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q1" value="a" /> Hover, Link,
+                Visited, Active</label
+              >
+              <label
+                ><input type="radio" name="q1" value="b" /> Link, Visited,
+                Hover, Active</label
+              >
+              <label
+                ><input type="radio" name="q1" value="c" /> Active, Hover,
+                Visited, Link</label
+              >
+              <label
+                ><input type="radio" name="q1" value="d" /> Visited, Link,
+                Active, Hover</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(1, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback1"></div>
+          </div>
+
+          <div class="mcq-question" data-question="2">
+            <p>
+              <strong
+                >Q2: Which property removes the underline from links?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q2" value="a" /> text-style:
+                none</label
+              >
+              <label
+                ><input type="radio" name="q2" value="b" /> text-decoration:
+                none</label
+              >
+              <label
+                ><input type="radio" name="q2" value="c" /> link-decoration:
+                none</label
+              >
+              <label
+                ><input type="radio" name="q2" value="d" /> underline:
+                none</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(2, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback2"></div>
+          </div>
+
+          <div class="mcq-question" data-question="3">
+            <p>
+              <strong>Q3: Which list-style-type shows Roman numerals?</strong>
+            </p>
+            <div class="mcq-options">
+              <label><input type="radio" name="q3" value="a" /> decimal</label>
+              <label
+                ><input type="radio" name="q3" value="b" /> upper-alpha</label
+              >
+              <label
+                ><input type="radio" name="q3" value="c" /> upper-roman</label
+              >
+              <label><input type="radio" name="q3" value="d" /> numeric</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(3, 'c')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback3"></div>
+          </div>
+
+          <div class="mcq-question" data-question="4">
+            <p>
+              <strong
+                >Q4: How do you make a list horizontal using Flexbox?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label
+                ><input type="radio" name="q4" value="a" /> list-direction:
+                horizontal</label
+              >
+              <label
+                ><input type="radio" name="q4" value="b" /> display: flex</label
+              >
+              <label
+                ><input type="radio" name="q4" value="c" /> float: left</label
+              >
+              <label
+                ><input type="radio" name="q4" value="d" /> direction:
+                row</label
+              >
+            </div>
+            <button class="check-btn" onclick="checkAnswer(4, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback4"></div>
+          </div>
+
+          <div class="mcq-question" data-question="5">
+            <p>
+              <strong
+                >Q5: Which pseudo-class styles a link when mouse hovers over
+                it?</strong
+              >
+            </p>
+            <div class="mcq-options">
+              <label><input type="radio" name="q5" value="a" /> :active</label>
+              <label><input type="radio" name="q5" value="b" /> :hover</label>
+              <label><input type="radio" name="q5" value="c" /> :focus</label>
+              <label><input type="radio" name="q5" value="d" /> :visited</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(5, 'b')">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice Questions -->
+      <section class="content-section">
+        <h2>💪 Practice Questions</h2>
+        <div class="practice-box">
+          <ol>
+            <li>
+              Create a link that is blue by default, purple when visited, red on
+              hover, and has no underline.
+            </li>
+            <li>
+              Style an unordered list to use square markers with 20px spacing
+              between items.
+            </li>
+            <li>
+              Create a horizontal navigation menu using Flexbox with hover
+              effects.
+            </li>
+            <li>
+              Remove default list styling and add custom checkmark (✓) before
+              each item using ::before.
+            </li>
+            <li>
+              Create a button-style link with padding, background color,
+              border-radius, and smooth hover transition.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Summary Section -->
+      <section class="content-section summary-section">
+        <h2>📌 Summary</h2>
+        <div class="summary-box">
+          <ul>
+            <li>
+              <strong>Link States:</strong> :link, :visited, :hover, :active
+              (LVHA order)
+            </li>
+            <li>
+              <strong>text-decoration:</strong> Controls underline (none,
+              underline, overline, line-through)
+            </li>
+            <li>
+              <strong>list-style-type:</strong> Changes marker type (disc,
+              circle, square, decimal, roman, etc.)
+            </li>
+            <li>
+              <strong>list-style-position:</strong> Controls marker position
+              (inside, outside)
+            </li>
+            <li>
+              <strong>list-style-image:</strong> Uses custom image as marker
+            </li>
+            <li>
+              <strong>Horizontal Lists:</strong> Use display: flex or display:
+              inline for navigation
+            </li>
+            <li>
+              <strong>Custom Markers:</strong> Use ::before pseudo-element for
+              creative markers
+            </li>
+            <li>
+              <strong>Remove List Styling:</strong>
+              <code>list-style: none</code>
+            </li>
+            <li>
+              <strong>Best Practice:</strong> Always provide clear hover
+              feedback for links
+            </li>
+            <li>
+              <strong>Accessibility:</strong> Ensure sufficient color contrast
+              for visited/unvisited links
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navigation Buttons Bottom -->
+      <div class="topic-nav">
+        <a href="cssfonts.html" class="nav-btn btn-back"
+          >← Previous: CSS Fonts & Text</a
+        >
+        <a href="cssbackgrounds.html" class="nav-btn btn-next"
+          >Next Topic: CSS Backgrounds →</a
+        >
+      </div>
+    </div>
+
+    <script src="../extra/script.js"></script>
+    <script>
+      function checkAnswer(questionNum, correctAnswer) {
+        const selected = document.querySelector(
+          `input[name="q${questionNum}"]:checked`
+        );
+        const feedback = document.getElementById(`feedback${questionNum}`);
+
+        if (!selected) {
+          feedback.innerHTML =
+            '<p class="warning">⚠️ Please select an answer!</p>';
+          return;
+        }
+
+        if (selected.value === correctAnswer) {
+          feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+        } else {
+          feedback.innerHTML =
+            '<p class="incorrect">❌ Incorrect. Try again!</p>';
+        }
+      }
+    </script>
+  </body>
+</html>

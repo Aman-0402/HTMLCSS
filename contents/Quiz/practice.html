@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Practice Mode - Learn by Doing</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional Practice-Specific Styles */
+        .mode-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .mode-btn {
+            padding: 12px 25px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+        }
+
+        .mode-btn:hover,
+        .mode-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .explanation-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .explanation-box.show {
+            display: block;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .explanation-title {
+            color: #1976D2;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .explanation-text {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .practice-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .practice-stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .practice-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .practice-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .topic-filter {
+            margin-bottom: 30px;
+        }
+
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .topic-tag {
+            padding: 8px 20px;
+            background: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .topic-tag:hover,
+        .topic-tag.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .practice-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .practice-header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .practice-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .feedback-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .feedback-badge.correct {
+            background: #d4edda;
+            color: #28a745;
+        }
+
+        .feedback-badge.incorrect {
+            background: #f8d7da;
+            color: #dc3545;
+        }
+
+        .next-question-btn {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .next-question-btn.show {
+            display: block;
+        }
+        .back-btn {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.back-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Practice Header -->
+        <div class="practice-header">
+            <h1>CSS Practice Mode</h1>
+            <p class="practice-subtitle">Learn at your own pace with instant feedback and explanations</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="mode-selector">
+            <a href="quiz.html" class="mode-btn">Quiz Mode</a>
+            <button class="mode-btn active">Practice Mode</button>
+        </div>
+
+        <!-- Practice Stats -->
+        <div class="practice-stats" id="practiceStats">
+            <div class="practice-stat-card">
+                <span class="practice-stat-value" id="questionsAttempted">0</span>
+                <span class="practice-stat-label">Questions Attempted</span>
+            </div>
+            <div class="practice-stat-card" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                <span class="practice-stat-value" id="correctCount">0</span>
+                <span class="practice-stat-label">Correct Answers</span>
+            </div>
+            <div class="practice-stat-card" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                <span class="practice-stat-value" id="accuracyRate">0%</span>
+                <span class="practice-stat-label">Accuracy Rate</span>
+            </div>
+        </div>
+
+        <!-- Topic Filter -->
+        <div class="topic-filter">
+            <h3 style="color: #667eea; margin-bottom: 10px;">Select Topic:</h3>
+            <div class="topic-tags">
+                <div class="topic-tag active" data-topic="all">All Topics</div>
+                <div class="topic-tag" data-topic="selectors">Selectors</div>
+                <div class="topic-tag" data-topic="layout">Layout</div>
+                <div class="topic-tag" data-topic="flexbox">Flexbox</div>
+                <div class="topic-tag" data-topic="grid">Grid</div>
+                <div class="topic-tag" data-topic="animations">Animations</div>
+                <div class="topic-tag" data-topic="responsive">Responsive</div>
+                <div class="topic-tag" data-topic="typography">Typography</div>
+            </div>
+        </div>
+
+        <!-- Practice Content -->
+        <div class="quiz-content" id="practiceContent">
+            <div class="question-card">
+                <div class="question-number" id="questionNumber">Question 1</div>
+                <div class="question-text" id="questionText"></div>
+                
+                <!-- Options -->
+                <div class="options-container" id="optionsContainer"></div>
+
+                <!-- Feedback Badge -->
+                <div id="feedbackBadge"></div>
+
+                <!-- Explanation Box -->
+                <div class="explanation-box" id="explanationBox">
+                    <div class="explanation-title">Explanation:</div>
+                    <div class="explanation-text" id="explanationText"></div>
+                </div>
+
+                <!-- Next Question Button -->
+                <button class="btn btn-primary btn-large next-question-btn" id="nextQuestionBtn">
+                    Next Question
+                </button>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+            <button class="btn btn-secondary" id="resetStatsBtn">Reset Stats</button>
+            <button class="btn btn-primary" id="newQuestionBtn">Skip Question</button>
+        </div>
+        <center>
+            <a href="../../index.html" class="back-btn">← Back to Home</a>
+          </center>
+    </div>
+
+    <script src="practice.js"></script>
+</body>
+</html>

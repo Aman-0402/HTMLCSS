@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Animations - @keyframes & Animation Control</title>
+    <link rel="stylesheet" href="../extra/style.css">
+    <style>
+        /* Animation examples */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-10px);
+            }
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(20deg);
+            }
+            75% {
+                transform: rotate(-20deg);
+            }
+        }
+
+        @keyframes colorChange {
+            0% {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+            }
+            50% {
+                background: linear-gradient(135deg, #f093fb, #f5576c);
+            }
+            100% {
+                background: linear-gradient(135deg, #4facfe, #00f2fe);
+            }
+        }
+
+        /* Additional styles for key points */
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .key-point {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .key-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .key-point h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .key-point p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Warning box style */
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .warning-box p {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="topic-container">
+        <!-- Header -->
+        <header class="topic-header">
+            <h1>🎬 CSS3 Animations</h1>
+            <p class="topic-subtitle">
+                Create complex, multi-step animations with @keyframes and animation properties
+            </p>
+        </header>
+
+        <!-- Navigation Buttons Top -->
+        <div class="topic-nav">
+            <a href="transitions.html" class="nav-btn btn-back">← Previous: CSS3 Transitions</a>
+            <a href="../../../index.html" class="back-btn">← Back to Home</a>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2>🎯 What are CSS Animations?</h2>
+            <p>
+                CSS Animations allow you to create complex, multi-step animations without JavaScript. Unlike transitions which require a trigger (like hover), animations can run automatically, loop infinitely, and have multiple intermediate steps defined with @keyframes.
+            </p>
+
+            <div class="info-box">
+                <h3>Animation Capabilities:</h3>
+                <ul>
+                    <li>✅ Create multi-step animations with @keyframes</li>
+                    <li>✅ Run animations automatically on page load</li>
+                    <li>✅ Loop animations infinitely or specific times</li>
+                    <li>✅ Control animation direction and fill modes</li>
+                    <li>✅ Pause and play animations dynamically</li>
+                    <li>✅ Chain multiple animations together</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>Transitions vs Animations:</h3>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px">
+                    <tr style="background: #f5f5f5">
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ddd">Feature</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ddd">Transitions</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ddd">Animations</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd">Trigger</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">Requires state change</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">Automatic or triggered</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd">Steps</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">2 (start → end)</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">Multiple keyframes</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd">Loop</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">No</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd">Control</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">Limited</td>
+                        <td style="padding: 10px; border: 1px solid #ddd">Full control</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- @keyframes Section -->
+        <section class="content-section">
+            <h2>🎞️ Creating @keyframes</h2>
+            <p>@keyframes define the animation sequence with multiple steps.</p>
+
+            <h3>Basic @keyframes Syntax:</h3>
+            <div class="code-block">
+                <pre><code>/* Using from and to */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Using percentages */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Multiple properties */
+@keyframes scaleAndRotate {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Multiple Keyframe Steps:</h3>
+            <div class="code-block">
+                <pre><code>/* Complex animation with many steps */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-30px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    75% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Color progression */
+@keyframes rainbow {
+    0% { background-color: red; }
+    16% { background-color: orange; }
+    33% { background-color: yellow; }
+    50% { background-color: green; }
+    66% { background-color: blue; }
+    83% { background-color: indigo; }
+    100% { background-color: violet; }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Animation Properties Section -->
+        <section class="content-section">
+            <h2>⚙️ Animation Properties</h2>
+
+            <h3>1. animation-name:</h3>
+            <div class="code-block">
+                <pre><code>/* Reference the @keyframes name */
+.element {
+    animation-name: fadeIn;
+    animation-name: bounce;
+    animation-name: slideIn;
+}</code></pre>
+            </div>
+
+            <h3>2. animation-duration:</h3>
+            <div class="code-block">
+                <pre><code>/* How long the animation takes */
+.element {
+    animation-duration: 1s;      /* 1 second */
+    animation-duration: 500ms;   /* 500 milliseconds */
+    animation-duration: 2.5s;    /* 2.5 seconds */
+}</code></pre>
+            </div>
+
+            <h3>3. animation-timing-function:</h3>
+            <div class="code-block">
+                <pre><code>/* Speed curve of animation */
+.element {
+    animation-timing-function: ease;        /* Default */
+    animation-timing-function: linear;      /* Constant */
+    animation-timing-function: ease-in;     /* Slow start */
+    animation-timing-function: ease-out;    /* Slow end */
+    animation-timing-function: ease-in-out; /* Slow start & end */
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}</code></pre>
+            </div>
+
+            <h3>4. animation-delay:</h3>
+            <div class="code-block">
+                <pre><code>/* Delay before animation starts */
+.element {
+    animation-delay: 0s;      /* No delay */
+    animation-delay: 0.5s;    /* 500ms delay */
+    animation-delay: 1s;      /* 1 second delay */
+    animation-delay: -0.5s;   /* Start partway through */
+}</code></pre>
+            </div>
+
+            <h3>5. animation-iteration-count:</h3>
+            <div class="code-block">
+                <pre><code>/* How many times to repeat */
+.element {
+    animation-iteration-count: 1;        /* Once (default) */
+    animation-iteration-count: 3;        /* 3 times */
+    animation-iteration-count: infinite; /* Forever */
+}</code></pre>
+            </div>
+
+            <h3>6. animation-direction:</h3>
+            <div class="code-block">
+                <pre><code>/* Direction of animation */
+.element {
+    animation-direction: normal;            /* 0% → 100% */
+    animation-direction: reverse;           /* 100% → 0% */
+    animation-direction: alternate;         /* 0% → 100% → 0% → 100% */
+    animation-direction: alternate-reverse; /* 100% → 0% → 100% → 0% */
+}</code></pre>
+            </div>
+
+            <h3>7. animation-fill-mode:</h3>
+            <div class="code-block">
+                <pre><code>/* Style before/after animation */
+.element {
+    animation-fill-mode: none;      /* Default - no style applied */
+    animation-fill-mode: forwards;  /* Keep final keyframe styles */
+    animation-fill-mode: backwards; /* Apply first keyframe before start */
+    animation-fill-mode: both;      /* Apply both forwards & backwards */
+}</code></pre>
+            </div>
+
+            <h3>8. animation-play-state:</h3>
+            <div class="code-block">
+                <pre><code>/* Control play/pause */
+.element {
+    animation-play-state: running; /* Default */
+    animation-play-state: paused;  /* Pause animation */
+}
+
+/* Pause on hover */
+.element:hover {
+    animation-play-state: paused;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Shorthand Animation Section -->
+        <section class="content-section">
+            <h2>✍️ Animation Shorthand</h2>
+            <p>Combine all animation properties in one declaration.</p>
+
+            <div class="code-block">
+                <pre><code>/* Shorthand syntax */
+/* name | duration | timing-function | delay | iteration | direction | fill-mode | play-state */
+
+.element {
+    animation: fadeIn 1s ease 0s 1 normal forwards running;
+}
+
+/* Simplified (common pattern) */
+.element {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Infinite loop */
+.element {
+    animation: spin 2s linear infinite;
+}
+
+/* With delay */
+.element {
+    animation: bounce 1s ease 0.5s;
+}
+
+/* Multiple animations (comma-separated) */
+.element {
+    animation: fadeIn 1s ease,
+               slideUp 1s ease 0.5s,
+               bounce 2s ease 1s infinite;
+}</code></pre>
+            </div>
+
+            <div class="example-box">
+                <h3>Common Shorthand Patterns:</h3>
+                <div style="display: grid; gap: 10px; margin-top: 10px">
+                    <code style="background: #f5f5f5; padding: 10px; border-radius: 5px">animation: name 1s;</code>
+                    <code style="background: #f5f5f5; padding: 10px; border-radius: 5px">animation: name 2s infinite;</code>
+                    <code style="background: #f5f5f5; padding: 10px; border-radius: 5px">animation: name 1s ease-in-out forwards;</code>
+                    <code style="background: #f5f5f5; padding: 10px; border-radius: 5px">animation: name 0.5s ease 0.3s;</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Animation Examples -->
+        <section class="content-section">
+            <h2>🎨 Live Animation Examples</h2>
+            <div class="live-demo">
+                <div class="demo-output">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding: 20px;">
+                        <div style="text-align: center">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; margin: 0 auto; animation: bounce 2s ease-in-out infinite;"></div>
+                            <p style="margin-top: 10px">Bounce</p>
+                        </div>
+
+                        <div style="text-align: center">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 50%; margin: 0 auto; animation: spin 3s linear infinite;"></div>
+                            <p style="margin-top: 10px">Spin</p>
+                        </div>
+
+                        <div style="text-align: center">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 10px; margin: 0 auto; animation: pulse 2s ease-in-out infinite;"></div>
+                            <p style="margin-top: 10px">Pulse</p>
+                        </div>
+
+                        <div style="text-align: center">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #43e97b, #38f9d7); border-radius: 10px; margin: 0 auto; animation: shake 0.5s ease infinite;"></div>
+                            <p style="margin-top: 10px">Shake</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Animation Patterns Section -->
+        <section class="content-section">
+            <h2>🌟 Popular Animation Patterns</h2>
+
+            <h3>1. Loading Spinner:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}</code></pre>
+            </div>
+
+            <h3>2. Fade In:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}</code></pre>
+            </div>
+
+            <h3>3. Bounce In:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}</code></pre>
+            </div>
+
+            <h3>4. Slide In:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slideInLeft 0.5s ease-out forwards;
+}</code></pre>
+            </div>
+
+            <h3>5. Pulse Effect:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}</code></pre>
+            </div>
+
+            <h3>6. Shake Effect:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.shake {
+    animation: shake 0.5s ease;
+}</code></pre>
+            </div>
+
+            <h3>7. Typing Effect:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.typewriter {
+    width: 0;
+    overflow: hidden;
+    border-right: 2px solid;
+    white-space: nowrap;
+    animation: typing 3s steps(40) forwards,
+               blink 0.75s step-end infinite;
+}</code></pre>
+            </div>
+
+            <h3>8. Floating Effect:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Examples Section -->
+        <section class="content-section">
+            <h2>💼 Practical Real-World Examples</h2>
+
+            <h3>Example 1: Notification Badge:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes ring {
+    0%, 100% { transform: rotate(0deg); }
+    10%, 30% { transform: rotate(-10deg); }
+    20%, 40% { transform: rotate(10deg); }
+}
+
+.notification-badge {
+    position: relative;
+}
+
+.notification-badge::after {
+    content: "3";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    animation: ring 2s ease infinite;
+}</code></pre>
+            </div>
+
+            <h3>Example 2: Progress Bar:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes progress {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.progress-bar {
+    height: 20px;
+    background: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: "";
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    animation: progress 2s ease-out forwards;
+}</code></pre>
+            </div>
+
+            <h3>Example 3: Skeleton Loading:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}</code></pre>
+            </div>
+
+            <h3>Example 4: Modal Entrance:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes modalSlideDown {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal {
+    animation: modalSlideDown 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}</code></pre>
+            </div>
+
+            <h3>Example 5: Attention Seeker:</h3>
+            <div class="code-block">
+                <pre><code>@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.3); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.3); }
+    70% { transform: scale(1); }
+}
+
+.heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Advanced Techniques Section -->
+        <section class="content-section">
+            <h2>🚀 Advanced Animation Techniques</h2>
+
+            <h3>Staggered Animations:</h3>
+            <div class="code-block">
+                <pre><code>/* Delay each item progressively */
+.list-item {
+    animation: slideIn 0.5s ease-out backwards;
+}
+
+.list-item:nth-child(1) { animation-delay: 0.1s; }
+.list-item:nth-child(2) { animation-delay: 0.2s; }
+.list-item:nth-child(3) { animation-delay: 0.3s; }
+.list-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Or use calculated delay */
+.list-item:nth-child(n) {
+    animation-delay: calc(0.1s * var(--i));
+}</code></pre>
+            </div>
+
+            <h3>Animation Chaining:</h3>
+            <div class="code-block">
+                <pre><code>/* Run animations in sequence */
+.element {
+    animation: 
+        fadeIn 0.5s ease-out,
+        slideUp 0.5s ease-out 0.5s,
+        bounce 0.5s ease-out 1s;
+}</code></pre>
+            </div>
+
+            <h3>JavaScript Control:</h3>
+            <div class="code-block">
+                <pre><code>// Add animation class
+element.classList.add('animated');
+
+// Listen for animation end
+element.addEventListener('animationend', () => {
+    console.log('Animation completed!');
+    element.classList.remove('animated');
+});
+
+// Listen for animation iteration
+element.addEventListener('animationiteration', () => {
+    console.log('Animation looped!');
+});</code></pre>
+            </div>
+
+            <h3>Custom Properties in Animations:</h3>
+            <div class="code-block">
+                <pre><code>/* Use CSS variables */
+:root {
+    --animation-duration: 2s;
+    --animation-color: #3498db;
+}
+
+@keyframes colorPulse {
+    0%, 100% { background: var(--animation-color); }
+    50% { background: transparent; }
+}
+
+.element {
+    animation: colorPulse var(--animation-duration) infinite;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Performance Tips Section -->
+        <section class="content-section">
+            <h2>⚡ Performance Best Practices</h2>
+            <div class="info-box">
+                <h3>Optimize Animations:</h3>
+                <ul>
+                    <li>✅ Animate transform and opacity (GPU-accelerated)</li>
+                    <li>✅ Use will-change for complex animations (sparingly)</li>
+                    <li>✅ Avoid animating layout properties (width, height, margin)</li>
+                    <li>✅ Use animation-play-state to pause off-screen animations</li>
+                    <li>✅ Reduce animation complexity on mobile devices</li>
+                    <li>⚠️ Don't animate too many elements simultaneously</li>
+                    <li>⚠️ Avoid using "all" in animation properties</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <pre><code>/* ✅ Good Performance */
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(100px); }
+}
+
+/* ❌ Poor Performance */
+@keyframes slide {
+    from { left: 0; }
+    to { left: 100px; }
+}
+
+/* Use will-change for complex animations */
+.complex-animation {
+    will-change: transform, opacity;
+    animation: complexMove 2s ease;
+}
+
+/* Remove will-change after animation */
+.complex-animation.done {
+    will-change: auto;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Accessibility Section -->
+        <section class="content-section">
+            <h2>♿ Accessibility Considerations</h2>
+
+            <div class="code-block">
+                <pre><code>/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* Or disable completely */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+    }
+}
+
+/* Provide alternative for essential animations */
+@media (prefers-reduced-motion: reduce) {
+    .loading {
+        animation: none;
+    }
+    .loading::after {
+        content: "Loading...";
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section class="content-section">
+            <h2>📝 Test Your Knowledge - MCQ</h2>
+            <div class="mcq-container">
+                <div class="mcq-question" data-question="1">
+                    <p><strong>Q1: What is the correct syntax for defining keyframes?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q1" value="a"> keyframes fadeIn { }</label>
+                        <label><input type="radio" name="q1" value="b"> @keyframes fadeIn { }</label>
+                        <label><input type="radio" name="q1" value="c"> animation fadeIn { }</label>
+                        <label><input type="radio" name="q1" value="d"> @animation fadeIn { }</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="mcq-question" data-question="2">
+                    <p><strong>Q2: Which value makes an animation repeat forever?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q2" value="a"> animation-iteration-count: unlimited</label>
+                        <label><input type="radio" name="q2" value="b"> animation-iteration-count: infinite</label>
+                        <label><input type="radio" name="q2" value="c"> animation-iteration-count: forever</label>
+                        <label><input type="radio" name="q2" value="d"> animation-iteration-count: -1</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(2, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="mcq-question" data-question="3">
+                    <p><strong>Q3: What does animation-fill-mode: forwards do?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q3" value="a"> Plays animation forward</label>
+                        <label><input type="radio" name="q3" value="b"> Keeps the final keyframe styles after animation</label>
+                        <label><input type="radio" name="q3" value="c"> Moves element forward</label>
+                        <label><input type="radio" name="q3" value="d"> Starts animation immediately</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="mcq-question" data-question="4">
+                    <p><strong>Q4: Which direction value makes an animation alternate back and forth?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q4" value="a"> animation-direction: reverse</label>
+                        <label><input type="radio" name="q4" value="b"> animation-direction: normal</label>
+                        <label><input type="radio" name="q4" value="c"> animation-direction: alternate</label>
+                        <label><input type="radio" name="q4" value="d"> animation-direction: both</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(4, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+
+                <div class="mcq-question" data-question="5">
+                    <p><strong>Q5: What are the best properties to animate for performance?</strong></p>
+                    <div class="mcq-options">
+                        <label><input type="radio" name="q5" value="a"> width and height</label>
+                        <label><input type="radio" name="q5" value="b"> margin and padding</label>
+                        <label><input type="radio" name="q5" value="c"> transform and opacity</label>
+                        <label><input type="radio" name="q5" value="d"> top and left</label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer(5, 'c')">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions -->
+        <section class="content-section">
+            <h2>💪 Practice Questions</h2>
+            <div class="practice-box">
+                <ol>
+                    <li>Create a bouncing ball animation using @keyframes.</li>
+                    <li>Build a loading spinner that rotates infinitely.</li>
+                    <li>Create a fade-in animation that keeps final styles after completion.</li>
+                    <li>Make a pulsing button animation that repeats forever.</li>
+                    <li>Build a slide-in animation for menu items with staggered delays.</li>
+                    <li>Create a shake animation that plays once on error.</li>
+                    <li>Design a skeleton loading animation with a shimmer effect.</li>
+                    <li>Build a typewriter effect using steps timing function.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>📌 Summary</h2>
+            <div class="summary-box">
+                <ul>
+                    <li><strong>@keyframes:</strong> Define animation sequences with multiple steps</li>
+                    <li><strong>animation-name:</strong> References the @keyframes to use</li>
+                    <li><strong>animation-duration:</strong> How long the animation takes (required)</li>
+                    <li><strong>animation-timing-function:</strong> Speed curve (ease, linear, etc.)</li>
+                    <li><strong>animation-iteration-count:</strong> Number of times to repeat (1, 3, infinite)</li>
+                    <li><strong>animation-direction:</strong> normal, reverse, alternate, alternate-reverse</li>
+                    <li><strong>animation-fill-mode:</strong> forwards, backwards, both (styles before/after)</li>
+                    <li><strong>Shorthand:</strong> <code>animation: name duration timing delay iteration direction fill-mode</code></li>
+                    <li><strong>Performance:</strong> Use transform and opacity for GPU acceleration</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <section class="content-section">
+            <h2>🔑 Key Takeaways</h2>
+            <div class="key-points">
+                <div class="key-point">
+                    <h3>🎬 Multi-Step Control</h3>
+                    <p>Animations provide precise control over multiple keyframe steps, unlike transitions which only have start and end states.</p>
+                </div>
+                <div class="key-point">
+                    <h3>🔄 Infinite Loops</h3>
+                    <p>Use animation-iteration-count: infinite for continuous animations like loading spinners and pulsing effects.</p>
+                </div>
+                <div class="key-point">
+                    <h3>⚡ Performance Matters</h3>
+                    <p>Always animate transform and opacity for best performance. Avoid animating layout properties like width, height, or position.</p>
+                </div>
+                <div class="key-point">
+                    <h3>♿ Accessibility First</h3>
+                    <p>Respect prefers-reduced-motion to ensure animations don't cause discomfort for users with motion sensitivity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons Bottom -->
+        <div class="topic-nav">
+            <a href="transitions.html" class="nav-btn btn-back">← Previous: CSS3 Transitions</a>
+            <a href="../../../index.html" class="back-btn">← Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script src="../extra/script.js"></script>
+    
+    <!-- MCQ Check Answer Function -->
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selectedOption) {
+                feedback.innerHTML = '<p class="warning">⚠️ Please select an answer!</p>';
+                return;
+            }
+            
+            if (selectedOption.value === correctAnswer) {
+                feedback.innerHTML = '<p class="correct">✅ Correct! Well done!</p>';
+            } else {
+                feedback.innerHTML = '<p class="incorrect">❌ Incorrect. Try again!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+}
+
+/* Container */
+.projects-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header */
+.projects-header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.projects-header h1 {
+    color: white;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.projects-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+/* Shuffle Button */
+.shuffle-btn {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.shuffle-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 35px;
+    margin-top: 40px;
+}
+
+/* Flip Card Container */
+/* Flip Card Container */
+.project-card {
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+    animation: fadeInUp 0.6s ease backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation for cards */
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.15s; }
+.project-card:nth-child(3) { animation-delay: 0.2s; }
+.project-card:nth-child(4) { animation-delay: 0.25s; }
+.project-card:nth-child(5) { animation-delay: 0.3s; }
+.project-card:nth-child(6) { animation-delay: 0.35s; }
+.project-card:nth-child(7) { animation-delay: 0.4s; }
+.project-card:nth-child(8) { animation-delay: 0.45s; }
+.project-card:nth-child(9) { animation-delay: 0.5s; }
+.project-card:nth-child(10) { animation-delay: 0.55s; }
+.project-card:nth-child(11) { animation-delay: 0.6s; }
+.project-card:nth-child(12) { animation-delay: 0.65s; }
+.project-card:nth-child(13) { animation-delay: 0.7s; }
+.project-card:nth-child(14) { animation-delay: 0.75s; }
+.project-card:nth-child(15) { animation-delay: 0.8s; }
+.project-card:nth-child(16) { animation-delay: 0.85s; }
+.project-card:nth-child(17) { animation-delay: 0.9s; }
+.project-card:nth-child(18) { animation-delay: 0.95s; }
+.project-card:nth-child(19) { animation-delay: 1s; }
+.project-card:nth-child(20) { animation-delay: 1.05s; }
+
+/* Inner flip container */
+.project-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.project-card:hover .project-card-inner {
+    transform: scale(1.02);
+}
+
+.project-card.flipped .project-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back faces */
+.project-card-front,
+.project-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Front Face */
+.project-card-front {
+    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.project-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+.project-category {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+/* Back Face */
+.project-card-back {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 25px 20px;
+}
+
+.project-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.project-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    opacity: 0.95;
+}
+
+.project-features {
+    list-style: none;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.project-features li {
+    padding: 5px 0;
+    padding-left: 25px;
+    position: relative;
+    font-size: 0.8rem;
+}
+
+.project-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #43e97b;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.project-level {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Difficulty Colors */
+.level-beginner {
+    background: rgba(67, 233, 123, 0.3);
+}
+
+.level-intermediate {
+    background: rgba(244, 143, 177, 0.3);
+}
+
+/* Hover Glow Effect */
+.project-card:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+/* Pulse Animation for Icons */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.project-card:hover .project-icon {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .projects-subtitle {
+        font-size: 1.1rem;
+    }
+
+    /* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+    .project-card {
+        height: 350px;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+    }
+
+    .project-icon {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .projects-header h1 {
+        font-size: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shuffle-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Click instruction animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.projects-subtitle {
+    animation: bounce 2s infinite;
+}
+.back-btn {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.back-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}

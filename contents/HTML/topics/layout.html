@@ -1,0 +1,562 @@
+<!-- contents/HTML/topics/layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Layout — Session 10</title>
+
+  <!-- shared stylesheet -->
+  <link rel="stylesheet" href="../extra/style.css">
+
+  <!-- SweetAlert2 for MCQs -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+<body class="pure-black">
+  <a class="skip-link" href="../content.html">Skip to content</a>
+
+  <div class="lesson-container">
+    <!-- Header -->
+    <header class="lesson-card lesson-hero" role="banner" aria-labelledby="lesson-title">
+      <div class="lesson-left">
+        <div class="badge">Session 10</div>
+        <h1 id="lesson-title">HTML Layout</h1>
+        <div class="meta">Semantic Structure • Page Organization • SEO • Accessibility</div>
+      </div>
+      <div class="lesson-actions">
+        <a class="btn" href="../content.html">← Back to Course</a>
+        <a class="btn primary" href="forms.html">Next: Forms →</a>
+      </div>
+    </header>
+
+    <main id="content" class="lesson-card">
+      <!-- TOC -->
+      <nav class="toc" aria-label="Table of contents">
+        <a href="#overview">Overview</a>
+        <a href="#semantic">Semantic Elements</a>
+        <a href="#structure">Page Structure</a>
+        <a href="#examples">Layout Examples</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#practice">Practice</a>
+        <a href="#summary">Summary</a>
+      </nav>
+
+      <!-- Overview -->
+      <section id="overview" class="section">
+        <h2>What is HTML Layout?</h2>
+        <p>HTML layout refers to how content is organized and structured on a webpage. A well-planned layout uses semantic HTML elements to create clear, accessible, and maintainable page structures.</p>
+
+        <h3>Why Layout Matters:</h3>
+        <ul>
+          <li><strong>Users</strong> - Intuitive navigation and content organization</li>
+          <li><strong>Developers</strong> - Cleaner, more readable, maintainable code</li>
+          <li><strong>Search Engines</strong> - Better understanding of content hierarchy (SEO)</li>
+          <li><strong>Assistive Technologies</strong> - Screen readers can navigate effectively</li>
+          <li><strong>Browsers</strong> - Proper rendering and default styling</li>
+        </ul>
+
+        <h3>Evolution of HTML Layout:</h3>
+        <ul>
+          <li><strong>1990s:</strong> Tables for layout (bad practice now)</li>
+          <li><strong>2000s:</strong> Div-based layouts with CSS</li>
+          <li><strong>2010s+:</strong> Semantic HTML5 elements (current best practice)</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Semantic elements -->
+      <section id="semantic" class="section">
+        <h2>Semantic Layout Elements</h2>
+        <p>Semantic elements clearly describe their meaning to both browsers and developers. Use these instead of generic divs whenever possible.</p>
+
+        <h3>Core Semantic Elements:</h3>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Purpose</th>
+              <th>Common Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;header&gt;</code></td>
+              <td>Introductory content or navigation</td>
+              <td>Logo, site title, main navigation</td>
+            </tr>
+            <tr>
+              <td><code>&lt;nav&gt;</code></td>
+              <td>Navigation links</td>
+              <td>Main menu, breadcrumbs, pagination</td>
+            </tr>
+            <tr>
+              <td><code>&lt;main&gt;</code></td>
+              <td>Primary content (unique to page)</td>
+              <td>Main article, product info, search results</td>
+            </tr>
+            <tr>
+              <td><code>&lt;section&gt;</code></td>
+              <td>Thematic grouping of content</td>
+              <td>Chapters, tabs, themed content blocks</td>
+            </tr>
+            <tr>
+              <td><code>&lt;article&gt;</code></td>
+              <td>Self-contained, reusable content</td>
+              <td>Blog post, news article, product card</td>
+            </tr>
+            <tr>
+              <td><code>&lt;aside&gt;</code></td>
+              <td>Tangentially related content</td>
+              <td>Sidebar, related links, ads, widgets</td>
+            </tr>
+            <tr>
+              <td><code>&lt;footer&gt;</code></td>
+              <td>Footer information</td>
+              <td>Copyright, contact, social links</td>
+            </tr>
+            <tr>
+              <td><code>&lt;div&gt;</code></td>
+              <td>Generic container (non-semantic)</td>
+              <td>Styling wrapper, grid containers</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Element Descriptions:</h3>
+
+        <h4>&lt;header&gt;</h4>
+        <p>Represents introductory content. Can be used multiple times per page (page header, article header, section header).</p>
+        <pre class="code-block"><code>&lt;header&gt;
+  &lt;img src="logo.png" alt="Company Logo"&gt;
+  &lt;h1&gt;Website Title&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+        <h4>&lt;nav&gt;</h4>
+        <p>Contains navigation links. Use for major navigation blocks only, not every group of links.</p>
+        <pre class="code-block"><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+        <h4>&lt;main&gt;</h4>
+        <p>The dominant content of the page. Use only <strong>once per page</strong>. Should not include repeated content like headers, footers, or sidebars.</p>
+        <pre class="code-block"><code>&lt;main&gt;
+  &lt;h1&gt;Page Title&lt;/h1&gt;
+  &lt;p&gt;Main content that's unique to this page...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+
+        <h4>&lt;section&gt;</h4>
+        <p>Groups thematic content. Should typically have a heading. Use when content represents a distinct section of the document.</p>
+        <pre class="code-block"><code>&lt;section&gt;
+  &lt;h2&gt;Our Services&lt;/h2&gt;
+  &lt;p&gt;We offer web development, design, and consulting.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+
+        <h4>&lt;article&gt;</h4>
+        <p>Self-contained content that makes sense independently. Could be distributed or reused separately.</p>
+        <pre class="code-block"><code>&lt;article&gt;
+  &lt;h2&gt;Blog Post Title&lt;/h2&gt;
+  &lt;p&gt;Published on Jan 1, 2025&lt;/p&gt;
+  &lt;p&gt;Post content here...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+        <h4>&lt;aside&gt;</h4>
+        <p>Content indirectly related to main content. Often used for sidebars, pullquotes, or advertising.</p>
+        <pre class="code-block"><code>&lt;aside&gt;
+  &lt;h3&gt;Related Articles&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Article 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Article 2&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+
+        <h4>&lt;footer&gt;</h4>
+        <p>Footer for its nearest sectioning content or root. Can be used multiple times (page footer, article footer).</p>
+        <pre class="code-block"><code>&lt;footer&gt;
+  &lt;p&gt;&amp;copy; 2025 Company Name&lt;/p&gt;
+  &lt;nav&gt;
+    &lt;a href="privacy.html"&gt;Privacy&lt;/a&gt;
+    &lt;a href="terms.html"&gt;Terms&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Page Structure -->
+      <section id="structure" class="section">
+        <h2>Typical Page Structure</h2>
+        <p>Here's how semantic elements typically work together:</p>
+
+        <pre class="code-block"><code>&lt;body&gt;
+  &lt;header&gt;
+    &lt;!-- Site header: logo, title, main nav --&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;!-- Main unique content of the page --&gt;
+    
+    &lt;section&gt;
+      &lt;!-- Thematic content group --&gt;
+      
+      &lt;article&gt;
+        &lt;!-- Self-contained content --&gt;
+      &lt;/article&gt;
+      
+    &lt;/section&gt;
+    
+    &lt;aside&gt;
+      &lt;!-- Sidebar or related content --&gt;
+    &lt;/aside&gt;
+    
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;!-- Site footer: copyright, links --&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+        <h3>Visual Structure Diagram:</h3>
+        <pre class="code-block"><code>┌─────────────────────────────────────┐
+│           &lt;header&gt;                  │
+│  Logo  |  Navigation Menu           │
+└─────────────────────────────────────┘
+┌─────────────────────────────────────┐
+│           &lt;main&gt;                    │
+│  ┌───────────────┐  ┌────────────┐  │
+│  │   &lt;article&gt;   │  │  &lt;aside&gt;   │  │
+│  │               │  │            │  │
+│  │  Main Content │  │  Sidebar   │  │
+│  │               │  │            │  │
+│  └───────────────┘  └────────────┘  │
+└─────────────────────────────────────┘
+┌─────────────────────────────────────┐
+│           &lt;footer&gt;                  │
+│  © 2025  |  Privacy  |  Contact     │
+└─────────────────────────────────────┘</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Layout Examples -->
+      <section id="examples" class="section">
+        <h2>Complete Layout Examples</h2>
+
+        <h3>Example 1: Simple Blog Layout</h3>
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My Blog&lt;/title&gt;
+  &lt;style&gt;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; }
+    
+    header { 
+      background: #333; 
+      color: white; 
+      padding: 20px;
+      text-align: center;
+    }
+    
+    nav { 
+      background: #444; 
+      padding: 10px;
+      text-align: center;
+    }
+    nav a { 
+      color: white; 
+      margin: 0 15px; 
+      text-decoration: none;
+    }
+    
+    main { 
+      display: flex; 
+      margin: 20px;
+      gap: 20px;
+    }
+    
+    article { 
+      flex: 3; 
+      background: #f4f4f4; 
+      padding: 20px;
+      border-radius: 5px;
+    }
+    
+    aside { 
+      flex: 1; 
+      background: #e0e0e0; 
+      padding: 20px;
+      border-radius: 5px;
+    }
+    
+    footer { 
+      background: #333; 
+      color: white; 
+      text-align: center; 
+      padding: 15px;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;My Awesome Blog&lt;/h1&gt;
+    &lt;p&gt;Web Development & Technology&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;nav&gt;
+    &lt;a href="index.html"&gt;Home&lt;/a&gt;
+    &lt;a href="about.html"&gt;About&lt;/a&gt;
+    &lt;a href="blog.html"&gt;Blog&lt;/a&gt;
+    &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;How to Learn HTML&lt;/h2&gt;
+      &lt;p&gt;Published: Jan 15, 2025&lt;/p&gt;
+      &lt;p&gt;HTML is the foundation of web development. Here's how to get started...&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h3&gt;Popular Posts&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;CSS Basics&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;JavaScript Tips&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Responsive Design&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2025 My Blog. All rights reserved.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Example 2: Landing Page Layout</h3>
+        <pre class="code-block"><code>&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;
+      &lt;img src="logo.png" alt="Logo"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#features"&gt;Features&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#pricing"&gt;Pricing&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section id="hero"&gt;
+      &lt;h1&gt;Welcome to Our Product&lt;/h1&gt;
+      &lt;p&gt;The best solution for your needs&lt;/p&gt;
+      &lt;button&gt;Get Started&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;section id="features"&gt;
+      &lt;h2&gt;Features&lt;/h2&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Fast&lt;/h3&gt;
+        &lt;p&gt;Lightning-fast performance&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Secure&lt;/h3&gt;
+        &lt;p&gt;Bank-level security&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+
+    &lt;section id="pricing"&gt;
+      &lt;h2&gt;Pricing&lt;/h2&gt;
+      &lt;!-- Pricing cards --&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;Contact: hello@example.com&lt;/p&gt;
+    &lt;p&gt;&amp;copy; 2025 Company Name&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Benefits -->
+      <section id="benefits" class="section">
+        <h2>Benefits of Semantic Layout</h2>
+
+        <h3>1. SEO (Search Engine Optimization)</h3>
+        <ul>
+          <li>Search engines understand content hierarchy</li>
+          <li>&lt;main&gt; identifies primary content</li>
+          <li>&lt;article&gt; marks individual pieces of content</li>
+          <li>Better indexing and ranking</li>
+        </ul>
+
+        <h3>2. Accessibility</h3>
+        <ul>
+          <li>Screen readers navigate by landmarks (header, nav, main, footer)</li>
+          <li>Users can skip to main content easily</li>
+          <li>Clearer structure for assistive technologies</li>
+          <li>ARIA roles often unnecessary with semantic HTML</li>
+        </ul>
+
+        <h3>3. Maintainability</h3>
+        <ul>
+          <li>Code is self-documenting</li>
+          <li>Easier for teams to understand structure</li>
+          <li>Reduces need for comments</li>
+          <li>Simpler to update and refactor</li>
+        </ul>
+
+        <h3>4. Default Styling</h3>
+        <ul>
+          <li>Browsers provide default styling</li>
+          <li>Reader modes work better</li>
+          <li>Print stylesheets easier to create</li>
+        </ul>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Quiz -->
+      <section id="quiz" class="section mcq">
+        <h3>Quick Quiz</h3>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q1. Which tag should be used for a website's footer?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;bottom&gt;</button>
+            <button class="choice">b) &lt;footer&gt;</button>
+            <button class="choice">c) &lt;end&gt;</button>
+            <button class="choice">d) &lt;div class="footer"&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="a">
+          <div class="q-title">Q2. Which tag contains navigation links?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;nav&gt;</button>
+            <button class="choice">b) &lt;menu&gt;</button>
+            <button class="choice">c) &lt;links&gt;</button>
+            <button class="choice">d) &lt;navigation&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q3. How many &lt;main&gt; elements should a page have?</div>
+          <div class="choices">
+            <button class="choice">a) As many as needed</button>
+            <button class="choice">b) At least 2</button>
+            <button class="choice">c) Only 1</button>
+            <button class="choice">d) 0 (it's optional)</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="b">
+          <div class="q-title">Q4. Which element is best for a self-contained blog post?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;section&gt;</button>
+            <button class="choice">b) &lt;article&gt;</button>
+            <button class="choice">c) &lt;div&gt;</button>
+            <button class="choice">d) &lt;main&gt;</button>
+          </div>
+        </div>
+
+        <div class="question" data-answer="c">
+          <div class="q-title">Q5. What's the main benefit of semantic HTML for SEO?</div>
+          <div class="choices">
+            <button class="choice">a) Faster loading</button>
+            <button class="choice">b) Better colors</button>
+            <button class="choice">c) Clearer content structure</button>
+            <button class="choice">d) More keywords</button>
+          </div>
+        </div>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Practice -->
+      <section id="practice" class="section">
+        <h3>Practice Tasks</h3>
+        <ol>
+          <li><strong>Portfolio Page:</strong>
+            <ul>
+              <li>Create header with your name and navigation</li>
+              <li>Main section with "About Me" article</li>
+              <li>Section for "Projects" with multiple article elements</li>
+              <li>Aside with skills or contact info</li>
+              <li>Footer with social links</li>
+            </ul>
+          </li>
+
+          <li><strong>Blog Layout:</strong>
+            <ul>
+              <li>Header with blog title and nav</li>
+              <li>Main content area with 3 blog post articles</li>
+              <li>Aside with "Categories" and "Archive"</li>
+              <li>Footer with copyright and author info</li>
+            </ul>
+          </li>
+
+          <li><strong>Landing Page:</strong>
+            <ul>
+              <li>Header with logo and navigation</li>
+              <li>Hero section with main message</li>
+              <li>Features section with 3 feature articles</li>
+              <li>Pricing section with pricing cards</li>
+              <li>Footer with contact and social media</li>
+            </ul>
+          </li>
+
+          <li><strong>Convert Non-Semantic to Semantic:</strong>
+            <ul>
+              <li>Take a page built with divs only</li>
+              <li>Replace with proper semantic elements</li>
+              <li>Test with a screen reader or accessibility tool</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+      <!-- Summary -->
+      <section id="summary" class="section summary">
+        <h3>Lesson Summary</h3>
+        <p><strong>Key Takeaways:</strong></p>
+        <ul>
+          <li><strong>HTML layout:</strong> Organization and structure of webpage content</li>
+          <li><strong>Semantic elements:</strong> header, nav, main, section, article, aside, footer</li>
+          <li><strong>&lt;main&gt;:</strong> Use only once per page for primary content</li>
+          <li><strong>&lt;article&gt;:</strong> Self-contained, reusable content</li>
+          <li><strong>&lt;section&gt;:</strong> Thematic grouping of content</li>
+          <li><strong>&lt;aside&gt;:</strong> Tangentially related sidebar content</li>
+          <li><strong>SEO benefits:</strong> Better search engine understanding and ranking</li>
+          <li><strong>Accessibility:</strong> Screen readers can navigate effectively</li>
+          <li><strong>Maintainability:</strong> Self-documenting, easier to understand code</li>
+          <li><strong>Best practice:</strong> Use semantic elements instead of divs whenever possible</li>
+        </ul>
+        <p>Semantic HTML creates accessible, SEO-friendly, and maintainable websites. Always choose meaning over generic containers!</p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lesson-card lesson-footer">
+      <div class="row">
+        <div class="col small">Completed? Proceed to <a href="forms.html">Forms</a></div>
+        <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- shared script -->
+  <script src="../extra/script.js" defer></script>
+</body>
+</html>
