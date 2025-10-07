@@ -1,13 +1,479 @@
-<!-- contents/Social/follow.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Follow — AkaRJLive</title>
-  <link rel="stylesheet" href="follow.css" />
+  <style>
+    /* Basic reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root{
+      --bg1: #020617;
+      --bg2: #06061a;
+      --neon-pink: #ff2d95;
+      --neon-cyan: #00f0ff;
+      --neon-yellow: #ffd400;
+      --neon-red: #ff3b3b;
+      --neon-magenta: #ff6bb1;
+      --card-bg: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --glow: 0 10px 30px rgba(0,240,255,0.08), 0 2px 10px rgba(255,45,149,0.04);
+      --radius: 14px;
+      --transition: 280ms cubic-bezier(.2,.9,.2,1);
+    }
+
+    /* Page background */
+    html,body {
+      height:100%;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(1200px circle at 10% 10%, rgba(0,240,255,0.04), transparent 8%),
+        linear-gradient(180deg,var(--bg1), var(--bg2));
+      color:#eaf6ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* center content */
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:36px;
+      gap:28px;
+    }
+
+    /* header */
+    .hero { text-align:center; margin-bottom:6px; }
+    .title {
+      font-size:2.1rem;
+      letter-spacing:0.6px;
+      text-shadow: 0 2px 18px rgba(0,240,255,0.06), 0 1px 6px rgba(255,45,149,0.04);
+    }
+    .subtitle { margin-top:8px; color: #cdefff; opacity:0.9; font-size:0.95rem; }
+
+    /* cards grid */
+    .cards {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:20px;
+      width:100%;
+      max-width:1100px;
+    }
+
+    /* card base */
+    .card {
+      --accent: var(--neon-cyan);
+      position:relative;
+      padding:12px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.04);
+      overflow:visible;
+      transform-style: preserve-3d;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: pointer;
+      box-shadow: var(--glow);
+      backdrop-filter: blur(6px) saturate(120%);
+      min-height:150px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      isolation:isolate;
+    }
+    .card:focus { 
+      outline: none; 
+      transform: translateY(-6px) scale(1.01); 
+      box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 6px 30px rgba(0,240,255,0.06); 
+      border-color: rgba(0,240,255,0.18); 
+    }
+
+    /* per-card accents */
+    .card:nth-child(1) { --accent: var(--neon-red); }
+    .card:nth-child(2) { --accent: var(--neon-cyan); }
+    .card:nth-child(3) { --accent: var(--neon-pink); }
+    .card:nth-child(4) { --accent: var(--neon-red); }
+    .card:nth-child(5) { --accent: var(--neon-yellow); }
+
+    /* inner content */
+    .card-inner {
+      text-align:center;
+      padding:18px;
+      pointer-events:auto;
+      width:100%;
+    }
+
+    /* icon container */
+    .icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(0,240,255,0.12), rgba(255,45,149,0.06));
+      box-shadow: 0 0 18px rgba(0,240,255,0.08), 0 0 36px rgba(255,45,149,0.04);
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform 220ms ease;
+      flex-shrink: 0;
+    }
+
+    .icon img {
+      width: 58%;
+      height: 58%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.45));
+      transition: transform 0.3s ease, filter 0.3s ease;
+      display:block;
+    }
+
+    @supports (color: color-mix(in srgb, red, blue)) {
+      .card .icon {
+        box-shadow: 0 6px 22px color-mix(in srgb, var(--accent) 18%, rgba(0,0,0,0.25));
+        background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 18%, rgba(0,0,0,0)) 0%, rgba(255,255,255,0.03) 50%);
+      }
+
+      .card:hover .icon img {
+        transform: scale(1.12) rotate(-6deg);
+        filter: drop-shadow(0 0 12px color-mix(in srgb, var(--accent) 60%, rgba(0,0,0,0.0)));
+      }
+    }
+
+    .card h3 { font-size:1.05rem; margin-bottom:8px; letter-spacing:0.4px; }
+    .desc { font-size:0.86rem; opacity:0.95; margin-bottom:12px; color:#dff8ff; line-height: 1.4; }
+
+    /* button */
+    .btn {
+      pointer-events:auto;
+      appearance:none;
+      border: none;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      padding:8px 14px;
+      border-radius:10px;
+      color: #e7fbff;
+      font-weight:600;
+      font-size:0.88rem;
+      cursor:pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease, background var(--transition);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    .btn:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5); 
+    }
+
+    @supports (color: color-mix(in srgb, red, blue)) {
+      .card:hover {
+        transform: translateY(-10px) rotateX(6deg) scale(1.01);
+        border-color: color-mix(in srgb, var(--accent) 30%, rgba(255,255,255,0.08));
+        box-shadow: 0 26px 60px rgba(0,0,0,0.5), 0 0 40px color-mix(in srgb, var(--accent) 12%, rgba(0,0,0,0));
+      }
+    }
+
+    .card:hover .icon {
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,0.18));
+    }
+
+    .card::before {
+      content: "";
+      position:absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(0,240,255,0.14), rgba(255,45,149,0.14) 40%, rgba(255,212,0,0.02));
+      z-index:-1;
+      opacity:0;
+      transition: opacity var(--transition);
+      filter: blur(18px);
+    }
+
+    @supports (color: color-mix(in srgb, red, blue)) {
+      .card::before {
+        background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 14%, rgba(255,255,255,0.02)), color-mix(in srgb, var(--accent), rgba(255,255,255,0.02)) 40%, rgba(255,212,0,0.02));
+      }
+    }
+
+    .card:hover::before { opacity:1; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotateZ(0deg); }
+      50% { transform: translateY(-6px) rotateZ(-2deg); }
+      100% { transform: translateY(0) rotateZ(0deg); }
+    }
+
+    /* footer */
+    .note { margin-top:6px; color:#bfefff; opacity:0.9; font-size:0.9rem; text-align:center; }
+
+    /* ===== MODAL STYLES ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+    }
+
+    .modal {
+      background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(20, 20, 45, 0.95));
+      border: 2px solid rgba(255, 59, 59, 0.3);
+      border-radius: 20px;
+      max-width: 700px;
+      width: 100%;
+      padding: 0;
+      box-shadow: 
+        0 0 60px rgba(255, 59, 59, 0.25),
+        0 20px 80px rgba(0, 0, 0, 0.6);
+      position: relative;
+      transform: scale(0.8) translateY(30px);
+      transition: transform 0.4s cubic-bezier(.2,.9,.2,1);
+      overflow: hidden;
+    }
+
+    .modal-overlay.show .modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+        rgba(255, 59, 59, 0.3), 
+        rgba(255, 45, 149, 0.2), 
+        rgba(255, 59, 59, 0.3));
+      border-radius: 20px;
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 59, 59, 0.3);
+      border-color: rgba(255, 59, 59, 0.5);
+      transform: rotate(90deg);
+    }
+
+    .modal-content {
+      display: flex;
+      gap: 30px;
+      padding: 40px;
+      align-items: center;
+    }
+
+    .modal-icon {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 59, 59, 0.25), rgba(255, 45, 149, 0.1));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 40px rgba(255, 59, 59, 0.4);
+      animation: float 3s ease-in-out infinite;
+      border: 2px solid rgba(255, 59, 59, 0.2);
+    }
+
+    .modal-icon img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(255, 59, 59, 0.6));
+    }
+
+    .modal-text {
+      flex: 1;
+    }
+
+    .modal-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(255, 59, 59, 0.3);
+      line-height: 1.3;
+    }
+
+    .modal-message {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #d0e7ff;
+      margin-bottom: 20px;
+    }
+
+    .valorant-id {
+      background: rgba(255, 59, 59, 0.1);
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+      color: #ff6b6b;
+      box-shadow: 0 4px 15px rgba(255, 59, 59, 0.2);
+    }
+
+    .valorant-id strong {
+      color: #ff3b3b;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .modal-btn {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .modal-btn-primary {
+      background: linear-gradient(135deg, #ff3b3b, #ff2d95);
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(255, 59, 59, 0.4);
+    }
+
+    .modal-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 59, 59, 0.6);
+    }
+
+    .modal-btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .modal-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive modal */
+    @media (max-width: 660px) {
+      .modal-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .modal-icon {
+        width: 100px;
+        height: 100px;
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+      }
+
+      .modal-message {
+        font-size: 0.95rem;
+      }
+
+      .modal-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .modal-btn {
+        width: 100%;
+      }
+    }
+
+    /* responsive tweaks */
+    @media (max-width:560px) {
+      .title { font-size:1.6rem; }
+      .cards { gap:12px; grid-template-columns: 1fr; }
+      .card { min-height:130px; border-radius:12px; }
+      .icon { width:54px; height:54px; }
+      .icon img { width:56%; height:56%; }
+    }
+  </style>
 </head>
 <body>
+  <!-- MODAL -->
+  <div class="modal-overlay" id="ytModal">
+    <div class="modal">
+      <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
+      <div class="modal-content">
+        <div class="modal-icon">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF0000'%3E%3Cpath d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/%3E%3C/svg%3E" alt="YouTube logo" />
+        </div>
+        <div class="modal-text">
+          <h2 class="modal-title">🎮 Hey! It's Your Sir...</h2>
+          <p class="modal-message">
+            I play <strong>Valorant</strong>! and Lot of Other games... Subscribe to this channel and play with me — join the party, let's have a game! Come say hi in the live chat. 
+            <br><br>
+            BTW, this is my friend's channel. Let's help her reach her subscriber goal. I hope you'll subscribe! 🚀
+          </p>
+          <div class="valorant-id">
+            <strong>Valorant ID:</strong> AkaRJ #LIVE
+          </div>
+          <div class="modal-buttons">
+            <a href="https://www.youtube.com/@AkaRJLive?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="modal-btn modal-btn-primary">
+              ▶️ Subscribe Now
+            </a>
+            <button class="modal-btn modal-btn-secondary" id="laterBtn">Maybe Later</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main class="wrap">
     <header class="hero">
       <h1 class="title">Follow our Socials</h1>
@@ -15,46 +481,48 @@
     </header>
 
     <section class="cards" aria-label="Social links">
-      <!-- GitHub -->
-      <article class="card" data-href="https://github.com/Aman-0402" tabindex="0" role="link" aria-label="GitHub — Aman Raj">
-        <div class="card-inner">
-          <div class="icon gh" aria-hidden="true"><img src="../../assets/github.png" alt="GitHub logo" /></div>
-          <h3>GitHub</h3>
-          <p class="desc">Projects, code & open-source — Aman Raj (Web & AI).</p>
-          <button class="btn" data-action="open">Visit</button>
-        </div>
-      </article>
-
       <!-- YouTube -->
       <article class="card" data-href="https://www.youtube.com/@AkaRJLive" tabindex="0" role="link" aria-label="YouTube — AkaRJLive">
         <div class="card-inner">
           <div class="icon yt" aria-hidden="true">
-            <img src="../../assets/youtube.png" alt="YouTube logo" />
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF0000'%3E%3Cpath d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/%3E%3C/svg%3E" alt="YouTube logo" />
           </div>
           <h3>YouTube</h3>
           <p class="desc">A senior AI software developer sharing tutorials, live coding & gaming streams.</p>
           <button class="btn" data-action="open">Watch</button>
         </div>
       </article>
-      
 
+      <!-- GitHub -->
+      <article class="card" data-href="https://github.com/Aman-0402" tabindex="0" role="link" aria-label="GitHub — Aman Raj">
+        <div class="card-inner">
+          <div class="icon gh" aria-hidden="true">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f0ff'%3E%3Cpath d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'/%3E%3C/svg%3E" alt="GitHub logo" />
+          </div>
+          <h3>GitHub</h3>
+          <p class="desc">Projects, code & open-source — Aman Raj (Web & AI).</p>
+          <button class="btn" data-action="open">Visit</button>
+        </div>
+      </article>
+      
       <!-- Instagram: AkaRJLive -->
       <article class="card" data-href="https://www.instagram.com/akarjlive" tabindex="0" role="link" aria-label="Instagram — AkaRJLive">
         <div class="card-inner">
           <div class="icon ig" aria-hidden="true">
-            <img src="../../assets/social.png" alt="Instagram logo" />
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E4405F'%3E%3Cpath d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'/%3E%3C/svg%3E" alt="Instagram logo" />
           </div>
           <h3>AkaRJLive</h3>
           <p class="desc">Developer life, short clips and gaming moments.</p>
           <button class="btn" data-action="open">Open</button>
         </div>
       </article>
-      
 
       <!-- YouTube: Tooo_Much_Chaos -->
       <article class="card" data-href="https://www.youtube.com/@Tooo_Much_Chaos/shorts" tabindex="0" role="link" aria-label="YouTube — Tooo_Much_Chaos">
         <div class="card-inner">
-          <div class="icon yt" aria-hidden="true"> <img src="../../assets/youtube.png" alt="YouTube logo" /></div>
+          <div class="icon yt" aria-hidden="true">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF0000'%3E%3Cpath d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/%3E%3C/svg%3E" alt="YouTube logo" />
+          </div>
           <h3>Tooo_Much_Chaos</h3>
           <p class="desc">Shorts and creative content from Tooo_Much_Chaos.</p>
           <button class="btn" data-action="open">Watch</button>
@@ -64,7 +532,9 @@
       <!-- Instagram: anvija_priwaj -->
       <article class="card" data-href="https://www.instagram.com/anvija_priwaj" tabindex="0" role="link" aria-label="Instagram — Anvija Priwaj">
         <div class="card-inner">
-          <div class="icon ig" aria-hidden="true"> <img src="../../assets/social.png" alt="Instagram logo" /></div>
+          <div class="icon ig" aria-hidden="true">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E4405F'%3E%3Cpath d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'/%3E%3C/svg%3E" alt="Instagram logo" />
+          </div>
           <h3>Anvija Priwaj</h3>
           <p class="desc">Story novelist & doctor — bringing narratives from clinic to page.</p>
           <button class="btn" data-action="open">Open</button>
@@ -73,10 +543,114 @@
     </section>
 
     <footer class="note">
-      <p> — Follow to stay updated on AI projects, streams and creative work.</p>
+      <p>— Follow to stay updated on AI projects, streams and creative work.</p>
     </footer>
   </main>
 
-  <script src="follow.js"></script>
+  <script>
+    (function () {
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const modal = document.getElementById('ytModal');
+      const closeBtn = document.getElementById('closeModal');
+      const laterBtn = document.getElementById('laterBtn');
+
+      // Show modal on page load
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 500);
+
+      // Close modal function
+      function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 400);
+      }
+
+      // Close button click
+      closeBtn.addEventListener('click', closeModal);
+      laterBtn.addEventListener('click', closeModal);
+
+      // Close on overlay click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+          closeModal();
+        }
+      });
+
+      // Open link safely
+      function openHref(url) {
+        if (!url) return;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+
+      // Click / button handlers
+      cards.forEach((card) => {
+        const url = card.dataset.href;
+        const btn = card.querySelector('[data-action="open"]');
+
+        if (btn) {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openHref(url);
+          });
+        }
+
+        card.addEventListener('click', () => openHref(url));
+
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openHref(url);
+          }
+        });
+
+        // Tilt effect on desktop
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width;
+          const py = (e.clientY - rect.top) / rect.height;
+          const rx = (py - 0.5) * 10;
+          const ry = (px - 0.5) * -12;
+          card.style.transform = `perspective(900px) translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.01)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+
+        // Touch feedback
+        card.addEventListener('touchstart', () => {
+          card.style.transform = 'translateY(-6px) scale(1.01)';
+        });
+        
+        card.addEventListener('touchend', () => {
+          card.style.transform = '';
+        });
+      });
+
+      // Entrance animation
+      window.requestAnimationFrame(() => {
+        cards.forEach((c, i) => {
+          c.style.opacity = 0;
+          c.style.transform = 'translateY(18px)';
+          setTimeout(() => {
+            c.style.transition = `opacity 520ms ease ${i * 70}ms, transform 520ms cubic-bezier(.2,.9,.2,1) ${i * 70}ms`;
+            c.style.opacity = 1;
+            c.style.transform = '';
+          }, 50);
+        });
+      });
+
+      console.log('%c🎮 YouTube Gaming Modal Active!', 'font-size: 16px; font-weight: bold; color: #ff3b3b;');
+    })();
+  </script>
 </body>
 </html>
