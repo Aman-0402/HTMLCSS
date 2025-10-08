@@ -5,7 +5,7 @@ const projects = [
         id: 1,
         title: "Personal Portfolio Website",
         description: "Create a stunning personal website to showcase your skills and projects.",
-        icon: "👤",
+        icon: "💎",
         category: "Beginner",
         features: [
             "About section with bio",
@@ -18,7 +18,7 @@ const projects = [
         id: 2,
         title: "Resume Webpage",
         description: "Design a professional online resume with structured layout.",
-        icon: "📄",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Education & experience",
@@ -31,7 +31,7 @@ const projects = [
         id: 3,
         title: "Online Quiz Page",
         description: "Interactive quiz with multiple choice questions and instant feedback.",
-        icon: "📝",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Radio & checkbox inputs",
@@ -44,7 +44,7 @@ const projects = [
         id: 4,
         title: "Product Landing Page",
         description: "Attractive landing page to showcase and sell products.",
-        icon: "🛍️",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Hero section",
@@ -57,7 +57,7 @@ const projects = [
         id: 5,
         title: "Restaurant Menu Page",
         description: "Delicious menu display with categories and prices.",
-        icon: "🍽️",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Food categories",
@@ -70,7 +70,7 @@ const projects = [
         id: 6,
         title: "Image Gallery",
         description: "Responsive photo gallery with modern grid layout.",
-        icon: "🖼️",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Grid/Flexbox layout",
@@ -83,7 +83,7 @@ const projects = [
         id: 7,
         title: "Blog Template",
         description: "Clean blog layout with semantic HTML structure.",
-        icon: "📰",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Header & navigation",
@@ -96,7 +96,7 @@ const projects = [
         id: 8,
         title: "Online Registration Form",
         description: "User-friendly registration form with validation styling.",
-        icon: "📋",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Input fields & dropdowns",
@@ -109,7 +109,7 @@ const projects = [
         id: 9,
         title: "Pricing Table",
         description: "Compare pricing plans with attractive table design.",
-        icon: "💰",
+        icon: "💎",
         category: "Beginner",
         features: [
             "3-4 pricing tiers",
@@ -122,7 +122,7 @@ const projects = [
         id: 10,
         title: "Photo Slideshow",
         description: "Manual image carousel with CSS animations.",
-        icon: "🎞️",
+        icon: "💎",
         category: "Beginner",
         features: [
             "Multiple images",
@@ -136,7 +136,7 @@ const projects = [
         id: 11,
         title: "Responsive Portfolio Website",
         description: "Advanced portfolio that adapts to all screen sizes.",
-        icon: "📱",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Media queries",
@@ -149,7 +149,7 @@ const projects = [
         id: 12,
         title: "Navigation Bar with Dropdown",
         description: "Professional navbar with multi-level dropdown menus.",
-        icon: "🧭",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Horizontal layout",
@@ -162,7 +162,7 @@ const projects = [
         id: 13,
         title: "Animated Login Page",
         description: "Beautiful login form with advanced CSS effects.",
-        icon: "🔐",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Box shadows",
@@ -175,7 +175,7 @@ const projects = [
         id: 14,
         title: "E-commerce Product Card",
         description: "Interactive product display with hover effects.",
-        icon: "🛒",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Product image",
@@ -188,7 +188,7 @@ const projects = [
         id: 15,
         title: "Interactive Timeline",
         description: "Visual timeline showing milestones and events.",
-        icon: "📅",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Vertical layout",
@@ -201,7 +201,7 @@ const projects = [
         id: 16,
         title: "CSS Image Hover Effects Gallery",
         description: "Showcase various transform effects on images.",
-        icon: "✨",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Rotate effects",
@@ -214,7 +214,7 @@ const projects = [
         id: 17,
         title: "Gradient Background Website",
         description: "Multi-section site with stunning gradient backgrounds.",
-        icon: "🌈",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Linear gradients",
@@ -227,7 +227,7 @@ const projects = [
         id: 18,
         title: "CSS3 Animated Loader/Spinner",
         description: "Create smooth loading animations using keyframes.",
-        icon: "⚡",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "@keyframes animation",
@@ -240,7 +240,7 @@ const projects = [
         id: 19,
         title: "Flip Card Effect",
         description: "3D card flip revealing information on both sides.",
-        icon: "🎴",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "3D transforms",
@@ -253,7 +253,7 @@ const projects = [
         id: 20,
         title: "Digital Business Card",
         description: "Professional digital card with modern design.",
-        icon: "💼",
+        icon: "💎",
         category: "Intermediate",
         features: [
             "Profile section",
