@@ -283,7 +283,7 @@ function createProjectCard(project) {
             <div class="project-card-inner">
                 <div class="project-card-front">
                     <div class="project-icon">${project.icon}</div>
-                    <div class="project-category">${project.category}</div>
+                   
                 </div>
                 <div class="project-card-back">
                     <h3 class="project-title">${project.title}</h3>
