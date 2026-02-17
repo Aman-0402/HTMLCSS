@@ -1,6 +1,7 @@
 <!-- contents/HTML/topics/special-features.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,6 +13,7 @@
   <!-- SweetAlert2 for MCQs -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 </head>
+
 <body class="pure-black">
   <a class="skip-link" href="../content.html">Skip to content</a>
 
@@ -37,19 +39,23 @@
         <a href="#url-encoding">URL Encoding</a>
         <a href="#iframes">Iframes</a>
         <a href="#semantic">Semantic Elements</a>
+        <a href="#noscript">NoScript Tag</a>
         <a href="#quiz">Quiz</a>
         <a href="#practice">Practice</a>
         <a href="#summary">Summary</a>
       </nav>
 
+
       <!-- HTML Entities -->
       <section id="entities" class="section">
         <h2>HTML Entities</h2>
-        <p>HTML entities are special codes used to display reserved characters and symbols that have special meaning in HTML or cannot be typed directly on a keyboard.</p>
+        <p>HTML entities are special codes used to display reserved characters and symbols that have special meaning in
+          HTML or cannot be typed directly on a keyboard.</p>
 
         <h3>Why Use Entities?</h3>
         <ul>
-          <li><strong>Reserved characters:</strong> <code>&lt;</code> <code>&gt;</code> <code>&amp;</code> have special meaning in HTML</li>
+          <li><strong>Reserved characters:</strong> <code>&lt;</code> <code>&gt;</code> <code>&amp;</code> have special
+            meaning in HTML</li>
           <li><strong>Special symbols:</strong> Display symbols not on keyboard (©, ™, €, etc.)</li>
           <li><strong>Non-breaking spaces:</strong> Prevent line breaks between words</li>
           <li><strong>Accented characters:</strong> International text support</li>
@@ -228,7 +234,8 @@
       <!-- URL Encoding -->
       <section id="url-encoding" class="section">
         <h2>URL Encoding</h2>
-        <p>URL encoding (percent encoding) converts characters into a format that can be transmitted over the internet. Special characters are replaced with % followed by hexadecimal values.</p>
+        <p>URL encoding (percent encoding) converts characters into a format that can be transmitted over the internet.
+          Special characters are replaced with % followed by hexadecimal values.</p>
 
         <h3>Why URL Encode?</h3>
         <ul>
@@ -475,10 +482,133 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
         <p><a class="back-to-top" href="#content">Back to top</a></p>
       </section>
 
+      <!-- NoScript Section -->
+      <section id="noscript" class="section">
+        <h2>&lt;noscript&gt; Tag (JavaScript Disabled Content)</h2>
+
+        <h3>1. One-Line Explanation</h3>
+        <p>
+          <strong>&lt;noscript&gt;</strong> is used to show content when JavaScript is disabled or not supported in the
+          browser.
+        </p>
+        <p><em>It works only when JavaScript is OFF.</em></p>
+
+        <h3>2. Real Example (Live Demo)</h3>
+        <p>Write and save this file as <strong>noscript.html</strong>:</p>
+
+        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;NoScript Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Welcome to My Website&lt;/h2&gt;
+
+&lt;script&gt;
+  document.write("JavaScript is Working!");
+&lt;/script&gt;
+
+&lt;noscript&gt;
+  &lt;h3 style="color:red;"&gt;
+    JavaScript is Disabled! Please Enable It.
+  &lt;/h3&gt;
+&lt;/noscript&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>3. Run Normally (JavaScript ON)</h3>
+        <ul>
+          <li>Open the file in Chrome</li>
+          <li>You will see: <strong>JavaScript is Working!</strong></li>
+          <li>&lt;noscript&gt; will NOT appear</li>
+        </ul>
+
+        <p><strong>Explanation:</strong> Because JavaScript is ON, &lt;noscript&gt; is ignored.</p>
+
+        <h3>4. Turn OFF JavaScript</h3>
+        <p>In Chrome:</p>
+        <ul>
+          <li>Open Chrome</li>
+          <li>Go to: <code>chrome://settings/content/javascript</code></li>
+          <li>Turn OFF → Allowed (recommended)</li>
+          <li>OR: Settings → Privacy & Security → Site Settings → JavaScript → Block</li>
+        </ul>
+
+        <h3>5. Refresh Page (Magic Moment ✨)</h3>
+        <p>Now refresh <strong>noscript.html</strong></p>
+
+        <ul>
+          <li>You will see: <strong>JavaScript is Disabled! Please Enable It.</strong></li>
+          <li>"JavaScript is Working!" will disappear</li>
+        </ul>
+
+        <p><strong>Explanation:</strong> Now JS is OFF, so browser shows &lt;noscript&gt; content.</p>
+
+        <h3>6. How It Works Internally</h3>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Situation</th>
+              <th>&lt;script&gt; Tag</th>
+              <th>&lt;noscript&gt; Tag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JavaScript ON</td>
+              <td>Runs</td>
+              <td>Hidden</td>
+            </tr>
+            <tr>
+              <td>JavaScript OFF</td>
+              <td>Doesn't Run</td>
+              <td>Visible</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          Browser checks:
+          <br>✔ If JS works → Ignore &lt;noscript&gt;
+          <br>✔ If JS fails → Show &lt;noscript&gt;
+        </p>
+
+        <h3>7. Real-Life Use Example</h3>
+
+        <pre class="code-block"><code>&lt;noscript&gt;
+  &lt;p&gt;Please enable JavaScript to use this website.&lt;/p&gt;
+  &lt;a href="help.html"&gt;Click for Help&lt;/a&gt;
+&lt;/noscript&gt;</code></pre>
+
+        <p>Used in:</p>
+        <ul>
+          <li>Banking Websites</li>
+          <li>Login Pages</li>
+          <li>Dashboards</li>
+          <li>React Websites</li>
+          <li>Payment Pages</li>
+        </ul>
+
+        <p>Because without JavaScript, many websites may not work properly.</p>
+
+        <h3>8. One-Line Definition (For Exams)</h3>
+
+        <blockquote>
+          &lt;noscript&gt; tag is used to display alternative content when JavaScript is disabled in the browser.
+        </blockquote>
+
+        <p><a class="back-to-top" href="#content">Back to top</a></p>
+      </section>
+
+
       <!-- Quiz -->
       <section id="quiz" class="section mcq">
         <h3>Quick Quiz</h3>
 
+        <!-- Q1 -->
         <div class="question" data-answer="b">
           <div class="q-title">Q1. What entity displays the copyright symbol ©?</div>
           <div class="choices">
@@ -489,6 +619,7 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
           </div>
         </div>
 
+        <!-- Q2 -->
         <div class="question" data-answer="a">
           <div class="q-title">Q2. How is a space encoded in a URL?</div>
           <div class="choices">
@@ -499,6 +630,7 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
           </div>
         </div>
 
+        <!-- Q3 -->
         <div class="question" data-answer="c">
           <div class="q-title">Q3. Which element embeds another webpage?</div>
           <div class="choices">
@@ -509,6 +641,7 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
           </div>
         </div>
 
+        <!-- Q4 -->
         <div class="question" data-answer="b">
           <div class="q-title">Q4. What does &amp;lt; display?</div>
           <div class="choices">
@@ -519,6 +652,7 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
           </div>
         </div>
 
+        <!-- Q5 -->
         <div class="question" data-answer="a">
           <div class="q-title">Q5. Which attribute adds security restrictions to an iframe?</div>
           <div class="choices">
@@ -529,8 +663,64 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
           </div>
         </div>
 
+        <!-- Q6 -->
+        <div class="question" data-answer="d">
+          <div class="q-title">Q6. Which tag is used to show content when JavaScript is disabled?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;script&gt;</button>
+            <button class="choice">b) &lt;javascript&gt;</button>
+            <button class="choice">c) &lt;disable&gt;</button>
+            <button class="choice">d) &lt;noscript&gt;</button>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question" data-answer="b">
+          <div class="q-title">Q7. Which entity is used for non-breaking space?</div>
+          <div class="choices">
+            <button class="choice">a) &amp;space;</button>
+            <button class="choice">b) &amp;nbsp;</button>
+            <button class="choice">c) &amp;tab;</button>
+            <button class="choice">d) &amp;nsp;</button>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question" data-answer="a">
+          <div class="q-title">Q8. Which attribute improves iframe loading performance?</div>
+          <div class="choices">
+            <button class="choice">a) loading="lazy"</button>
+            <button class="choice">b) fastload</button>
+            <button class="choice">c) preload</button>
+            <button class="choice">d) async</button>
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question" data-answer="c">
+          <div class="q-title">Q9. Which tag is used to create a popup dialog?</div>
+          <div class="choices">
+            <button class="choice">a) &lt;popup&gt;</button>
+            <button class="choice">b) &lt;modal&gt;</button>
+            <button class="choice">c) &lt;dialog&gt;</button>
+            <button class="choice">d) &lt;alert&gt;</button>
+          </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question" data-answer="b">
+          <div class="q-title">Q10. Which symbol is created using &amp;deg;?</div>
+          <div class="choices">
+            <button class="choice">a) %</button>
+            <button class="choice">b) °</button>
+            <button class="choice">c) *</button>
+            <button class="choice">d) #</button>
+          </div>
+        </div>
+
         <p><a class="back-to-top" href="#content">Back to top</a></p>
       </section>
+
 
       <!-- Practice -->
       <section id="practice" class="section">
@@ -591,21 +781,25 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
         <p><strong>Key Takeaways:</strong></p>
         <ul>
           <li><strong>HTML Entities:</strong> Use &amp;entity; to display reserved characters and symbols</li>
-          <li><strong>Reserved characters:</strong> &amp;lt; (&lt;), &amp;gt; (&gt;), &amp;amp; (&amp;), &amp;quot; (")</li>
+          <li><strong>Reserved characters:</strong> &amp;lt; (&lt;), &amp;gt; (&gt;), &amp;amp; (&amp;), &amp;quot; (")
+          </li>
           <li><strong>Special symbols:</strong> &amp;copy; (©), &amp;reg; (®), &amp;euro; (€), &amp;deg; (°)</li>
           <li><strong>Non-breaking space:</strong> &amp;nbsp; prevents line breaks</li>
           <li><strong>URL encoding:</strong> Use %20 for space, %26 for &amp;, etc.</li>
           <li><strong>Iframes:</strong> Embed external content with &lt;iframe src="URL"&gt;</li>
           <li><strong>Iframe security:</strong> Use sandbox attribute for untrusted content</li>
-          <li><strong>Semantic elements:</strong> &lt;details&gt;, &lt;progress&gt;, &lt;meter&gt;, &lt;dialog&gt;, &lt;time&gt;</li>
+          <li><strong>Semantic elements:</strong> &lt;details&gt;, &lt;progress&gt;, &lt;meter&gt;, &lt;dialog&gt;,
+            &lt;time&gt;</li>
           <li><strong>Best practice:</strong> Use entities for reserved characters, URL encode parameters</li>
           <li><strong>SEO consideration:</strong> Avoid iframes for main content</li>
         </ul>
-        <p>These special features add functionality and proper character display to your websites. Master entities and iframes to create professional, accessible web pages!</p>
+        <p>These special features add functionality and proper character display to your websites. Master entities and
+          iframes to create professional, accessible web pages!</p>
       </section>
 
       <!-- Course Completion -->
-      <section class="section" style="background: rgba(94, 234, 212, 0.05); border-left: 4px solid var(--accent); padding: 20px; border-radius: 8px;">
+      <section class="section"
+        style="background: rgba(94, 234, 212, 0.05); border-left: 4px solid var(--accent); padding: 20px; border-radius: 8px;">
         <h2>🎉 Congratulations!</h2>
         <p>You've completed the HTML course! You've learned:</p>
         <ul>
@@ -624,16 +818,19 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
           <li>Build real projects to solidify your knowledge</li>
         </ul>
         <p style="margin-top: 20px;">
-          <a href="../content.html" class="btn primary" style="display: inline-block; padding: 12px 24px; text-decoration: none;">← Back to Course Overview</a>
+          <a href="../content.html" class="btn primary"
+            style="display: inline-block; padding: 12px 24px; text-decoration: none;">← Back to Course Overview</a>
         </p>
       </section>
+
 
     </main>
 
     <!-- Footer -->
     <footer class="lesson-card lesson-footer">
       <div class="row">
-        <div class="col small">Course Complete! Review any lesson from the <a href="../content.html">course overview</a></div>
+        <div class="col small">Course Complete! Review any lesson from the <a href="../content.html">course overview</a>
+        </div>
         <div class="col" style="text-align:right"><a class="btn" href="../content.html">Back to Course</a></div>
       </div>
     </footer>
@@ -642,4 +839,5 @@ https://google.com/search?q=HTML%20%26%20CSS%20tutorial</code></pre>
   <!-- shared script -->
   <script src="../extra/script.js" defer></script>
 </body>
+
 </html>
