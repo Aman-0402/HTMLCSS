@@ -518,6 +518,7 @@
     padding: 0;
     color: inherit;
     font-size: inherit;
+    font-weight: inherit;
     border: none;
     white-space: pre-wrap;
   }
@@ -654,7 +655,7 @@
     background: linear-gradient(135deg, #eef1f8, #e4e8f3);
     border-color: rgba(60, 60, 90, 0.15);
     color: #000000;
-    font-weight: 700;
+    font-weight: 800;
     box-shadow: 0 4px 16px rgba(30, 30, 60, 0.12);
   }
 
@@ -676,27 +677,27 @@
 
   :root[data-theme="light"] .code-block .keyword {
     color: #004a73;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   :root[data-theme="light"] .code-block .string {
     color: #0f7a3d;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   :root[data-theme="light"] .code-block .function {
     color: #9d0a56;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   :root[data-theme="light"] .code-block .comment {
     color: #3f4b5c;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   :root[data-theme="light"] .code-block .number {
     color: #5b21b6;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   :root[data-theme="light"] .code-block .operator {
