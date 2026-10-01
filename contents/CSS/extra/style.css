@@ -215,12 +215,13 @@ body {
 :root[data-theme="light"] .code-block {
   background: linear-gradient(135deg, #eef1f8, #e4e8f3);
   border-color: rgba(60, 60, 90, 0.15);
-  color: #1c2033;
+  color: #000000;
+  font-weight: 600;
   box-shadow: 0 4px 16px rgba(30, 30, 60, 0.12);
 }
 
 :root[data-theme="light"] .code-block code {
-  color: #1c2033;
+  color: #000000;
 }
 
 :root[data-theme="light"] .code-block .keyword {
