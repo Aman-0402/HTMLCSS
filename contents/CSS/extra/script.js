@@ -1,6 +1,45 @@
 // Enhanced Interactive Features for CSS Topics
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Syntax-highlight CSS code examples (selectors / properties / values / comments)
+  (function highlightCodeBlocks() {
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+    function highlight(raw) {
+      let s = escapeHtml(raw);
+      const comments = [];
+      s = s.replace(/\/\*[\s\S]*?\*\//g, function (m) {
+        comments.push(m);
+        return "\u0000" + (comments.length - 1) + "\u0000";
+      });
+      s = s.replace(
+        /([ \t]*)([^{}\n;]+?)(\s*)(\{)/g,
+        function (m, lead, sel, trail, brace) {
+          return lead + '<span class="keyword">' + sel + "</span>" + trail + brace;
+        }
+      );
+      s = s.replace(
+        /([ \t]*)([a-zA-Z-]+)(\s*:\s*)([^;{}]+?)(;)/g,
+        function (m, lead, prop, colon, val, semi) {
+          return (
+            lead + '<span class="function">' + prop + "</span>" + colon +
+            '<span class="string">' + val + "</span>" + semi
+          );
+        }
+      );
+      s = s.replace(/\u0000(\d+)\u0000/g, function (m, idx) {
+        return '<span class="comment">' + comments[idx] + "</span>";
+      });
+      return s;
+    }
+    document.querySelectorAll(".code-block code").forEach(function (el) {
+      if (el.dataset.highlighted) return;
+      el.innerHTML = highlight(el.textContent);
+      el.dataset.highlighted = "true";
+    });
+  })();
+
   // Smooth scroll to top on page load
   window.scrollTo(0, 0);
 
