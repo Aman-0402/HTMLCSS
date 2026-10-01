@@ -224,27 +224,27 @@ body {
 }
 
 :root[data-theme="light"] .code-block .keyword {
-  color: #0b6e99;
+  color: #004a73;
 }
 
 :root[data-theme="light"] .code-block .string {
-  color: #946b00;
+  color: #a3400a;
 }
 
 :root[data-theme="light"] .code-block .function {
-  color: #c0176b;
+  color: #9d0a56;
 }
 
 :root[data-theme="light"] .code-block .comment {
-  color: #6b7280;
+  color: #3f4b5c;
 }
 
 :root[data-theme="light"] .code-block .number {
-  color: #6d28d9;
+  color: #5b21b6;
 }
 
 :root[data-theme="light"] .code-block .operator {
-  color: #0b6e99;
+  color: #004a73;
 }
 
 /* Softer, neutral shadows instead of heavy black for light theme */

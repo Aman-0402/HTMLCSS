@@ -248,6 +248,13 @@
     line-height: 1.2;
   }
 
+  :root[data-theme="light"] .badge {
+    background: linear-gradient(135deg, #0f9d8f, #6d28d9);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(15, 157, 143, 0.35);
+  }
+
   :root[data-theme="light"] .lesson-hero h1 {
     font-weight: 900;
     background: linear-gradient(135deg, #14172b 0%, var(--accent) 100%);
@@ -667,27 +674,27 @@
   }
 
   :root[data-theme="light"] .code-block .keyword {
-    color: #0b6e99;
+    color: #004a73;
   }
 
   :root[data-theme="light"] .code-block .string {
-    color: #946b00;
+    color: #a3400a;
   }
 
   :root[data-theme="light"] .code-block .function {
-    color: #c0176b;
+    color: #9d0a56;
   }
 
   :root[data-theme="light"] .code-block .comment {
-    color: #6b7280;
+    color: #3f4b5c;
   }
 
   :root[data-theme="light"] .code-block .number {
-    color: #6d28d9;
+    color: #5b21b6;
   }
 
   :root[data-theme="light"] .code-block .operator {
-    color: #0b6e99;
+    color: #004a73;
   }
   
   /* ==========================================
