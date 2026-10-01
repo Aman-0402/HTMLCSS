@@ -216,7 +216,7 @@ body {
   background: linear-gradient(135deg, #eef1f8, #e4e8f3);
   border-color: rgba(60, 60, 90, 0.15);
   color: #000000;
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: 0 4px 16px rgba(30, 30, 60, 0.12);
 }
 
@@ -226,27 +226,32 @@ body {
 
 :root[data-theme="light"] .code-block .keyword {
   color: #004a73;
+  font-weight: 700;
 }
 
 :root[data-theme="light"] .code-block .string {
   color: #0f7a3d;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 :root[data-theme="light"] .code-block .function {
   color: #9d0a56;
+  font-weight: 700;
 }
 
 :root[data-theme="light"] .code-block .comment {
   color: #3f4b5c;
+  font-weight: 700;
 }
 
 :root[data-theme="light"] .code-block .number {
   color: #5b21b6;
+  font-weight: 700;
 }
 
 :root[data-theme="light"] .code-block .operator {
   color: #004a73;
+  font-weight: 700;
 }
 
 /* Softer, neutral shadows instead of heavy black for light theme */
