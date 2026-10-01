@@ -678,7 +678,8 @@
   }
 
   :root[data-theme="light"] .code-block .string {
-    color: #a3400a;
+    color: #0f7a3d;
+    font-weight: 600;
   }
 
   :root[data-theme="light"] .code-block .function {
