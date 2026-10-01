@@ -1,6 +1,38 @@
 // contents/HTML/extra/script.js
 // Global non-copy deterrent (except form fields) + improved MCQ + smooth scroll + animations
 document.addEventListener("DOMContentLoaded", function () {
+  // Syntax-highlight HTML code examples (tags / attributes / strings / comments)
+  (function highlightCodeBlocks() {
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+    function highlight(raw) {
+      let s = escapeHtml(raw);
+      s = s.replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span class="comment">$1</span>');
+      s = s.replace(
+        /(&lt;\/?)([a-zA-Z][\w-]*)([^&]*?)(\/?&gt;)/g,
+        function (match, open, tag, attrs, close) {
+          const attrsHtml = attrs.replace(
+            /([a-zA-Z-:]+)(=)("[^"]*"|'[^']*')/g,
+            function (m, name, eq, val) {
+              return (
+                '<span class="function">' + name + "</span>" + eq +
+                '<span class="string">' + val + "</span>"
+              );
+            }
+          );
+          return open + '<span class="keyword">' + tag + "</span>" + attrsHtml + close;
+        }
+      );
+      return s;
+    }
+    document.querySelectorAll(".code-block code").forEach(function (el) {
+      if (el.dataset.highlighted) return;
+      el.innerHTML = highlight(el.textContent);
+      el.dataset.highlighted = "true";
+    });
+  })();
+
   // Entrance animation
   (function entrance() {
     const main = document.getElementById("content");

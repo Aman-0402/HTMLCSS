@@ -247,6 +247,14 @@
     background-clip: text;
     line-height: 1.2;
   }
+
+  :root[data-theme="light"] .lesson-hero h1 {
+    font-weight: 900;
+    background: linear-gradient(135deg, #14172b 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   
   .meta {
     color: var(--muted);
