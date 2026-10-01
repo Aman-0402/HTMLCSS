@@ -12,6 +12,18 @@
   --focus: 3px solid rgba(255,255,255,0.12);
 }
 
+:root[data-theme="light"]{
+  --bg: #f7f8fb;
+  --card-radius: 16px;
+  --card-padding: 1.25rem;
+  --glass: rgba(15,23,42,0.04);
+  --fg: #1a1d29;
+  --muted: rgba(26,29,41,0.68);
+  --gap: 1.25rem;
+  --shadow: 0 10px 30px rgba(15,23,42,0.12);
+  --focus: 3px solid rgba(15,23,42,0.22);
+}
+
 /* Page */
 html,body{ height:100%; }
 body {
@@ -243,4 +255,39 @@ body {
   height: 80px;
   object-fit: contain; /* keeps proportions inside dimensions */
   display: block;
+}
+
+/* ===== Light theme overrides ===== */
+:root[data-theme="light"] body{
+  background: linear-gradient(180deg,#f7f8fb 0%, #eceff6 60%);
+}
+:root[data-theme="light"] .card{
+  background: linear-gradient(180deg, rgba(15,23,42,0.03), rgba(15,23,42,0.02));
+  box-shadow: 0 10px 26px rgba(15,23,42,0.1);
+}
+:root[data-theme="light"] .card-inner{
+  background: linear-gradient(135deg, rgba(15,23,42,0.035), rgba(15,23,42,0.02));
+}
+:root[data-theme="light"] .card-icon{
+  background: linear-gradient(90deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02));
+  box-shadow: 0 6px 16px rgba(15,23,42,0.12);
+}
+:root[data-theme="light"] .card:hover,
+:root[data-theme="light"] .card:focus{
+  box-shadow: 0 18px 38px rgba(15,23,42,0.18);
+}
+:root[data-theme="light"] .card:hover .card-cta,
+:root[data-theme="light"] .card:focus .card-cta{
+  box-shadow: 0 12px 28px rgba(15,23,42,0.22);
+}
+:root[data-theme="light"] .card-cta{
+  box-shadow: 0 6px 16px rgba(15,23,42,0.18);
+  color: #fff;
+}
+:root[data-theme="light"] .card:focus{
+  box-shadow: 0 16px 36px rgba(15,23,42,0.22);
+}
+:root[data-theme="light"] ::selection{
+  background: rgba(15,23,42,0.1);
+  color: var(--fg);
 }

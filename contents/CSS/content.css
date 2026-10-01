@@ -4,6 +4,33 @@
     box-sizing: border-box;
 }
 
+/* Light theme overrides (toggled via data-theme attribute on <html>).
+   This file has no CSS variable system, so overrides target the real
+   selectors directly rather than swapping custom properties. */
+:root[data-theme="light"] {
+    color-scheme: light;
+}
+
+:root[data-theme="light"] .logo {
+    box-shadow: 0 10px 30px rgba(30, 40, 90, 0.12);
+}
+
+:root[data-theme="light"] .card {
+    box-shadow: 0 10px 30px rgba(30, 40, 90, 0.1);
+}
+
+:root[data-theme="light"] .card:hover {
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+}
+
+:root[data-theme="light"] .back-btn {
+    box-shadow: 0 5px 15px rgba(30, 40, 90, 0.12);
+}
+
+:root[data-theme="light"] .back-btn:hover {
+    box-shadow: 0 10px 25px rgba(30, 40, 90, 0.18);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

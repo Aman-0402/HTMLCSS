@@ -58,7 +58,27 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
   }
-  
+
+  :root[data-theme="light"] {
+    /* Background Colors */
+    --bg-primary: #f6f7fb;
+    --bg-secondary: #eef0f7;
+    --bg-card: #ffffff;
+    --bg-card-hover: #ffffff;
+
+    /* Text Colors */
+    --text-primary: #14172b;
+    --text-secondary: #4a5168;
+    --text-muted: #6b7280;
+
+    /* Border & Shadow */
+    --border-color: rgba(20, 23, 43, 0.1);
+    --shadow-sm: 0 2px 8px rgba(30, 30, 60, 0.06);
+    --shadow-md: 0 4px 16px rgba(30, 30, 60, 0.1);
+    --shadow-lg: 0 8px 32px rgba(30, 30, 60, 0.14);
+    --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.2);
+  }
+
   /* ==========================================
      Global Reset & Base Styles
      ========================================== */
@@ -480,7 +500,20 @@
     color: #fc8181;
     border: 1px solid rgba(245, 101, 101, 0.3);
   }
-  
+
+  /* Light mode: darken badge text for AA contrast against pale tinted bg on white cards */
+  :root[data-theme="light"] .difficulty.beginner {
+    color: #1a7a43;
+  }
+
+  :root[data-theme="light"] .difficulty.intermediate {
+    color: #9a5412;
+  }
+
+  :root[data-theme="light"] .difficulty.advanced {
+    color: #c23434;
+  }
+
   /* Completed State */
   .card[data-completed="true"] .card-inner {
     background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%);

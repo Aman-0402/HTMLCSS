@@ -69,6 +69,16 @@
             font-family: "Courier New", monospace;
         }
 
+        /* Light theme override for this page's dark warning-box code sample */
+        :root[data-theme="light"] .warning-box pre {
+            background: linear-gradient(135deg, #eef1f8, #e4e8f3);
+            box-shadow: 0 4px 16px rgba(30, 30, 60, 0.12);
+        }
+
+        :root[data-theme="light"] .warning-box code {
+            color: #1c2033;
+        }
+
         /* Enhanced interactive demos */
         .timing-demo-box {
             width: 100%;
@@ -949,5 +959,6 @@ transition: transform 0.3s ease-in-out;</code></pre>
             }
         }
     </script>
+  <script src="../../../theme-toggle.js" defer></script>
 </body>
 </html>

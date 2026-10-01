@@ -203,6 +203,68 @@ body {
   color: #d4d4d4;
 }
 
+/* Light theme overrides (toggled via data-theme attribute on <html>).
+   This file has no CSS variable system, so overrides target the real
+   selectors directly rather than swapping custom properties. The
+   code block is the one genuinely dark-themed component on this page,
+   so it gets a dedicated light palette with distinct syntax colors. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="light"] .code-block {
+  background: linear-gradient(135deg, #eef1f8, #e4e8f3);
+  border-color: rgba(60, 60, 90, 0.15);
+  color: #1c2033;
+  box-shadow: 0 4px 16px rgba(30, 30, 60, 0.12);
+}
+
+:root[data-theme="light"] .code-block code {
+  color: #1c2033;
+}
+
+:root[data-theme="light"] .code-block .keyword {
+  color: #0b6e99;
+}
+
+:root[data-theme="light"] .code-block .string {
+  color: #946b00;
+}
+
+:root[data-theme="light"] .code-block .function {
+  color: #c0176b;
+}
+
+:root[data-theme="light"] .code-block .comment {
+  color: #6b7280;
+}
+
+:root[data-theme="light"] .code-block .number {
+  color: #6d28d9;
+}
+
+:root[data-theme="light"] .code-block .operator {
+  color: #0b6e99;
+}
+
+/* Softer, neutral shadows instead of heavy black for light theme */
+:root[data-theme="light"] .topic-container {
+  box-shadow: 0 20px 60px rgba(30, 30, 60, 0.12);
+}
+
+:root[data-theme="light"] .demo-output,
+:root[data-theme="light"] .mcq-question {
+  box-shadow: 0 5px 15px rgba(30, 30, 60, 0.08);
+}
+
+:root[data-theme="light"] .back-btn {
+  box-shadow: 0 5px 15px rgba(30, 30, 60, 0.12);
+}
+
+:root[data-theme="light"] .back-btn:hover {
+  box-shadow: 0 10px 25px rgba(30, 30, 60, 0.18);
+}
+
 /* Example Box */
 .example-box {
   background: #f8f9fa;

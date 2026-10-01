@@ -23,6 +23,22 @@
       --transition: 280ms cubic-bezier(.2,.9,.2,1);
     }
 
+    :root[data-theme="light"]{
+      --bg1: #f5f7fc;
+      --bg2: #eef1fa;
+      --neon-pink: #d6227e;
+      --neon-cyan: #0088a8;
+      --neon-yellow: #b88900;
+      --neon-red: #d82c2c;
+      --neon-magenta: #c7408f;
+      --card-bg: rgba(15,23,42,0.035);
+      --glass: rgba(15,23,42,0.045);
+      --glass-2: rgba(15,23,42,0.02);
+      --glow: 0 10px 26px rgba(0,136,168,0.1), 0 2px 10px rgba(214,34,126,0.06);
+      --radius: 14px;
+      --transition: 280ms cubic-bezier(.2,.9,.2,1);
+    }
+
     /* Page background */
     html,body {
       height:100%;
@@ -442,6 +458,42 @@
       .icon { width:54px; height:54px; }
       .icon img { width:56%; height:56%; }
     }
+
+    /* ===== Light theme overrides ===== */
+    :root[data-theme="light"] html,
+    :root[data-theme="light"] body {
+      background:
+        radial-gradient(1200px circle at 10% 10%, rgba(0,136,168,0.05), transparent 8%),
+        linear-gradient(180deg,var(--bg1), var(--bg2));
+      color:#1c2333;
+    }
+    :root[data-theme="light"] .subtitle { color:#44506b; }
+    :root[data-theme="light"] .desc { color:#3b4760; }
+    :root[data-theme="light"] .note { color:#4a5570; }
+    :root[data-theme="light"] .card {
+      background: linear-gradient(135deg, rgba(15,23,42,0.035), rgba(15,23,42,0.018));
+      border: 1px solid rgba(15,23,42,0.08);
+    }
+    :root[data-theme="light"] .card:focus {
+      box-shadow: 0 16px 34px rgba(15,23,42,0.16), 0 6px 22px rgba(0,136,168,0.1);
+      border-color: rgba(0,136,168,0.25);
+    }
+    :root[data-theme="light"] .btn {
+      background: linear-gradient(90deg, rgba(15,23,42,0.05), rgba(15,23,42,0.03));
+      color: #1c2333;
+      box-shadow: 0 6px 16px rgba(15,23,42,0.14);
+    }
+    :root[data-theme="light"] .btn:hover {
+      box-shadow: 0 12px 26px rgba(15,23,42,0.2);
+    }
+    @supports (color: color-mix(in srgb, red, blue)) {
+      :root[data-theme="light"] .card:hover {
+        box-shadow: 0 22px 48px rgba(15,23,42,0.16), 0 0 34px color-mix(in srgb, var(--accent) 16%, rgba(0,0,0,0));
+      }
+    }
+    :root[data-theme="light"] .card:hover .icon {
+      filter: drop-shadow(0 6px 18px rgba(15,23,42,0.12));
+    }
   </style>
 </head>
 <body>
@@ -652,5 +704,6 @@
       console.log('%c🎮 YouTube Gaming Modal Active!', 'font-size: 16px; font-weight: bold; color: #ff3b3b;');
     })();
   </script>
+  <script src="../../theme-toggle.js" defer></script>
 </body>
 </html>
