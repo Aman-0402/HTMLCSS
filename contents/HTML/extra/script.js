@@ -226,12 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
         user-select: auto !important; 
         -webkit-user-select: text !important; 
       }
-      .code-block, .code-block * { 
-        -webkit-user-select: text !important; 
-        -moz-user-select: text !important; 
-        -ms-user-select: text !important; 
-        user-select: text !important; 
-      }
     `;
     const st = document.createElement("style");
     st.appendChild(document.createTextNode(css));
@@ -254,25 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     }
 
-    // code blocks are always selectable and copyable
-    function isInCodeBlock(node) {
-      const el = node && node.nodeType === 3 ? node.parentElement : node;
-      return !!(el && el.closest && el.closest(".code-block"));
-    }
-    function isSelectionInCodeBlock() {
-      const sel = window.getSelection();
-      return !!(
-        sel &&
-        sel.rangeCount &&
-        !sel.isCollapsed &&
-        isInCodeBlock(sel.anchorNode) &&
-        isInCodeBlock(sel.focusNode)
-      );
-    }
-
     // contextmenu (right click)
     document.addEventListener("contextmenu", function (e) {
-      if (isInAllowedArea(e.target) || isInCodeBlock(e.target)) return; // allow on inputs/editable and code blocks
+      if (isInAllowedArea(e.target)) return; // allow on inputs/editable
       e.preventDefault();
       notify({
         icon: "info",
@@ -287,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // prevent selectstart where not allowed
     document.addEventListener("selectstart", function (e) {
-      if (isInAllowedArea(e.target) || isInCodeBlock(e.target)) return;
+      if (isInAllowedArea(e.target)) return;
       e.preventDefault();
     });
 
@@ -295,7 +273,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ["copy", "cut", "paste"].forEach((evName) => {
       document.addEventListener(evName, function (e) {
         if (isInAllowedArea(e.target)) return;
-        if (evName === "copy" && isSelectionInCodeBlock()) return; // allow copying code
         e.preventDefault();
         notify({
           icon: "info",
@@ -315,7 +292,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if ((e.ctrlKey || e.metaKey) && ["c", "x", "s", "u"].includes(k)) {
         const focused = document.activeElement;
         if (isInAllowedArea(focused)) return; // allow shortcuts in inputs/editable
-        if (k === "c" && isSelectionInCodeBlock()) return; // allow Ctrl/Cmd+C on selected code
         e.preventDefault();
         notify({
           icon: "info",
