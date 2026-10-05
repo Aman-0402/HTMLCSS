@@ -43,14 +43,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // Smooth scroll to top on page load
   window.scrollTo(0, 0);
 
-  // Disable right-click (context menu)
+  // Code blocks are copyable; the rest of the page stays protected
+  const isInCodeBlock = (node) => {
+    const el = node && node.nodeType === 3 ? node.parentElement : node;
+    return !!(el && el.closest && el.closest(".code-block"));
+  };
+
+  // Disable right-click (context menu), except on code blocks
   document.addEventListener("contextmenu", (e) => {
+    if (isInCodeBlock(e.target)) return;
     e.preventDefault();
     showNotification("Right-click is disabled! 🚫");
   });
 
-  // Disable copy
+  // Disable copy, except when the selection is inside a code block
   document.addEventListener("copy", (e) => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && isInCodeBlock(sel.anchorNode) && isInCodeBlock(sel.focusNode)) {
+      return;
+    }
     e.preventDefault();
     showNotification("Copying is disabled! 🚫");
   });
